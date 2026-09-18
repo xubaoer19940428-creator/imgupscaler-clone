@@ -1,0 +1,129 @@
+# ==========================================
+# Dependencies
+# ==========================================
+# 本地安装的依赖体积大、可由 package-lock.json 重新安装，不提交到仓库。
+node_modules/
+
+# ==========================================
+# Next.js / build output
+# ==========================================
+# Next.js 开发缓存、生产构建结果和静态导出目录。
+.next/
+out/
+dist/
+build/
+.turbo/
+.vercel/
+
+# ==========================================
+# Environment variables and secrets
+# ==========================================
+# 禁止提交本地环境变量、密钥、Token、数据库连接串和第三方服务凭据。
+# .env.example 是模板文件，可以提交。
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# ==========================================
+# Logs and runtime files
+# ==========================================
+logs/
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# ==========================================
+# Test, coverage and profiling output
+# ==========================================
+coverage/
+.nyc_output/
+*.lcov
+playwright-report/
+blob-report/
+test-results/
+__snapshots__/
+.vitest/
+
+# ==========================================
+# TypeScript / tooling caches
+# ==========================================
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+.cache/
+.parcel-cache/
+
+# ==========================================
+# IDE and editor files
+# ==========================================
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+*.iml
+*.suo
+*.user
+*.userossc
+*.sln.docstates
+
+# ==========================================
+# Operating system files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# Temporary files and local exports
+# ==========================================
+tmp/
+temp/
+.tmp/
+.temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ==========================================
+# Generated archives and local image exports
+# ==========================================
+# 防止把测试下载包、批量导出结果和本地压缩包误提交。
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+downloads/
+exports/
+
+# ==========================================
+# Local deployment / platform metadata
+# ==========================================
+.netlify/
+.firebase/
+.wrangler/
+
+# ==========================================
+# Keep project documentation and reference assets tracked
+# ==========================================
+# PROJECT_MEMORY.md、README.md、public/reference/ 下的项目素材默认需要进入仓库，
+# 因此这里不使用宽泛的 *.md 或 public/ 忽略规则。

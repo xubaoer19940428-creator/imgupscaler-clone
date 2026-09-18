@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "upscaler": "Upscaler",
+    "enhancer": "Enhancer",
+    "reimagine": "Reimagine",
+    "pricing": "Pricing"
+  },
+  "workspace": {
+    "chooseImage": "Choose image",
+    "dragDrop": "Drop your image here",
+    "formats": "JPG / PNG / WebP / AVIF supported"
+  }
+}
