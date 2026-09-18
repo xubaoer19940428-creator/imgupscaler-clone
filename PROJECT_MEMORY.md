@@ -502,5 +502,5 @@ npm run build
 - 完成公共 Header、Footer、登录弹窗、账户菜单、法律页和 next-intl 路由语言切换。
 - 修复 Footer 拥挤、定价区块间距、Hero 980px 宽度限制、中文英文混杂。
 - 修复 CompareCard 原生 range 拖动和 compare-handle 内箭头居中。
+- 在 README 中补充线上中文站、线上主站和本地 HTML 参考稿链接，方便 GitHub 仓库查看复刻来源。
 - 通过 TypeScript 检查和 Next.js 生产构建。
-

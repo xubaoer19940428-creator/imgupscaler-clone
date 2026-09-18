@@ -2,6 +2,16 @@
 
 这是一个基于 Next.js App Router + React + TypeScript 的 ImgUpscaler 前端复刻。页面顺序、导航、工作区、Upscal 推广、视频展示、能力卡片、用例、三步流程、before/after、评价、FAQ、定价、账户与法律页均按本地保存的 `AI _ ImgUpscaler.html` 和线上中文页结构搭建；后续可直接替换文案、图片和真实模型。
 
+## 参考来源
+
+本项目的页面结构、视觉布局和交互方向参考以下内容：
+
+- 线上中文站：[Img.Upscaler 中文版](https://imgupscaler.com/zh)
+- 线上主站：[Img.Upscaler](https://imgupscaler.com/)
+- 本地页面参考稿：`文稿/AI _ ImgUpscaler.html`
+
+本项目是独立的前端复刻实现，不包含参考站的后端服务、AI 模型、账户系统或支付系统。`public/reference/` 中的图片属于当前开发占位素材，后续可以按项目需要替换。
+
 ## 启动
 
 ```bash
