@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import type { Route } from '@/src/lib/types'
+import { isRouteVisible } from '@/src/lib/constants'
+import { FEATURE_FLAGS } from '@/src/lib/feature-flags'
 import { Icon } from '@/src/components/ui/icons'
 import { SiteHeader } from '@/src/components/site/site-header'
 import { SiteFooter } from '@/src/components/site/site-footer'
@@ -39,7 +41,7 @@ export default function App() {
       <SiteHeader onLogin={() => setLoginOpen(true)} onNavigate={navigate} />
       {route === 'pricing' ? <div id="main-content"><PricingPage onChoose={navigate} onLogin={() => setLoginOpen(true)} /></div> : <LandingPage route={route} controller={controller} onUseCase={scrollToWorkspace} />}
       <SiteFooter locale={locale} />
-      <EditorDialog controller={controller} />
+      {FEATURE_FLAGS.enableImageEditor && <EditorDialog controller={controller} />}
       {loginOpen && <LoginDialog onClose={() => setLoginOpen(false)} onSubmit={() => { setLoginOpen(false); setToast({ title: isChinese ? '演示登录已提交' : 'Demo sign-in submitted', detail: isChinese ? '认证服务预留中，当前不会发送数据' : 'Authentication is reserved; no data is sent in this demo.' }) }} onForgot={() => setToast({ title: isChinese ? '重置密码入口已预留' : 'Password reset is reserved' })} />}
       {toast && <Toast message={toast} />}
     </div>
@@ -56,8 +58,9 @@ function Toast({ message }: { message: { title: string; detail?: string } }) {
 
 function pathToRoute(pathname: string): Route {
   const normalized = pathname.replace(/^\/zh(?=\/|$)/, '') || '/'
-  if (normalized === '/enhancer') return 'enhancer'
-  if (normalized === '/reimagine') return 'reimagine'
-  if (normalized === '/pricing') return 'pricing'
+  if (normalized === '/enhancer' && isRouteVisible('enhancer')) return 'enhancer'
+  if (normalized === '/reimagine' && isRouteVisible('reimagine')) return 'reimagine'
+  if (normalized === '/pricing' && isRouteVisible('pricing')) return 'pricing'
   return 'home'
 }
+

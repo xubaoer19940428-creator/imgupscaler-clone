@@ -3,12 +3,14 @@
 import type { ChangeEvent, DragEvent } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { MAX_FILES } from '@/src/lib/constants'
+import { FEATURE_FLAGS } from '@/src/lib/feature-flags'
 import type { Route } from '@/src/lib/types'
 import { Button } from '@/src/components/ui/button'
 import { Card } from '@/src/components/ui/card'
 import { Icon } from '@/src/components/ui/icons'
 import { Textarea } from '@/src/components/ui/textarea'
 import type { WorkspaceController } from './use-workspace-controller'
+
 
 export function WorkspacePanel({ route, controller }: { route: Route; controller: WorkspaceController }) {
   const t = useTranslations('workspace')
@@ -57,7 +59,8 @@ function FileGrid({ controller }: { controller: WorkspaceController }) {
   const locale = useLocale()
   const isChinese = locale === 'zh'
   const statusLabels = isChinese ? { ready: '待处理', processing: '处理中', done: '已完成', error: '失败' } : { ready: 'Ready', processing: 'Processing', done: 'Done', error: 'Error' }
-  return <div className="file-grid">{controller.items.map((item) => <div className={`file-thumb${item.status === 'error' ? ' has-error' : ''}`} key={item.id}><img src={item.resultUrl ?? item.url} alt={item.file.name} /><span className={`thumb-status ${item.status}`}>{statusLabels[item.status]}</span>{item.error && <span className="thumb-error">{item.error}</span>}{!controller.processing && <button className="thumb-remove" onClick={() => controller.removeItem(item.id)}>×</button>}{item.status === 'error' && <button className="thumb-retry" onClick={() => controller.process([item.id])}>{isChinese ? '重试' : 'Retry'}</button>}{item.status === 'done' && <div className="thumb-actions"><button onClick={() => controller.downloadItem(item.id)}>{isChinese ? '下载' : 'Download'}</button><button onClick={() => controller.openEditor(item.id)}>{isChinese ? '编辑' : 'Edit'}</button><button onClick={() => controller.process([item.id])}>{isChinese ? '重做' : 'Redo'}</button></div>}</div>)}<button className="add-more" onClick={() => controller.inputRef.current?.click()} disabled={controller.processing}><Icon name="upload" />{isChinese ? '继续添加' : 'Add more'}</button></div>
+  return <div className="file-grid">{controller.items.map((item) => <div className={`file-thumb${item.status === 'error' ? ' has-error' : ''}`} key={item.id}><img src={item.resultUrl ?? item.url} alt={item.file.name} /><span className={`thumb-status ${item.status}`}>{statusLabels[item.status]}</span>{item.error && <span className="thumb-error">{item.error}</span>}{!controller.processing && <button className="thumb-remove" onClick={() => controller.removeItem(item.id)}>×</button>}{item.status === 'error' && <button className="thumb-retry" onClick={() => controller.process([item.id])}>{isChinese ? '重试' : 'Retry'}</button>}{item.status === 'done' && <div className="thumb-actions"><button onClick={() => controller.downloadItem(item.id)}>{isChinese ? '下载' : 'Download'}</button>{FEATURE_FLAGS.enableImageEditor && <button onClick={() => controller.openEditor(item.id)}>{isChinese ? '编辑' : 'Edit'}</button>}<button onClick={() => controller.process([item.id])}>{isChinese ? '重做' : 'Redo'}</button></div>}</div>)}<button className="add-more" onClick={() => controller.inputRef.current?.click()} disabled={controller.processing}><Icon name="upload" />{isChinese ? '继续添加' : 'Add more'}</button></div>
+
 }
 
 function ReimagineControls({ controller }: { controller: WorkspaceController }) {

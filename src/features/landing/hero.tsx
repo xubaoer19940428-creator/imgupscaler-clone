@@ -1,6 +1,7 @@
 'use client'
 
 import type { Route } from '@/src/lib/types'
+import { FEATURE_FLAGS } from '@/src/lib/feature-flags'
 import { WorkspacePanel } from '@/src/features/workspace/workspace-panel'
 import type { WorkspaceController } from '@/src/features/workspace/use-workspace-controller'
 import { heroContent } from './data'
@@ -12,5 +13,6 @@ import { PromoSection } from './sections'
  */
 export function Hero({ route, controller }: { route: Exclude<Route, 'pricing'>; controller: WorkspaceController }) {
   const content = heroContent[route]
-  return <section className="hero-section"><div className="hero-orb orb-one" /><div className="hero-orb orb-two" /><div className="hero-copy reveal"><div className="eyebrow"><span className="eyebrow-dot" /> {content.eyebrow}</div><h1>{content.title}</h1><p>{content.description}</p></div><WorkspacePanel route={route} controller={controller} /><PromoSection /></section>
+  return <section className="hero-section"><div className="hero-orb orb-one" /><div className="hero-orb orb-two" /><div className="hero-copy reveal"><div className="eyebrow"><span className="eyebrow-dot" /> {content.eyebrow}</div><h1>{content.title}</h1><p>{content.description}</p></div><WorkspacePanel route={route} controller={controller} />{FEATURE_FLAGS.enablePromoSection && <PromoSection />}</section>
 }
+

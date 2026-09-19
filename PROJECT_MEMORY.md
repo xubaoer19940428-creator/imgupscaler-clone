@@ -455,7 +455,22 @@ type UpscaleResult = {
 
 修复后：为 plans grid 增加固定桌面呼吸区和移动端底部间距，后续调整套餐卡高度时需回归检查。
 
+### 14.7 功能非破坏性隐藏（专注“图片放大”，可一键恢复）
+
+需求背景：用户当前仅需要核心的“图片放大（图片变清晰）”功能，要求将其他 AI 工具、首屏推广与辅助功能在界面上隐藏，严禁删除底层代码。
+
+实现方式：通过 `src/lib/feature-flags.ts` 集中管理 `FEATURE_FLAGS` 开关：
+- `enableEnhancer: false`：隐藏导航栏中的「图像增强器」，访问对应 URL 时自动回退至图片放大主页。
+- `enableReimagine: false`：隐藏导航栏中的「重新构想」，访问对应 URL 时自动回退至图片放大主页。
+- `enablePricing: true`：保留「定价」导航与页面演示。
+- `enableAccount: true`：保留右上角「演示账户」与登录注册弹窗。
+- `enablePromoSection: false`：隐藏首屏 Hero 下方的 Upscal 桌面客户端推广卡片。
+- `enableImageEditor: false`：隐藏工作区图片放大完成后的「编辑」裁剪弹窗按钮，只保留直接下载与重做。
+
+**恢复方法**：任何时候若需要重新开启某项功能，只需将 `src/lib/feature-flags.ts` 中对应的布尔值改回 `true` 即可立刻恢复全部功能，无需调整任何业务代码。
+
 ## 15. 验证结果
+
 
 已执行并通过：
 
@@ -494,13 +509,11 @@ npm run build
 
 ## 17. 维护日志
 
-### 2026-09-18
-
-- 完成 Img.Upscaler 多页面前端复刻。
-- 完成 Home、Enhancer、Reimagine、Pricing、Account、Privacy、Terms、Cookies 的中英文路由。
-- 完成上传、拖放、多图、倍率/模型、Reimagine 参数、Canvas 演示处理、进度、取消、重试、编辑、下载和 ZIP。
-- 完成公共 Header、Footer、登录弹窗、账户菜单、法律页和 next-intl 路由语言切换。
-- 修复 Footer 拥挤、定价区块间距、Hero 980px 宽度限制、中文英文混杂。
-- 修复 CompareCard 原生 range 拖动和 compare-handle 内箭头居中。
-- 在 README 中补充线上中文站、线上主站和本地 HTML 参考稿链接，方便 GitHub 仓库查看复刻来源。
-- 通过 TypeScript 检查和 Next.js 生产构建。
+### 2026-09-19
+- 根据需求将产品聚焦于核心“图片放大（图片变清晰）”功能。
+- 引入集中式 `FEATURE_FLAGS` 开关机制（零代码删除、可一键恢复）。
+- 隐藏顶部及移动端导航栏中的「图像增强器」和「重新构想 (Reimagine)」，直接访问自动回退至图片放大主页。
+- 隐藏首屏 Hero 下方的 Upscal 桌面客户端推广卡片，首屏更加纯粹聚焦。
+- 隐藏工作区放大完成后的「编辑」裁剪弹窗按钮，只保留直接下载和重做。
+- 保留「定价」与「账户/登录」演示。
+- 全量通过 `npx tsc --noEmit` 和 `npm run build`。
