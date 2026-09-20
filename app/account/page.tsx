@@ -3,6 +3,6 @@ import { AccountPage } from '../../src/components/site/account-page'
 
 export const metadata: Metadata = { title: 'Account — Img.Upscaler' }
 
-export default function EnglishAccountPage() {
-  return <AccountPage locale="en" />
+export default function AccountRoute() {
+  return <AccountPage />
 }

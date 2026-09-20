@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
+import { useLocale } from 'next-intl'
 import type { Route } from '@/src/lib/types'
-import { isRouteVisible } from '@/src/lib/constants'
 import { FEATURE_FLAGS } from '@/src/lib/feature-flags'
+import { pathToRoute, routeToPath } from '@/src/lib/locale-routing'
 import { Icon } from '@/src/components/ui/icons'
 import { SiteHeader } from '@/src/components/site/site-header'
 import { SiteFooter } from '@/src/components/site/site-footer'
@@ -20,7 +21,7 @@ export default function App() {
   const pathname = usePathname()
   const router = useRouter()
   const route = pathToRoute(pathname)
-  const locale = pathname.startsWith('/zh') ? 'zh' : 'en'
+  const locale = useLocale() as 'zh' | 'en'
   const [loginOpen, setLoginOpen] = useState(false)
   const [toast, setToast] = useState<{ title: string; detail?: string } | null>(null)
   // The page shell coordinates route-level UI only. Upload state, async processing
@@ -29,8 +30,7 @@ export default function App() {
 
   const navigate = (next: Route) => {
     if (controller.processing) controller.cancel()
-    const prefix = locale === 'zh' ? '/zh' : ''
-    router.push(`${prefix}${next === 'home' ? '/' : `/${next}`}`.replace(/\/\/$/, '/'))
+    router.push(routeToPath(next))
   }
   const scrollToWorkspace = () => document.querySelector('.workspace-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
 
@@ -53,12 +53,4 @@ function LandingPage({ route, controller, onUseCase }: { route: Exclude<Route, '
 
 function Toast({ message }: { message: { title: string; detail?: string } }) {
   return <div className="toast" role="status" aria-live="polite"><div className="toast-icon"><Icon name="check" /></div><div><strong>{message.title}</strong>{message.detail && <span>{message.detail}</span>}</div></div>
-}
-
-function pathToRoute(pathname: string): Route {
-  const normalized = pathname.replace(/^\/zh(?=\/|$)/, '') || '/'
-  if (normalized === '/enhancer' && isRouteVisible('enhancer')) return 'enhancer'
-  if (normalized === '/reimagine' && isRouteVisible('reimagine')) return 'reimagine'
-  if (normalized === '/pricing' && isRouteVisible('pricing')) return 'pricing'
-  return 'home'
 }

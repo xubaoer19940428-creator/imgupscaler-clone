@@ -3,9 +3,10 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState, type MouseEvent, type RefObject } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { useTranslations } from 'next-intl'
-import { visibleRoutes, isRouteVisible } from '@/src/lib/constants'
+import { useLocale, useTranslations } from 'next-intl'
+import { visibleRoutes } from '@/src/lib/constants'
 import type { Route } from '@/src/lib/types'
+import { pathToRoute, routeToPath } from '@/src/lib/locale-routing'
 import { Icon } from '@/src/components/ui/icons'
 import { MobileAccountPanel } from './mobile-account-panel'
 
@@ -34,9 +35,9 @@ export function SiteHeader({ onLogin: _onLogin, onNavigate }: { onLogin: () => v
   const headerRef = useRef<HTMLElement>(null)
   const accountRef = useRef<HTMLDivElement>(null)
   const t = useTranslations('nav')
-  const localePrefix = pathname.startsWith('/zh') ? '/zh' : ''
-  const copy = getHeaderCopy(localePrefix === '/zh')
-  const route = routeFromPath(pathname)
+  const locale = useLocale() as 'zh' | 'en'
+  const copy = getHeaderCopy(locale === 'zh')
+  const route = pathToRoute(pathname)
 
   useEffect(() => {
     if (!mobileOpen && !accountOpen) return
@@ -66,12 +67,12 @@ export function SiteHeader({ onLogin: _onLogin, onNavigate }: { onLogin: () => v
     setMobileOpen(false)
     setAccountOpen(false)
     if (onNavigate) onNavigate(next)
-    else router.push(toLocalizedPath(localePrefix, next))
+    else router.push(routeToPath(next))
   }
-  const hrefFor = (next: Route) => toLocalizedPath(localePrefix, next)
+  const hrefFor = (next: Route) => routeToPath(next)
   const items: NavItem[] = visibleRoutes.map((key) => ({ route: key, label: t(key === 'home' ? 'upscaler' : key), href: hrefFor(key) }))
 
-  return <header ref={headerRef} className="site-header"><div className="header-inner"><a className="brand" href={hrefFor('home')} onClick={(event) => handleNavClick(event, navigate, 'home')} aria-label="Img.Upscaler">Img.Upscaler</a><HeaderNavigation items={items} activeRoute={route} onNavigate={navigate} ariaLabel={copy.navigation} open={mobileOpen} copy={copy} accountHref={`${localePrefix}/account`} billingHref={`${localePrefix}/account?tab=billing`} onClose={() => setMobileOpen(false)} /><HeaderActions copy={copy} accountRef={accountRef} accountOpen={accountOpen} accountHref={`${localePrefix}/account`} billingHref={`${localePrefix}/account?tab=billing`} onToggleAccount={() => { setAccountOpen((open) => !open); setMobileOpen(false) }} mobileOpen={mobileOpen} onToggleMobile={() => { setMobileOpen((open) => !open); setAccountOpen(false) }} /></div></header>
+  return <header ref={headerRef} className="site-header"><div className="header-inner"><a className="brand" href={hrefFor('home')} onClick={(event) => handleNavClick(event, navigate, 'home')} aria-label="Img.Upscaler">Img.Upscaler</a><HeaderNavigation items={items} activeRoute={route} onNavigate={navigate} ariaLabel={copy.navigation} open={mobileOpen} copy={copy} accountHref="/account" billingHref="/account?tab=billing" onClose={() => setMobileOpen(false)} /><HeaderActions copy={copy} accountRef={accountRef} accountOpen={accountOpen} accountHref="/account" billingHref="/account?tab=billing" onToggleAccount={() => { setAccountOpen((open) => !open); setMobileOpen(false) }} mobileOpen={mobileOpen} onToggleMobile={() => { setMobileOpen((open) => !open); setAccountOpen(false) }} /></div></header>
 }
 
 function HeaderNavigation({ items, activeRoute, onNavigate, ariaLabel, open, copy, accountHref, billingHref, onClose }: { items: NavItem[]; activeRoute: Route; onNavigate: (route: Route) => void; ariaLabel: string; open: boolean; copy: HeaderCopy; accountHref: string; billingHref: string; onClose: () => void }) {
@@ -96,20 +97,8 @@ function getHeaderCopy(isChinese: boolean): HeaderCopy {
     : { navigation: 'Primary navigation', accountMenu: 'Account menu', closeMenu: 'Close menu', openMenu: 'Open menu', name: 'Qian Cheng', email: 'xubaoer19940428@gmail.com', planLabel: 'Plan', plan: 'Free', creditsLabel: 'Credits', account: 'Account', billing: 'Billing', signOut: 'Sign out' }
 }
 
-function toLocalizedPath(localePrefix: string, route: Route): string {
-  return `${localePrefix}${route === 'home' ? '/' : `/${route}`}`.replace(/\/\/$/, '/')
-}
-
 function handleNavClick(event: MouseEvent<HTMLAnchorElement>, navigate: (route: Route) => void, next: Route) {
   if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return
   event.preventDefault()
   navigate(next)
-}
-
-function routeFromPath(pathname: string): Route {
-  const path = pathname.replace(/^\/zh(?=\/|$)/, '') || '/'
-  if (path === '/enhancer' && isRouteVisible('enhancer')) return 'enhancer'
-  if (path === '/reimagine' && isRouteVisible('reimagine')) return 'reimagine'
-  if (path === '/pricing' && isRouteVisible('pricing')) return 'pricing'
-  return 'home'
 }

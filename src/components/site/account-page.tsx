@@ -3,7 +3,9 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useLocale } from 'next-intl'
 import type { Route } from '@/src/lib/types'
+import { routeToPath } from '@/src/lib/locale-routing'
 import { SiteFooter } from './site-footer'
 import { SiteHeader } from './site-header'
 import { Icon } from '@/src/components/ui/icons'
@@ -18,16 +20,17 @@ const copy: Record<Locale, AccountCopy> = {
 }
 
 /** Account shell mirrors the reference account area while keeping writes local in this demo. */
-export function AccountPage({ locale }: { locale: Locale }) {
+export function AccountPage({ locale: providedLocale }: { locale?: Locale } = {}) {
   const router = useRouter()
+  const runtimeLocale = useLocale() as Locale
+  const locale = providedLocale ?? runtimeLocale
   const [tab, setTab] = useState<AccountTab>('profile')
   const [message, setMessage] = useState('')
-  const prefix = locale === 'zh' ? '/zh' : ''
   const labels = copy[locale]
-  const navigate = (route: Route) => router.push(`${prefix}${route === 'home' ? '/' : `/${route}`}`.replace(/\/\/$/, '/'))
+  const navigate = (route: Route) => router.push(routeToPath(route))
   const notify = (value: string) => setMessage(value)
 
-  return <div className="app-shell"><SiteHeader onLogin={() => notify(labels.signIn)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell"><AccountHeading locale={locale} labels={labels} /><div className="account-layout"><AccountTabs tab={tab} labels={labels} onChange={setTab} locale={locale} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel locale={locale} labels={labels} onNotify={notify} />}{tab === 'billing' && <BillingPanel labels={labels} prefix={prefix} />}{tab === 'security' && <SecurityPanel locale={locale} labels={labels} onNotify={notify} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></div></main><SiteFooter locale={locale} /></div>
+  return <div className="app-shell"><SiteHeader onLogin={() => notify(labels.signIn)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell"><AccountHeading locale={locale} labels={labels} /><div className="account-layout"><AccountTabs tab={tab} labels={labels} onChange={setTab} locale={locale} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel locale={locale} labels={labels} onNotify={notify} />}{tab === 'billing' && <BillingPanel labels={labels} locale={locale} />}{tab === 'security' && <SecurityPanel locale={locale} labels={labels} onNotify={notify} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></div></main><SiteFooter locale={locale} /></div>
 }
 
 function AccountHeading({ locale, labels }: { locale: Locale; labels: AccountCopy }) {
@@ -46,8 +49,8 @@ function ProfilePanel({ locale, labels, onNotify }: { locale: Locale; labels: Ac
   return <><span className="kicker">{locale === 'zh' ? '个人资料' : 'Profile'}</span><h2>{labels.profile}</h2><label>{locale === 'zh' ? '显示名称' : 'Display name'}<input name="displayName" defaultValue={labels.name} autoComplete="name" /></label><label>{labels.avatar}<input name="avatarUrl" placeholder="https://example.com/avatar.png" autoComplete="url" /></label><label>{labels.email}<input name="email" defaultValue={email} type="email" autoComplete="email" /></label><button className="dark-button" onClick={() => onNotify(labels.saved)}>{labels.save}</button><label>{labels.redeem}<input name="redeemCode" autoComplete="off" /></label><button className="outline-button" onClick={() => onNotify(labels.saved)}>{labels.redeemAction}</button><button className="text-button" onClick={() => onNotify(labels.signOut)}>{labels.signOut}</button></>
 }
 
-function BillingPanel({ labels, prefix }: { labels: AccountCopy; prefix: string }) {
-  return <><span className="kicker">{labels.billing}</span><h2>{labels.billing}</h2><div className="account-plan"><div><span>{labels.current}</span><strong>{prefix ? '免费' : 'Free'}</strong></div><div><span>{labels.credits}</span><strong>50</strong></div><Link href={`${prefix}/pricing`} className="dark-button">{labels.upgrade}</Link></div><p className="account-note">{labels.billingNote}</p></>
+function BillingPanel({ labels, locale }: { labels: AccountCopy; locale: Locale }) {
+  return <><span className="kicker">{labels.billing}</span><h2>{labels.billing}</h2><div className="account-plan"><div><span>{labels.current}</span><strong>{locale === 'zh' ? '免费' : 'Free'}</strong></div><div><span>{labels.credits}</span><strong>50</strong></div><Link href="/pricing" className="dark-button">{labels.upgrade}</Link></div><p className="account-note">{labels.billingNote}</p></>
 }
 
 function SecurityPanel({ locale, labels, onNotify }: { locale: Locale; labels: AccountCopy; onNotify: (message: string) => void }) {
