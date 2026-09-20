@@ -391,3 +391,19 @@ body { background: #fff; color: var(--ink); }
   .header-actions { margin-left: auto; }
   .menu-button { display: inline-flex; }
 }
+
+/* Footer language control: match the reference's compact pill selector and
+   keep its menu anchored to the control on both desktop and mobile. */
+.language-switcher { position: relative; display: inline-flex; align-items: center; }
+.language-trigger { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 999px; color: #111827; background: #f8fafc; font-size: 12px; font-weight: 600; line-height: 18px; transition: border-color .2s ease, background .2s ease, color .2s ease; }
+.language-trigger:hover, .language-trigger[aria-expanded='true'] { border-color: #294eff; color: #111827; background: #f1f5ff; }
+.language-chevron { width: 7px; height: 7px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform .2s ease; }
+.language-trigger[aria-expanded='true'] .language-chevron { margin-top: 3px; transform: rotate(225deg); }
+.language-menu { position: absolute !important; right: 0; bottom: calc(100% + 10px); z-index: 40; display: grid; min-width: 132px; padding: 6px; border: 1px solid #e5e7eb; border-radius: 12px; background: rgba(255,255,255,.98); box-shadow: 0 16px 36px rgba(15,23,42,.14); }
+.language-menu a { display: flex; align-items: center; min-height: 34px; padding: 7px 10px; border-radius: 8px; color: #111827; font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.language-menu a:hover { color: #1d3fd9; background: #f1f5ff; }
+
+@media (max-width: 720px) {
+  .site-footer-inner .footer-links { align-items: flex-start; }
+  .language-menu { right: auto; left: 0; }
+}
