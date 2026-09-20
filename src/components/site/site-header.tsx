@@ -7,8 +7,9 @@ import { useTranslations } from 'next-intl'
 import { visibleRoutes, isRouteVisible } from '@/src/lib/constants'
 import type { Route } from '@/src/lib/types'
 import { Icon } from '@/src/components/ui/icons'
+import { MobileAccountPanel } from './mobile-account-panel'
 
-type HeaderCopy = {
+export type HeaderCopy = {
   navigation: string
   accountMenu: string
   closeMenu: string
@@ -30,6 +31,7 @@ export function SiteHeader({ onLogin: _onLogin, onNavigate }: { onLogin: () => v
   const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [accountOpen, setAccountOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
   const accountRef = useRef<HTMLDivElement>(null)
   const t = useTranslations('nav')
   const localePrefix = pathname.startsWith('/zh') ? '/zh' : ''
@@ -45,7 +47,10 @@ export function SiteHeader({ onLogin: _onLogin, onNavigate }: { onLogin: () => v
       }
     }
     const closeOnOutsidePointer = (event: PointerEvent) => {
-      if (event.target instanceof Node && !accountRef.current?.contains(event.target)) setAccountOpen(false)
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
+        setMobileOpen(false)
+        setAccountOpen(false)
+      }
     }
     window.addEventListener('keydown', closeOnEscape)
     document.addEventListener('pointerdown', closeOnOutsidePointer)
@@ -66,11 +71,11 @@ export function SiteHeader({ onLogin: _onLogin, onNavigate }: { onLogin: () => v
   const hrefFor = (next: Route) => toLocalizedPath(localePrefix, next)
   const items: NavItem[] = visibleRoutes.map((key) => ({ route: key, label: t(key === 'home' ? 'upscaler' : key), href: hrefFor(key) }))
 
-  return <header className="site-header"><div className="header-inner"><a className="brand" href={hrefFor('home')} onClick={(event) => handleNavClick(event, navigate, 'home')} aria-label="Img.Upscaler">Img.Upscaler</a><HeaderNavigation items={items} activeRoute={route} onNavigate={navigate} ariaLabel={copy.navigation} open={mobileOpen} /><HeaderActions copy={copy} accountRef={accountRef} accountOpen={accountOpen} accountHref={`${localePrefix}/account`} billingHref={`${localePrefix}/account?tab=billing`} onToggleAccount={() => { setAccountOpen((open) => !open); setMobileOpen(false) }} mobileOpen={mobileOpen} onToggleMobile={() => { setMobileOpen((open) => !open); setAccountOpen(false) }} /></div></header>
+  return <header ref={headerRef} className="site-header"><div className="header-inner"><a className="brand" href={hrefFor('home')} onClick={(event) => handleNavClick(event, navigate, 'home')} aria-label="Img.Upscaler">Img.Upscaler</a><HeaderNavigation items={items} activeRoute={route} onNavigate={navigate} ariaLabel={copy.navigation} open={mobileOpen} copy={copy} accountHref={`${localePrefix}/account`} billingHref={`${localePrefix}/account?tab=billing`} onClose={() => setMobileOpen(false)} /><HeaderActions copy={copy} accountRef={accountRef} accountOpen={accountOpen} accountHref={`${localePrefix}/account`} billingHref={`${localePrefix}/account?tab=billing`} onToggleAccount={() => { setAccountOpen((open) => !open); setMobileOpen(false) }} mobileOpen={mobileOpen} onToggleMobile={() => { setMobileOpen((open) => !open); setAccountOpen(false) }} /></div></header>
 }
 
-function HeaderNavigation({ items, activeRoute, onNavigate, ariaLabel, open }: { items: NavItem[]; activeRoute: Route; onNavigate: (route: Route) => void; ariaLabel: string; open: boolean }) {
-  return <nav id="primary-navigation" className={open ? 'main-nav open' : 'main-nav'} aria-label={ariaLabel}>{items.map((item) => <a className={activeRoute === item.route ? 'nav-link active' : 'nav-link'} key={item.route} href={item.href} onClick={(event) => handleNavClick(event, onNavigate, item.route)} aria-current={activeRoute === item.route ? 'page' : undefined}>{item.label}</a>)}</nav>
+function HeaderNavigation({ items, activeRoute, onNavigate, ariaLabel, open, copy, accountHref, billingHref, onClose }: { items: NavItem[]; activeRoute: Route; onNavigate: (route: Route) => void; ariaLabel: string; open: boolean; copy: HeaderCopy; accountHref: string; billingHref: string; onClose: () => void }) {
+  return <nav id="primary-navigation" className={open ? 'main-nav open' : 'main-nav'} aria-label={ariaLabel}><div className="mobile-nav-links">{items.map((item) => <a className={activeRoute === item.route ? 'nav-link active' : 'nav-link'} key={item.route} href={item.href} onClick={(event) => handleNavClick(event, onNavigate, item.route)} aria-current={activeRoute === item.route ? 'page' : undefined}>{item.label}</a>)}</div><MobileAccountPanel {...copy} accountHref={accountHref} billingHref={billingHref} onClose={onClose} /></nav>
 }
 
 function HeaderActions({ copy, accountRef, accountOpen, accountHref, billingHref, onToggleAccount, mobileOpen, onToggleMobile }: { copy: HeaderCopy; accountRef: RefObject<HTMLDivElement | null>; accountOpen: boolean; accountHref: string; billingHref: string; onToggleAccount: () => void; mobileOpen: boolean; onToggleMobile: () => void }) {

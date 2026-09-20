@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import type { Route } from '@/src/lib/types'
 import { SiteFooter } from './site-footer'
 import { SiteHeader } from './site-header'
+import { Icon } from '@/src/components/ui/icons'
 
 type AccountTab = 'profile' | 'billing' | 'security'
 type Locale = 'zh' | 'en'
@@ -26,16 +27,18 @@ export function AccountPage({ locale }: { locale: Locale }) {
   const navigate = (route: Route) => router.push(`${prefix}${route === 'home' ? '/' : `/${route}`}`.replace(/\/\/$/, '/'))
   const notify = (value: string) => setMessage(value)
 
-  return <div className="app-shell"><SiteHeader onLogin={() => notify(labels.signIn)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell"><AccountHeading locale={locale} labels={labels} prefix={prefix} /><div className="account-layout"><AccountTabs tab={tab} labels={labels} onChange={setTab} locale={locale} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel locale={locale} labels={labels} onNotify={notify} />}{tab === 'billing' && <BillingPanel labels={labels} prefix={prefix} />}{tab === 'security' && <SecurityPanel locale={locale} labels={labels} onNotify={notify} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></div></main><SiteFooter locale={locale} /></div>
+  return <div className="app-shell"><SiteHeader onLogin={() => notify(labels.signIn)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell"><AccountHeading locale={locale} labels={labels} /><div className="account-layout"><AccountTabs tab={tab} labels={labels} onChange={setTab} locale={locale} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel locale={locale} labels={labels} onNotify={notify} />}{tab === 'billing' && <BillingPanel labels={labels} prefix={prefix} />}{tab === 'security' && <SecurityPanel locale={locale} labels={labels} onNotify={notify} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></div></main><SiteFooter locale={locale} /></div>
 }
 
-function AccountHeading({ locale, labels, prefix }: { locale: Locale; labels: AccountCopy; prefix: string }) {
-  const description = locale === 'zh' ? '管理个人资料、订阅和安全设置。真实登录、账单和积分由你的服务端接入。' : 'Manage your profile, subscription, and security settings. Connect your backend for real authentication, billing, and credits.'
-  return <div className="account-heading"><div><Link href={prefix || '/'}>← {labels.back}</Link><span className="kicker">{labels.member}</span><h1>{labels.title}</h1><p>{description}</p></div><span className="account-credit">50 <small>{labels.credits}</small></span></div>
+function AccountHeading({ locale, labels }: { locale: Locale; labels: AccountCopy }) {
+  const email = locale === 'zh' ? 'xubaoer19940428@gmail.com' : 'xubaoer19940428@gmail.com'
+  const plan = locale === 'zh' ? '免费' : 'Free'
+  return <section className="account-heading" aria-labelledby="account-title"><div className="account-identity"><div className="account-profile-avatar"><img src="/reference/unnamed.jpg" alt={labels.name} /></div><div className="account-identity-copy"><span className="kicker">{labels.member}</span><h1 id="account-title">{labels.name}</h1><p>{email}</p></div></div><div className="account-summary"><div><span>{locale === 'zh' ? '当前方案' : 'Current plan'}</span><strong>{plan}</strong></div><div><span>{locale === 'zh' ? '可用积分' : 'Available credits'}</span><strong><span className="account-summary-zap" aria-hidden="true">✦</span>50</strong></div></div></section>
 }
 
 function AccountTabs({ tab, labels, onChange, locale }: { tab: AccountTab; labels: AccountCopy; onChange: (tab: AccountTab) => void; locale: Locale }) {
-  return <nav className="account-tabs" aria-label={locale === 'zh' ? '账户设置' : 'Account settings'}>{(['profile', 'billing', 'security'] as AccountTab[]).map((item) => <button key={item} className={tab === item ? 'active' : ''} onClick={() => onChange(item)}>{labels[item]}</button>)}</nav>
+  const icons: Record<AccountTab, 'user' | 'credit-card' | 'lock'> = { profile: 'user', billing: 'credit-card', security: 'lock' }
+  return <nav className="account-tabs" aria-label={locale === 'zh' ? '账户设置' : 'Account settings'}>{(['profile', 'billing', 'security'] as AccountTab[]).map((item) => <button type="button" key={item} className={tab === item ? 'active' : ''} onClick={() => onChange(item)}><Icon name={icons[item]} />{labels[item]}</button>)}</nav>
 }
 
 function ProfilePanel({ locale, labels, onNotify }: { locale: Locale; labels: AccountCopy; onNotify: (message: string) => void }) {

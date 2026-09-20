@@ -1,6 +1,6 @@
 # Img.Upscaler 前端复刻项目记忆
 
-> 最后更新：2026-09-18
+> 最后更新：2026-09-20
 >
 > 本文件是当前复刻项目的长期维护记录。后续替换图片、调整页面、接入真实 AI 服务或继续对照参考站时，先阅读本文件，再修改代码。
 
@@ -248,7 +248,33 @@ ready -> processing -> done
 - 保存编辑结果前会释放旧 result URL，避免浏览器内存泄漏。
 - 失败条目显示错误信息和“重试”，重试只提交该条目。
 
-## 8. Before / After 对比卡实现记录
+## 8. 账户页与移动端 Header 菜单实现记录
+
+### 账户页移动端
+
+`src/components/site/account-page.tsx` 现在按参考稿的账户页面层级组织：
+
+1. 用户摘要卡：头像、Member/会员徽标、姓名、邮箱。
+2. 方案摘要：当前方案、可用积分。
+3. 带图标的 Profile / Billing / Security 标签页。
+4. 当前设置面板：表单、订阅信息或安全设置。
+
+账户摘要不再使用固定高度，移动端由 `src/styles/10-final-page-fixes.css` 的账户覆盖规则自然撑开。这样 320px、375px、390px 宽度下积分摘要不会脱离卡片、覆盖标签页或挤压标题。账户面板的输入框、按钮和方案卡也统一使用至少 44px 的触摸高度。
+
+### 移动端展开菜单
+
+`src/components/site/site-header.tsx` 的 `HeaderNavigation` 在菜单展开时渲染 `MobileAccountPanel`，对应参考稿 `文稿/ImgUpscaler.html` 的移动端结构：
+
+- 图像放大器、图像增强器、重新构想、定价四个导航入口。
+- 用户头像、姓名和邮箱。
+- 方案 / 积分摘要卡。
+- 账户、计费、退出三个操作。
+
+菜单样式位于 `src/styles/10-final-page-fixes.css` 的 `.mobile-nav-*` 规则，使用整宽下拉面板、顶部边框分隔、16px 两侧安全边距和 42px 点击区域。桌面端仍保留头像旁的独立账户 Popover；移动端菜单和头像 Popover 互斥，点击导航或账户链接后自动关闭。
+
+`src/lib/feature-flags.ts` 中 `enableEnhancer` 和 `enableReimagine` 已开启，使移动菜单与参考稿保持完整的四项导航；如果后续需要隐藏产品，只修改功能开关，不修改 Header JSX。
+
+## 10. Before / After 对比卡实现记录
 
 这是本轮重点修复区域，代码在 `src/features/landing/sections.tsx`，样式在 `src/styles.css`。
 
@@ -290,7 +316,7 @@ transform: translate(-50%, -50%);
 - 继续移动可更新到约 62。
 - 键盘 ArrowRight 可从 50 更新到 51。
 
-## 9. 国际化与中文页面处理
+## 11. 国际化与中文页面处理
 
 ### 路由策略
 
@@ -316,7 +342,7 @@ transform: translate(-50%, -50%);
 
 保留的内容：Img.Upscaler、ImgUpscaler、Reimagine AI、Upscal、JPG/PNG/WebP/AVIF、Mac App Store 等产品名、格式名和官方品牌名。若后续要求中文页面连品牌/格式也完全中文化，再单独设计显示策略。
 
-## 10. 样式与响应式记录
+## 12. 样式与响应式记录
 
 `src/styles.css` 是按层叠顺序组织的，后面的参考稿对齐层和最终覆盖层会覆盖前面的通用样式。
 
@@ -354,7 +380,7 @@ transform: translate(-50%, -50%);
 - 参考区偶数卡片在桌面端左右交替，移动端恢复自然顺序。
 - 文件网格和工作区按钮需要在窄屏继续检查，尤其是多文件和长中文文案场景。
 
-## 11. 重要交互和可维护性约束
+## 13. 重要交互和可维护性约束
 
 - `useWorkspaceController` 是上传和异步处理的唯一入口，禁止在 `WorkspacePanel` 里复制处理逻辑。
 - object URL 必须在移除、清空、替换结果、取消后的无效结果和组件卸载时释放。
@@ -364,7 +390,7 @@ transform: translate(-50%, -50%);
 - 新增可复用 UI 优先放到 `src/components/ui/`，不要在页面中重复写按钮和卡片基础样式。
 - 后续真实服务接入时，模型密钥、支付密钥、签名 URL 和额度扣减只能放服务端。
 
-## 12. 真实后端接入边界
+## 14. 真实后端接入边界
 
 `src/services/upscaler.ts` 当前定义：
 
@@ -396,7 +422,7 @@ type UpscaleResult = {
 
 建议后端职责：鉴权、图片临时存储、模型队列、额度/积分扣减、NSFW 与内容安全、任务取消、重试、计费状态、webhook、自动清理和审计日志。
 
-## 13. 当前素材替换方式
+## 15. 当前素材替换方式
 
 用户后续会替换 `public/reference/` 内的图片。建议：
 
@@ -417,7 +443,7 @@ type UpscaleResult = {
 - `public/reference/upscale-image-online.jpeg`
 - `public/reference/youtube-thumbnail.jpeg`
 
-## 14. 已完成修复清单（按用户反馈记录）
+## 16. 已完成修复清单（按用户反馈记录）
 
 ### 14.1 公共 Footer 布局
 
@@ -461,11 +487,11 @@ type UpscaleResult = {
 
 ### 14.8 功能非破坏性隐藏（专注“图片放大”，可一键恢复）
 
-需求背景：用户当前仅需要核心的“图片放大（图片变清晰）”功能，要求将其他 AI 工具、首屏推广与辅助功能在界面上隐藏，严禁删除底层代码。
+需求背景：项目保留所有 AI 工具页面与底层实现；是否在导航中显示由功能开关控制。当前为了与参考稿移动端菜单一致，图像增强器和重新构想均显示。
 
 实现方式：通过 `src/lib/feature-flags.ts` 集中管理 `FEATURE_FLAGS` 开关：
-- `enableEnhancer: false`：隐藏导航栏中的「图像增强器」，访问对应 URL 时自动回退至图片放大主页。
-- `enableReimagine: false`：隐藏导航栏中的「重新构想」，访问对应 URL 时自动回退至图片放大主页。
+- `enableEnhancer: true`：显示导航栏中的「图像增强器」。
+- `enableReimagine: true`：显示导航栏中的「重新构想」。
 - `enablePricing: true`：保留「定价」导航与页面演示。
 - `enableAccount: true`：保留右上角「演示账户」与登录注册弹窗。
 - `enablePromoSection: false`：隐藏首屏 Hero 下方的 Upscal 桌面客户端推广卡片。
@@ -473,7 +499,7 @@ type UpscaleResult = {
 
 **恢复方法**：任何时候若需要重新开启某项功能，只需将 `src/lib/feature-flags.ts` 中对应的布尔值改回 `true` 即可立刻恢复全部功能，无需调整任何业务代码。
 
-## 15. 验证结果
+## 17. 验证结果
 
 
 已执行并通过：
@@ -502,7 +528,7 @@ npm run build
 - 所有营销对比卡鼠标/触摸/键盘拖动
 - 720px 移动端 Footer、定价留白和工作区按钮是否溢出
 
-## 16. 后续待办
+## 18. 后续待办
 
 1. 用户替换真实素材后，重新检查所有对比卡的裁切比例、主体焦点和加载体积。
 2. 逐页对照线上站和 `文稿/AI _ ImgUpscaler.html`，重点复核 Pricing、Account、法律页和移动端。
@@ -511,7 +537,7 @@ npm run build
 5. 接支付前，补齐服务端订阅状态、webhook 幂等、退款和权限校验。
 6. 如果要上线，补充图片内容安全、速率限制、上传大小服务端校验、CSP、错误监控和可访问性审计。
 
-## 17. 维护日志
+## 19. 维护日志
 
 ### 2026-09-20
 - 根据 `ImgUpscaler.html` 参考稿恢复并重做账户入口：Header 现在使用 `public/reference/unnamed.jpg` 作为头像，点击头像打开可关闭的 Popover，而不是显示登录/注册按钮。Popover 包含用户头像、钱诚 / 邮箱、免费方案、50 积分、账户、计费和退出入口；账户与计费链接会根据当前语言自动生成 `/account` 或 `/zh/account` 路径。
@@ -537,6 +563,16 @@ npm run build
 - Footer DOM 增加 `footer-meta` 分组，让品牌和版权与右侧链接/语言控件拥有独立布局边界；语言按钮加入最大宽度、文本截断和窄屏换行保护，避免超出 Footer。
 - workflow 步骤卡改为自然高度、桌面三列 / 平板两列 / 手机单列，标题与步骤编号间距对齐线上参考站。
 - 定价页的套餐网格改为自然文档流，结算提示不再绝对定位，保证 featured 卡片与下方“为何升级物有所值”区块之间有稳定留白。
+
+### 2026-09-20（移动端个人中心与展开菜单二次对照）
+- 根据用户提供的移动端参考 DOM，`HeaderNavigation` 新增 `MobileAccountPanel`。菜单展开后的顺序固定为：四项产品导航、用户信息卡、方案/积分卡、账户、计费、退出。
+- 移动菜单采用整宽下拉容器，导航和账户区之间使用 1px 顶部分隔线；账户信息卡、方案积分卡与操作按钮均保留参考稿的圆角、浅色表面和 42px 触摸区域。
+- 移动端不再把账户操作挤进只有头像宽度的 Popover；桌面端仍使用头像旁 Popover，两套入口互斥打开。
+- `SiteHeader` 的外部点击监听改为监听整个 Header：点击页面内容会同时关闭移动菜单和账户 Popover，点击菜单内部不会误关闭。
+- 账户页摘要卡已从“固定高度 + 单独积分块”改为头像、姓名、邮箱、当前方案和可用积分的自然高度组合，修复了移动端积分块覆盖标签页的问题。
+- 账户标签页加入账户、计费、安全图标，面板和输入控件在移动端使用自然高度与至少 44px 触摸尺寸。
+- 为与参考移动菜单保持四项入口，`enableEnhancer` 与 `enableReimagine` 当前设为 `true`；隐藏时只修改 `src/lib/feature-flags.ts`，不删除页面代码。
+- 浏览器回归确认：375px 视口下账户页摘要、标签页和 Profile 表单不再重叠；Header DOM 中移动菜单包含四项导航及完整账户操作文案。Chrome 对部分移动按钮的坐标点击在当前扩展环境中会超时，因此同时用 DOM 可访问树、Computed layout 和键盘焦点状态核对结构与层级。
 - 本次拆分仅改变 CSS 文件组织和上述已确认的 UI 修复，不改变 React 组件、路由和交互逻辑。
 - 将主图像放大器工作区的 `2× / 4×` 展示选项改为 `2K / 4K`。
 - 保留内部 `2`、`4` 状态值，避免改变现有 Canvas 演示处理逻辑。
