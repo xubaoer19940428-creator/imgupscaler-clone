@@ -30,7 +30,7 @@ npm start
 
 ## 已实现
 
-- `/` 图像放大器：拖拽/多图选择、JPG/PNG/WebP/AVIF 校验、本地预览、2×/4×、Canvas 演示处理和结果下载。
+- `/` 图像放大器：拖拽/多图选择、JPG/PNG/WebP/AVIF 校验、本地预览、2K/4K 输出选项、Canvas 演示处理和结果下载。
 - `/enhancer` 图像增强器：1K / 2K / 4K 输出预设，复用工作区，专属增强文案与 FAQ。
 - `/reimagine` 重新构想：提示词、创造力、相似度滑杆、人像/详细模型预设与专属 FAQ。
 - `/pricing` 定价：Free / Premium / Business 套餐、按月/按年切换、卖点区和定价 FAQ。
