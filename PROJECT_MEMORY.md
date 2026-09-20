@@ -573,6 +573,12 @@ npm run build
 - 账户标签页加入账户、计费、安全图标，面板和输入控件在移动端使用自然高度与至少 44px 触摸尺寸。
 - 当前产品范围只开放图片放大功能，`enableEnhancer` 与 `enableReimagine` 设为 `false`；后续恢复时只修改 `src/lib/feature-flags.ts`，不删除页面代码。定价和账户保留为管理入口。
 - 移动端 Header 不再显示 `.header-account` 头像入口：账户操作已经完整放入展开后的 `MobileAccountPanel`，因此 720px 及以下只保留 Logo 与菜单按钮，避免同一账户出现两个入口。桌面端头像 Popover 不受影响，`.header-actions` 仍通过 `margin-left: auto` 将菜单按钮贴到最右侧。
+- 完成中英文双语梳理：无前缀路径使用英文，`/zh` 前缀使用简体中文；语言切换入口位于 Footer，法律页、账户页、定价页和首页均保留当前页面对应的语言路径。
+- 首页营销文案不再只写死中文：`src/features/landing/data.tsx` 新增 `getLandingContent(locale)` 内容模型，英文首页覆盖 Hero、功能卡、使用场景、工作流、用户评价和 FAQ；中文内容继续沿用现有参考站文案。`Hero`、`VideoSection`、`UseCasesSection`、`WorkflowSection`、`TestimonialsSection` 和 `FaqSection` 统一从该模型读取，避免 JSX 内重复三元判断。
+- 定价页改为 `pricingCopy` 中英文内容模型，月付/年付、套餐名称、权益、结算提示、升级说明和 9 条 FAQ 全部按语言切换。中文套餐显示“免费 / 高级版 / 商业版”，英文显示“Free / Premium / Business”，避免中文页面混入不必要的英文方案名。
+- 工作区新增完整双语消息：状态标签、上传区无障碍文案、移除/重试/下载/重做、放大倍率、开始处理、取消、隐私提示，以及上传、处理、下载和编辑 Toast 均集中在 `messages/zh.json` 与 `messages/en.json`。`useWorkspaceController` 通过 `useTranslations('workspace')` 生成 Toast，不再固定输出中文。
+- 根布局保留 next-intl 的运行时 Provider，同时每个中英文页面补充独立 metadata；客户端会同步 `document.documentElement.lang` 与标题，英文页面不再继承中文标题。Footer 语言切换使用当前路径的对应语言版本，并在客户端保留 `?tab=billing` 等查询参数。
+- 本轮语言回归：`/`、`/pricing`、`/account`、三个英文法律页与 `/zh`、`/zh/pricing`、`/zh/account`、三个中文法律页均已用生产构建 HTML/可访问树抽查；英文首页和定价页内容为英文，中文页面内容为中文，桌面头像 Popover 与移动菜单结构未改变。
 - 浏览器回归确认：375px 视口下账户页摘要、标签页和 Profile 表单不再重叠；Header DOM 中移动菜单包含四项导航及完整账户操作文案。Chrome 对部分移动按钮的坐标点击在当前扩展环境中会超时，因此同时用 DOM 可访问树、Computed layout 和键盘焦点状态核对结构与层级。
 - 本次拆分仅改变 CSS 文件组织和上述已确认的 UI 修复，不改变 React 组件、路由和交互逻辑。
 - 将主图像放大器工作区的 `2× / 4×` 展示选项改为 `2K / 4K`。

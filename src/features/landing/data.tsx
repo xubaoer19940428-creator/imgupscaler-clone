@@ -3,6 +3,7 @@ import type { Route } from '@/src/lib/types'
 export type FeatureCard = { number: string; title: string; body: string }
 export type UseCase = { image: string; beforeImage: string; afterImage: string; title: string; body: string; cta: string }
 export type FaqItem = readonly [question: string, answer: string]
+type LandingRoute = Exclude<Route, 'pricing'>
 
 export const heroContent: Record<Exclude<Route, 'pricing'>, { eyebrow: string; title: React.ReactNode; description: string }> = {
   home: {
@@ -165,3 +166,119 @@ export const reimagineFaqs: FaqItem[] = [
 ]
 
 export const faqs: Record<Exclude<Route, 'pricing'>, FaqItem[]> = { home: commonFaqs, enhancer: enhancerFaqs, reimagine: reimagineFaqs }
+
+/**
+ * English copy for the routes that are currently visible in the product.
+ * The hidden enhancer/reimagine implementations intentionally keep their
+ * existing source data so restoring a feature flag does not require a data
+ * migration. Active routes always read through getLandingContent(), which
+ * keeps the locale decision out of the section JSX.
+ */
+const englishHomeHero: typeof heroContent['home'] = {
+  eyebrow: 'Online AI image upscaler',
+  title: 'Upscale and enhance images with AI online',
+  description: 'ImgUpscaler helps you enlarge low-resolution images, sharpen soft details, and create clearer high-resolution visuals in a simple online workflow. Upscale photos, anime art, product shots, portraits, and old pictures by 2x or 4x while keeping edges, textures, and colors natural.',
+}
+
+const englishHomeFeatures: FeatureCard[] = [
+  { number: '01', title: 'Advanced AI super resolution', body: 'Use trained AI models to raise image resolution while rebuilding sharper edges, clearer textures, and more natural detail.' },
+  { number: '02', title: '2x and 4x image upscaling', body: 'Choose the right output for web assets, product listings, social posts, presentations, and files ready to print.' },
+  { number: '03', title: 'Batch image upscaling', body: 'Process multiple images in one efficient workflow instead of repeating the same upload and export steps.' },
+  { number: '04', title: 'Practical image enhancement workflow', body: 'Improve low-resolution photos, anime illustrations, portraits, ecommerce images, and old pictures with a focused online tool.' },
+  { number: '05', title: 'Privacy-first processing', body: 'Uploaded images and generated results are handled securely and are designed to be removed automatically within 24 hours in production.' },
+  { number: '06', title: 'Ready for personal and commercial work', body: 'Use upscaled images for marketing, client projects, ecommerce displays, creative production, and other personal or commercial work.' },
+]
+
+const englishHomeUseCases: UseCase[] = [
+  { image: '/reference/upscale-image-online.jpeg', beforeImage: '/reference/upscale-image-online.jpeg', afterImage: '/reference/upscale-image-online.jpeg', title: 'Upscale images online for web, print, and social media', body: 'Turn small, blurry, or pixelated images into clearer high-resolution visuals for websites, thumbnails, presentations, posters, ecommerce listings, and social posts. ImgUpscaler preserves a more natural look than standard resizing.', cta: 'Upscale an image' },
+  { image: '/reference/batch-upscaler.jpeg', beforeImage: '/reference/batch-upscaler.jpeg', afterImage: '/reference/batch-upscaler.jpeg', title: 'Batch upscaling for a faster production workflow', body: 'When you need to optimize product photos, marketing assets, anime images, or client files, batch upscaling keeps the workflow consistent. Process more images with fewer repetitive actions and export faster.', cta: 'Explore batch upscaling' },
+  { image: '/reference/enhance-subjects.jpeg', beforeImage: '/reference/enhance-subjects.jpeg', afterImage: '/reference/enhance-subjects.jpeg', title: 'Improve portraits, products, anime, and old photos', body: 'Use ImgUpscaler for the visual assets people work with every day: profile images, ecommerce photos, illustrations, scans, travel pictures, and older images that need a more usable resolution.', cta: 'Improve image quality' },
+]
+
+const englishHomeFeatureIntro = {
+  kicker: 'See how AI upscaling improves clarity',
+  title: <>Advanced AI super resolution,<br /><em>built for real work.</em></>,
+  description: 'ImgUpscaler uses AI super resolution to enlarge images by 2x or 4x, recover useful detail, and make visual assets easier to use in real projects.',
+}
+
+const englishHomeWorkflow = {
+  kicker: 'How to upscale an image online',
+  title: <>Three steps to a<br /><em>clearer result.</em></>,
+  description: 'Use ImgUpscaler as a simple AI image upscaler: upload a file, choose the scale, preview the result, and download a clearer image.',
+  steps: [
+    ['Step 1', 'Upload a JPG, PNG, or WebP image', 'Upload a low-resolution photo, product image, anime illustration, portrait, old photo, or graphic that needs more clarity.'],
+    ['Step 2', 'Choose 2x or 4x upscaling', 'Select the scale that fits your use case. The AI upscaler enlarges the image while improving detail, texture, and edges.'],
+    ['Step 3', 'Preview and download', 'Compare the before and after result, then download the high-resolution image for publishing, sharing, or further design work.'],
+  ] as const,
+}
+
+const englishHomeTestimonials = [
+  ['Eleonore Lefaix', 'Siecledigital.fr editor', 'ImgUpscaler makes image upscaling simple and supports batch processing, so users can handle several images at once.'],
+  ['Eva Williams', 'Fixthephoto editor', 'When you need to upscale multiple images and improve a large set of visual assets without repeating manual steps, ImgUpscaler is a practical choice.'],
+  ['Matic Broz', 'Editor', 'Image upscaling should not be expensive or complicated. ImgUpscaler offers a simple and intuitive way to enlarge images online.'],
+  ['Sravan', 'Product Hunt user', 'ImgUpscaler works across many image types, from landscapes and product photos to old pictures that need more visible detail.'],
+] as const
+
+const englishHomeFaqs: FaqItem[] = [
+  ['What is ImgUpscaler?', 'ImgUpscaler is an online AI image upscaler that enlarges images and improves clarity at 2x or 4x. It is designed for photos, anime art, product images, portraits, old pictures, and other visual assets that need a more usable resolution.'],
+  ['How does an AI image upscaler work?', 'The system analyzes edges, textures, and color relationships before generating higher-resolution detail instead of simply stretching pixels. This clone currently provides a browser-based demo; a production model can be connected through an adapter.'],
+  ['How do I upscale an image online?', 'Upload a JPG, PNG, WebP, or AVIF file, choose the scale, wait for the preview, and download the processed WebP result.'],
+  ['Can I upscale an image to 4K?', 'Yes. You can choose a 4K output. The demo limits the long edge to 4096px for browser performance; a production service can apply model and plan limits.'],
+  ['What is the difference between upscaling and enhancement?', 'Upscaling focuses on increasing canvas size and resolution. Enhancement focuses on clarity, noise, texture, and color. Both can use the same upload and download workflow.'],
+  ['Can AI enhancement fix a blurry image?', 'It can improve mild blur, compression noise, and jagged edges, but it cannot guarantee recovery of information that was never captured or is fully obscured.'],
+  ['Which image formats are supported?', 'The frontend accepts JPG, PNG, WebP, and AVIF images up to 20MB per file.'],
+  ['Can I upscale multiple images at once?', 'Yes. The workspace accepts up to 12 images and supports downloading each processed result in a batch workflow.'],
+  ['Are my uploaded images private?', 'This frontend demo creates previews in the browser and does not upload files. A production integration should use short-lived signed URLs, access controls, and automatic cleanup.'],
+  ['How long are uploaded images stored?', 'The demo does not store uploads. A production service should automatically remove source files and results after the task is complete, such as within 24 hours.'],
+  ['Can I use the upscaled images commercially?', 'The frontend does not restrict export use. Commercial licensing, model output responsibility, and source-image rights should be defined in the production terms.'],
+  ['Which images work best with AI upscaling?', 'Low-resolution photos, product images, portraits, anime art, scans, and lightly compressed old photos often show the clearest improvement.'],
+  ['Is AI upscaling better than regular resizing?', 'Regular resizing interpolates existing pixels. AI upscaling attempts to reconstruct detail; the result depends on source quality, the model, and the target size.'],
+  ['Do I need to install software?', 'No. The Next.js frontend works in a browser, while a real inference service can run on the server side.'],
+]
+
+const englishLandingContent = {
+  heroContent: { ...heroContent, home: englishHomeHero },
+  featureCards: { ...featureCards, home: englishHomeFeatures },
+  useCases: { ...useCases, home: englishHomeUseCases },
+  featureIntro: { ...featureIntro, home: englishHomeFeatureIntro },
+  routeWorkflow: { ...routeWorkflow, home: englishHomeWorkflow },
+  testimonials: englishHomeTestimonials,
+  faqs: { ...faqs, home: englishHomeFaqs },
+  video: { title: 'See how AI image upscaling improves clarity', description: 'ImgUpscaler uses AI super resolution to enlarge images by 2x or 4x, recover detail, and make visual assets easier to use in real projects. Watch the workflow, then explore the tools built for everyday image enhancement.' },
+  useCaseIntro: { kicker: 'AI image upscaling for real creative work', title: <>Prepare clearer assets for<br /><em>web, print, and social media.</em></>, description: 'From quick online upscaling to batch-ready workflows, ImgUpscaler is built for creators, teams, and businesses that need clearer visuals without complicated editing settings.' },
+  testimonialIntro: { title: 'What people say about ImgUpscaler', description: 'Creators, editors, marketers, and everyday users rely on ImgUpscaler when they need a practical online upscaler for clearer, more usable visual assets.' },
+  faqIntro: { title: 'AI image upscaler FAQs', description: 'Answers about ImgUpscaler, online image upscaling, image enhancement, file privacy, supported formats, and common use cases.' },
+}
+
+export type LandingContent = {
+  heroContent: Record<LandingRoute, { eyebrow: string; title: React.ReactNode; description: string }>
+  featureCards: Record<LandingRoute, FeatureCard[]>
+  useCases: Record<LandingRoute, UseCase[]>
+  featureIntro: Record<LandingRoute, { kicker: string; title: React.ReactNode; description: string }>
+  routeWorkflow: Record<LandingRoute, { kicker: string; title: React.ReactNode; description: string; steps: readonly (readonly [string, string, string])[] }>
+  testimonials: ReadonlyArray<readonly [string, string, string]>
+  faqs: Record<LandingRoute, FaqItem[]>
+  video: { title: string; description: string }
+  useCaseIntro: { kicker: string; title: React.ReactNode; description: string }
+  testimonialIntro: { title: string; description: string }
+  faqIntro: { title: string; description: string }
+}
+
+const chineseLandingContent: LandingContent = {
+  heroContent,
+  featureCards,
+  useCases,
+  featureIntro,
+  routeWorkflow,
+  testimonials,
+  faqs,
+  video: { title: '了解 AI 图像放大如何提升清晰度', description: 'ImgUpscaler 利用 AI 超分辨率技术将图像放大 2 倍或 4 倍，恢复细节，使视觉素材更易于在实际项目中使用。观看操作流程，然后探索专为日常图像增强打造的功能。' },
+  useCaseIntro: { kicker: 'AI 图像放大技术，助力真正的创意工作', title: <>为网页、印刷与<br /><em>社交媒体准备清晰素材。</em></>, description: '从快速的在线放大到支持批处理的图像增强，ImgUpscaler 专为需要更清晰视觉效果，却无需复杂编辑设置的创作者、团队和企业而打造。' },
+  testimonialIntro: { title: '用户对 ImgUpscaler 的评价', description: '当创作者、编辑、营销人员及普通用户需要一款实用的在线图像放大工具来获得更清晰、更实用的视觉效果时，他们都会依赖 ImgUpscaler。' },
+  faqIntro: { title: 'AI图像放大工具常见问题解答', description: '关于 ImgUpscaler、在线图像放大、图像增强、文件隐私、支持格式及最佳使用场景的常见问题解答。' },
+}
+
+/** Return the complete copy model for a rendered locale. */
+export function getLandingContent(locale: 'zh' | 'en'): LandingContent {
+  return locale === 'en' ? englishLandingContent : chineseLandingContent
+}

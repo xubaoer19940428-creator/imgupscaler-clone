@@ -8,6 +8,32 @@
   "workspace": {
     "chooseImage": "Choose image",
     "dragDrop": "Drop your image here",
-    "formats": "JPG / PNG / WebP / AVIF supported"
+    "formats": "JPG / PNG / WebP / AVIF supported",
+    "selectAria": "Choose an image to process",
+    "label": "Workspace",
+    "readyCount": "{count, plural, =1 {# image ready} other {# images ready}}",
+    "status": { "ready": "Ready", "processing": "Processing", "done": "Done", "error": "Processing failed" },
+    "remove": "Remove image",
+    "retry": "Retry",
+    "download": "Download",
+    "edit": "Edit",
+    "redo": "Redo",
+    "addMore": "Add more",
+    "prompt": "Prompt",
+    "creativity": "Creativity",
+    "similarity": "Similarity",
+    "output": "Output size",
+    "model": "Reimagine model",
+    "scale": "Scale",
+    "portrait": "Portrait",
+    "detail": "Detail",
+    "clear": "Clear",
+    "downloadResults": "Download results",
+    "cancel": "Cancel",
+    "processing": "Processing…",
+    "start": "Process image",
+    "local": "Files stay in this task",
+    "limit": "Long edge limit 4096px",
+    "toast": { "busy": "A task is still processing", "busyDetail": "Wait for it to finish or cancel it first", "noImages": "No images can be added", "noImagesDetail": "JPG, PNG, WebP, and AVIF up to 20 MB per file are supported", "added": "Added {count} {count, plural, one {image} other {images}}", "batchLimit": "Up to {count} images per batch", "addedDetail": "Add more images or start processing", "cancelled": "Processing cancelled", "cancelledDetail": "The original files remain in this workspace", "resultError": "Could not generate a result", "partialError": "Some images failed", "complete": "Processing complete", "completeDetail": "Results are ready to edit or download", "downloaded": "Result downloaded", "zipStarted": "ZIP download started", "resultCount": "{count} {count, plural, one {result} other {results}}", "downloadError": "Download failed", "downloadErrorDetail": "Try downloading each image separately", "editSaved": "Edits saved", "editError": "Edit failed", "retry": "Please try again" }
   }
 }

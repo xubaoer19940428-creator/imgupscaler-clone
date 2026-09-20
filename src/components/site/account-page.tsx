@@ -42,7 +42,7 @@ function AccountTabs({ tab, labels, onChange, locale }: { tab: AccountTab; label
 }
 
 function ProfilePanel({ locale, labels, onNotify }: { locale: Locale; labels: AccountCopy; onNotify: (message: string) => void }) {
-  const email = locale === 'zh' ? 'xubaoer19940428@gmail.com' : 'demo@example.com'
+  const email = 'xubaoer19940428@gmail.com'
   return <><span className="kicker">{locale === 'zh' ? '个人资料' : 'Profile'}</span><h2>{labels.profile}</h2><label>{locale === 'zh' ? '显示名称' : 'Display name'}<input name="displayName" defaultValue={labels.name} autoComplete="name" /></label><label>{labels.avatar}<input name="avatarUrl" placeholder="https://example.com/avatar.png" autoComplete="url" /></label><label>{labels.email}<input name="email" defaultValue={email} type="email" autoComplete="email" /></label><button className="dark-button" onClick={() => onNotify(labels.saved)}>{labels.save}</button><label>{labels.redeem}<input name="redeemCode" autoComplete="off" /></label><button className="outline-button" onClick={() => onNotify(labels.saved)}>{labels.redeemAction}</button><button className="text-button" onClick={() => onNotify(labels.signOut)}>{labels.signOut}</button></>
 }
 

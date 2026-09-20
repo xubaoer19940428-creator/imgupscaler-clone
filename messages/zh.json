@@ -8,6 +8,32 @@
   "workspace": {
     "chooseImage": "选择图片",
     "dragDrop": "将图片拖拽至此",
-    "formats": "支持 JPG / PNG / WebP / AVIF 格式图片"
+    "formats": "支持 JPG / PNG / WebP / AVIF 格式图片",
+    "selectAria": "选择要处理的图片",
+    "label": "工作区",
+    "readyCount": "已准备 {count} 张图片",
+    "status": { "ready": "待处理", "processing": "处理中", "done": "已完成", "error": "处理失败" },
+    "remove": "移除图片",
+    "retry": "重试",
+    "download": "下载",
+    "edit": "编辑",
+    "redo": "重做",
+    "addMore": "继续添加",
+    "prompt": "提示词",
+    "creativity": "创造力",
+    "similarity": "相似度",
+    "output": "输出大小",
+    "model": "重新构想模型",
+    "scale": "放大倍率",
+    "portrait": "人像模型",
+    "detail": "详细模型",
+    "clear": "清空",
+    "downloadResults": "下载结果",
+    "cancel": "取消处理",
+    "processing": "处理中…",
+    "start": "开始处理",
+    "local": "文件仅用于当前任务",
+    "limit": "长边上限 4096px",
+    "toast": { "busy": "当前任务仍在处理", "busyDetail": "请等待完成或先取消任务", "noImages": "没有可加入的图片", "noImagesDetail": "支持 JPG、PNG、WebP、AVIF，且单张不超过 20 MB", "added": "已加入 {count} 张图片", "batchLimit": "每批最多 {count} 张", "addedDetail": "可以继续添加或开始处理", "cancelled": "已取消处理", "cancelledDetail": "原图仍保留在当前工作区", "resultError": "结果生成失败", "partialError": "部分图片处理失败", "complete": "处理完成", "completeDetail": "结果已准备好，可以编辑或下载", "downloaded": "结果已下载", "zipStarted": "ZIP 下载已开始", "resultCount": "{count} 个结果", "downloadError": "下载失败", "downloadErrorDetail": "请改为逐张下载", "editSaved": "编辑结果已保存", "editError": "编辑失败", "retry": "请重试" }
   }
 }

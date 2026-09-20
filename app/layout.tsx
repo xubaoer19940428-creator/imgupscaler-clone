@@ -5,8 +5,8 @@ import { IntlProvider } from './intl-provider'
 import messages from '../messages/zh.json'
 
 export const metadata: Metadata = {
-  title: 'AI 图片放大工具 — Img.Upscaler',
-  description: '使用 AI 在线放大图片、增强细节并下载更清晰的高分辨率结果。',
+  title: 'Img.Upscaler',
+  description: 'AI image upscaling and enhancement in the browser.',
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

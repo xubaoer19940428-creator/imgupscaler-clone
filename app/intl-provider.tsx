@@ -13,6 +13,9 @@ import enMessages from '../messages/en.json'
 export function IntlProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const isChinese = pathname.startsWith('/zh')
-  useEffect(() => { document.documentElement.lang = isChinese ? 'zh-CN' : 'en' }, [isChinese])
+  useEffect(() => {
+    document.documentElement.lang = isChinese ? 'zh-CN' : 'en'
+    document.title = isChinese ? 'AI 图片放大工具 — Img.Upscaler' : 'AI Image Upscaler — Img.Upscaler'
+  }, [isChinese])
   return <NextIntlClientProvider locale={isChinese ? 'zh' : 'en'} messages={isChinese ? zhMessages : enMessages}>{children}</NextIntlClientProvider>
 }
