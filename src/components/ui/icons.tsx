@@ -1,4 +1,4 @@
-type IconName = 'arrow' | 'upload' | 'spark' | 'check' | 'menu' | 'download' | 'lock' | 'chevron' | 'close' | 'flip' | 'rotate' | 'crop' | 'edit'
+type IconName = 'arrow' | 'upload' | 'spark' | 'check' | 'menu' | 'download' | 'lock' | 'chevron' | 'close' | 'flip' | 'rotate' | 'crop' | 'edit' | 'user' | 'credit-card' | 'logout'
 
 export function Icon({ name, className = '' }: { name: IconName; className?: string }) {
   const props = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true, className }
@@ -9,6 +9,9 @@ export function Icon({ name, className = '' }: { name: IconName; className?: str
   if (name === 'menu') return <svg {...props}><path d="M4 6h16M4 12h16M4 18h16"/></svg>
   if (name === 'download') return <svg {...props}><path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>
   if (name === 'lock') return <svg {...props}><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+  if (name === 'user') return <svg {...props}><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+  if (name === 'credit-card') return <svg {...props}><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+  if (name === 'logout') return <svg {...props}><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
   if (name === 'close') return <svg {...props}><path d="m6 6 12 12M18 6 6 18"/></svg>
   if (name === 'flip') return <svg {...props}><path d="M4 7h16M4 17h16"/><path d="m8 4-4 3 4 3M16 14l4 3-4 3"/></svg>
   if (name === 'rotate') return <svg {...props}><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 5v5h5"/></svg>

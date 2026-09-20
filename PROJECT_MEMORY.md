@@ -514,12 +514,37 @@ npm run build
 ## 17. 维护日志
 
 ### 2026-09-20
+- 根据 `ImgUpscaler.html` 参考稿恢复并重做账户入口：Header 现在使用 `public/reference/unnamed.jpg` 作为头像，点击头像打开可关闭的 Popover，而不是显示登录/注册按钮。Popover 包含用户头像、钱诚 / 邮箱、免费方案、50 积分、账户、计费和退出入口；账户与计费链接会根据当前语言自动生成 `/account` 或 `/zh/account` 路径。
+- `SiteHeader` 的移动端结构调整为 Logo 左侧、头像与菜单按钮右侧，导航继续以抽屉式下拉菜单展示；头像与菜单互斥打开，支持 Escape、点击外部关闭，弹层在 320px 以上窄屏保持在视口内。
+- 新增 `user`、`credit-card`、`logout` 图标，统一由 `src/components/ui/icons.tsx` 输出，避免在 Header 内散落大段 SVG。
+- 定价页新增 720px 以下移动端专用布局覆盖：价格 Hero、月付/年付切换、三张方案卡、结算提示、价值说明、六张权益卡和 FAQ 均改为自然高度；方案卡改为单列，内容、按钮和底部脚注不会互相挤压，375/390px 视口不再依赖桌面固定高度。
+- 移动端定价页重新设定标题、说明、卡片内边距、价格字号、权益行距和区块上下留白，重点保证 featured 方案卡与“为何升级物有所值”之间有明确呼吸区。
+- 本次调整没有删除账户、计费、定价或工作区底层逻辑；Popover 的退出按钮当前仅关闭演示菜单，真实认证接入时只需替换该按钮回调，不需要改 Header DOM。
+- 为避免 Header 继续堆成单个超长 JSX，已将 Header 拆为 `HeaderNavigation`、`HeaderActions`、`AccountMenu`、`AccountPopover` 等小组件，并抽出路由地址和双语文案辅助函数；后续替换真实用户数据时只需改 Popover 数据入口。
+- 使用本地浏览器做了 375px 移动视口与 1440px 桌面视口回归：移动端 Header 为 Logo—头像—菜单左右分布，价格页套餐单列、权益卡单列、FAQ 单列；桌面端恢复三列价格卡与 Logo—导航—头像布局。Popover 的 DOM、头像文案和账户/计费链接均已在页面结构中确认。
+- 将原本集中在 `src/styles.css` 的 466 行全局样式按职责拆分为 10 个模块，并保留原有导入顺序，避免级联覆盖顺序变化导致 UI 回归：
+  - `src/styles/01-foundation.css`：字体、CSS 变量、基础 reset 与全局基础元素。
+  - `src/styles/02-hero-workspace.css`：Hero、上传工作区、文件网格、放大控制和对比卡基础样式。
+  - `src/styles/03-landing-sections.css`：首屏后的功能、展示、workflow、FAQ、Footer、Toast 与定价基础样式。
+  - `src/styles/04-pricing-motion.css`：定价基础规则、响应式断点和通用动画入口。
+  - `src/styles/05-interaction-components.css`：上传错误状态、弹窗、账户交互、编辑器和定价卡细节。
+  - `src/styles/06-reference-layout.css`：按参考站对齐的白色编辑型页面布局层。
+  - `src/styles/07-page-shells.css`：定价、账户、法律页以及共享页面壳层规则。
+  - `src/styles/08-cascade-responsive.css`：历史覆盖层、响应式安全规则、Footer/定价留白和对比拖动交互覆盖。
+  - `src/styles/09-final-header-footer.css`：最终 Header、Footer 和语言切换控件规则。
+  - `src/styles/10-final-page-fixes.css`：workflow 卡片最终对齐、定价卡自然文档流和 Footer 溢出保护。
+- `src/styles.css` 现在只作为入口文件，通过固定顺序 `@import` 模块；后续新增样式应放到对应模块，不再继续堆积入口文件。
+- Footer DOM 增加 `footer-meta` 分组，让品牌和版权与右侧链接/语言控件拥有独立布局边界；语言按钮加入最大宽度、文本截断和窄屏换行保护，避免超出 Footer。
+- workflow 步骤卡改为自然高度、桌面三列 / 平板两列 / 手机单列，标题与步骤编号间距对齐线上参考站。
+- 定价页的套餐网格改为自然文档流，结算提示不再绝对定位，保证 featured 卡片与下方“为何升级物有所值”区块之间有稳定留白。
+- 本次拆分仅改变 CSS 文件组织和上述已确认的 UI 修复，不改变 React 组件、路由和交互逻辑。
 - 将主图像放大器工作区的 `2× / 4×` 展示选项改为 `2K / 4K`。
 - 保留内部 `2`、`4` 状态值，避免改变现有 Canvas 演示处理逻辑。
 - 移除页面中会显示为 `Skip to content` 的跳转链接，避免它干扰复刻页面的正常视觉；同步清理无用的 `.skip-link` 样式。
-- 按参考站重做 Header：Logo 左侧、导航居中、登录/注册右侧并用分隔线隔开，移动端使用独立菜单按钮和下拉导航。
-- 移除非参考站风格的头像账户弹出菜单，账户入口改为 Header 的登录/注册按钮；账户页和法律页继续保留独立页面入口。
+- 按参考站重做 Header：桌面端为 Logo 左侧、导航居中、头像账户入口右侧；移动端为 Logo 左侧、头像与菜单按钮右侧，导航使用下拉菜单。
+- 根据 `ImgUpscaler.html` 恢复头像账户 Popover，Popover 内容包括用户身份、方案与积分摘要、账户/计费链接和退出入口；Popover 支持点击头像切换、Escape 和点击外部关闭。
 - 重做 Footer 多语言切换：中文显示“中文简体”、英文显示“English”，使用参考站风格的圆角胶囊按钮、下箭头和向上弹出的菜单；补充 Escape 键和点击外部关闭行为，并适配移动端锚点位置。
+- 根据线上 Footer 的实际结构再次细化语言控件：改为独立的 `footer-language` 容器、14px SVG 下箭头和紧贴按钮上方的轻量菜单，清理旧语言类名的层叠干扰。
 
 ### 2026-09-19
 - 根据需求将产品聚焦于核心“图片放大（图片变清晰）”功能。

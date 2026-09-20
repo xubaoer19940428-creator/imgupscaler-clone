@@ -1,0 +1,63 @@
+/* Shared footer: keep the brand, copyright and utility links aligned as one
+   predictable row on desktop, then collapse in a deliberate order on mobile. */
+.site-footer-inner { width: min(1280px, calc(100% - 64px)); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 28px; }
+.site-footer { display: block; width: 100%; max-width: none; }
+.site-footer-inner p { margin: 0; white-space: nowrap; }
+.site-footer-inner .footer-links { justify-content: flex-end; flex-wrap: wrap; row-gap: 8px; }
+
+/* The visible handle is a pointer target; the transparent range input remains
+   focusable for keyboard users and provides the native slider semantics. */
+.compare-card { touch-action: none; user-select: none; cursor: ew-resize; }
+.compare-card.is-dragging { cursor: grabbing; }
+.compare-drag-layer { position: absolute; inset: 0; z-index: 5; cursor: ew-resize; touch-action: none; }
+.compare-range { z-index: 3; pointer-events: auto; }
+.compare-handle { z-index: 4; }
+
+@media (max-width: 980px) {
+  .site-footer-inner { width: min(100% - 36px, 720px); grid-template-columns: 1fr auto; gap: 10px 20px; }
+  .site-footer-inner p { grid-column: 1 / -1; grid-row: 2; }
+  .site-footer-inner .footer-links { grid-column: 1 / -1; grid-row: 3; justify-content: flex-start; }
+}
+
+@media (max-width: 720px) {
+  .site-footer-inner { width: calc(100% - 32px); display: flex; align-items: flex-start; flex-direction: column; gap: 12px; padding: 24px 0 30px; }
+  .site-footer-inner p { white-space: normal; }
+  .site-footer-inner .footer-links { width: 100%; justify-content: flex-start; gap: 12px 18px; }
+}
+
+/* Keep a generous breathing zone between the plan cards and the value
+   section. The reference intentionally separates these two decisions. */
+.pricing-page .plans-grid { height: 725px; padding-bottom: 136px; margin-bottom: 0; }
+@media (max-width: 720px) {
+  .pricing-page .plans-grid { height: auto; padding-bottom: 96px; margin-bottom: 0; }
+}
+
+@media (max-width: 720px) {
+  .site-header { height: 64px; }
+  .header-inner { padding: 0 16px; }
+  .brand { font-size: 20px; }
+  .hero-section { padding: 72px 16px 48px; }
+  .hero-copy h1, .pricing-hero h1 { font-size: 42px; line-height: 1.2; }
+  .hero-copy > p, .pricing-hero > p { font-size: 16px; line-height: 26px; }
+  .workspace-card { margin-top: 32px; padding: 16px; border-radius: 16px; }
+  .drop-zone, .drop-zone.has-files { min-height: 240px; }
+  .promo-card { align-items: flex-start; flex-wrap: wrap; }
+  .promo-copy { min-width: calc(100% - 54px); }
+  .promo-actions { width: 100%; padding-left: 54px; }
+  .video-section, .feature-section, .reference-section, .workflow-section .section-wrap, .testimonial-section, .faq-section { padding-right: 16px; padding-left: 16px; }
+  .feature-section { max-width: none; }
+  .video-section .section-heading, .feature-section .section-heading, .reference-section .section-heading, .workflow-section .section-heading, .testimonial-section .section-heading, .faq-section .section-heading { margin-bottom: 32px; }
+  .section-heading h2 { font-size: 30px; line-height: 36px; }
+  .feature-grid, .workflow-steps, .testimonial-grid { grid-template-columns: 1fr; }
+  .feature-card { min-height: 0; text-align: left; }
+  .reference-card { grid-template-columns: 1fr; gap: 24px; margin-bottom: 56px; }
+  .reference-card:nth-child(even) .reference-copy, .reference-card:nth-child(even) .reference-visual { order: unset; }
+  .reference-copy h3 { font-size: 25px; line-height: 32px; }
+  .reference-copy p { font-size: 15px; line-height: 26px; }
+  .reference-visual > img, .reference-card.with-compare > .compare-card { height: auto; aspect-ratio: 1; }
+  .workflow-step { min-height: 0; }
+  .workflow-section .compare-card { margin-top: 40px; }
+  .site-footer-inner { display: block; padding: 24px 16px 32px; }
+  .site-footer-inner p { margin: 14px 0; }
+}
+

@@ -1,0 +1,77 @@
+/* Final cascade guard: the legacy responsive layer above used a block footer
+   and could collapse its three children into one crowded text run. */
+.site-footer { display: block !important; width: 100%; max-width: none; }
+.site-footer-inner { width: min(1280px, calc(100% - 64px)); min-height: 112px; margin: 0 auto; padding: 26px 0; display: flex !important; align-items: center; gap: 28px; }
+.site-footer-inner .footer-brand { flex: 0 0 auto; }
+.site-footer-inner p { flex: 1 1 auto; min-width: 0; margin: 0 !important; white-space: normal; }
+.site-footer-inner .footer-links { flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px 18px; }
+@media (max-width: 980px) {
+  .site-footer-inner { width: min(100% - 36px, 720px); flex-wrap: wrap; gap: 10px 20px; }
+  .site-footer-inner p { flex: 1 1 220px; }
+  .site-footer-inner .footer-links { flex: 1 1 100%; justify-content: flex-start; }
+}
+@media (max-width: 720px) {
+  .site-footer-inner { width: calc(100% - 32px); min-height: 0; padding: 24px 0 30px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .site-footer-inner p { flex: none; }
+  .site-footer-inner .footer-links { width: 100%; flex: none; justify-content: flex-start; gap: 12px 18px; }
+}
+
+/* Keep the comparison affordance mathematically centered inside its circular handle. */
+.compare-handle span { display: grid; place-items: center; transform: translate(-50%, -50%); }
+.compare-handle span:before, .compare-handle span:after { top: 50%; }
+.compare-handle span:before { left: 8px; transform: translateY(-50%) rotate(-45deg); }
+.compare-handle span:after { right: 8px; transform: translateY(-50%) rotate(135deg); }
+
+/* The transparent native range owns pointer input as well as keyboard input.
+   Keeping it above the artwork avoids browser-specific event retargeting while
+   the custom drag layer remains a visual/instructional surface only. */
+.compare-drag-layer { pointer-events: none; }
+.compare-range { z-index: 5; }
+.compare-handle { z-index: 6; }
+
+/* Header alignment: mirror the reference site's compact three-zone bar.
+   The logo stays left, navigation sits in the visual center, and auth actions
+   share a subtle divider on the right. */
+.site-header { position: sticky; top: 0; height: 64px; background: rgba(255,255,255,.84); border-bottom: 1px solid #e5e7eb; backdrop-filter: blur(16px); }
+.header-inner { width: min(1280px, calc(100% - 64px)); max-width: none; height: 64px; margin: 0 auto; padding: 0; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 32px; }
+.brand { display: inline-flex; align-items: center; color: #090b10; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -.065em; line-height: 1; white-space: nowrap; }
+.main-nav { display: flex; align-items: center; justify-self: center; gap: 2px; margin: 0; }
+.nav-link { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 12px; border-radius: 8px; color: #111827; background: transparent; font-size: 14px; font-weight: 500; line-height: 20px; transition: color .2s ease, background .2s ease; }
+.nav-link:hover, .nav-link.active { color: #111827; background: #f3f5f8; box-shadow: none; }
+.header-actions { display: flex; align-items: center; justify-self: end; gap: 0; }
+.header-auth { display: flex; align-items: center; gap: 4px; padding-left: 12px; border-left: 1px solid #e5e7eb; }
+.site-header .ghost-button { min-height: 40px; padding: 8px 12px; border-radius: 8px; color: #111827; background: transparent; font-size: 14px; font-weight: 500; }
+.site-header .ghost-button:hover { background: #f3f5f8; }
+.site-header .dark-button { min-height: 40px; padding: 8px 16px; border-radius: 8px; color: #fff; background: #294eff; font-size: 14px; font-weight: 600; box-shadow: none; }
+.site-header .dark-button:hover { background: #1d3fd9; box-shadow: none; transform: none; }
+.menu-button { display: none; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 1px solid #e5e7eb; border-radius: 8px; color: #111827; background: #fff; }
+.menu-button:hover { background: #f3f5f8; }
+
+@media (max-width: 720px) {
+  .site-header { height: 64px; }
+  .header-inner { width: calc(100% - 32px); height: 64px; display: flex; justify-content: space-between; gap: 12px; }
+  .brand { font-size: 22px; }
+  .main-nav { position: absolute; top: 72px; right: 16px; left: 16px; display: none; flex-direction: column; align-items: stretch; gap: 2px; padding: 8px; border: 1px solid #e5e7eb; border-radius: 12px; background: rgba(255,255,255,.97); box-shadow: 0 18px 45px rgba(15,23,42,.12); }
+  .main-nav.open { display: flex; }
+  .nav-link { justify-content: flex-start; width: 100%; min-height: 42px; }
+  .header-auth { display: none; }
+  .header-actions { margin-left: auto; }
+  .menu-button { display: inline-flex; }
+}
+
+/* Footer language control mirrors the reference: a small pill inside the
+   utility-link row, with a menu anchored directly above it. */
+.footer-language { position: relative; display: inline-flex; align-items: center; }
+.footer-language-button { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 999px; color: #111827; background: #f8fafc; font-size: 12px; font-weight: 600; line-height: 18px; white-space: nowrap; transition: border-color .2s ease, background .2s ease, color .2s ease; }
+.footer-language-button svg { flex: 0 0 auto; transition: transform .2s ease; }
+.footer-language-button:hover, .footer-language-button[aria-expanded='true'] { border-color: #d3d9e4; color: #111827; background: #fff; }
+.footer-language-button[aria-expanded='true'] svg { transform: rotate(180deg); }
+.footer-language-menu { position: absolute; right: 0; bottom: calc(100% + 8px); z-index: 40; display: grid; min-width: 112px; padding: 5px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; box-shadow: 0 12px 28px rgba(15,23,42,.12); }
+.footer-language-menu a { display: flex; align-items: center; min-height: 32px; padding: 6px 9px; border-radius: 7px; color: #111827; font-size: 12px; font-weight: 600; line-height: 18px; text-decoration: none; white-space: nowrap; }
+.footer-language-menu a:hover { color: #111827; background: #f3f5f8; }
+
+@media (max-width: 720px) {
+  .site-footer-inner .footer-links { align-items: flex-start; }
+  .footer-language-menu { right: auto; left: 0; }
+}
+

@@ -1,0 +1,46 @@
+/* Pricing page follows the reference's wide three-plan first panel, then a
+   benefits panel and a narrow FAQ column. */
+.pricing-page { padding: 0; background: radial-gradient(circle at 10% 8%, rgba(22,104,220,.16), transparent 45%), radial-gradient(circle at 90% 0%, rgba(12,186,153,.12), transparent 38%), #fff; }
+.pricing-hero { width: min(1280px, 100%); max-width: 1280px; height: 346px; padding: 100px 32px 0; text-align: center; }
+.pricing-hero h1 { max-width: 896px; margin: 0 auto; font-size: 60px; line-height: 60px; }
+.pricing-hero > p { margin-top: 20px; }
+.billing-toggle { margin-top: 24px; }
+.plans-grid { position: relative; width: min(1280px, 100%); max-width: 1280px; height: 725px; padding: 0 64px 136px; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.plan-card { min-height: 553px; padding: 28px; border-radius: 24px; }
+.plan-card.featured { transform: none; }
+.plan-price { font-family: 'Plus Jakarta Sans', sans-serif; }
+.billing-note { position: absolute; right: 64px; bottom: 48px; left: 64px; color: #6b7280; text-align: center; font-size: 12px; }
+.pricing-note { width: min(1280px, 100%); max-width: 1280px; height: 142px; padding: 16px 32px 20px; }
+.pricing-note > div { display: flex; align-items: center; gap: 12px; }
+.pricing-note h2 { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; }
+.pricing-note > p { max-width: 672px; margin: 12px auto 0; color: #6b7280; font-size: 16px; line-height: 28px; text-align: center; }
+.pricing-benefits { width: min(1280px, 100%); max-width: 1280px; height: 446px; padding: 0 32px 40px; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pricing-benefits article { min-height: 0; height: 190px; padding: 20px; border-radius: 16px; }
+.pricing-faq { width: 980px; max-width: 100%; height: 1074px; padding: 56px 32px 80px; }
+.pricing-faq .section-heading { display: block; max-width: 672px; margin: 0 auto 32px; text-align: center; }
+.pricing-faq .section-heading h2 { font-size: 36px; line-height: 40px; }
+.pricing-faq .section-heading > p { margin-top: 12px; }
+
+/* Account and policy shells use the same centered card rhythm as the
+   reference's authenticated pages. */
+.account-page { padding: 128px 20px 18px; background: #fff; }
+.account-shell { width: min(896px, 100%); }
+.account-heading { height: 150px; padding: 28px 32px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.account-heading > div > a { display: none; }
+.account-heading .kicker { display: block; }
+.account-heading h1 { margin-top: 6px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; letter-spacing: -.04em; }
+.account-heading p { margin-top: 7px; font-size: 13px; }
+.account-credit { min-width: 120px; padding: 16px; font-size: 26px; border-radius: 14px; }
+.account-layout { display: block; margin-top: 20px; }
+.account-tabs { display: flex; height: 58px; padding: 8px; border-radius: 12px; }
+.account-tabs button { flex: 1; text-align: center; }
+.account-panel { min-height: 616px; margin-top: 20px; padding: 32px; border-radius: 16px; }
+.legal-page { min-height: 0; padding: 0 20px 80px; background: #fff; }
+.legal-card { width: min(768px, 100%); padding: 96px 0 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.legal-card .legal-back { display: none; }
+.legal-card h1 { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 36px; line-height: 43px; text-align: center; }
+.legal-card .legal-intro { margin-top: 16px; color: #4b5563; font-size: 16px; line-height: 24px; }
+.legal-card section { margin-top: 20px; }
+.legal-card h2 { margin-top: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; line-height: 32px; }
+.legal-card p { margin-top: 12px; color: #4b5563; font-size: 16px; line-height: 24px; }
+

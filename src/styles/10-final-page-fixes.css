@@ -1,0 +1,138 @@
+/* Final reference alignment for the three-step workflow. The live site uses
+   natural-height cards, a centered 980px content column, and a two-column
+   tablet breakpoint before switching to one column on narrow phones. */
+.workflow-section { padding: 56px 16px 64px; background: rgba(243,245,247,.65); }
+.workflow-section .section-wrap { width: 100%; max-width: 980px; padding: 0; }
+.workflow-section .section-heading { display: block; max-width: 768px; margin: 0 auto 40px; text-align: center; }
+.workflow-section .section-heading > p { max-width: 672px; margin: 12px auto 0; }
+.workflow-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 0; }
+.workflow-step { display: block; min-width: 0; min-height: 0; height: auto; padding: 20px; border: 1px solid rgba(229,231,235,.75); border-radius: 16px; color: var(--ink); background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.workflow-step > span { display: block; color: #6b7280; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600; line-height: 20px; white-space: nowrap; }
+.workflow-step h3 { margin-top: 8px; color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; line-height: 28px; letter-spacing: -.02em; overflow-wrap: anywhere; text-wrap: balance; }
+.workflow-step p { margin-top: 8px; color: #6b7280; font-size: 14px; line-height: 24px; overflow-wrap: anywhere; }
+.workflow-section .compare-card { height: auto; aspect-ratio: 4 / 3; margin-top: 64px; border-radius: 16px; box-shadow: 0 18px 50px rgba(14,24,39,.1); }
+
+@media (max-width: 1023px) {
+  .workflow-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 639px) {
+  .workflow-section { padding-right: 16px; padding-left: 16px; }
+  .workflow-steps { grid-template-columns: 1fr; gap: 16px; }
+  .workflow-section .compare-card { margin-top: 40px; }
+}
+
+/* Keep the plan stack and its billing note in normal flow so the featured
+   card always has visible breathing room before the value section. */
+.pricing-page .plans-grid { height: auto; min-height: 0; padding: 0 64px 40px; row-gap: 24px; }
+.pricing-page .billing-note { position: static; grid-column: 1 / -1; margin: 0 auto; }
+
+@media (max-width: 720px) {
+  .pricing-page .plans-grid { padding-right: 16px; padding-bottom: 40px; padding-left: 16px; }
+}
+
+/* Footer uses two bounded groups, matching the reference DOM and preventing
+   the language pill from becoming a fourth overflowing column. */
+.site-footer-inner { width: min(1280px, calc(100% - 64px)); min-height: 112px; margin: 0 auto; padding: 26px 0; display: flex !important; align-items: center; justify-content: space-between; gap: 28px; }
+.footer-meta { min-width: 0; display: flex; align-items: center; gap: 16px; flex: 1 1 auto; }
+.footer-meta .footer-brand { flex: 0 0 auto; }
+.footer-meta p { min-width: 0; flex: 1 1 auto; }
+.site-footer-inner .footer-links { min-width: 0; max-width: 100%; flex: 0 1 auto; justify-content: flex-end; }
+.footer-language { min-width: 0; max-width: 100%; }
+.footer-language-button { min-width: 0; max-width: 100%;padding: 0 10px!important; }
+.footer-language-button span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 980px) {
+  .site-footer-inner { width: min(100% - 36px, 720px); flex-wrap: wrap; gap: 10px 20px; }
+  .footer-meta { flex: 1 1 100%; }
+  .site-footer-inner .footer-links { flex: 1 1 100%; justify-content: flex-start; }
+}
+
+@media (max-width: 720px) {
+  .site-footer-inner { width: calc(100% - 32px); min-height: 0; padding: 24px 0 30px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-meta { width: 100%; align-items: flex-start; flex-direction: column; gap: 8px; }
+  .footer-meta p { width: 100%; }
+  .site-footer-inner .footer-links { width: 100%; flex: none; justify-content: flex-start; gap: 12px 18px; }
+}
+
+/* Authenticated reference header: the avatar is the single account entry on
+   desktop and remains visible beside the menu control on small screens. */
+.header-account { position: relative; display: inline-flex; align-items: center; }
+.header-account .avatar-button { width: 38px; height: 38px; border-color: #e5e7eb; background: #f8fafc; transition: border-color .2s ease, box-shadow .2s ease; }
+.header-account .avatar-button:hover,
+.header-account .avatar-button[aria-expanded='true'] { border-color: #b8c5da; box-shadow: 0 0 0 3px rgba(41,78,255,.08); }
+.account-popover { position: absolute; top: calc(100% + 8px); right: 0; z-index: 50; width: 256px; padding: 8px; border: 1px solid #e5e7eb; border-radius: 16px; background: #fff; box-shadow: 0 18px 44px rgba(15,23,42,.16); }
+.account-popover-profile { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 12px; border: 1px solid #e5e7eb; border-radius: 12px; background: rgba(248,250,252,.8); }
+.account-popover-avatar { width: 40px; height: 40px; flex: 0 0 40px; overflow: hidden; border: 1px solid #e5e7eb; border-radius: 50%; background: #f8fafc; }
+.account-popover-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.account-popover-identity { min-width: 0; display: grid; gap: 2px; }
+.account-popover-identity strong, .account-popover-identity span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.account-popover-identity strong { color: #111827; font-size: 14px; line-height: 20px; }
+.account-popover-identity span { color: #6b7280; font-size: 12px; line-height: 18px; }
+.account-popover-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; padding: 11px 12px; border: 1px solid #e5e7eb; border-radius: 12px; background: rgba(248,250,252,.8); }
+.account-popover-summary div { min-width: 0; display: grid; gap: 3px; }
+.account-popover-summary div:last-child { text-align: right; }
+.account-popover-summary span { color: #6b7280; font-size: 10px; font-weight: 600; letter-spacing: .1em; line-height: 14px; text-transform: uppercase; }
+.account-popover-summary strong { color: #111827; font-size: 14px; line-height: 20px; }
+.account-popover-links { display: grid; gap: 2px; margin-top: 8px; padding: 0 4px; }
+.account-popover-links a, .account-popover-links button { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 40px; padding: 8px 8px; border-radius: 10px; color: #111827; background: transparent; font-size: 14px; font-weight: 600; line-height: 20px; text-decoration: none; text-align: left; }
+.account-popover-links a:hover, .account-popover-links button:hover { background: #f3f5f8; }
+.account-popover-links svg { width: 16px; height: 16px; flex: 0 0 16px; }
+.account-popover-links button { margin-top: 4px; color: #ef4444; }
+.account-popover-links button:hover { background: rgba(239,68,68,.08); }
+
+@media (min-width: 721px) {
+  .header-account { margin-left: 8px; padding-left: 12px; border-left: 1px solid #e5e7eb; }
+}
+
+/* Narrow pricing layout: let every section size itself instead of inheriting
+   the desktop fixed heights that previously caused cramped cards and clipped
+   copy on 375–430px screens. */
+@media (max-width: 720px) {
+  .site-header .header-inner { width: calc(100% - 32px); padding: 0; }
+  .site-header .header-actions { display: inline-flex; margin-left: auto; gap: 8px; }
+  .site-header .header-account .avatar-button { width: 36px; height: 36px; }
+  .site-header .menu-button { width: 40px; height: 40px; }
+  .site-header .main-nav { top: 64px; }
+
+  .pricing-page { padding-top: 0; }
+  .pricing-hero { width: 100%; height: auto; padding: 56px 20px 0; }
+  .pricing-hero h1 { max-width: 360px; font-size: clamp(34px, 10vw, 44px); line-height: 1.12; letter-spacing: -.06em; }
+  .pricing-hero > p { max-width: 360px; margin-top: 16px; font-size: 15px; line-height: 24px; }
+  .billing-toggle { width: min(100%, 320px); justify-content: stretch; margin-top: 22px; }
+  .billing-toggle button { flex: 1 1 0; min-width: 0; padding: 9px 8px; font-size: 11px; }
+  .billing-toggle span { margin-left: 2px; }
+  .pricing-page .plans-grid { width: 100%; display: grid; grid-template-columns: 1fr; gap: 16px; padding: 48px 16px 56px; }
+  .pricing-page .plan-card { min-height: 0; padding: 22px 20px 20px; border-radius: 20px; }
+  .pricing-page .plan-card.featured { transform: none; }
+  .pricing-page .popular-badge { top: -11px; left: 20px; }
+  .pricing-page .plan-card h2 { margin-top: 10px; font-size: 25px; }
+  .pricing-page .plan-price { margin-top: 22px; font-size: clamp(38px, 11vw, 48px); line-height: 1; }
+  .pricing-page .plan-price small { font-size: 11px; }
+  .pricing-page .plan-card ul { gap: 11px; margin: 22px 0 24px; font-size: 13px; line-height: 20px; }
+  .pricing-page .plan-card li { align-items: flex-start; }
+  .pricing-page .plan-card li svg { margin-top: 2px; flex: 0 0 15px; }
+  .pricing-page .full { min-height: 44px; }
+  .pricing-page .billing-note { width: 100%; margin-top: 0; padding: 0 8px; font-size: 12px; line-height: 20px; text-align: center; }
+  .pricing-page .pricing-note { width: 100%; height: auto; display: block; padding: 36px 20px 48px; }
+  .pricing-page .pricing-note > div { justify-content: center; gap: 10px; }
+  .pricing-page .pricing-note h2 { font-size: 24px; line-height: 32px; }
+  .pricing-page .pricing-note > p { max-width: 360px; margin-top: 12px; font-size: 14px; line-height: 24px; }
+  .pricing-page .pricing-benefits { width: 100%; height: auto; grid-template-columns: 1fr; gap: 12px; padding: 0 16px 48px; }
+  .pricing-page .pricing-benefits article { height: auto; min-height: 0; padding: 18px; border-radius: 14px; }
+  .pricing-page .pricing-benefits h3 { font-size: 16px; line-height: 24px; }
+  .pricing-page .pricing-benefits p { margin-top: 8px; font-size: 13px; line-height: 22px; }
+  .pricing-page .pricing-faq { width: 100%; height: auto; padding: 40px 16px 64px; }
+  .pricing-page .pricing-faq .section-heading { margin-bottom: 24px; }
+  .pricing-page .pricing-faq .section-heading h2 { font-size: 30px; line-height: 36px; }
+  .pricing-page .pricing-faq .section-heading > p { font-size: 14px; line-height: 23px; }
+  .pricing-page .faq-item { margin-bottom: 10px; padding: 16px; }
+  .pricing-page .faq-item button strong { font-size: 14px; line-height: 22px; }
+  .pricing-page .faq-item p { font-size: 13px; line-height: 22px; }
+}
+
+@media (max-width: 380px) {
+  .account-popover { right: 0; width: min(256px, calc(100vw - 32px)); }
+  .pricing-hero { padding-right: 16px; padding-left: 16px; }
+  .pricing-page .plan-card { padding-right: 16px; padding-left: 16px; }
+}
