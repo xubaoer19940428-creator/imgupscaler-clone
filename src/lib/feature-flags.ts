@@ -6,8 +6,8 @@
  */
 export const FEATURE_FLAGS = {
   // AI 工具与页面路由显隐
-  enableEnhancer: true,       // 图像增强器
-  enableReimagine: true,      // 重新构想
+  enableEnhancer: false,      // 暂时隐藏图像增强器，保留底层页面代码
+  enableReimagine: false,     // 暂时隐藏重新构想，保留底层页面代码
   enablePricing: true,        // 定价方案 (保留)
   enableAccount: true,        // 账户与登录 (保留)
 

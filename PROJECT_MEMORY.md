@@ -487,11 +487,11 @@ type UpscaleResult = {
 
 ### 14.8 功能非破坏性隐藏（专注“图片放大”，可一键恢复）
 
-需求背景：项目保留所有 AI 工具页面与底层实现；是否在导航中显示由功能开关控制。当前为了与参考稿移动端菜单一致，图像增强器和重新构想均显示。
+需求背景：项目保留所有 AI 工具页面与底层实现；是否在导航中显示由功能开关控制。当前产品范围只开放图片放大功能，图像增强器和重新构想暂时隐藏。
 
 实现方式：通过 `src/lib/feature-flags.ts` 集中管理 `FEATURE_FLAGS` 开关：
-- `enableEnhancer: true`：显示导航栏中的「图像增强器」。
-- `enableReimagine: true`：显示导航栏中的「重新构想」。
+- `enableEnhancer: false`：隐藏导航栏中的「图像增强器」，访问对应 URL 时自动回退至图片放大主页。
+- `enableReimagine: false`：隐藏导航栏中的「重新构想」，访问对应 URL 时自动回退至图片放大主页。
 - `enablePricing: true`：保留「定价」导航与页面演示。
 - `enableAccount: true`：保留右上角「演示账户」与登录注册弹窗。
 - `enablePromoSection: false`：隐藏首屏 Hero 下方的 Upscal 桌面客户端推广卡片。
@@ -571,7 +571,7 @@ npm run build
 - `SiteHeader` 的外部点击监听改为监听整个 Header：点击页面内容会同时关闭移动菜单和账户 Popover，点击菜单内部不会误关闭。
 - 账户页摘要卡已从“固定高度 + 单独积分块”改为头像、姓名、邮箱、当前方案和可用积分的自然高度组合，修复了移动端积分块覆盖标签页的问题。
 - 账户标签页加入账户、计费、安全图标，面板和输入控件在移动端使用自然高度与至少 44px 触摸尺寸。
-- 为与参考移动菜单保持四项入口，`enableEnhancer` 与 `enableReimagine` 当前设为 `true`；隐藏时只修改 `src/lib/feature-flags.ts`，不删除页面代码。
+- 当前产品范围只开放图片放大功能，`enableEnhancer` 与 `enableReimagine` 设为 `false`；后续恢复时只修改 `src/lib/feature-flags.ts`，不删除页面代码。定价和账户保留为管理入口。
 - 浏览器回归确认：375px 视口下账户页摘要、标签页和 Profile 表单不再重叠；Header DOM 中移动菜单包含四项导航及完整账户操作文案。Chrome 对部分移动按钮的坐标点击在当前扩展环境中会超时，因此同时用 DOM 可访问树、Computed layout 和键盘焦点状态核对结构与层级。
 - 本次拆分仅改变 CSS 文件组织和上述已确认的 UI 修复，不改变 React 组件、路由和交互逻辑。
 - 将主图像放大器工作区的 `2× / 4×` 展示选项改为 `2K / 4K`。
