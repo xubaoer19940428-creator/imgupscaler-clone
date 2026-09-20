@@ -37,7 +37,6 @@ export default function App() {
   const isChinese = locale === 'zh'
   return (
     <div className="app-shell">
-      <a className="skip-link" href="#main-content">{isChinese ? '跳转到主要内容' : 'Skip to content'}</a>
       <SiteHeader onLogin={() => setLoginOpen(true)} onNavigate={navigate} />
       {route === 'pricing' ? <div id="main-content"><PricingPage onChoose={navigate} onLogin={() => setLoginOpen(true)} /></div> : <LandingPage route={route} controller={controller} onUseCase={scrollToWorkspace} />}
       <SiteFooter locale={locale} />
@@ -63,4 +62,3 @@ function pathToRoute(pathname: string): Route {
   if (normalized === '/pricing' && isRouteVisible('pricing')) return 'pricing'
   return 'home'
 }
-
