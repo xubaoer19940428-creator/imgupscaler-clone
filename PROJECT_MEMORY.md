@@ -572,6 +572,7 @@ npm run build
 - 账户页摘要卡已从“固定高度 + 单独积分块”改为头像、姓名、邮箱、当前方案和可用积分的自然高度组合，修复了移动端积分块覆盖标签页的问题。
 - 账户标签页加入账户、计费、安全图标，面板和输入控件在移动端使用自然高度与至少 44px 触摸尺寸。
 - 当前产品范围只开放图片放大功能，`enableEnhancer` 与 `enableReimagine` 设为 `false`；后续恢复时只修改 `src/lib/feature-flags.ts`，不删除页面代码。定价和账户保留为管理入口。
+- 移动端 Header 不再显示 `.header-account` 头像入口：账户操作已经完整放入展开后的 `MobileAccountPanel`，因此 720px 及以下只保留 Logo 与菜单按钮，避免同一账户出现两个入口。桌面端头像 Popover 不受影响，`.header-actions` 仍通过 `margin-left: auto` 将菜单按钮贴到最右侧。
 - 浏览器回归确认：375px 视口下账户页摘要、标签页和 Profile 表单不再重叠；Header DOM 中移动菜单包含四项导航及完整账户操作文案。Chrome 对部分移动按钮的坐标点击在当前扩展环境中会超时，因此同时用 DOM 可访问树、Computed layout 和键盘焦点状态核对结构与层级。
 - 本次拆分仅改变 CSS 文件组织和上述已确认的 UI 修复，不改变 React 组件、路由和交互逻辑。
 - 将主图像放大器工作区的 `2× / 4×` 展示选项改为 `2K / 4K`。

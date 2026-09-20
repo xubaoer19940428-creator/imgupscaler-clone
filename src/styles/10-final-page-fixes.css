@@ -55,8 +55,9 @@
   .site-footer-inner .footer-links { width: 100%; flex: none; justify-content: flex-start; gap: 12px 18px; }
 }
 
-/* Authenticated reference header: the avatar is the single account entry on
-   desktop and remains visible beside the menu control on small screens. */
+/* Authenticated reference header: the avatar is the compact account entry on
+   desktop. On small screens account actions live in the expanded menu so the
+   header keeps only the brand and menu control. */
 .header-account { position: relative; display: inline-flex; align-items: center; }
 .header-account .avatar-button { width: 38px; height: 38px; border-color: #e5e7eb; background: #f8fafc; transition: border-color .2s ease, box-shadow .2s ease; }
 .header-account .avatar-button:hover,
@@ -120,7 +121,10 @@
 @media (max-width: 720px) {
   .site-header .header-inner { width: calc(100% - 32px); padding: 0; }
   .site-header .header-actions { display: inline-flex; margin-left: auto; gap: 8px; }
-  .site-header .header-account .avatar-button { width: 36px; height: 36px; }
+  /* The mobile menu is the single account entry on phones. Hiding the
+     desktop popover trigger prevents duplicate account controls and leaves
+     the menu button aligned at the far right of the header. */
+  .site-header .header-account { display: none; }
   .site-header .menu-button { width: 40px; height: 40px; }
   .site-header .main-nav { top: 64px; right: 0; left: 0; width: 100%; padding: 0; border-radius: 0 0 14px 14px; }
   .site-header .main-nav .mobile-nav-links { display: grid; gap: 2px; padding: 8px 16px; }
