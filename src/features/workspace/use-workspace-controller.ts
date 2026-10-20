@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { ACCEPTED_TYPES, MAX_FILE_BYTES, MAX_FILES } from '@/src/lib/constants'
 import { downloadUrl, downloadZip, itemName } from '@/src/lib/downloads'
 import { applyEdit, createDemoResult } from '@/src/lib/image-processing'
+import { createImageResult, isImgUpscalerApiEnabled } from '@/src/services/imgupscaler-api'
 import type { EditState, FileItem, Route, ToastMessage } from '@/src/lib/types'
 import { useWorkspaceStore } from '@/src/stores/workspace-store'
 
@@ -20,6 +21,7 @@ export function useWorkspaceController(route: Route) {
   const inputRef = useRef<HTMLInputElement>(null)
   const itemsRef = useRef<FileItem[]>([])
   const runRef = useRef(0)
+  const abortRef = useRef<AbortController | null>(null)
   const mountedRef = useRef(true)
 
   // Keep the latest list outside async handlers so unmount cleanup can revoke every object URL.
@@ -33,6 +35,7 @@ export function useWorkspaceController(route: Route) {
   useEffect(() => () => {
     mountedRef.current = false
     runRef.current += 1
+    abortRef.current?.abort()
     itemsRef.current.forEach(revokeItem)
   }, [])
 
@@ -66,6 +69,8 @@ export function useWorkspaceController(route: Route) {
 
   const cancel = () => {
     runRef.current += 1
+    abortRef.current?.abort()
+    abortRef.current = null
     store.setProcessing(false)
     store.setProgress({ completed: 0, total: 0 })
     store.setItems((current) => current.map((item) => item.status === 'processing' ? { ...item, status: 'ready' } : item))
@@ -77,6 +82,9 @@ export function useWorkspaceController(route: Route) {
     const ids = new Set(targetIds?.length ? targetIds : store.items.map((item) => item.id))
     const targets = store.items.filter((item) => ids.has(item.id))
     const runId = ++runRef.current
+    abortRef.current?.abort()
+    const abortController = new AbortController()
+    abortRef.current = abortController
     store.setProcessing(true)
     store.setProgress({ completed: 0, total: targets.length })
     store.setItems((current) => current.map((item) => ids.has(item.id) ? prepareItem(item) : item))
@@ -88,7 +96,9 @@ export function useWorkspaceController(route: Route) {
       if (!mountedRef.current || runRef.current !== runId) return
       let resultUrl: string | undefined
       try {
-        resultUrl = await createDemoResult(item.file, store.scale, { tool: route, creativity: store.creativity, similarity: store.similarity, prompt: store.prompt })
+        resultUrl = isImgUpscalerApiEnabled()
+          ? await createImageResult({ file: item.file, route, scale: store.scale, creativity: store.creativity, similarity: store.similarity, prompt: store.prompt, signal: abortController.signal })
+          : await createDemoResult(item.file, store.scale, { tool: route, creativity: store.creativity, similarity: store.similarity, prompt: store.prompt })
         if (!mountedRef.current || runRef.current !== runId) {
           URL.revokeObjectURL(resultUrl)
           return
@@ -106,6 +116,7 @@ export function useWorkspaceController(route: Route) {
     }
     store.setItems((current) => current.map((item) => results.find((result) => result.id === item.id) ?? item))
     store.setProcessing(false)
+    abortRef.current = null
     setToast({ title: results.some((item) => item.status === 'error') ? t('toast.partialError') : t('toast.complete'), detail: t('toast.completeDetail') })
   }
 
