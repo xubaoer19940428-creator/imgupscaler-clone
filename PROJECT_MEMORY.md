@@ -604,3 +604,4 @@ npm run build
 - 新增并接通 `src/services/imgupscaler-api.ts`：复用 artguru-clone 的 `NEXT_PUBLIC_ARTGURU_API_ENABLED`、`NEXT_PUBLIC_ARTGURU_API_BASE_URL` 和 `artguru-token`，工作区先通过 `/v1/get-upload-url` 上传文件并登记 `/v1/files`，再调用 `/v1/ai/images/{operation}`，轮询 `/v1/ai/runs/{runId}` 获取 `result.items[].url`，支持取消请求；未启用或未登录时继续使用本地 Canvas fallback。
 - 图片生成接口使用 AIController-API 的 canonical body（`model`、`input_references`、`size`、`prompt`、`creativity`、`similarity`），不复用 artguru-clone 的 `/v1/models/{slug}/runs` 生成路径。默认模型为 `openai/gpt-image-1`，可由 `NEXT_PUBLIC_IMGUPSCALER_*_MODEL` 覆盖。
 - API 仍依赖现有登录 token（优先 `imgupscaler-token`，兼容 `artguru-token`）；生产环境应将 token 注入真实认证流程，并根据后端上传接口的实际字段调整上传登记逻辑。
+- API 层已按 artguru-clone 的职责拆分并改用 Axios：`src/lib/api/request.ts` 统一 Axios client、Bearer、域名/语言/时区请求头、envelope 解包和错误；`files.ts` 负责预签名上传与 `/files` 登记；`ai.ts` 负责 `/ai/images/{operation}`、Run 查询和取消；`client.ts` 作为门面；`src/services/imgupscaler-api.ts` 只编排 ImgUpscaler 的模型、operation、canonical body 和轮询。
