@@ -57,15 +57,15 @@ export const useCases: Record<Exclude<Route, 'pricing'>, UseCase[]> = {
     ['/reference/enhance-subjects.jpeg', '优化人像、产品、动漫及老照片', '将 ImgUpscaler 作为在线图像增强工具，用于处理人们实际使用的各类视觉素材：个人头像、电商商品图、插画、扫描图片、旅行照片以及需要提升分辨率以获得更佳使用效果的旧照片。', '提升图像质量'],
   ].map(([image, title, body, cta]) => ({ image, beforeImage: image, afterImage: image, title, body, cta })),
   enhancer: [
-    ['/reference/upscale-image-online.jpeg', '锐化模糊图像并恢复丢失的细节', '在保持效果自然的同时，增强模糊或低质量的图像。该 AI 图像增强工具可提升边缘清晰度、恢复细腻纹理，并减少模糊、噪点和压缩伪影，使图像看起来更清晰，且不会显得过度处理。', '锐化图像'],
-    ['/reference/batch-upscaler.jpeg', '优化低分辨率图片，适用于社交媒体、印刷及电子商务场景', '为社交媒体、演示文稿、印刷材料、壁纸、产品列表及专业分享创建更清晰的高分辨率图像。AI 增强技术在提升图像分辨率的同时增加可用细节，确保在不同输出尺寸下呈现更清晰的视觉效果。', '图像放大与优化'],
-    ['/reference/enhance-subjects.jpeg', '优化 AI 艺术作品、人像、截图及产品视觉素材', '该增强工具适用于 AI 生成的图像、人像照片、动漫作品、插画、截图及产品视觉素材。它能锐化纹理、消除伪影、增加图像细节并提升清晰度，同时保留原始的视觉风格。', '优化创意图片'],
-  ].map(([image, title, body, cta], index) => ({ image, beforeImage: image, afterImage: ['/reference/enhance-subjects.jpeg', '/reference/upscale-image-online.jpeg', '/reference/anime-upscaler.webp'][index], title, body, cta })),
+    ['/reference/enhancer/enhancer-sample-1-before.webp', '锐化模糊图像并恢复丢失的细节', '在保持效果自然的同时，增强模糊或低质量的图像。该 AI 图像增强工具可提升边缘清晰度、恢复细腻纹理，并减少模糊、噪点和压缩伪影，使图像看起来更清晰，且不会显得过度处理。', '锐化图像'],
+    ['/reference/enhancer/enhancer-sample-2-before.webp', '优化低分辨率图片，适用于社交媒体、印刷及电子商务场景', '为社交媒体、演示文稿、印刷材料、壁纸、产品列表及专业分享创建更清晰的高分辨率图像。AI 增强技术在提升图像分辨率的同时增加可用细节，确保在不同输出尺寸下呈现更清晰的视觉效果。', '图像放大与优化'],
+    ['/reference/enhancer/enhancer-sample-3-before.webp', '优化 AI 艺术作品、人像、截图及产品视觉素材', '该增强工具适用于 AI 生成的图像、人像照片、动漫作品、插画、截图及产品视觉素材。它能锐化纹理、消除伪影、增加图像细节并提升清晰度，同时保留原始的视觉风格。', '优化创意图片'],
+  ].map(([image, title, body, cta], index) => ({ image, beforeImage: image, afterImage: ['/reference/enhancer/enhancer-sample-1-after.webp', '/reference/enhancer/enhancer-sample-2-after.webp', '/reference/enhancer/enhancer-sample-3-after.webp'][index], title, body, cta })),
   reimagine: [
-    ['/reference/enhance-subjects.jpeg', '以更丰富的细节重塑建筑与室内设计', '将低分辨率的建筑、室内及室外图像转化为更清晰的视觉效果，增强表面纹理、优化边缘细节并强化空间深度。通过提示词引导材质、光照和氛围，同时利用“相似度强度”功能保留原始结构。', '试用 Reimagine AI'],
-    ['/reference/anime-upscaler.webp', '为动漫、插画和 AI 艺术作品增添创意细节', '将 Reimagine AI 用作基于提示词的增强工具，用于优化动漫作品、插画、线稿及 AI 生成的图像。在保持原始风格方向可辨识的同时，增添更丰富的纹理、更清晰的细节以及更精致的完成效果。', '优化动漫插画'],
-    ['/reference/upscale-image-online.jpeg', '在保持面部可识别的前提下优化人像', '通过增强清晰度、肌肤细节、发丝质感及优化光线，重塑人像照片，同时利用相似度控制功能确保人物可辨识。本功能特别适用于个人头像、老照片、编辑图片及创意人像照。', '重新构想人像'],
-  ].map(([image, title, body, cta], index) => ({ image, beforeImage: image, afterImage: ['/reference/anime-upscaler.webp', '/reference/enhance-subjects.jpeg', '/reference/unnamed.jpg'][index], title, body, cta })),
+    ['/reference/reimagine/reimagine-upscaler-building-before.jpg', '以更丰富的细节重塑建筑与室内设计', '将低分辨率的建筑、室内及室外图像转化为更清晰的视觉效果，增强表面纹理、优化边缘细节并强化空间深度。通过提示词引导材质、光照和氛围，同时利用“相似度强度”功能保留原始结构。', '试用 Reimagine AI'],
+    ['/reference/reimagine/reimagine-upscaler-anime-before.jpg', '为动漫、插画和 AI 艺术作品增添创意细节', '将 Reimagine AI 用作基于提示词的增强工具，用于优化动漫作品、插画、线稿及 AI 生成的图像。在保持原始风格方向可辨识的同时，增添更丰富的纹理、更清晰的细节以及更精致的完成效果。', '优化动漫插画'],
+    ['/reference/reimagine/reimagine-upscaler-face-before.jpg', '在保持面部可识别的前提下优化人像', '通过增强清晰度、肌肤细节、发丝质感及优化光线，重塑人像照片，同时利用相似度控制功能确保人物可辨识。本功能特别适用于个人头像、老照片、编辑图片及创意人像照。', '重新构想人像'],
+  ].map(([image, title, body, cta], index) => ({ image, beforeImage: image, afterImage: ['/reference/reimagine/reimagine-upscaler-building-after.jpg', '/reference/reimagine/reimagine-upscaler-anime-after.jpg', '/reference/reimagine/reimagine-upscaler-face-after.jpg'][index], title, body, cta })),
 }
 
 export const featureIntro: Record<Exclude<Route, 'pricing'>, { kicker: string; title: React.ReactNode; description: string }> = {

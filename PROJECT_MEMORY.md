@@ -597,3 +597,10 @@ npm run build
 - 隐藏工作区放大完成后的「编辑」裁剪弹窗按钮，只保留直接下载和重做。
 - 保留「定价」与「账户/登录」演示。
 - 全量通过 `npx tsc --noEmit` 和 `npm run build`。
+
+### 2026-10-21
+- 按文稿 `/Users/qiancheng/Documents/enhancer.html` 和 `/Users/qiancheng/Documents/reimagine.html` 复刻 Enhancer 与 Reimagine 页面，开启 `enableEnhancer`、`enableReimagine` 和 `enablePromoSection`。
+- 使用文稿资源新增 `public/reference/enhancer/` 与 `public/reference/reimagine/` 的真实 Before/After 示例，并将英文页面营销文案、功能卡、用例、工作流和 FAQ 与线上页面结构对齐；中文路由保留中文内容。
+- 新增并接通 `src/services/imgupscaler-api.ts`：复用 artguru-clone 的 `NEXT_PUBLIC_ARTGURU_API_ENABLED`、`NEXT_PUBLIC_ARTGURU_API_BASE_URL` 和 `artguru-token`，工作区先通过 `/v1/get-upload-url` 上传文件并登记 `/v1/files`，再调用 `/v1/ai/images/{operation}`，轮询 `/v1/ai/runs/{runId}` 获取 `result.items[].url`，支持取消请求；未启用或未登录时继续使用本地 Canvas fallback。
+- 图片生成接口使用 AIController-API 的 canonical body（`model`、`input_references`、`size`、`prompt`、`creativity`、`similarity`），不复用 artguru-clone 的 `/v1/models/{slug}/runs` 生成路径。默认模型为 `openai/gpt-image-1`，可由 `NEXT_PUBLIC_IMGUPSCALER_*_MODEL` 覆盖。
+- API 仍依赖现有登录 token（优先 `imgupscaler-token`，兼容 `artguru-token`）；生产环境应将 token 注入真实认证流程，并根据后端上传接口的实际字段调整上传登记逻辑。

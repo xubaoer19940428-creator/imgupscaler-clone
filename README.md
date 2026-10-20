@@ -40,11 +40,26 @@ npm start
 - 参考页的 Upscal 推广（Microsoft Store / Mac App Store）、YouTube 展示、三张 use-case 图片卡片、四条用户评价和隐私/商业用途内容区。
 - `/zh/account` 与 `/account` 账户面板演示（资料、订阅积分、安全设置），法律页同时提供中英文路径。
 
-当前演示处理在浏览器 Canvas 中生成 WebP：它用于验证上传、队列、预览和下载闭环，不等同于真实 AI 超分辨率。Reimagine 的提示词、创造力和相似度会参与演示滤镜参数；接入模型时仍应替换为服务端任务。
+当前未配置 API 时，处理会在浏览器 Canvas 中生成 WebP，用于验证上传、队列、预览和下载闭环；配置 AIController API 后，工作区会上传临时源图、创建异步图片 Run 并轮询结果。Reimagine 的提示词、创造力和相似度会随 canonical body 发送。
+
+## AIController API 配置
+
+复制环境变量并填入真实值即可启用 API（不开启时自动使用本地 Canvas fallback）：
+
+```bash
+NEXT_PUBLIC_ARTGURU_API_ENABLED=true
+NEXT_PUBLIC_ARTGURU_API_BASE_URL=https://api.example.com
+# 登录后复用 artguru-clone 写入 localStorage 的 artguru-token
+NEXT_PUBLIC_IMGUPSCALER_UPSCALER_MODEL=openai/gpt-image-1
+NEXT_PUBLIC_IMGUPSCALER_ENHANCER_MODEL=openai/gpt-image-1
+NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_MODEL=openai/gpt-image-1
+```
+
+适配层复用 artguru-clone 的 API origin、`NEXT_PUBLIC_ARTGURU_API_ENABLED` 开关和 `artguru-token`，使用 `POST /v1/get-upload-url` 上传源图并登记 `/v1/files`，随后调用 `POST /v1/ai/images/{operation}`（默认分别为 `upscales`、`upscales`、`transforms`），再轮询 `GET /v1/ai/runs/{runId}`；取消任务调用对应的 `/cancel` 路径。实现位于 `src/services/imgupscaler-api.ts`，生成接口不会使用 artguru-clone 的 `/v1/models/{slug}/runs` 路径。
 
 ## 接后端的位置
 
-`src/services/upscaler.ts` 是预留的前端适配层契约；当前工作区为了让项目开箱即用，仍调用 `src/lib/image-processing.ts` 的 Canvas 演示。后端准备好后，将 controller 的处理调用替换为 `submitUpscaleTask` / `pollUpscaleTask`，让它们调用自己的 Next Route Handler（例如 `app/api/upscale/route.ts`），再在任务状态完成时把 `resultUrl` 写回工作区即可。
+`src/services/imgupscaler-api.ts` 是 AIController 的前端适配层；未配置 API 时工作区调用 `src/lib/image-processing.ts` 的 Canvas 演示。生产环境仍应把 token 放到真实登录状态，并根据后端实际上传接口补充文件登记、额度和内容安全逻辑。
 
 建议后端职责：鉴权、额度扣减、图片临时存储、模型队列、NSFW/内容安全、24 小时清理、结果签名 URL、支付 webhook。不要把模型密钥或支付密钥放进客户端。
 
