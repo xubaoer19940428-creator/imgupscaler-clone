@@ -53,6 +53,7 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
     // replace, clear and unmount in order to prevent long-lived browser memory leaks.
     const next = selected.map<FileItem>((file) => ({ id: crypto.randomUUID(), file, url: URL.createObjectURL(file), status: 'ready' }))
     store.setItems(workspaceRoute, (current) => [...current, ...next])
+    if (route === 'reimagine' && !workspace.prompt.trim()) store.setPrompt(workspaceRoute, t('reimagineDefaultPrompt'))
     setToast({ title: t('toast.added', { count: next.length }), detail: selected.length < accepted.length ? t('toast.batchLimit', { count: MAX_FILES }) : t('toast.addedDetail') })
   }
 

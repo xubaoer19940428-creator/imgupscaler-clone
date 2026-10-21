@@ -692,3 +692,9 @@ npm run build
 - 工作区控制器原本只更新内部 `controller.toast`，`App` 没有渲染它；未登录点击 Process image 会提前返回，但用户看不到提示，API 失败或完成提示也会被吞掉。
 - `App.tsx` 现在渲染工作区 Toast；控制器收到未登录处理请求时同时触发登录弹窗，登录后才继续真实 Mixu API 流程。
 - 使用 `pnpm exec tsc --noEmit`、`pnpm run build` 和 `git diff --check` 验证通过。
+
+### 2026-10-21（适配 Reimagine 上传后工作区）
+- 根据最新 `/Users/qian/Documents/reimagine.html` 的单图上传状态，Reimagine 现在显示大尺寸居中预览、Portrait/Detailed Model - 2048px 两个模型按钮、Prompt 设置卡、滑杆和 Remove / Start Processing 操作栏。
+- Reimagine 的 Creativity 改为 `0.05–0.50`、步进 `0.01`，默认 `0.30`；Resemblance 改为 `0–30`、步进 `1`，默认 `7`，与参考页面和真实请求参数一致。
+- 首次上传 Reimagine 图片时自动填入当前语言的默认提示词；单图使用参考稿布局，多图仍保留原有 20 张队列网格能力。
+- 新增对应的中英文消息和上传态样式；使用 `pnpm exec tsc --noEmit`、`pnpm run build`、`git diff --check` 验证通过。

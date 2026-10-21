@@ -262,3 +262,173 @@
   .account-tabs button { font-size: 11px; }
   .account-panel { padding: 16px; }
 }
+
+/* Reimagine's uploaded state follows the reference tool layout: one large
+   contained preview, model choices, a compact settings card, then actions. */
+.workspace-card-reimagine-uploaded {
+  padding: 20px;
+  border-color: rgba(229, 231, 235, .8);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 18px 60px rgba(15, 23, 42, .05);
+}
+.workspace-card-reimagine-uploaded .reimagine-uploaded-surface {
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.reimagine-preview {
+  position: relative;
+  width: 100%;
+}
+.reimagine-preview-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: min(72vh, 44rem);
+  min-height: 280px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fff;
+}
+.reimagine-preview-inner img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(72vh, 44rem);
+  object-fit: contain;
+}
+.reimagine-preview-status,
+.reimagine-preview-error {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  max-width: calc(100% - 24px);
+  padding: 6px 9px;
+  overflow: hidden;
+  border-radius: 7px;
+  color: #986006;
+  background: rgba(255, 248, 232, .94);
+  font-size: 11px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.reimagine-preview-error {
+  color: #b33b45;
+  background: rgba(255, 241, 241, .95);
+}
+.workspace-card-reimagine-uploaded .reimagine-controls {
+  display: grid;
+  gap: 16px;
+  padding-top: 16px;
+}
+.reimagine-model-picker {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.reimagine-model-picker button {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  color: #111827;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.reimagine-model-picker button:hover {
+  border-color: var(--blue);
+  background: #f8fafc;
+}
+.reimagine-model-picker button.selected {
+  border-color: var(--blue);
+  color: #fff;
+  background: var(--blue);
+}
+.reimagine-settings {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fff;
+}
+.reimagine-settings label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+}
+.reimagine-settings textarea {
+  min-height: 82px;
+  resize: vertical;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  color: #111827;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.reimagine-settings textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(27, 97, 201, .1);
+}
+.reimagine-settings .slider-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 0;
+}
+.reimagine-settings .slider-row label {
+  gap: 8px;
+}
+.reimagine-settings .slider-row label > span {
+  display: flex;
+  justify-content: space-between;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+}
+.reimagine-settings .slider-row b {
+  color: #111827;
+  font-weight: 600;
+}
+.reimagine-settings input[type='range'] {
+  width: 100%;
+  accent-color: var(--blue);
+}
+.reimagine-actions {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 16px;
+}
+.reimagine-actions .outline-button,
+.reimagine-actions .process-button {
+  min-height: 42px;
+}
+
+@media (max-width: 720px) {
+  .workspace-card-reimagine-uploaded { padding: 16px; }
+  .reimagine-preview-inner { min-height: 220px; }
+  .reimagine-model-picker { grid-template-columns: 1fr; gap: 8px; }
+  .reimagine-settings { padding: 14px; }
+  .reimagine-actions { align-items: stretch; }
+  .reimagine-actions button { flex: 1 1 100%; }
+}

@@ -71,6 +71,10 @@
     "scale": "Scale",
     "portrait": "Portrait",
     "detail": "Detail",
+    "portraitModel": "Portrait Model - 2048px",
+    "detailModel": "Detailed Model - 2048px",
+    "removeUploaded": "Remove",
+    "startProcessing": "Start Processing",
     "clear": "Clear",
     "downloadResults": "Download results",
     "cancel": "Cancel",
@@ -111,6 +115,7 @@
       "encodeFailed": "The image result could not be generated"
     },
     "promptPlaceholder": "Describe the detail, style, or transformation you want…",
+    "reimagineDefaultPrompt": "natural detail, clean texture, high quality",
     "apiPrompt": {
       "home": "Upscale this image to a clean, high-resolution result with sharper edges, natural textures, realistic fine detail, and the original composition preserved. Do not add or remove subjects.",
       "enhancer": "Enhance this image with natural sharpness, cleaner textures, reduced noise and compression artifacts, and improved fine detail while preserving the original subject, colors, lighting, and composition.",

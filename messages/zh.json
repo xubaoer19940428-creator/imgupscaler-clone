@@ -71,6 +71,10 @@
     "scale": "放大倍率",
     "portrait": "人像模型",
     "detail": "详细模型",
+    "portraitModel": "人像模型 - 2048px",
+    "detailModel": "详细模型 - 2048px",
+    "removeUploaded": "移除",
+    "startProcessing": "开始处理",
     "clear": "清空",
     "downloadResults": "下载结果",
     "cancel": "取消处理",
@@ -111,6 +115,7 @@
       "encodeFailed": "结果生成失败"
     },
     "promptPlaceholder": "描述您希望增加的细节、风格或变化…",
+    "reimagineDefaultPrompt": "自然细节、清晰纹理、高质量效果",
     "apiPrompt": {
       "home": "将这张图片放大为清晰的高分辨率结果，增强边缘、自然纹理和细节，同时保留原始构图，不新增或删除主体。",
       "enhancer": "增强这张图片的自然清晰度、纹理和细节，减少噪点与压缩伪影，同时保持原始主体、色彩、光线和构图不变。",

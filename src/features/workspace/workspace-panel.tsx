@@ -4,7 +4,7 @@ import type { ChangeEvent, DragEvent } from 'react'
 import { useTranslations } from 'next-intl'
 import { MAX_FILES } from '@/src/lib/constants'
 import { FEATURE_FLAGS } from '@/src/lib/feature-flags'
-import type { Route } from '@/src/lib/types'
+import type { FileItem, Route } from '@/src/lib/types'
 import { Button } from '@/src/components/ui/button'
 import { Card } from '@/src/components/ui/card'
 import { Icon } from '@/src/components/ui/icons'
@@ -28,13 +28,13 @@ export function WorkspacePanel({ route, controller }: { route: Route; controller
     controller.addFiles(event.dataTransfer.files)
   }
 
-  return <Card id="workspace" data-workspace-route={route} className={`workspace-card workspace-card-${route} reveal delayed`}>
-    {controller.items.length > 0 && <WorkspaceHeader controller={controller} />}
-    <div className={`drop-zone${controller.items.length ? ' has-files' : ''}${controller.dragging ? ' is-dragging' : ''}`} onDrop={onDrop} onDragEnter={(event) => { event.preventDefault(); controller.setDragging(true) }} onDragOver={(event) => { event.preventDefault(); controller.setDragging(true) }} onDragLeave={(event) => { if (event.currentTarget === event.target) controller.setDragging(false) }} onClick={controller.items.length ? undefined : () => controller.inputRef.current?.click()} role={controller.items.length ? undefined : 'button'} tabIndex={controller.items.length ? undefined : 0} onKeyDown={controller.items.length ? undefined : (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); controller.inputRef.current?.click() } }} aria-label={controller.items.length ? undefined : t('selectAria')}>
+  const referenceState = route === 'reimagine' && controller.items.length === 1
+  return <Card id="workspace" data-workspace-route={route} className={`workspace-card workspace-card-${route}${referenceState ? ' workspace-card-reimagine-uploaded' : ''} reveal delayed`}>
+    {controller.items.length > 0 && !referenceState && <WorkspaceHeader controller={controller} />}
+    <div className={`drop-zone${controller.items.length ? ' has-files' : ''}${referenceState ? ' reimagine-uploaded-surface' : ''}${controller.dragging ? ' is-dragging' : ''}`} onDrop={onDrop} onDragEnter={(event) => { event.preventDefault(); controller.setDragging(true) }} onDragOver={(event) => { event.preventDefault(); controller.setDragging(true) }} onDragLeave={(event) => { if (event.currentTarget === event.target) controller.setDragging(false) }} onClick={controller.items.length ? undefined : () => controller.inputRef.current?.click()} role={controller.items.length ? undefined : 'button'} tabIndex={controller.items.length ? undefined : 0} onKeyDown={controller.items.length ? undefined : (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); controller.inputRef.current?.click() } }} aria-label={controller.items.length ? undefined : t('selectAria')}>
       <input ref={controller.inputRef} type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple onChange={onInput} hidden />
-      {controller.items.length ? <FileGrid controller={controller} /> : <EmptyDropZone route={route} t={t} onPick={() => controller.inputRef.current?.click()} />}
+      {controller.items.length ? referenceState ? <ReimaginePreview item={controller.items[0]} /> : <FileGrid controller={controller} /> : <EmptyDropZone route={route} t={t} onPick={() => controller.inputRef.current?.click()} />}
     </div>
-    {/* The reference keeps prompt/model controls hidden until an image exists. */}
     {route === 'reimagine' && controller.items.length > 0 && <ReimagineControls controller={controller} />}
     {controller.items.length > 0 && <WorkspaceActions route={route} options={options} hasDone={hasDone} controller={controller} />}
   </Card>
@@ -59,17 +59,22 @@ function FileGrid({ controller }: { controller: WorkspaceController }) {
 
 }
 
-function ReimagineControls({ controller }: { controller: WorkspaceController }) {
-  const t = useTranslations('workspace')
-  return <div className="reimagine-controls"><label><span>{t('prompt')}</span><Textarea placeholder={t('promptPlaceholder')} value={controller.prompt} onChange={(event) => controller.setPrompt(event.target.value)} rows={2} /></label><div className="slider-row"><Range label={t('creativity')} value={controller.creativity} onChange={controller.setCreativity} /><Range label={t('similarity')} value={controller.similarity} onChange={controller.setSimilarity} /></div></div>
+function ReimaginePreview({ item }: { item: FileItem }) {
+  return <div className="reimagine-preview"><div className="reimagine-preview-inner"><img src={item.resultUrl ?? item.url} alt={item.file.name} /></div>{item.status === 'processing' && <span className="reimagine-preview-status">Processing…</span>}{item.status === 'error' && item.error && <span className="reimagine-preview-error">{item.error}</span>}</div>
 }
 
-function Range({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {
-  return <label><span>{label}<b>{value}%</b></span><input type="range" min="0" max="100" value={value} onChange={(event) => onChange(Number(event.target.value))} /></label>
+function ReimagineControls({ controller }: { controller: WorkspaceController }) {
+  const t = useTranslations('workspace')
+  return <div className="reimagine-controls"><div className="reimagine-model-picker" aria-label={t('model')}><button type="button" className={controller.scale === '1' ? 'selected' : ''} onClick={() => controller.setScale('1')}>{t('portraitModel')}</button><button type="button" className={controller.scale === '2' ? 'selected' : ''} onClick={() => controller.setScale('2')}>{t('detailModel')}</button></div><div className="reimagine-settings"><label><span>{t('prompt')}</span><Textarea placeholder={t('promptPlaceholder')} value={controller.prompt} onChange={(event) => controller.setPrompt(event.target.value)} rows={3} /></label><div className="slider-row"><Range label={t('creativity')} value={controller.creativity} min={0.05} max={0.5} step={0.01} valueLabel={controller.creativity.toFixed(2)} onChange={controller.setCreativity} /><Range label={t('similarity')} value={controller.similarity} min={0} max={30} step={1} valueLabel={String(controller.similarity)} onChange={controller.setSimilarity} /></div></div></div>
+}
+
+function Range({ label, value, min, max, step, valueLabel, onChange }: { label: string; value: number; min: number; max: number; step: number; valueLabel: string; onChange: (value: number) => void }) {
+  return <label><span>{label}<b>{valueLabel}</b></span><input type="range" min={min} max={max} step={step} value={value} onChange={(event) => onChange(Number(event.target.value))} /></label>
 }
 
 function WorkspaceActions({ route, options, hasDone, controller }: { route: Route; options: string[]; hasDone: boolean; controller: WorkspaceController }) {
   const t = useTranslations('workspace')
-  const heading = route === 'enhancer' ? t('output') : route === 'reimagine' ? t('model') : t('scale')
-  return <><div className="workspace-controls"><div className="scale-picker"><span>{heading}</span>{options.map((value) => <button key={value} className={controller.scale === value ? 'selected' : ''} onClick={() => controller.setScale(value)}>{route === 'reimagine' ? value === '1' ? t('portrait') : t('detail') : `${value}K`}</button>)}</div><div className="workspace-actions"><button className="text-button" onClick={controller.clearItems} disabled={controller.processing}>{t('clear')}</button>{hasDone && <button className="outline-button" onClick={controller.downloadAll}><Icon name="download" />{t('downloadResults')}</button>}{controller.processing && <button className="outline-button" onClick={controller.cancel}>{t('cancel')}</button>}<button className="process-button" disabled={controller.processing} onClick={() => controller.process()}>{controller.processing ? `${controller.progress.completed}/${controller.progress.total} ${t('processing')}` : t('start')}</button></div></div><div className="workspace-foot"><span><Icon name="lock" />{t('local')}</span><span>{t('limit')}</span></div></>
+  if (route === 'reimagine') return <div className="reimagine-actions"><button type="button" className="outline-button" onClick={controller.clearItems} disabled={controller.processing}><Icon name="close" />{t('removeUploaded')}</button>{hasDone && <button type="button" className="outline-button" onClick={controller.downloadAll}><Icon name="download" />{t('downloadResults')}</button>}<button type="button" className="process-button" disabled={controller.processing} onClick={() => controller.process()}><Icon name="upload" />{controller.processing ? `${controller.progress.completed}/${controller.progress.total} ${t('processing')}` : t('startProcessing')}</button></div>
+  const heading = route === 'enhancer' ? t('output') : t('scale')
+  return <><div className="workspace-controls"><div className="scale-picker"><span>{heading}</span>{options.map((value) => <button key={value} className={controller.scale === value ? 'selected' : ''} onClick={() => controller.setScale(value)}>{`${value}K`}</button>)}</div><div className="workspace-actions"><button className="text-button" onClick={controller.clearItems} disabled={controller.processing}>{t('clear')}</button>{hasDone && <button className="outline-button" onClick={controller.downloadAll}><Icon name="download" />{t('downloadResults')}</button>}{controller.processing && <button className="outline-button" onClick={controller.cancel}>{t('cancel')}</button>}<button className="process-button" disabled={controller.processing} onClick={() => controller.process()}>{controller.processing ? `${controller.progress.completed}/${controller.progress.total} ${t('processing')}` : t('start')}</button></div></div><div className="workspace-foot"><span><Icon name="lock" />{t('local')}</span><span>{t('limit')}</span></div></>
 }

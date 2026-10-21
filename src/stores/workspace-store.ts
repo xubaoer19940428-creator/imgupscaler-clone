@@ -19,8 +19,8 @@ const initialWorkspace = (route: WorkspaceRoute): WorkspaceSlice => ({
   processing: false,
   progress: { completed: 0, total: 0 },
   prompt: '',
-  creativity: 34,
-  similarity: 78,
+  creativity: 0.3,
+  similarity: 7,
 })
 
 type WorkspaceState = {
