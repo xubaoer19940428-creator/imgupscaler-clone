@@ -1,59 +1,100 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocale, useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { useLocale } from 'next-intl'
 import type { Route } from '@/src/lib/types'
 import { routeToPath } from '@/src/lib/locale-routing'
+import type { Locale } from '@/src/lib/locale'
+import type { ApiUser } from '@/src/lib/api/types'
+import { api } from '@/src/lib/api/client'
+import { useAuthStore } from '@/src/stores/auth-store'
 import { SiteFooter } from './site-footer'
 import { SiteHeader } from './site-header'
+import { LoginDialog } from './login-dialog'
 import { Icon } from '@/src/components/ui/icons'
 
 type AccountTab = 'profile' | 'billing' | 'security'
-type Locale = 'zh' | 'en'
-type AccountCopy = Record<AccountTab | 'back' | 'member' | 'name' | 'title' | 'current' | 'credits' | 'save' | 'redeem' | 'redeemAction' | 'upgrade' | 'signOut' | 'update' | 'danger' | 'delete' | 'saved' | 'deleted' | 'email' | 'avatar' | 'currentPassword' | 'newPassword' | 'billingNote' | 'signIn', string>
 
-const copy: Record<Locale, AccountCopy> = {
-  zh: { back: '返回工作区', member: '会员', profile: '个人简介', billing: '订阅与积分', security: '安全设置', name: '钱诚', title: '我的账户', current: '当前方案', credits: '可用积分', save: '保存更改', redeem: '兑换码', redeemAction: '兑换', upgrade: '升级方案', signOut: '退出登录', update: '更新密码', danger: '危险区域', delete: '删除账户', saved: '演示保存成功，真实服务端接入后提交。', deleted: '演示删除已拦截，生产环境需要二次确认。', email: '电子邮件', avatar: '头像链接', currentPassword: '当前密码', newPassword: '新密码', billingNote: '升级、取消订阅、支付记录和积分扣减必须由服务端和支付 webhook 维护。', signIn: '登录' },
-  en: { back: 'Back to workspace', member: 'MEMBER', profile: 'Profile', billing: 'Billing', security: 'Security', name: 'Qian Cheng', title: 'My account', current: 'CURRENT PLAN', credits: 'AVAILABLE CREDITS', save: 'Save changes', redeem: 'Redeem code', redeemAction: 'Redeem', upgrade: 'Upgrade plan', signOut: 'Sign out', update: 'Update password', danger: 'Danger zone', delete: 'Delete account', saved: 'Demo saved locally; connect your server to persist changes.', deleted: 'Demo deletion blocked; production needs confirmation.', email: 'Email', avatar: 'Avatar URL', currentPassword: 'Current password', newPassword: 'New password', billingNote: 'Upgrades, cancellations, payment history, and credit deductions must be maintained by your server and payment webhooks.', signIn: 'Sign in' },
-}
-
-/** Account shell mirrors the reference account area while keeping writes local in this demo. */
 export function AccountPage({ locale: providedLocale }: { locale?: Locale } = {}) {
   const router = useRouter()
   const runtimeLocale = useLocale() as Locale
   const locale = providedLocale ?? runtimeLocale
+  const t = useTranslations('account')
+  const authT = useTranslations('auth')
+  const auth = useAuthStore()
   const [tab, setTab] = useState<AccountTab>('profile')
   const [message, setMessage] = useState('')
-  const labels = copy[locale]
-  const navigate = (route: Route) => router.push(routeToPath(route))
-  const notify = (value: string) => setMessage(value)
+  const [loginOpen, setLoginOpen] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const navigate = (route: Route) => router.push(routeToPath(route, locale))
 
-  return <div className="app-shell"><SiteHeader onLogin={() => notify(labels.signIn)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell"><AccountHeading locale={locale} labels={labels} /><div className="account-layout"><AccountTabs tab={tab} labels={labels} onChange={setTab} locale={locale} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel locale={locale} labels={labels} onNotify={notify} />}{tab === 'billing' && <BillingPanel labels={labels} locale={locale} />}{tab === 'security' && <SecurityPanel locale={locale} labels={labels} onNotify={notify} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></div></main><SiteFooter locale={locale} /></div>
+  useEffect(() => { auth.hydrate() }, [auth.hydrate])
+  useEffect(() => {
+    if (!auth.hydrated) return
+    if (!auth.token) { setLoading(false); return }
+    if (auth.user) { setLoading(false); return }
+    let active = true
+    api.profile().then((user) => { if (active) auth.setUser(user) }).catch((error) => {
+      if (!active) return
+      if (error && typeof error === 'object' && 'status' in error && (error as { status?: number }).status === 401) auth.clearSession()
+      setMessage(t('loadFailed'))
+    }).finally(() => { if (active) setLoading(false) })
+    return () => { active = false }
+  }, [auth.hydrated, auth.token, auth.user, auth.setUser, auth.clearSession, t])
+
+  const signIn = async (email: string, password: string) => {
+    const session = await api.login(email, password)
+    auth.setSession(session.token, session.user_info)
+    setLoginOpen(false)
+    setMessage(authT('submitted'))
+  }
+
+  const signInWithGoogle = async () => {
+    const { redirect_url } = await api.socialLogin('google')
+    window.location.assign(redirect_url)
+  }
+
+  const signOut = async () => { await api.logout().catch(() => undefined); auth.clearSession() }
+  return <div className="app-shell"><SiteHeader onLogin={() => setLoginOpen(true)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell">{loading ? <p className="account-feedback">{t('loading')}</p> : !auth.user ? <section className="account-empty"><span className="kicker">{t('member')}</span><h1>{t('title')}</h1><p>{t('signInPrompt')}</p><button className="dark-button" type="button" onClick={() => setLoginOpen(true)}>{t('signIn')} <Icon name="arrow" /></button></section> : <><AccountHeading t={t} user={auth.user} /><div className="account-layout"><AccountTabs tab={tab} t={t} onChange={setTab} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel t={t} user={auth.user} onNotify={setMessage} onUser={auth.setUser} onSignOut={signOut} />}{tab === 'billing' && <BillingPanel t={t} locale={locale} user={auth.user} />}{tab === 'security' && <SecurityPanel t={t} onNotify={setMessage} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></>}</div></main><SiteFooter locale={locale} />{loginOpen && <LoginDialog onClose={() => setLoginOpen(false)} onGoogle={signInWithGoogle} onSubmit={async (email, password) => { try { await signIn(email, password) } catch { setMessage(authT('loginFailedDetail')) } }} />}</div>
 }
 
-function AccountHeading({ locale, labels }: { locale: Locale; labels: AccountCopy }) {
-  const email = locale === 'zh' ? 'xubaoer19940428@gmail.com' : 'xubaoer19940428@gmail.com'
-  const plan = locale === 'zh' ? '免费' : 'Free'
-  return <section className="account-heading" aria-labelledby="account-title"><div className="account-identity"><div className="account-profile-avatar"><img src="/reference/unnamed.jpg" alt={labels.name} /></div><div className="account-identity-copy"><span className="kicker">{labels.member}</span><h1 id="account-title">{labels.name}</h1><p>{email}</p></div></div><div className="account-summary"><div><span>{locale === 'zh' ? '当前方案' : 'Current plan'}</span><strong>{plan}</strong></div><div><span>{locale === 'zh' ? '可用积分' : 'Available credits'}</span><strong><span className="account-summary-zap" aria-hidden="true">✦</span>50</strong></div></div></section>
+function AccountHeading({ t, user }: { t: ReturnType<typeof useTranslations<'account'>>; user: ApiUser }) {
+  const name = user.nickname || user.email || t('unknown')
+  const plan = user.is_vip || user.is_paid ? t('planPremium') : t('planFree')
+  const credits = user.remain_coins !== undefined ? String(user.remain_coins) : t('unknown')
+  return <section className="account-heading" aria-labelledby="account-title"><div className="account-identity"><div className="account-profile-avatar">{user.avatar ? <img src={user.avatar} alt={name} /> : <span aria-hidden="true">{initials(name)}</span>}</div><div className="account-identity-copy"><span className="kicker">{t('member')}</span><h1 id="account-title">{name}</h1><p>{user.email || t('unknown')}</p></div></div><div className="account-summary"><div><span>{t('current')}</span><strong>{plan}</strong></div><div><span>{t('credits')}</span><strong><span className="account-summary-zap" aria-hidden="true">✦</span>{credits}</strong></div></div></section>
 }
 
-function AccountTabs({ tab, labels, onChange, locale }: { tab: AccountTab; labels: AccountCopy; onChange: (tab: AccountTab) => void; locale: Locale }) {
+function AccountTabs({ tab, t, onChange }: { tab: AccountTab; t: ReturnType<typeof useTranslations<'account'>>; onChange: (tab: AccountTab) => void }) {
   const icons: Record<AccountTab, 'user' | 'credit-card' | 'lock'> = { profile: 'user', billing: 'credit-card', security: 'lock' }
-  return <nav className="account-tabs" aria-label={locale === 'zh' ? '账户设置' : 'Account settings'}>{(['profile', 'billing', 'security'] as AccountTab[]).map((item) => <button type="button" key={item} className={tab === item ? 'active' : ''} onClick={() => onChange(item)}><Icon name={icons[item]} />{labels[item]}</button>)}</nav>
+  return <nav className="account-tabs" aria-label={t('settings')}>{(['profile', 'billing', 'security'] as AccountTab[]).map((item) => <button type="button" key={item} className={tab === item ? 'active' : ''} onClick={() => onChange(item)}><Icon name={icons[item]} />{t(item)}</button>)}</nav>
 }
 
-function ProfilePanel({ locale, labels, onNotify }: { locale: Locale; labels: AccountCopy; onNotify: (message: string) => void }) {
-  const email = 'xubaoer19940428@gmail.com'
-  return <><span className="kicker">{locale === 'zh' ? '个人资料' : 'Profile'}</span><h2>{labels.profile}</h2><label>{locale === 'zh' ? '显示名称' : 'Display name'}<input name="displayName" defaultValue={labels.name} autoComplete="name" /></label><label>{labels.avatar}<input name="avatarUrl" placeholder="https://example.com/avatar.png" autoComplete="url" /></label><label>{labels.email}<input name="email" defaultValue={email} type="email" autoComplete="email" /></label><button className="dark-button" onClick={() => onNotify(labels.saved)}>{labels.save}</button><label>{labels.redeem}<input name="redeemCode" autoComplete="off" /></label><button className="outline-button" onClick={() => onNotify(labels.saved)}>{labels.redeemAction}</button><button className="text-button" onClick={() => onNotify(labels.signOut)}>{labels.signOut}</button></>
+function ProfilePanel({ t, user, onNotify, onUser, onSignOut }: { t: ReturnType<typeof useTranslations<'account'>>; user: ApiUser; onNotify: (message: string) => void; onUser: (user: ApiUser | null) => void; onSignOut: () => void | Promise<void> }) {
+  const [displayName, setDisplayName] = useState(user.nickname || '')
+  const [avatar, setAvatar] = useState(user.avatar || '')
+  const [redeemCode, setRedeemCode] = useState('')
+  const save = async () => { try { onUser(await api.updateProfile({ nickname: displayName.trim() || undefined, avatar: avatar.trim() || undefined })); onNotify(t('saved')) } catch { onNotify(t('saveFailed')) } }
+  const redeem = async () => { if (!redeemCode.trim()) return; try { await api.redeem(redeemCode.trim()); onNotify(t('redeemed')); setRedeemCode('') } catch { onNotify(t('redeemFailed')) } }
+  const deleteAccount = async () => { if (!window.confirm(t('deleteConfirm'))) return; try { await api.deleteAccount(); useAuthStore.getState().clearSession(); onNotify(t('deleted')) } catch { onNotify(t('deleteFailed')) } }
+  return <><span className="kicker">{t('profileKicker')}</span><h2>{t('profile')}</h2><label>{t('displayName')}<input name="displayName" value={displayName} onChange={(event) => setDisplayName(event.target.value)} autoComplete="name" /></label><label>{t('avatar')}<input name="avatarUrl" value={avatar} onChange={(event) => setAvatar(event.target.value)} placeholder={t('placeholderAvatar')} autoComplete="url" /></label><label>{t('email')}<input name="email" value={user.email || ''} readOnly type="email" autoComplete="email" /></label><button className="dark-button" type="button" onClick={() => void save()}>{t('save')}</button><label>{t('redeem')}<input name="redeemCode" value={redeemCode} onChange={(event) => setRedeemCode(event.target.value)} autoComplete="off" /></label><button className="outline-button" type="button" onClick={() => void redeem()}>{t('redeemAction')}</button><button className="text-button" type="button" onClick={() => void onSignOut()}>{t('signOut')}</button><div className="danger-zone"><strong>{t('danger')}</strong><p>{t('dangerDescription')}</p><button className="danger-button" type="button" onClick={() => void deleteAccount()}>{t('delete')}</button></div></>
 }
 
-function BillingPanel({ labels, locale }: { labels: AccountCopy; locale: Locale }) {
-  return <><span className="kicker">{labels.billing}</span><h2>{labels.billing}</h2><div className="account-plan"><div><span>{labels.current}</span><strong>{locale === 'zh' ? '免费' : 'Free'}</strong></div><div><span>{labels.credits}</span><strong>50</strong></div><Link href="/pricing" className="dark-button">{labels.upgrade}</Link></div><p className="account-note">{labels.billingNote}</p></>
+function BillingPanel({ t, locale, user }: { t: ReturnType<typeof useTranslations<'account'>>; locale: Locale; user: ApiUser }) {
+  const plan = user.is_vip || user.is_paid ? t('planPremium') : t('planFree')
+  const credits = user.remain_coins !== undefined ? String(user.remain_coins) : t('unknown')
+  return <><span className="kicker">{t('billing')}</span><h2>{t('billing')}</h2><div className="account-plan"><div><span>{t('current')}</span><strong>{plan}</strong></div><div><span>{t('credits')}</span><strong>{credits}</strong></div><Link href={routeToPath('pricing', locale)} className="dark-button">{t('upgrade')}</Link></div><p className="account-note">{t('billingNote')}</p></>
 }
 
-function SecurityPanel({ locale, labels, onNotify }: { locale: Locale; labels: AccountCopy; onNotify: (message: string) => void }) {
-  const description = locale === 'zh' ? '删除账户并永久清除账户级数据。' : 'Delete your account and permanently remove account-level data.'
-  return <><span className="kicker">{labels.security}</span><h2>{labels.security}</h2><label>{labels.currentPassword}<input name="currentPassword" type="password" autoComplete="current-password" /></label><label>{labels.newPassword}<input name="newPassword" type="password" autoComplete="new-password" /></label><button className="dark-button" onClick={() => onNotify(labels.saved)}>{labels.update}</button><div className="danger-zone"><strong>{labels.danger}</strong><p>{description}</p><button className="danger-button" onClick={() => onNotify(labels.deleted)}>{labels.delete}</button></div></>
+function SecurityPanel({ t, onNotify }: { t: ReturnType<typeof useTranslations<'account'>>; onNotify: (message: string) => void }) {
+  const [oldPassword, setOldPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const update = async () => { try { await api.changePassword(oldPassword, newPassword); setOldPassword(''); setNewPassword(''); onNotify(t('passwordUpdated')) } catch { onNotify(t('passwordFailed')) } }
+  return <><span className="kicker">{t('security')}</span><h2>{t('security')}</h2><label>{t('currentPassword')}<input name="currentPassword" value={oldPassword} onChange={(event) => setOldPassword(event.target.value)} type="password" autoComplete="current-password" /></label><label>{t('newPassword')}<input name="newPassword" value={newPassword} onChange={(event) => setNewPassword(event.target.value)} type="password" autoComplete="new-password" /></label><button className="dark-button" type="button" onClick={() => void update()}>{t('update')}</button></>
+}
+
+function initials(name: string) {
+  return name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join('').toUpperCase()
 }

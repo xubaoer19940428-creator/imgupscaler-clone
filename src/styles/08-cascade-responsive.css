@@ -41,9 +41,6 @@
   .hero-copy > p, .pricing-hero > p { font-size: 16px; line-height: 26px; }
   .workspace-card { margin-top: 32px; padding: 16px; border-radius: 16px; }
   .drop-zone, .drop-zone.has-files { min-height: 240px; }
-  .promo-card { align-items: flex-start; flex-wrap: wrap; }
-  .promo-copy { min-width: calc(100% - 54px); }
-  .promo-actions { width: 100%; padding-left: 54px; }
   .video-section, .feature-section, .reference-section, .workflow-section .section-wrap, .testimonial-section, .faq-section { padding-right: 16px; padding-left: 16px; }
   .feature-section { max-width: none; }
   .video-section .section-heading, .feature-section .section-heading, .reference-section .section-heading, .workflow-section .section-heading, .testimonial-section .section-heading, .faq-section .section-heading { margin-bottom: 32px; }

@@ -12,8 +12,7 @@ export const FEATURE_FLAGS = {
   enableAccount: true,        // 账户与登录 (保留)
 
   // 页面辅助区块与工具显隐
-  enablePromoSection: true,   // 首屏 Upscal 桌面客户端推广卡片
-  enableImageEditor: false,   // 图片完成后的裁剪/编辑功能 (当前隐藏，直接下载)
+  enableImageEditor: true,    // 图片完成后的裁剪/编辑功能
 } as const
 
 export type FeatureFlags = typeof FEATURE_FLAGS

@@ -66,6 +66,7 @@
 .account-popover-profile { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 12px; border: 1px solid #e5e7eb; border-radius: 12px; background: rgba(248,250,252,.8); }
 .account-popover-avatar { width: 40px; height: 40px; flex: 0 0 40px; overflow: hidden; border: 1px solid #e5e7eb; border-radius: 50%; background: #f8fafc; }
 .account-popover-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.account-popover-avatar span, .avatar-button span, .mobile-account-avatar span, .account-profile-avatar span { display: grid; width: 100%; height: 100%; place-items: center; color: #3157c9; font-size: 12px; font-weight: 800; }
 .account-popover-identity { min-width: 0; display: grid; gap: 2px; }
 .account-popover-identity strong, .account-popover-identity span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .account-popover-identity strong { color: #111827; font-size: 14px; line-height: 20px; }
@@ -184,6 +185,9 @@
   background: radial-gradient(circle at 8% 0%, rgba(27,97,201,.08), transparent 34%), #f8fafc;
 }
 .account-shell { width: min(896px, 100%); margin: 0 auto; }
+.account-empty { padding: 48px 32px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.06); text-align: center; }
+.account-empty h1 { margin-top: 10px; color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; }
+.account-empty p { max-width: 420px; margin: 12px auto 22px; color: var(--muted); line-height: 1.7; }
 .account-heading {
   display: flex;
   align-items: flex-start;

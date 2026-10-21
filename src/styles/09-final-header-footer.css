@@ -44,6 +44,7 @@
 .site-header .ghost-button:hover { background: #f3f5f8; }
 .site-header .dark-button { min-height: 40px; padding: 8px 16px; border-radius: 8px; color: #fff; background: #294eff; font-size: 14px; font-weight: 600; box-shadow: none; }
 .site-header .dark-button:hover { background: #1d3fd9; box-shadow: none; transform: none; }
+.site-header .header-login-button { margin-left: 8px; }
 .menu-button { display: none; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 1px solid #e5e7eb; border-radius: 8px; color: #111827; background: #fff; }
 .menu-button:hover { background: #f3f5f8; }
 

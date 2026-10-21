@@ -1,6 +1,6 @@
 # Img.Upscaler 前端复刻项目记忆
 
-> 最后更新：2026-09-20
+> 最后更新：2026-10-21
 >
 > 本文件是当前复刻项目的长期维护记录。后续替换图片、调整页面、接入真实 AI 服务或继续对照参考站时，先阅读本文件，再修改代码。
 
@@ -28,6 +28,8 @@
 
 1. 线上中文站：`https://imgupscaler.com/zh`，用于确认页面层级、产品名称、导航和营销内容方向。
 2. 本地 HTML 稿：`文稿/AI _ ImgUpscaler.html`，用于对照落地页的区块顺序、布局节奏、图片位置和页面形态。
+
+> 2026-10-10 核查：工作区内已不存在 `文稿/` 目录，`我自己的代码`、`~/Downloads`、`~/Desktop`、`~/Documents` 下也搜不到 `*ImgUpscaler*.html`。当前**唯一可用的对照源是线上站**；本文件中所有"对照参考稿"的历史结论暂时无法用本地稿复核。若以后重新拿到参考稿，请放回项目根目录 `文稿/`。
 
 后续继续复刻时遵循以下原则：
 
@@ -126,7 +128,7 @@ npx tsc --noEmit
 5. 六张权益卡
 6. 定价 FAQ 手风琴
 
-Free 按钮会回到工作区；Premium 和 Business 当前打开演示登录弹窗。年付切换只改变展示价格，不发起真实订阅。
+Free 按钮会回到工作区；Premium 和 Business 当前打开真实登录弹窗。年付切换只改变展示价格，不发起真实订阅。
 
 ### 账户页
 
@@ -201,7 +203,7 @@ public/reference/            当前占位素材，后续可直接替换
 
 - 支持：JPG、PNG、WebP、AVIF。
 - 单张大小上限：20 MB。
-- 单个工作区最多：12 张。
+- 单个工作区最多：20 张。
 - 通过 `URL.createObjectURL` 做本地预览。
 - 移除、清空、替换结果和卸载时调用 `URL.revokeObjectURL`。
 - 处理期间禁止新增和删除，避免异步结果回写到错误的列表。
@@ -228,7 +230,7 @@ ready -> processing -> done
 
 ### 浏览器端演示处理
 
-`createDemoResult` 的流程：
+旧版 `createDemoResult` 的流程：
 
 1. 为源文件创建临时 object URL。
 2. 加载图片并读取原始尺寸。
@@ -238,7 +240,7 @@ ready -> processing -> done
 6. 以 WebP 生成结果 object URL。
 7. 在 finally 中释放源 object URL。
 
-这只是为了验证 UI 闭环，不代表 AI 重建细节。真实模型接入应替换 controller 中对 `createDemoResult` 的调用。
+这只是旧版 UI 演示流程，当前已移除；工作区现在始终调用真实图片 API。
 
 ### 下载、编辑和重试
 
@@ -272,7 +274,7 @@ ready -> processing -> done
 
 菜单样式位于 `src/styles/10-final-page-fixes.css` 的 `.mobile-nav-*` 规则，使用整宽下拉面板、顶部边框分隔、16px 两侧安全边距和 42px 点击区域。桌面端仍保留头像旁的独立账户 Popover；移动端菜单和头像 Popover 互斥，点击导航或账户链接后自动关闭。
 
-`src/lib/feature-flags.ts` 中 `enableEnhancer` 和 `enableReimagine` 已开启，使移动菜单与参考稿保持完整的四项导航；如果后续需要隐藏产品，只修改功能开关，不修改 Header JSX。
+`src/lib/feature-flags.ts` 中 `enableEnhancer` 和 `enableReimagine` 当前均为 `true`（2026-10-10 恢复），移动菜单与参考稿保持完整的四项导航；如果后续需要隐藏产品，只修改功能开关，不修改 Header JSX。（本行曾与第 14.8 节记录的 `false` 状态矛盾，现已统一为 `true`。）
 
 ## 10. Before / After 对比卡实现记录
 
@@ -499,6 +501,15 @@ type UpscaleResult = {
 
 **恢复方法**：任何时候若需要重新开启某项功能，只需将 `src/lib/feature-flags.ts` 中对应的布尔值改回 `true` 即可立刻恢复全部功能，无需调整任何业务代码。
 
+**当前状态（2026-10-10：已按用户要求全部放出）**：
+
+- `enableEnhancer: true`、`enableReimagine: true`：导航恢复「图像增强器」「重新构想」，`/enhancer`、`/zh/enhancer`、`/reimagine`、`/zh/reimagine` 不再回退主页。
+- `enablePromoSection: true`：首屏 Hero 下方的 Upscal 桌面客户端推广卡片重新显示。
+- `enableImageEditor: true`：工作区完成图片的「编辑」裁剪/旋转弹窗按钮重新显示。
+- `enablePricing: true`、`enableAccount: true`：维持不变。
+
+注意：`.site-header .header-account` 在 720px 及以下仍有 `display: none`（见 `src/styles/10-final-page-fixes.css` 第 127 行附近），这是移动端避免账户双入口的布局决定，**不受 feature flag 控制**。若要让移动端也显示头像入口，需要单独改这条 CSS。
+
 ## 17. 验证结果
 
 
@@ -538,6 +549,19 @@ npm run build
 6. 如果要上线，补充图片内容安全、速率限制、上传大小服务端校验、CSP、错误监控和可访问性审计。
 
 ## 19. 维护日志
+
+### 2026-10-10（放出隐藏功能 + 线上站对照核查）
+- 按用户要求把隐藏内容全部放出：`src/lib/feature-flags.ts` 中 `enableEnhancer`、`enableReimagine`、`enablePromoSection`、`enableImageEditor` 由 `false` 改为 `true`。这是唯一改动的代码文件。
+- 恢复后验证：新增路由 `/enhancer`、`/zh/enhancer`、`/reimagine`、`/zh/reimagine` 均返回 200，不再回退主页；导航出现「图像增强器」「重新构想」「定价」四项；Hero 下方 Upscal 推广卡片重新出现（`Upscal.jpeg`、`了解更多`、`微软商店`、`Mac App Store`）；`npx tsc --noEmit` 通过。
+- 修正本文件的两处自相矛盾：第 8 节原先写"已开启"、第 14.8 节写"已设为 false"，现统一按当前 `true` 记录。
+- 核查参考源：工作区与常见目录下均已找不到本地参考稿 `文稿/AI _ ImgUpscaler.html`，当前对照源只剩线上站 `https://imgupscaler.com/zh`。
+- 线上站对照（抽查 `/zh`、`/zh/enhancer`、`/zh/reimagine`、`/zh/pricing`、`/zh/account`，用无头 Chrome 渲染真实 DOM + 截图比对，非纯 SSR 比对）结论：**不是一模一样**，主要差异集中在：
+  - Header 账户入口：线上站是「Chrome 扩展 / 登录 / 注册」三个按钮，本项目按本地参考稿改成了头像 Popover（账户/计费/退出）。
+  - 元数据：线上站每个路由有独立的中文 SEO 标题与描述；本项目 `/enhancer`、`/reimagine` 等路由 SSR 标题仍是英文（如 `Image Enhancer — Img.Upscaler`），描述为统一的 `AI image upscaling and enhancement in the browser.`。
+  - 营销区块文案：功能卡 H3、FAQ 问句与线上站基本一致；但用例区标题（线上"AI图像放大技术，助力真正的创意工作" vs 本项目"为网页、印刷与社交媒体准备清晰素材。"）和流程区标题（线上"如何在线放大图片" vs 本项目"三步完成清晰输出。"）不同。
+  - 内容完整度：线上站评测区有 Eleonore Lefaix / Eva Williams / Matic Broz / Sravan 等具名评价，本项目只渲染了区块标题；线上站推广卡有 Google Play、App Store 链接，本项目只有微软商店和 Mac App Store。
+  - 素材：线上站每个用例、流程、评测都有独立图片资源，本项目仍复用 `public/reference/` 下的少量占位图。
+  - 语言机制：本项目 SSR 输出与 locale 无关（`/zh` 与 `/` 的 HTML 字节数完全相同），语言在客户端 hydration 后切换，因此线上站"每路由独立中文 metadata"这一点当前无法通过 SSR 达成。
 
 ### 2026-09-20
 - 根据 `ImgUpscaler.html` 参考稿恢复并重做账户入口：Header 现在使用 `public/reference/unnamed.jpg` 作为头像，点击头像打开可关闭的 Popover，而不是显示登录/注册按钮。Popover 包含用户头像、钱诚 / 邮箱、免费方案、50 积分、账户、计费和退出入口；账户与计费链接会根据当前语言自动生成 `/account` 或 `/zh/account` 路径。
@@ -601,7 +625,70 @@ npm run build
 ### 2026-10-21
 - 按文稿 `/Users/qiancheng/Documents/enhancer.html` 和 `/Users/qiancheng/Documents/reimagine.html` 复刻 Enhancer 与 Reimagine 页面，开启 `enableEnhancer`、`enableReimagine` 和 `enablePromoSection`。
 - 使用文稿资源新增 `public/reference/enhancer/` 与 `public/reference/reimagine/` 的真实 Before/After 示例，并将英文页面营销文案、功能卡、用例、工作流和 FAQ 与线上页面结构对齐；中文路由保留中文内容。
-- 新增并接通 `src/services/imgupscaler-api.ts`：复用 artguru-clone 的 `NEXT_PUBLIC_ARTGURU_API_ENABLED`、`NEXT_PUBLIC_ARTGURU_API_BASE_URL` 和 `artguru-token`，工作区先通过 `/v1/get-upload-url` 上传文件并登记 `/v1/files`，再调用 `/v1/ai/images/{operation}`，轮询 `/v1/ai/runs/{runId}` 获取 `result.items[].url`，支持取消请求；未启用或未登录时继续使用本地 Canvas fallback。
+- 新增并接通 `src/services/imgupscaler-api.ts`：工作区始终通过 `/v1/get-upload-url` 上传文件并登记 `/v1/files`，再调用 `/v1/ai/images/{operation}`，轮询 `/v1/ai/runs/{runId}` 获取 `result.items[].url`，支持取消请求；不再使用本地 Canvas 推理 fallback。
 - 图片生成接口使用 AIController-API 的 canonical body（`model`、`input_references`、`size`、`prompt`、`creativity`、`similarity`），不复用 artguru-clone 的 `/v1/models/{slug}/runs` 生成路径。默认模型为 `openai/gpt-image-1`，可由 `NEXT_PUBLIC_IMGUPSCALER_*_MODEL` 覆盖。
 - API 仍依赖现有登录 token（优先 `imgupscaler-token`，兼容 `artguru-token`）；生产环境应将 token 注入真实认证流程，并根据后端上传接口的实际字段调整上传登记逻辑。
 - API 层已按 artguru-clone 的职责拆分并改用 Axios：`src/lib/api/request.ts` 统一 Axios client、Bearer、域名/语言/时区请求头、envelope 解包和错误；`files.ts` 负责预签名上传与 `/files` 登记；`ai.ts` 负责 `/ai/images/{operation}`、Run 查询和取消；`client.ts` 作为门面；`src/services/imgupscaler-api.ts` 只编排 ImgUpscaler 的模型、operation、canonical body 和轮询。
+- 全量替换 `public/reference/` 目录下的所有展示图片素材：保持原页面视觉风格、场景氛围、色调及 Before/After 对比逻辑不变，人物/动漫角色及产品主体全部替换为不同主体，包含用户头像 (`unnamed.jpg`)、视频展示对比图 (`youtube-thumbnail.jpeg`)、首页主对比图 (`anime-original.webp` / `anime-upscaler.webp`)、营销用例卡 (`upscale-image-online.jpeg`、`enhance-subjects.jpeg`、`batch-upscaler.jpeg`) 以及 `enhancer/` 与 `reimagine/` 目录下的全部人像、动漫、建筑、微距鸟类对比图。
+- 批量处理卡片 `public/reference/batch-upscaler.jpeg`：已将原图主体替换为全新青蓝配色高浮雕运动跑鞋，保留浅蓝渐变玻璃质感底卡与柔和弥散阴影，并同步重绘左下角批处理状态队列第一项缩略图，使其与主卡片跑鞋外观高度一致。
+
+### 2026-10-21（修复 useLocaleStore 导出报错）
+- `src/lib/locale.ts` 已改为只提供 URL 驱动的 `Locale` 类型、`DEFAULT_LOCALE`、`isLocale` 和 `localeFromPathname`；`SiteFooter`、`IntlProvider` 等调用方均已移除 `useLocaleStore` 依赖，源码中不再存在该引用。
+- 报错来源是旧的 `.next/dev` Turbopack 模块缓存仍引用已删除的 `useLocaleStore` 导出；删除 `.next/dev` 并重启 `pnpm dev` 后，开发服务在 `http://localhost:3000` 正常返回 `/` 200。
+- 使用 `pnpm exec tsc --noEmit`、`pnpm run build` 验证通过；构建生成 18 个静态路由，`app` 与 `src` 中无 `useLocaleStore` 残留引用。
+
+### 2026-10-21（统一多语言消息）
+- 将落地页、Promo、前后对比、FAQ、定价、账户、法律页、Header、Footer、登录弹窗、metadata、Canvas 错误和工作区默认提示词统一迁移到 `messages/en.json` 与 `messages/zh.json`。
+- `src/features/landing/data.tsx` 现在只保留类型、消息读取和图片/路由结构，不再维护中英文文案；删除重复的 `localized-data.tsx`。
+- 法律页改为按页面 ID 从当前 locale 的消息读取；账户和定价组件移除 locale 分支和本地 copy 对象；所有路由 metadata 通过 `src/lib/site-metadata.ts` 读取消息。
+- 用 `pnpm exec tsc --noEmit`、`pnpm run build` 验证通过；英文和中文的首页、增强器、Reimagine、定价、账户、法律页均返回 200，并抽查确认页面文本随 URL locale 切换。
+
+### 2026-10-21（国际化回归修复）
+- 修复英文 `enhancer` 与 `reimagine` 用例正文仍引用中文的问题；英文消息文件中的营销正文现在全部为英文，中文消息文件继续保留中文版本。
+- 工作区下载、编辑和未知 API 错误统一使用 `messages/*` 中的本地化兜底提示，不再把浏览器错误文本或后端技术错误码直接显示给用户。
+- Footer 语言切换保留当前查询参数，例如账户页的 `?tab=billing`。
+- 清理 `App.tsx` 中未使用的落地页区块导入。旧的 `src/services/upscaler.ts` 仍保留为未来真实推理 adapter 契约，当前工作区使用 `src/services/imgupscaler-api.ts`。
+- 使用 `pnpm exec tsc --noEmit`、`pnpm run build` 和 `git diff --check` 复核通过；生产构建生成 18 个路由。
+
+### 2026-10-21（Google 登录与 20 张队列处理）
+- 登录弹窗新增 Google 登录按钮和 Google 图标；点击后调用 `/v1/sso/social/google` 获取 `redirect_url`，再跳转到平台授权地址。
+- 认证门面继续复用 `src/lib/api/auth.ts` 的 `socialLoginUrl`，未新增第二套 Google 请求逻辑。平台需要在 OAuth 回调完成后按实际部署配置回跳前端，当前前端跳转逻辑已接通授权入口。
+- 工作区单次最多从 12 张调整为 20 张；`useWorkspaceController` 已按 `for...of` 顺序逐张处理，因此真实 API 会按队列轮循，避免一次并发提交 20 个任务。
+- FAQ 中英文同步改为支持 20 张，并说明按队列顺序处理。
+
+### 2026-10-21（API 参数校验与批量入口回归）
+- 为图片 API 的环境变量 operation 增加白名单收紧：仅允许 `generations`、`variations`、`edits`、`upscales`、`transforms`，非法值回退到当前路由默认 operation；修复 TypeScript 将环境变量误推断为普通 `string` 的构建错误。
+- 普通 Upscale、Enhancer 在用户未填写提示词时使用当前语言的默认 canonical `prompt`；Reimagine 继续把 `creativity` 与 `similarity` 作为模型扩展字段传给平台。
+- 达到 20 张后再次选择文件会显示批量上限提示，不会创建空条目；参考稿的文件选择器也确认为 `multiple`，本项目保持多选并按队列逐张处理。
+- 点击“开始处理”时只会提交 `ready/error` 条目；已完成条目不会被重复提交，单张“重做”仍可显式重新排队。
+- 使用 `pnpm exec tsc --noEmit`、`pnpm run build`、`git diff --check` 通过；浏览器回归确认定价页 Premium 入口打开登录弹窗、Google 按钮可见，工作区文件输入为 `multiple` 且接受 JPG/PNG/WebP/AVIF。
+
+### 2026-10-21（切换 Mixu API 默认地址）
+- 请求层默认 API 根地址改为 `https://api.mixu.ai/v1`（代码内部自动补 `/v1`），不再依赖本地 `.env` 才能找到后端；`.env.example` 同步为该地址。
+- `NEXT_PUBLIC_ARTGURU_API_BASE_URL` / `NEXT_PUBLIC_IMGUPSCALER_API_BASE_URL` 仍可覆盖默认地址；生产环境需要通过真实登录获得 token 才会提交图像任务。
+- 已用 `pnpm exec tsc --noEmit`、`pnpm run build` 和 `git diff --check` 验证通过。当前从本机直接探测 `https://api.mixu.ai` 返回 HTTP 502，属于远端服务可用性问题，不是前端构建错误。
+
+### 2026-10-21（移除本地演示推理）
+- 工作区不再根据 API 开关或 token 选择 Canvas 演示；每张图片都直接走 Mixu 的上传、登记、创建 Run 和轮询流程，失败时显示本地化错误。
+- 登录弹窗不再显示“演示登录”或跳过请求；邮箱登录和 Google 授权入口都直接请求真实 API。
+- 删除 `createDemoResult` 及 `isApiEnabled` 分支，保留 Canvas 仅用于结果编辑功能。
+
+### 2026-10-21（工具工作区隔离与真实账户）
+- `src/stores/workspace-store.ts` 改为按 `home`、`enhancer`、`reimagine` 分桶，图片列表、处理状态、进度、倍率和 Reimagine 参数互不共享；`WorkspacePanel` 增加对应路由标识。
+- 工作区处理前要求真实登录令牌；上传、文件登记、AI Run 和轮询继续统一走 Mixu API。
+- Header 不再显示硬编码姓名、邮箱、50 积分或本地头像；根据真实 `/sso/profile` 会话显示登录按钮或当前用户资料，并支持真实退出。
+- 账户页删除演示数据与本地假保存，接通 `/sso/profile`、`/sso/profile` 更新、`/sso/change-password`、`/redeem` 和 `/sso/delete-account`；未登录时显示真实登录入口。
+- 删除旧的 `src/services/upscaler.ts` 演示 adapter；清理 PromoSection、`enablePromoSection`、Promo 文案和 CSS。
+- FAQ、隐私和条款中的浏览器演示描述改为真实 API/模型/文件保留策略描述。
+- 使用 `pnpm exec tsc --noEmit`、`pnpm run build` 和 `git diff --check` 验证通过，构建生成 18 个静态路由。
+
+### 2026-10-21（Upscale / Enhance 使用 nano-banana-pro）
+- `src/services/imgupscaler-api.ts` 将 Upscale 和 Enhance 固定为 CSV 中的 `google/nano-banana-pro`，并调用该 deployment 支持的 `generations` operation；不再发送不匹配的 `upscales` operation。
+- 请求默认 `output_format` 改为 `jpeg`，`resolution` 继续映射为 `1K` / `2K` / `4K`，并保留 canonical `input_references` 结构。
+- `messages/en.json` 与 `messages/zh.json` 为 Upscale 和 Enhance 增加具体的默认 prompt；用户不输入提示词时由工作区按当前语言自动填充。
+- 完成结果默认标记为 JPEG，`.env.example` 与 README 更新为新的模型/operation 说明；使用 `pnpm exec tsc --noEmit`、`pnpm run build`、`git diff --check` 验证通过。
+
+### 2026-10-21（修复 Process image 无反馈）
+- 工作区控制器原本只更新内部 `controller.toast`，`App` 没有渲染它；未登录点击 Process image 会提前返回，但用户看不到提示，API 失败或完成提示也会被吞掉。
+- `App.tsx` 现在渲染工作区 Toast；控制器收到未登录处理请求时同时触发登录弹窗，登录后才继续真实 Mixu API 流程。
+- 使用 `pnpm exec tsc --noEmit`、`pnpm run build` 和 `git diff --check` 验证通过。

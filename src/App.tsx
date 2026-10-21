@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import type { Route } from '@/src/lib/types'
 import { FEATURE_FLAGS } from '@/src/lib/feature-flags'
+import { localeFromPathname } from '@/src/lib/locale'
 import { pathToRoute, routeToPath } from '@/src/lib/locale-routing'
 import { Icon } from '@/src/components/ui/icons'
 import { SiteHeader } from '@/src/components/site/site-header'
@@ -14,34 +15,55 @@ import { EditorDialog } from '@/src/features/workspace/editor-dialog'
 import { useWorkspaceController } from '@/src/features/workspace/use-workspace-controller'
 import { Hero } from '@/src/features/landing/hero'
 import { FaqSection } from '@/src/features/landing/faq'
-import { ComparisonSection, FeatureSection, PromoSection, TestimonialsSection, UseCasesSection, VideoSection, WorkflowSection } from '@/src/features/landing/sections'
+import { TestimonialsSection, UseCasesSection, VideoSection, WorkflowSection } from '@/src/features/landing/sections'
 import { PricingPage } from '@/src/features/pricing/pricing-page'
+import { api } from '@/src/lib/api/client'
+import { useAuthStore } from '@/src/stores/auth-store'
 
 export default function App() {
   const pathname = usePathname()
   const router = useRouter()
   const route = pathToRoute(pathname)
-  const locale = useLocale() as 'zh' | 'en'
+  const locale = localeFromPathname(pathname)
+  const authT = useTranslations('auth')
+  const setSession = useAuthStore((state) => state.setSession)
   const [loginOpen, setLoginOpen] = useState(false)
   const [toast, setToast] = useState<{ title: string; detail?: string } | null>(null)
   // The page shell coordinates route-level UI only. Upload state, async processing
   // and object-URL lifecycle remain isolated inside the workspace controller.
-  const controller = useWorkspaceController(route)
+  const controller = useWorkspaceController(route, () => setLoginOpen(true))
 
   const navigate = (next: Route) => {
     if (controller.processing) controller.cancel()
-    router.push(routeToPath(next))
+    router.push(routeToPath(next, locale))
   }
   const scrollToWorkspace = () => document.querySelector('.workspace-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
 
-  const isChinese = locale === 'zh'
   return (
     <div className="app-shell">
       <SiteHeader onLogin={() => setLoginOpen(true)} onNavigate={navigate} />
       {route === 'pricing' ? <div id="main-content"><PricingPage onChoose={navigate} onLogin={() => setLoginOpen(true)} /></div> : <LandingPage route={route} controller={controller} onUseCase={scrollToWorkspace} />}
       <SiteFooter locale={locale} />
       {FEATURE_FLAGS.enableImageEditor && <EditorDialog controller={controller} />}
-      {loginOpen && <LoginDialog onClose={() => setLoginOpen(false)} onSubmit={() => { setLoginOpen(false); setToast({ title: isChinese ? '演示登录已提交' : 'Demo sign-in submitted', detail: isChinese ? '认证服务预留中，当前不会发送数据' : 'Authentication is reserved; no data is sent in this demo.' }) }} onForgot={() => setToast({ title: isChinese ? '重置密码入口已预留' : 'Password reset is reserved' })} />}
+      {controller.toast && <Toast message={controller.toast} />}
+      {loginOpen && <LoginDialog onClose={() => setLoginOpen(false)} onGoogle={async () => {
+        try {
+          const { redirect_url } = await api.socialLogin('google')
+          setLoginOpen(false)
+          window.location.assign(redirect_url)
+        } catch {
+          setToast({ title: authT('googleFailed'), detail: authT('googleFailedDetail') })
+        }
+      }} onSubmit={async (email, password) => {
+        try {
+          const session = await api.login(email, password)
+          setSession(session.token, session.user_info)
+          setLoginOpen(false)
+          setToast({ title: authT('submitted') })
+        } catch {
+          setToast({ title: authT('loginFailed'), detail: authT('loginFailedDetail') })
+        }
+      }} />}
       {toast && <Toast message={toast} />}
     </div>
   )

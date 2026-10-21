@@ -1,8 +1,8 @@
-import type { Metadata } from 'next'
 import { AccountPage } from '../../src/components/site/account-page'
+import { pageMetadata } from '../../src/lib/site-metadata'
 
-export const metadata: Metadata = { title: 'Account — Img.Upscaler' }
+export const metadata = pageMetadata('en', 'account')
 
 export default function AccountRoute() {
-  return <AccountPage />
+  return <AccountPage locale="en" />
 }

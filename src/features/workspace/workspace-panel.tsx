@@ -28,7 +28,7 @@ export function WorkspacePanel({ route, controller }: { route: Route; controller
     controller.addFiles(event.dataTransfer.files)
   }
 
-  return <Card id="workspace" className="workspace-card reveal delayed">
+  return <Card id="workspace" data-workspace-route={route} className={`workspace-card workspace-card-${route} reveal delayed`}>
     {controller.items.length > 0 && <WorkspaceHeader controller={controller} />}
     <div className={`drop-zone${controller.items.length ? ' has-files' : ''}${controller.dragging ? ' is-dragging' : ''}`} onDrop={onDrop} onDragEnter={(event) => { event.preventDefault(); controller.setDragging(true) }} onDragOver={(event) => { event.preventDefault(); controller.setDragging(true) }} onDragLeave={(event) => { if (event.currentTarget === event.target) controller.setDragging(false) }} onClick={controller.items.length ? undefined : () => controller.inputRef.current?.click()} role={controller.items.length ? undefined : 'button'} tabIndex={controller.items.length ? undefined : 0} onKeyDown={controller.items.length ? undefined : (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); controller.inputRef.current?.click() } }} aria-label={controller.items.length ? undefined : t('selectAria')}>
       <input ref={controller.inputRef} type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple onChange={onInput} hidden />
@@ -61,7 +61,7 @@ function FileGrid({ controller }: { controller: WorkspaceController }) {
 
 function ReimagineControls({ controller }: { controller: WorkspaceController }) {
   const t = useTranslations('workspace')
-  return <div className="reimagine-controls"><label><span>{t('prompt')}</span><Textarea value={controller.prompt} onChange={(event) => controller.setPrompt(event.target.value)} rows={2} /></label><div className="slider-row"><Range label={t('creativity')} value={controller.creativity} onChange={controller.setCreativity} /><Range label={t('similarity')} value={controller.similarity} onChange={controller.setSimilarity} /></div></div>
+  return <div className="reimagine-controls"><label><span>{t('prompt')}</span><Textarea placeholder={t('promptPlaceholder')} value={controller.prompt} onChange={(event) => controller.setPrompt(event.target.value)} rows={2} /></label><div className="slider-row"><Range label={t('creativity')} value={controller.creativity} onChange={controller.setCreativity} /><Range label={t('similarity')} value={controller.similarity} onChange={controller.setSimilarity} /></div></div>
 }
 
 function Range({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {

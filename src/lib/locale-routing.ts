@@ -1,5 +1,6 @@
 import type { Route } from './types'
 import { isRouteVisible } from './constants'
+import type { Locale } from './locale'
 
 /** Remove legacy language prefixes without making them part of new links. */
 export function stripLegacyLocalePrefix(pathname: string): string {
@@ -16,12 +17,15 @@ export function pathToRoute(pathname: string): Route {
 }
 
 /** Build a stable, language-neutral application URL. */
-export function routeToPath(route: Route): string {
-  return route === 'home' ? '/' : `/${route}`
+export function routeToPath(route: Route, locale: Locale = 'en'): string {
+  const path = route === 'home' ? '' : `/${route}`
+  return locale === 'zh' ? `/zh${path || ''}` : path || '/'
 }
 
-/** Build a language-neutral path while preserving an existing query string. */
-export function pagePath(pathname: string, search = ''): string {
-  return `${stripLegacyLocalePrefix(pathname)}${search}`
+/** Build a localized path while preserving an existing query string. */
+export function pagePath(pathname: string, locale: Locale, search = ''): string {
+  const path = stripLegacyLocalePrefix(pathname)
+  const localized = locale === 'zh' ? `/zh${path === '/' ? '' : path}` : path
+  return `${localized || '/'}${search}`
 }
 

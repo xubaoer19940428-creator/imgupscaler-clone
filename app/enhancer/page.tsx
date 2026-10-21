@@ -1,7 +1,7 @@
-import type { Metadata } from 'next'
 import App from '../../src/App'
+import { pageMetadata } from '../../src/lib/site-metadata'
 
-export const metadata: Metadata = { title: 'Image Enhancer — Img.Upscaler' }
+export const metadata = pageMetadata('en', 'enhancer')
 
 export default function EnhancerPage() {
   return <App />

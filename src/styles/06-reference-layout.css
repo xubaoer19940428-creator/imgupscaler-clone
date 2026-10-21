@@ -35,17 +35,6 @@ body { background: #fff; color: var(--ink); }
 .upload-cta { padding: 12px 18px; border-radius: 8px; background: #111827; box-shadow: none; font-size: 14px; }
 .drop-empty strong { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; }
 .drop-empty span { color: #6b7280; font-size: 13px; }
-.promo-section { width: min(920px, 100%); margin: 20px auto 0; padding: 0; }
-.promo-card { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid rgba(229,231,235,.8); border-radius: 16px; color: var(--ink); background: rgba(255,255,255,.8); box-shadow: 0 8px 24px rgba(15,23,42,.04); }
-.promo-card { min-height: 70px; }
-.promo-card > img { flex: 0 0 42px; width: 42px; height: 42px; border-radius: 8px; box-shadow: none; }
-.promo-copy { flex: 1; }
-.promo-title { color: var(--ink); font-size: 14px; font-weight: 700; }
-.promo-info { color: #6b7280; cursor: help; }
-.promo-copy p { margin-top: 2px; color: #6b7280; font-size: 12px; line-height: 18px; }
-.promo-copy a { color: var(--ink); font-weight: 700; }
-.promo-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.promo-actions .outline-button { padding: 9px 12px; border-color: #e5e7eb; color: #111827; background: #fff; font-size: 11px; }
 .video-section { max-width: 980px; padding: 32px 32px 64px; }
 .feature-section { max-width: none; padding: 32px max(32px, calc((100% - 980px) / 2 + 32px)) 64px; }
 .video-section .section-heading > p, .feature-section .section-heading > p, .reference-section .section-heading > p, .workflow-section .section-heading > p, .testimonial-section .section-heading > p, .faq-section .section-heading > p { margin-top: 12px; }

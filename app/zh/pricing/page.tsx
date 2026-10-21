@@ -1,5 +1,8 @@
-import { redirect } from 'next/navigation'
+import App from '../../../src/App'
+import { pageMetadata } from '../../../src/lib/site-metadata'
+
+export const metadata = pageMetadata('zh', 'pricing')
 
 export default function ZhPricingPage() {
-  redirect('/pricing')
+  return <App />
 }

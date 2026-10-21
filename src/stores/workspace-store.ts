@@ -1,40 +1,49 @@
 import { create } from 'zustand'
 import type { FileItem, Route } from '@/src/lib/types'
 
-type WorkspaceState = {
+export type WorkspaceRoute = Exclude<Route, 'pricing'>
+type Progress = { completed: number; total: number }
+export type WorkspaceSlice = {
   items: FileItem[]
   scale: string
   processing: boolean
-  progress: { completed: number; total: number }
+  progress: Progress
   prompt: string
   creativity: number
   similarity: number
-  setItems: (items: FileItem[] | ((current: FileItem[]) => FileItem[])) => void
-  setScale: (scale: string) => void
-  setProcessing: (processing: boolean) => void
-  setProgress: (progress: { completed: number; total: number }) => void
-  setPrompt: (prompt: string) => void
-  setCreativity: (creativity: number) => void
-  setSimilarity: (similarity: number) => void
-  resetForRoute: (route: Route) => void
 }
 
-export const useWorkspaceStore = create<WorkspaceState>((set) => ({
+const initialWorkspace = (route: WorkspaceRoute): WorkspaceSlice => ({
   items: [],
-  scale: '2',
+  scale: route === 'reimagine' ? '1' : '2',
   processing: false,
   progress: { completed: 0, total: 0 },
-  prompt: '高清、更多细节、4K',
+  prompt: '',
   creativity: 34,
   similarity: 78,
-  setItems: (items) => set((state) => ({ items: typeof items === 'function' ? items(state.items) : items })),
-  setScale: (scale) => set({ scale }),
-  setProcessing: (processing) => set({ processing }),
-  setProgress: (progress) => set({ progress }),
-  setPrompt: (prompt) => set({ prompt }),
-  setCreativity: (creativity) => set({ creativity }),
-  setSimilarity: (similarity) => set({ similarity }),
-  // Route changes only change the default model preset. Files stay in the workspace so
-  // a user can inspect the same batch while moving between tools.
-  resetForRoute: (route) => set({ scale: route === 'reimagine' ? '1' : '2' }),
+})
+
+type WorkspaceState = {
+  workspaces: Record<WorkspaceRoute, WorkspaceSlice>
+  setItems: (route: WorkspaceRoute, items: FileItem[] | ((current: FileItem[]) => FileItem[])) => void
+  setScale: (route: WorkspaceRoute, scale: string) => void
+  setProcessing: (route: WorkspaceRoute, processing: boolean) => void
+  setProgress: (route: WorkspaceRoute, progress: Progress) => void
+  setPrompt: (route: WorkspaceRoute, prompt: string) => void
+  setCreativity: (route: WorkspaceRoute, creativity: number) => void
+  setSimilarity: (route: WorkspaceRoute, similarity: number) => void
+}
+
+const routes: WorkspaceRoute[] = ['home', 'enhancer', 'reimagine']
+const initialWorkspaces = Object.fromEntries(routes.map((route) => [route, initialWorkspace(route)])) as Record<WorkspaceRoute, WorkspaceSlice>
+
+export const useWorkspaceStore = create<WorkspaceState>((set) => ({
+  workspaces: initialWorkspaces,
+  setItems: (route, items) => set((state) => ({ workspaces: { ...state.workspaces, [route]: { ...state.workspaces[route], items: typeof items === 'function' ? items(state.workspaces[route].items) : items } } })),
+  setScale: (route, scale) => set((state) => ({ workspaces: { ...state.workspaces, [route]: { ...state.workspaces[route], scale } } })),
+  setProcessing: (route, processing) => set((state) => ({ workspaces: { ...state.workspaces, [route]: { ...state.workspaces[route], processing } } })),
+  setProgress: (route, progress) => set((state) => ({ workspaces: { ...state.workspaces, [route]: { ...state.workspaces[route], progress } } })),
+  setPrompt: (route, prompt) => set((state) => ({ workspaces: { ...state.workspaces, [route]: { ...state.workspaces[route], prompt } } })),
+  setCreativity: (route, creativity) => set((state) => ({ workspaces: { ...state.workspaces, [route]: { ...state.workspaces[route], creativity } } })),
+  setSimilarity: (route, similarity) => set((state) => ({ workspaces: { ...state.workspaces, [route]: { ...state.workspaces[route], similarity } } })),
 }))

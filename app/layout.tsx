@@ -1,15 +1,12 @@
-import type { Metadata } from 'next'
 import '../src/styles.css'
 import { IntlProvider } from './intl-provider'
+import { pageMetadata } from '../src/lib/site-metadata'
 
-export const metadata: Metadata = {
-  title: 'Img.Upscaler',
-  description: 'AI image upscaling and enhancement in the browser.',
-}
+export const metadata = pageMetadata('en', 'root')
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="en">
       <body><IntlProvider>{children}</IntlProvider></body>
     </html>
   )

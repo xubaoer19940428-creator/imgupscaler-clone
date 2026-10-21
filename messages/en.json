@@ -5,14 +5,58 @@
     "reimagine": "Reimagine",
     "pricing": "Pricing"
   },
+  "auth": {
+    "kicker": "Account / Login",
+    "title": "Welcome back",
+    "description": "Sign in to sync credits, subscriptions, and processing history.",
+    "close": "Close login",
+    "email": "Email",
+    "password": "Password",
+    "passwordPlaceholder": "At least 8 characters",
+    "submit": "Sign in",
+    "google": "Continue with Google",
+    "googleLoading": "Connecting to Google…",
+    "googleFailed": "Google sign-in failed",
+    "googleFailedDetail": "The Google sign-in service is unavailable. Please try again or use email.",
+    "or": "or",
+    "submitted": "Signed in",
+    "submittedDetail": "Your session is now active.",
+    "loginFailed": "Sign-in failed",
+    "loginFailedDetail": "Check your email and password, then try again.",
+    "emailPlaceholder": "you@example.com"
+  },
+  "editor": {
+    "kicker": "Edit result",
+    "title": "Edit processed image",
+    "description": "Crop, rotate, flip, and choose export quality.",
+    "close": "Close",
+    "previewAlt": "Enhanced preview",
+    "rotate": "Rotate",
+    "flipHorizontal": "Flip horizontal",
+    "flipVertical": "Flip vertical",
+    "cropRatio": "Crop ratio",
+    "original": "Original",
+    "square": "Square",
+    "format": "Format",
+    "quality": "Quality",
+    "cancel": "Cancel",
+    "save": "Save changes"
+  },
   "workspace": {
+    "authRequired": "Sign in to process images",
+    "authRequiredDetail": "Your files are uploaded through the authenticated Mixu API.",
     "chooseImage": "Choose image",
     "dragDrop": "Drop your image here",
     "formats": "JPG / PNG / WebP / AVIF supported",
     "selectAria": "Choose an image to process",
     "label": "Workspace",
     "readyCount": "{count, plural, =1 {# image ready} other {# images ready}}",
-    "status": { "ready": "Ready", "processing": "Processing", "done": "Done", "error": "Processing failed" },
+    "status": {
+      "ready": "Ready",
+      "processing": "Processing",
+      "done": "Done",
+      "error": "Processing failed"
+    },
     "remove": "Remove image",
     "retry": "Retry",
     "download": "Download",
@@ -32,8 +76,911 @@
     "cancel": "Cancel",
     "processing": "Processing…",
     "start": "Process image",
-    "local": "Files stay in this task",
+    "local": "Uploaded securely for this task",
     "limit": "Long edge limit 4096px",
-    "toast": { "busy": "A task is still processing", "busyDetail": "Wait for it to finish or cancel it first", "noImages": "No images can be added", "noImagesDetail": "JPG, PNG, WebP, and AVIF up to 20 MB per file are supported", "added": "Added {count} {count, plural, one {image} other {images}}", "batchLimit": "Up to {count} images per batch", "addedDetail": "Add more images or start processing", "cancelled": "Processing cancelled", "cancelledDetail": "The original files remain in this workspace", "resultError": "Could not generate a result", "partialError": "Some images failed", "complete": "Processing complete", "completeDetail": "Results are ready to edit or download", "downloaded": "Result downloaded", "zipStarted": "ZIP download started", "resultCount": "{count} {count, plural, one {result} other {results}}", "downloadError": "Download failed", "downloadErrorDetail": "Try downloading each image separately", "editSaved": "Edits saved", "editError": "Edit failed", "retry": "Please try again" }
+    "toast": {
+      "busy": "A task is still processing",
+      "busyDetail": "Wait for it to finish or cancel it first",
+      "noImages": "No images can be added",
+      "noImagesDetail": "JPG, PNG, WebP, and AVIF up to 20 MB per file are supported",
+      "added": "Added {count} {count, plural, one {image} other {images}}",
+      "batchLimit": "Up to {count} images per batch",
+      "addedDetail": "Add more images or start processing",
+      "cancelled": "Processing cancelled",
+      "cancelledDetail": "The original files remain in this workspace",
+      "resultError": "Could not generate a result",
+      "partialError": "Some images failed",
+      "complete": "Processing complete",
+      "completeDetail": "Results are ready to edit or download",
+      "downloaded": "Result downloaded",
+      "zipStarted": "ZIP download started",
+      "resultCount": "{count} {count, plural, one {result} other {results}}",
+      "downloadError": "Download failed",
+      "downloadErrorDetail": "Try downloading each image separately",
+      "editSaved": "Edits saved",
+      "editError": "Edit failed",
+      "retry": "Please try again"
+    },
+    "api": {
+      "resultMissing": "The API did not return an image result",
+      "timeout": "The image task timed out",
+      "failed": "The image task failed",
+      "cancelled": "The image task was cancelled",
+      "editorUnsupported": "This browser does not support image editing",
+      "imageReadFailed": "The image could not be read",
+      "encodeFailed": "The image result could not be generated"
+    },
+    "promptPlaceholder": "Describe the detail, style, or transformation you want…",
+    "apiPrompt": {
+      "home": "Upscale this image to a clean, high-resolution result with sharper edges, natural textures, realistic fine detail, and the original composition preserved. Do not add or remove subjects.",
+      "enhancer": "Enhance this image with natural sharpness, cleaner textures, reduced noise and compression artifacts, and improved fine detail while preserving the original subject, colors, lighting, and composition.",
+      "reimagine": "Create a clearer, more detailed version of this image while following the requested creative direction and preserving the recognizable subject."
+    }
+  },
+  "landing": {
+    "heroContent": {
+      "home": {
+        "eyebrow": "AI Image Upscaler Online",
+        "title": {
+          "before": "Upscale and enhance images",
+          "emphasis": "with AI online"
+        },
+        "description": "Turn low-resolution photos, anime, products, portraits, and old images into sharper, higher-resolution visuals with a simple browser workflow."
+      },
+      "enhancer": {
+        "eyebrow": "AI Image Enhancer Online",
+        "title": {
+          "before": "Enhance image quality",
+          "emphasis": "with AI"
+        },
+        "description": "Make soft, noisy, compressed, or low-resolution images look clearer. Recover sharpness, texture, and visible detail for portraits, products, AI art, screenshots, and everyday visuals."
+      },
+      "reimagine": {
+        "eyebrow": "Free Reimagine Upscaler",
+        "title": {
+          "before": "Reimagine and upscale",
+          "emphasis": "images with AI"
+        },
+        "description": "Upload an image, add a prompt, and control Creativity and Resemblance to create a clearer, richer version while deciding how closely the result follows the original."
+      }
+    },
+    "featureCards": {
+      "home": [
+        {
+          "number": "01",
+          "title": "Advanced AI upscaling",
+          "body": "Increase resolution with sharper edges, clearer textures, and more natural detail."
+        },
+        {
+          "number": "02",
+          "title": "2x and 4x image upscaling",
+          "body": "Choose the output size that fits websites, product listings, social posts, presentations, or print."
+        },
+        {
+          "number": "03",
+          "title": "Batch image upscaling",
+          "body": "Process multiple images in one efficient workflow instead of repeating the same upload and export steps."
+        },
+        {
+          "number": "04",
+          "title": "Image enhancement workflow",
+          "body": "Improve photos, anime, portraits, ecommerce images, and old pictures with a practical online tool."
+        },
+        {
+          "number": "05",
+          "title": "Privacy-first processing",
+          "body": "Uploads and generated results are handled securely and removed automatically after processing."
+        },
+        {
+          "number": "06",
+          "title": "Ready for real projects",
+          "body": "Use enhanced images in marketing, client work, ecommerce, creative projects, and personal work."
+        }
+      ],
+      "enhancer": [
+        {
+          "number": "01",
+          "title": "Sharpen blurry images",
+          "body": "Restore edge clarity and local contrast while keeping faces, color, and lighting natural."
+        },
+        {
+          "number": "02",
+          "title": "Enhance image quality online",
+          "body": "Improve low-quality images for social media, websites, presentations, print, and product listings."
+        },
+        {
+          "number": "03",
+          "title": "Enhance image details",
+          "body": "Recover fine texture, hair, fabric, product edges, linework, and other visible detail."
+        },
+        {
+          "number": "04",
+          "title": "Reduce noise and compression artifacts",
+          "body": "Clean up screenshots, old uploads, compressed photos, JPEG artifacts, and web image damage."
+        },
+        {
+          "number": "05",
+          "title": "Sharpen AI art and generated images",
+          "body": "Refine texture and detail in images made with OpenAI, Midjourney, Flux, Stable Diffusion, and other AI tools."
+        },
+        {
+          "number": "06",
+          "title": "Optimize portraits, products, and artwork",
+          "body": "Improve portraits, product photos, anime, illustrations, and digital art while preserving the original direction."
+        }
+      ],
+      "reimagine": [
+        {
+          "number": "01",
+          "title": "Prompt-guided reimagination",
+          "body": "Describe the result you want, from clearer architecture to cinematic portraits, richer anime linework, or realistic product texture."
+        },
+        {
+          "number": "02",
+          "title": "Creativity control",
+          "body": "Lower creativity for a stable, faithful enhancement or raise it to introduce more visible variation and new detail."
+        },
+        {
+          "number": "03",
+          "title": "Resemblance strength",
+          "body": "Control how closely the output keeps the original layout, subject features, and recognizable structure."
+        },
+        {
+          "number": "04",
+          "title": "Creative upscaling",
+          "body": "Add generated detail while upscaling for concept art, illustration, interiors, architecture, portraits, and experiments."
+        },
+        {
+          "number": "05",
+          "title": "Portrait and detail models",
+          "body": "Choose model behavior for natural faces, stronger detail recovery, or a more creative interpretation."
+        },
+        {
+          "number": "06",
+          "title": "Privacy-first processing",
+          "body": "Uploads and generated results are handled securely and removed automatically after processing."
+        }
+      ]
+    },
+    "useCases": {
+      "home": [
+        {
+          "image": "/reference/upscale-image-online.jpeg",
+          "beforeImage": "/reference/upscale-image-online.jpeg",
+          "afterImage": "/reference/upscale-image-online.jpeg",
+          "title": "Upscale images online for web, print, and social media",
+          "body": "Turn small, blurry, or pixelated images into clearer high-resolution visuals for websites, thumbnails, presentations, posters, ecommerce, and social posts.",
+          "cta": "Upscale an image"
+        },
+        {
+          "image": "/reference/batch-upscaler.jpeg",
+          "beforeImage": "/reference/batch-upscaler.jpeg",
+          "afterImage": "/reference/batch-upscaler.jpeg",
+          "title": "Batch image upscaling for efficient production",
+          "body": "Keep product photos, marketing assets, anime images, or client files consistent while processing more images with fewer manual steps.",
+          "cta": "Explore batch upscaling"
+        },
+        {
+          "image": "/reference/enhance-subjects.jpeg",
+          "beforeImage": "/reference/enhance-subjects.jpeg",
+          "afterImage": "/reference/enhance-subjects.jpeg",
+          "title": "Enhance portraits, products, anime, and old photos",
+          "body": "Improve avatars, product imagery, illustrations, scans, travel photos, and older images that need more usable resolution.",
+          "cta": "Enhance image quality"
+        }
+      ],
+      "enhancer": [
+        {
+          "image": "/reference/enhancer/enhancer-sample-1-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-1-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-1-after.webp",
+          "title": "Sharpen blurry images and restore lost detail",
+          "body": "Enhance blurry or low-quality images while keeping the result natural. This AI image enhancer improves edge clarity, restores fine texture, and reduces blur, noise, and compression artifacts without making the image look overprocessed.",
+          "cta": "Sharpen an image"
+        },
+        {
+          "image": "/reference/enhancer/enhancer-sample-2-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-2-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-2-after.webp",
+          "title": "Optimize low-resolution images for social, print, and ecommerce",
+          "body": "Create clearer high-resolution images for social media, presentations, print, wallpapers, product listings, and professional sharing. AI enhancement increases usable detail while improving resolution for different output sizes.",
+          "cta": "Upscale and optimize"
+        },
+        {
+          "image": "/reference/enhancer/enhancer-sample-3-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-3-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-3-after.webp",
+          "title": "Enhance AI art, portraits, screenshots, and product visuals",
+          "body": "Use this enhancer for AI-generated images, portraits, anime, illustrations, screenshots, and product visuals. It sharpens texture, removes artifacts, adds visible detail, and improves clarity while preserving the original visual direction.",
+          "cta": "Enhance creative images"
+        }
+      ],
+      "reimagine": [
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-building-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-building-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-building-after.jpg",
+          "title": "Reimagine architecture and interiors with richer detail",
+          "body": "Turn low-resolution architecture, interior, and exterior images into clearer visuals with richer surface texture, cleaner edges, and stronger spatial depth. Use prompts to guide materials, lighting, and mood while resemblance strength keeps the original structure recognizable.",
+          "cta": "Try Reimagine AI"
+        },
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-anime-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-anime-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-anime-after.jpg",
+          "title": "Add creative detail to anime, illustration, and AI art",
+          "body": "Use Reimagine AI as a prompt-guided enhancer for anime, illustrations, line art, and AI-generated images. Keep the original style recognizable while adding richer texture, clearer detail, and a more polished finish.",
+          "cta": "Enhance an illustration"
+        },
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-face-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-face-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-face-after.jpg",
+          "title": "Enhance portraits while keeping faces recognizable",
+          "body": "Reimagine portraits by improving clarity, skin detail, hair texture, and lighting while resemblance controls keep the person recognizable. It works well for profile photos, old pictures, edited images, and creative portraits.",
+          "cta": "Reimagine a portrait"
+        }
+      ]
+    },
+    "featureIntro": {
+      "home": {
+        "kicker": "See how AI upscaling improves clarity",
+        "title": {
+          "before": "Advanced AI upscaling,",
+          "emphasis": "built for real work."
+        },
+        "description": "ImgUpscaler uses AI super-resolution to enlarge images 2x or 4x, recover detail, and make visual assets easier to use in real projects."
+      },
+      "enhancer": {
+        "kicker": "Improve quality, sharpen detail, and remove visual noise",
+        "title": {
+          "before": "AI image enhancement,",
+          "emphasis": "made practical."
+        },
+        "description": "Sharpen blurry images, add detail, reduce noise, remove compression artifacts, and improve low-quality images without manual retouching."
+      },
+      "reimagine": {
+        "kicker": "A creative upscaler for controlled image transformation",
+        "title": {
+          "before": "Reimagine AI,",
+          "emphasis": "for creative enhancement."
+        },
+        "description": "Use prompts, model choice, creativity, and resemblance strength to add realistic detail while deciding whether the output stays faithful or explores a new variation."
+      }
+    },
+    "routeWorkflow": {
+      "home": {
+        "kicker": "How to upscale an image online",
+        "title": {
+          "before": "Three steps to",
+          "emphasis": "clearer output."
+        },
+        "description": "Upload a file, choose a scale, preview the result, and download a clearer image.",
+        "steps": [
+          [
+            "Step 1",
+            "Upload a JPG, PNG, or WebP image",
+            "Choose a low-resolution photo, product image, anime illustration, portrait, old photo, or graphic."
+          ],
+          [
+            "Step 2",
+            "Choose 2x or 4x upscaling",
+            "Pick the scale you need while AI improves detail, texture, and edges."
+          ],
+          [
+            "Step 3",
+            "Preview, enhance, and download",
+            "Compare before and after, make any edits, and download the high-resolution result."
+          ]
+        ]
+      },
+      "enhancer": {
+        "kicker": "How to enhance image quality online",
+        "title": {
+          "before": "Three steps to",
+          "emphasis": "clearer restoration."
+        },
+        "description": "Sharpen an image, improve photo quality, and create a clearer high-resolution result with AI enhancement.",
+        "steps": [
+          [
+            "Step 1",
+            "Upload a blurry or low-quality image",
+            "The workflow handles blurry, compressed, noisy, low-resolution, old, and AI-generated images."
+          ],
+          [
+            "Step 2",
+            "Choose an enhancement output",
+            "Select the output quality for a quick sharpen, stronger detail, or a clearer high-resolution image."
+          ],
+          [
+            "Step 3",
+            "Preview the result and download",
+            "Compare restored detail, sharper edges, and clearer texture before downloading."
+          ]
+        ]
+      },
+      "reimagine": {
+        "kicker": "How to reimagine an image online",
+        "title": {
+          "before": "Three steps to",
+          "emphasis": "creative output."
+        },
+        "description": "Start with an image, guide the result with a prompt, and balance creativity with resemblance before downloading.",
+        "steps": [
+          [
+            "Step 1",
+            "Upload the image you want to rebuild",
+            "Use a portrait, product, architecture, interior, anime, illustration, AI image, or old photo."
+          ],
+          [
+            "Step 2",
+            "Add a prompt and choose strength",
+            "Choose model behavior, then adjust Creativity and Resemblance to control the transformation."
+          ],
+          [
+            "Step 3",
+            "Preview, refine, and download",
+            "Review the result, adjust the balance of detail and fidelity, and download the final image."
+          ]
+        ]
+      }
+    },
+    "testimonials": [
+      [
+        "Eleonore Lefaix",
+        "Siecledigital.fr editor",
+        "ImgUpscaler makes image upscaling simple and supports batch processing, so users can handle several images at once."
+      ],
+      [
+        "Eva Williams",
+        "Fixthephoto editor",
+        "When you need to upscale multiple images and improve a large set of visual assets without repeating manual steps, ImgUpscaler is a practical choice."
+      ],
+      [
+        "Matic Broz",
+        "Editor",
+        "Image upscaling should not be expensive or complicated. ImgUpscaler offers a simple and intuitive way to enlarge images online."
+      ],
+      [
+        "Sravan",
+        "Product Hunt user",
+        "ImgUpscaler works across many image types, from landscapes and product photos to old pictures that need more visible detail."
+      ]
+    ],
+    "faqs": {
+      "home": [
+        [
+          "What is ImgUpscaler?",
+          "ImgUpscaler is an online AI image upscaler that enlarges images and improves clarity at 2x or 4x. It is designed for photos, anime art, product images, portraits, old pictures, and other visual assets that need a more usable resolution."
+        ],
+        [
+          "How does an AI image upscaler work?",
+          "The selected AI model analyzes edges, textures, and color relationships before generating higher-resolution detail instead of simply stretching pixels."
+        ],
+        [
+          "How do I upscale an image online?",
+          "Upload a JPG, PNG, WebP, or AVIF file, choose the scale, wait for the preview, and download the processed WebP result."
+        ],
+        [
+          "Can I upscale an image to 4K?",
+          "Yes. You can choose a 4K output. The API applies the selected model and account limits to the requested resolution."
+        ],
+        [
+          "What is the difference between upscaling and enhancement?",
+          "Upscaling focuses on increasing canvas size and resolution. Enhancement focuses on clarity, noise, texture, and color. Both can use the same upload and download workflow."
+        ],
+        [
+          "Can AI enhancement fix a blurry image?",
+          "It can improve mild blur, compression noise, and jagged edges, but it cannot guarantee recovery of information that was never captured or is fully obscured."
+        ],
+        [
+          "Which image formats are supported?",
+          "The frontend accepts JPG, PNG, WebP, and AVIF images up to 20MB per file."
+        ],
+        [
+          "Can I upscale multiple images at once?",
+          "Yes. The workspace accepts up to 20 images and processes them in queue order, with each result available to download when ready."
+        ],
+        [
+          "Are my uploaded images private?",
+          "Images are uploaded through short-lived signed URLs, processed by the selected model, and returned as private results under the API retention policy."
+        ],
+        [
+          "How long are uploaded images stored?",
+          "Source files and results follow the API retention policy and are removed according to the service cleanup schedule."
+        ],
+        [
+          "Can I use the upscaled images commercially?",
+          "The frontend does not restrict export use. Commercial licensing, model output responsibility, and source-image rights should be defined in the production terms."
+        ],
+        [
+          "Which images work best with AI upscaling?",
+          "Low-resolution photos, product images, portraits, anime art, scans, and lightly compressed old photos often show the clearest improvement."
+        ],
+        [
+          "Is AI upscaling better than regular resizing?",
+          "Regular resizing interpolates existing pixels. AI upscaling attempts to reconstruct detail; the result depends on source quality, the model, and the target size."
+        ],
+        [
+          "Do I need to install software?",
+          "No. The Next.js frontend works in a browser, while a real inference service can run on the server side."
+        ]
+      ],
+      "enhancer": [
+        [
+          "What is an AI image enhancer?",
+          "An AI image enhancer automatically improves image quality by sharpening blur, restoring detail, reducing noise, and removing compression artifacts without manual editing."
+        ],
+        [
+          "How do I enhance image quality online?",
+          "Upload an image, choose an enhancement output, preview the result, and download it. The workflow runs in the browser."
+        ],
+        [
+          "Can AI make a blurry image clearer?",
+          "AI can improve mild blur, noise, and compression damage, but it cannot guarantee recovery of detail that was never captured."
+        ],
+        [
+          "Can I improve image detail without editing manually?",
+          "Yes. The enhancer processes edges, textures, noise, and compression artifacts automatically."
+        ],
+        [
+          "What is the difference between enhancement and upscaling?",
+          "Enhancement focuses on clarity, texture, and noise. Upscaling focuses on canvas size and resolution."
+        ],
+        [
+          "Will the enhancer reduce blur and noise automatically?",
+          "The selected AI model performs denoising and restoration before returning the result."
+        ],
+        [
+          "Does it support compressed JPEG or web images?",
+          "Yes. JPG, PNG, WebP, and AVIF are supported."
+        ],
+        [
+          "Can I enhance AI-generated images?",
+          "Yes. AI art, portraits, product visuals, and illustrations work well with this workflow."
+        ],
+        [
+          "Can I enhance portraits naturally?",
+          "Use a moderate strength and compare the result before downloading to avoid over-sharpening."
+        ],
+        [
+          "Can I improve product photos?",
+          "Yes. The enhancer works for ecommerce listings, marketing assets, and website images."
+        ],
+        [
+          "Will enhancement change the original colors?",
+          "The selected AI model controls enhancement strength and color fidelity for the returned result."
+        ],
+        [
+          "Which images work best with the enhancer?",
+          "Portraits, screenshots, old photos, product images, anime, and low-resolution web images are good candidates."
+        ],
+        [
+          "Can I preview an enhanced image before downloading?",
+          "Yes. The result appears in the workspace first and can be edited or downloaded."
+        ],
+        [
+          "Do I need editing skills to use the enhancer?",
+          "No. Upload an image, choose an output, and download the result."
+        ]
+      ],
+      "reimagine": [
+        [
+          "What is Reimagine AI?",
+          "Reimagine AI is ImgUpscaler’s prompt-guided creative upscaler. It enlarges an image while generating new detail, texture, and visual variation from your prompt and settings."
+        ],
+        [
+          "How is Reimagine AI different from a regular upscaler?",
+          "A regular upscaler focuses on preserving the source while increasing resolution. Reimagine AI can also add generative detail from a prompt."
+        ],
+        [
+          "What is a creative image upscaler?",
+          "It combines resolution enhancement with generative AI to infer new detail, texture, patterns, and stylistic improvements from the source."
+        ],
+        [
+          "How do prompts affect a reimagined result?",
+          "Prompts describe lighting, materials, style, detail level, atmosphere, or how the subject should be treated."
+        ],
+        [
+          "What does the Creativity control do?",
+          "Higher creativity introduces more variation, texture, and new visual detail. Lower creativity keeps the result closer to the source."
+        ],
+        [
+          "What is Resemblance strength?",
+          "Higher resemblance helps preserve the original layout, subject features, and recognizable structure."
+        ],
+        [
+          "Which settings give stable results?",
+          "Use lower creativity and higher resemblance for portraits and images where the original composition matters."
+        ],
+        [
+          "Can I reimagine a portrait without changing the face too much?",
+          "Yes. Use the portrait model with lower creativity and higher resemblance."
+        ],
+        [
+          "Which image types work best with Reimagine AI?",
+          "Portraits, architecture, interiors, anime art, illustrations, product photos, and old photos are good candidates."
+        ],
+        [
+          "Is Reimagine AI an alternative to Magnific?",
+          "It can be used as a lightweight prompt-guided creative upscaler."
+        ],
+        [
+          "Can I use Reimagine AI outputs commercially?",
+          "Yes, subject to applicable law and the rights associated with the original images."
+        ],
+        [
+          "Are uploaded images private?",
+          "The API uses short-lived signed URLs and its configured cleanup policy for uploaded images and results."
+        ]
+      ]
+    },
+    "video": {
+      "title": "See how AI image upscaling improves clarity",
+      "description": "ImgUpscaler uses AI super resolution to enlarge images by 2x or 4x, recover detail, and make visual assets easier to use in real projects. Watch the workflow, then explore the tools built for everyday image enhancement.",
+      "alt": "ImgUpscaler video showcase",
+      "caption": "Watch on YouTube ↗"
+    },
+    "useCaseIntro": {
+      "kicker": "AI image upscaling for real creative work",
+      "title": {
+        "before": "Prepare clearer assets for",
+        "emphasis": "web, print, and social media."
+      },
+      "description": "From quick online upscaling to batch-ready workflows, ImgUpscaler is built for creators, teams, and businesses that need clearer visuals without complicated editing settings."
+    },
+    "testimonialIntro": {
+      "title": "What people say about ImgUpscaler",
+      "description": "Creators, editors, marketers, and everyday users rely on ImgUpscaler when they need a practical online upscaler for clearer, more usable visual assets."
+    },
+    "faqIntro": {
+      "title": "AI image upscaler FAQs",
+      "description": "Answers about ImgUpscaler, online image upscaling, image enhancement, file privacy, supported formats, and common use cases."
+    },
+    "comparison": {
+      "before": "Before",
+      "after": "After",
+      "labelled": "before and after comparison",
+      "adjust": "Adjust before and after comparison"
+    }
+  },
+  "pricing": {
+    "title": "Choose a plan for your image workflow",
+    "description": "ImgUpscaler and Reimagine are free to try. Upgrade when you need more credits, batch processing, or higher volume.",
+    "monthly": "Monthly",
+    "annual": "Yearly",
+    "annualBadge": "Best value",
+    "popular": "Most popular",
+    "annualPrice": "/mo · billed yearly",
+    "billingNote": "Secure checkout. Cancel anytime from your account billing page.",
+    "valueTitle": "Why upgrading pays off",
+    "valueDescription": "Paid plans are designed for real projects that need more processing power, a faster workflow, and clearer image output—not just occasional tests.",
+    "benefits": [
+      [
+        "More room to create",
+        "Use more credits across AI upscaling, photo enhancement, and Reimagine AI without reaching the free-plan limit."
+      ],
+      [
+        "Batch workflows",
+        "Process ecommerce photos, social assets, AI art, portraits, or client deliverables faster in one consistent workflow."
+      ],
+      [
+        "Advanced creative tools",
+        "Unlock higher-volume enhancement workflows, Reimagine AI, and clearer commercial-ready output."
+      ],
+      [
+        "Ad-free paid plans",
+        "Keep your workspace focused on editing and exporting with fewer distractions."
+      ],
+      [
+        "Secure billing",
+        "Checkout is handled by a secure payment provider, while plan changes stay available in your account."
+      ],
+      [
+        "Built for business work",
+        "Create higher-quality visuals for product listings, ads, portfolios, social posts, presentations, and client projects."
+      ]
+    ],
+    "faqKicker": "Pricing FAQs",
+    "faqTitle": "Questions about credits, billing, and",
+    "faqEmphasis": "plan upgrades.",
+    "faqDescription": "Answers about credits, billing cycles, plan changes, checkout, and choosing the right ImgUpscaler plan.",
+    "plans": [
+      {
+        "id": "free",
+        "name": "Free",
+        "monthly": "$0",
+        "annual": "$0",
+        "label": "Start here",
+        "description": "Best for trying AI upscaling and improving a small number of images each month.",
+        "features": [
+          "50 credits / month",
+          "No subscription required",
+          "Try AI upscaling and enhancement",
+          "Reimagine AI access",
+          "Single-image processing",
+          "Includes ads"
+        ],
+        "featured": false,
+        "action": "Try for free",
+        "footnote": "No paid subscription required."
+      },
+      {
+        "id": "premium",
+        "name": "Premium",
+        "monthly": "$9.90",
+        "annual": "$6.14",
+        "label": "For regular creators",
+        "description": "A strong fit for creators, marketers, and small teams that improve images often.",
+        "features": [
+          "500 credits / month",
+          "Email support",
+          "Reimagine AI access",
+          "Batch processing",
+          "Ad-free workspace",
+          "Best for everyday creators"
+        ],
+        "featured": true,
+        "highlight": "500 credits / month",
+        "action": "Choose Premium"
+      },
+      {
+        "id": "business",
+        "name": "Business",
+        "monthly": "$19.90",
+        "annual": "$12.34",
+        "label": "For higher volume",
+        "description": "Built for businesses and production workflows that need more processing capacity.",
+        "features": [
+          "Unlimited credits",
+          "Email support",
+          "Single and batch processing",
+          "Reimagine AI access",
+          "Ad-free workspace",
+          "Best for business volume"
+        ],
+        "featured": false,
+        "highlight": "Unlimited credits",
+        "action": "Choose Business"
+      }
+    ],
+    "faqs": [
+      [
+        "Which plan should I choose?",
+        "Choose Free if you are only testing ImgUpscaler. Choose Premium if you enhance images regularly and need batch processing, more credits, Reimagine AI, and an ad-free workspace. Choose Business when commercial or production work requires unlimited credits."
+      ],
+      [
+        "What can credits be used for?",
+        "Credits are used for AI processing tasks such as upscaling, enhancement, and related creative workflows. Paid plans provide more recurring capacity for each billing cycle."
+      ],
+      [
+        "Can I cancel anytime?",
+        "Yes. You can cancel from the account billing page. Access and credits remain available until the current billing cycle ends."
+      ],
+      [
+        "How can I get more credits?",
+        "Upgrade to a higher plan for a larger recurring allowance. Premium or Business is usually a better fit for image sets or frequent Reimagine AI use."
+      ],
+      [
+        "Is payment secure?",
+        "Yes. Payment processing is handled by a secure provider and transactions are encrypted."
+      ],
+      [
+        "Can I upgrade or downgrade later?",
+        "Yes. You can change your plan at any time from the Billing section of your account."
+      ],
+      [
+        "What should I do if payment fails?",
+        "Contact support@imgupscaler.com with your account email and approximate payment time so the team can help."
+      ],
+      [
+        "When am I charged?",
+        "Your subscription renews automatically on the same day of each monthly or yearly billing cycle, based on your original purchase date."
+      ],
+      [
+        "Can I use results commercially?",
+        "Yes. Free and paid outputs can be used for personal and commercial projects, subject to applicable law and rights to the source images."
+      ]
+    ],
+    "monthlyPrice": "/mo"
+  },
+  "header": {
+    "navigation": "Primary navigation",
+    "accountMenu": "Account menu",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "planLabel": "Plan",
+    "planFree": "Free",
+    "planPremium": "Premium",
+    "unknownValue": "—",
+    "creditsLabel": "Credits",
+    "account": "Account",
+    "billing": "Billing",
+    "signOut": "Sign out",
+    "signIn": "Sign in"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookies",
+    "blog": "Blog",
+    "contact": "Contact",
+    "switchLanguage": "Switch language",
+    "currentLanguage": "English",
+    "alternateLanguage": "简体中文",
+    "copyright": "© 2026 ImgUpscaler. All rights reserved."
+  },
+  "account": {
+    "back": "Back to workspace",
+    "member": "MEMBER",
+    "profile": "Profile",
+    "billing": "Billing",
+    "security": "Security",
+    "title": "My account",
+    "current": "CURRENT PLAN",
+    "credits": "AVAILABLE CREDITS",
+    "save": "Save changes",
+    "redeem": "Redeem code",
+    "redeemAction": "Redeem",
+    "upgrade": "Upgrade plan",
+    "signOut": "Sign out",
+    "update": "Update password",
+    "danger": "Danger zone",
+    "delete": "Delete account",
+    "saved": "Profile updated.",
+    "deleted": "Account deleted.",
+    "loadFailed": "Unable to load your account.",
+    "loading": "Loading account…",
+    "signInPrompt": "Sign in to view and manage your account.",
+    "unknown": "—",
+    "planFree": "Free",
+    "planPremium": "Premium",
+    "saveFailed": "Unable to save your profile.",
+    "redeemed": "Code redeemed.",
+    "redeemFailed": "Unable to redeem that code.",
+    "deleteConfirm": "Delete your account and all account data?",
+    "deleteFailed": "Unable to delete your account.",
+    "passwordUpdated": "Password updated.",
+    "passwordFailed": "Unable to update your password.",
+    "email": "Email",
+    "avatar": "Avatar URL",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "billingNote": "Upgrades, cancellations, payment history, and credit deductions must be maintained by your server and payment webhooks.",
+    "signIn": "Sign in",
+    "settings": "Account settings",
+    "displayName": "Display name",
+    "profileKicker": "Profile",
+    "dangerDescription": "Delete your account and permanently remove account-level data.",
+    "placeholderAvatar": "https://example.com/avatar.png"
+  },
+  "legal": {
+    "back": "Back to workspace",
+    "pages": {
+      "privacy-policy": {
+        "title": "Privacy Policy",
+        "intro": "ImgUpscaler is an online AI image upscaling and enhancement service operated by Sparklightforce Limited. This page explains the information we collect, how we use it, and your choices.",
+        "sections": [
+          [
+            "1. Information We Collect",
+            "We may collect your email address, account name, profile image, authentication provider, uploaded images, generated results, billing status, credit balance, usage history, device and browser information, IP address, cookies, and support messages."
+          ],
+          [
+            "2. How We Use Information",
+            "We use information to operate image processing, manage accounts, authenticate users, provide credits and billing, prevent abuse, answer support requests, improve reliability, measure product performance, and comply with legal obligations. We do not sell personal information."
+          ],
+          [
+            "3. Uploaded Images and Generated Results",
+            "Images are processed to provide upscaling, enhancement, preview, and download features. Uploads and results are handled under the API retention and cleanup policy."
+          ],
+          [
+            "4. Cookies and Analytics",
+            "Cookies may keep users signed in, remember preferences, protect the service, analyze traffic, and improve performance. Analytics and advertising partners may process limited usage data under their own policies and applicable law."
+          ],
+          [
+            "5. Security and Retention",
+            "We use reasonable technical and organizational safeguards. Account, billing, and usage records are retained only as needed to provide the service, resolve disputes, prevent abuse, and meet legal obligations."
+          ],
+          [
+            "6. Your Choices",
+            "You may contact support@imgupscaler.com to request access, correction, or deletion of account information. You can manage cookies through your browser settings, though required features may stop working."
+          ],
+          [
+            "7. Contact Us",
+            "Questions about this policy can be sent to support@imgupscaler.com. Sparklightforce Limited: ROOM 1503-09, 15/F, CAUSEWAY BAY CENTRE, 15-23 SUGAR STREET, CAUSEWAY BAY, HONG KONG."
+          ]
+        ]
+      },
+      "terms": {
+        "title": "Terms of Service",
+        "intro": "Using ImgUpscaler means you agree to these service terms. Review and adapt them with legal counsel before launching production billing or model services.",
+        "sections": [
+          [
+            "1. Service Scope",
+            "ImgUpscaler provides online image upscaling, enhancement, and Reimagine AI workflows. Features, models, limits, and availability may change as the product evolves."
+          ],
+          [
+            "2. User Content",
+            "You must own or have permission to process every image you upload. Do not upload unlawful, infringing, harmful, or unauthorized personal content."
+          ],
+          [
+            "3. Service Limitations",
+            "Results depend on the selected model, input image, account limits, and current service availability. The service does not guarantee a particular output or commercial suitability."
+          ],
+          [
+            "4. Credits and Subscriptions",
+            "In production, credits, subscriptions, refunds, and billing status are governed by the account page and payment provider records. Commercial use still depends on source-image rights and applicable law."
+          ],
+          [
+            "5. Acceptable Use",
+            "Do not bypass limits, abuse batch processing, interfere with the service, attack models, or use the service unlawfully. We may pause tasks for safety, maintenance, or legal reasons."
+          ],
+          [
+            "6. Contact",
+            "For help, email support@imgupscaler.com."
+          ]
+        ]
+      },
+      "cookies": {
+        "title": "Cookies",
+        "intro": "Cookies are small text files stored on your device. This page explains how cookies may support sign-in, preferences, analytics, and advertising, along with your choices.",
+        "sections": [
+          [
+            "1. Essential Cookies",
+            "Essential cookies keep sessions active, preserve security settings, and support core functionality. They generally cannot be disabled in our systems."
+          ],
+          [
+            "2. Performance and Functional Cookies",
+            "Performance cookies help us understand how visitors use the service. Functional cookies remember language and other preferences."
+          ],
+          [
+            "3. Third-Party Cookies",
+            "Analytics, advertising, payment, and authentication providers may set third-party cookies under their own privacy policies."
+          ],
+          [
+            "4. Your Choices",
+            "You can delete or block cookies in your browser. Disabling required cookies may prevent sign-in, uploads, or checkout from working correctly."
+          ],
+          [
+            "5. Contact",
+            "Questions about cookie usage can be sent to support@imgupscaler.com."
+          ]
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "home": {
+      "title": "AI Image Upscaler — Img.Upscaler",
+      "description": "Upscale images online with AI, enhance details, and download clearer high-resolution results."
+    },
+    "enhancer": {
+      "title": "Image Enhancer — Img.Upscaler",
+      "description": "Enhance image details online with AI."
+    },
+    "reimagine": {
+      "title": "Reimagine AI — Img.Upscaler",
+      "description": "Reimagine images online with creative AI controls."
+    },
+    "pricing": {
+      "title": "Pricing — Img.Upscaler",
+      "description": "Choose a plan for your image workflow."
+    },
+    "account": {
+      "title": "Account — Img.Upscaler"
+    },
+    "privacy": {
+      "title": "Privacy Policy — Img.Upscaler"
+    },
+    "terms": {
+      "title": "Terms of Service — Img.Upscaler"
+    },
+    "cookies": {
+      "title": "Cookies — Img.Upscaler"
+    },
+    "root": {
+      "title": "Img.Upscaler",
+      "description": "AI image upscaling and enhancement in the browser."
+    }
   }
 }

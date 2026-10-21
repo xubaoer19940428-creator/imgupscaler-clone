@@ -1,7 +1,7 @@
-import type { Metadata } from 'next'
 import App from '../../src/App'
+import { pageMetadata } from '../../src/lib/site-metadata'
 
-export const metadata: Metadata = { title: '定价 — Img.Upscaler', description: '选择适合您图像工作流的套餐。' }
+export const metadata = pageMetadata('en', 'pricing')
 
 export default function PricingPage() {
   return <App />
