@@ -172,7 +172,7 @@
 }
 .reference-card h3 {
 	margin-top: 12px;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 18px;
 	letter-spacing: -0.04em;
 }
@@ -385,7 +385,7 @@
 }
 .editor-header h2 {
 	margin-top: 10px;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 24px;
 	letter-spacing: -0.05em;
 }
@@ -449,13 +449,13 @@
 }
 .legal-card h1 {
 	margin-top: 28px;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 42px;
 	letter-spacing: -0.06em;
 }
 .legal-card h2 {
 	margin-top: 30px;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 22px;
 }
 .legal-card p {
@@ -690,7 +690,7 @@
 	background: #fff;
 }
 .pricing-benefits h3 {
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 17px;
 	letter-spacing: -0.04em;
 }
@@ -758,7 +758,7 @@
 }
 .account-heading h1 {
 	margin-top: 13px;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 52px;
 	letter-spacing: -0.07em;
 }
@@ -775,7 +775,7 @@
 	border-radius: 18px;
 	color: var(--blue);
 	background: #fff;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 33px;
 	font-weight: 800;
 	text-align: center;
@@ -784,7 +784,7 @@
 .account-credit small {
 	display: block;
 	color: var(--muted);
-	font-family: 'DM Sans', sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 11px;
 	font-weight: 700;
 }
@@ -828,7 +828,7 @@
 }
 .account-panel h2 {
 	margin-top: 3px;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 30px;
 	letter-spacing: -0.06em;
 }
@@ -873,7 +873,7 @@
 .account-plan strong {
 	display: block;
 	margin-top: 6px;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 21px;
 }
 .account-plan .dark-button {

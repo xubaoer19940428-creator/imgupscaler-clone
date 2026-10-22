@@ -17,7 +17,7 @@ export type LandingContent = {
   video: { title: string; description: string; alt: string; caption: string }
   useCaseIntro: { kicker: string; title: LandingTitle; description: string }
   testimonialIntro: { title: string; description: string }
-  faqIntro: { title: string; description: string }
+  faqIntro: Record<LandingRoute, { title: string; description: string }>
   comparison: { before: string; after: string; labelled: string; adjust: string }
 }
 

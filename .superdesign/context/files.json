@@ -1,0 +1,22 @@
+[
+  ".superdesign/design-system.md",
+  "src/styles.css",
+  "src/App.tsx",
+  "src/components/site/site-header.tsx",
+  "src/components/site/site-footer.tsx",
+  "src/components/site/mobile-account-panel.tsx",
+  "src/features/landing/hero.tsx",
+  "src/features/landing/sections.tsx",
+  "src/features/landing/faq.tsx",
+  "src/features/landing/data.tsx",
+  "src/features/workspace/workspace-panel.tsx",
+  "src/components/ui/button.tsx",
+  "src/components/ui/card.tsx",
+  "src/components/ui/textarea.tsx",
+  "src/components/ui/icons.tsx",
+  "src/lib/utils.ts",
+  ".superdesign/context/zh-ui-copy.json",
+  ".superdesign/context/styles-1.css",
+  ".superdesign/context/styles-2.css",
+  ".superdesign/context/styles-3.css"
+]

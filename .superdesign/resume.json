@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/zh": {
+      "targetKind": "existing-ui",
+      "projectId": "5364423a-f6b6-4c16-9291-88aab306ab6d",
+      "baselineDraftId": "dc659f6a-bf8d-4220-9fc3-eeb2fce162ed",
+      "activeDraftId": "dc659f6a-bf8d-4220-9fc3-eeb2fce162ed",
+      "designSystemPath": ".superdesign/design-system.md",
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        "src/styles.css",
+        "src/App.tsx",
+        "src/components/site/site-header.tsx",
+        "src/components/site/site-footer.tsx",
+        "src/components/site/mobile-account-panel.tsx",
+        "src/features/landing/hero.tsx",
+        "src/features/landing/sections.tsx",
+        "src/features/landing/faq.tsx",
+        "src/features/landing/data.tsx",
+        "src/features/workspace/workspace-panel.tsx",
+        "src/components/ui/button.tsx",
+        "src/components/ui/card.tsx",
+        "src/components/ui/textarea.tsx",
+        "src/components/ui/icons.tsx",
+        "src/lib/utils.ts",
+        ".superdesign/context/zh-ui-copy.json",
+        ".superdesign/context/styles-1.css",
+        ".superdesign/context/styles-2.css",
+        ".superdesign/context/styles-3.css"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "0e57d131196556254eb6275408c685771d2431c676230d4a1075c1b7b17fc6d4",
+        "src/styles.css": "a4233ee72daa40c4579405c1a200ae5a738d0e7f0422a1c88000b0276ef7f4ba",
+        "src/App.tsx": "a5a8819847bf801b0a9b6b3474715fc94a8a724b0ed5419cbba1cacf91e7b65f",
+        "src/components/site/site-header.tsx": "d9cd6b9c137e4d584a19ffe2b42f72c1c06df930f1a053b6d5d39cd40f6f1555",
+        "src/components/site/site-footer.tsx": "8a2140ac67758e37e6b53bc60872c2d5d600f192335a0a40094b1a899d22ba76",
+        "src/components/site/mobile-account-panel.tsx": "f33c37a03079edacc81f3f733e3a67498e6e61f6b2d90656fb6ad9586661b372",
+        "src/features/landing/hero.tsx": "dbf90cd4d76885164a0604971b00e399e099a0d21924226deb5357df4d9e9503",
+        "src/features/landing/sections.tsx": "38ab3d7461dd1583101a0de817ebbdbc25fe48731c03609ccf964327662fa004",
+        "src/features/landing/faq.tsx": "68134e7b1be84e2859e58d3f2791cb604ccfd849e99b292ced1987385edbe985",
+        "src/features/landing/data.tsx": "30f3c6ad551a45cd19d7b521ff680158bcf8bb464aa4e1978e1f3febbcb08d9e",
+        "src/features/workspace/workspace-panel.tsx": "5828da69072fa0e05b3264ecd04f760adaeb10cae420511caaf0ba6706899ef3",
+        "src/components/ui/button.tsx": "903e8ae3210e2d5985f848937772c4de8d2c5ffd0821db5d170c8175cd4031d1",
+        "src/components/ui/card.tsx": "c6523fcd1302787d4817d02e6a849472dae76e3fd88384efb77a3002f4b5ab74",
+        "src/components/ui/textarea.tsx": "1b9e65980d8b9951c663fd8d71868f855f85d846eecf06986be555ef09966b6c",
+        "src/components/ui/icons.tsx": "9c566d98904b707d0b0c55718b7c98a1be37fd97b6bb8385c108644b7578cce7",
+        "src/lib/utils.ts": "746e4d9beb1a5b6f0e047ec19d5f1c542c9f8117f4ea7c80d7b9bd0fe2128e91",
+        ".superdesign/context/zh-ui-copy.json": "3d6fc814e1ad2391b2eba578f305ffcb7a0c58f4322b106f597d9efba4e8b9d2",
+        ".superdesign/context/styles-1.css": "f8afd60c971c22150f05cea6cdd29288367711a59f6c457f57ffba8c4bf02625",
+        ".superdesign/context/styles-2.css": "e0b5b1454848247bf97b9a7dbc283142c0c6bb8364fe5565839ab3060eca12ce",
+        ".superdesign/context/styles-3.css": "fefc9e48e65890bdb1a9192300664b796628f1b8e88c69397087ab5f5fa338ed"
+      },
+      "components": [
+        {
+          "name": "SiteHeader",
+          "id": "3d10b47d-c9b7-4785-a204-7330d25d4cdb",
+          "sourcePath": "src/components/site/site-header.tsx"
+        },
+        {
+          "name": "SiteFooter",
+          "id": "3aacf8a2-d07c-4459-af96-22a52a6461a7",
+          "sourcePath": "src/components/site/site-footer.tsx"
+        }
+      ],
+      "drafts": {
+        "dc659f6a-bf8d-4220-9fc3-eeb2fce162ed": {
+          "title": "Original image studio",
+          "visualDirection": "warm paper, moss, lime; split upload/compare workbench",
+          "currentVersion": 3
+        }
+      },
+      "updatedAt": "2026-10-22T09:11:30.477929+00:00",
+      "referenceIds": [
+        "f46924ff-05b8-4e87-b656-adc19157aca4"
+      ]
+    }
+  }
+}

@@ -81,13 +81,13 @@
 }
 .plan-card h2 {
 	margin-top: 13px;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 27px;
 	letter-spacing: -0.06em;
 }
 .plan-price {
 	margin-top: 28px;
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 47px;
 	font-weight: 800;
 	letter-spacing: -0.08em;
@@ -151,7 +151,7 @@
 	gap: 14px;
 }
 .pricing-note h2 {
-	font-family: Manrope, sans-serif;
+	font-family: var(--font-studio), sans-serif;
 	font-size: 28px;
 	letter-spacing: -0.05em;
 }

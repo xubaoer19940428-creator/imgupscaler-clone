@@ -127,3 +127,6 @@ exports/
 # ==========================================
 # PROJECT_MEMORY.md、README.md、public/reference/ 下的项目素材默认需要进入仓库，
 # 因此这里不使用宽泛的 *.md 或 public/ 忽略规则。
+
+# Temporary design drafts
+.superdesign/tmp/

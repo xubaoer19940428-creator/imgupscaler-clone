@@ -1,0 +1,1017 @@
+{
+  "nav": {
+    "upscaler": "Vergroten",
+    "enhancer": "Verbeteren",
+    "reimagine": "Opnieuw vormgeven",
+    "pricing": "Prijzen"
+  },
+  "auth": {
+    "kicker": "Account / Inloggen",
+    "title": "Welkom terug",
+    "description": "Log in om credits, abonnementen en je verwerkingsgeschiedenis te synchroniseren.",
+    "close": "Inloggen sluiten",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "passwordPlaceholder": "Minimaal 8 tekens",
+    "submit": "Inloggen",
+    "google": "Doorgaan met Google",
+    "googleLoading": "Verbinden met Google…",
+    "googleFailed": "Inloggen met Google mislukt",
+    "googleFailedDetail": "De Google-inlogservice is niet beschikbaar. Probeer het opnieuw of gebruik e-mail.",
+    "or": "of",
+    "submitted": "Ingelogd",
+    "submittedDetail": "Je sessie is actief.",
+    "loginFailed": "Inloggen mislukt",
+    "loginFailedDetail": "Controleer je e-mail en wachtwoord en probeer het opnieuw.",
+    "emailPlaceholder": "jij@voorbeeld.nl"
+  },
+  "editor": {
+    "kicker": "Resultaat bewerken",
+    "title": "Bewerkte afbeelding bewerken",
+    "description": "Bijsnijden, roteren, spiegelen en exportkwaliteit kiezen.",
+    "close": "Sluiten",
+    "previewAlt": "Verbeterd voorbeeld",
+    "rotate": "Draaien",
+    "flipHorizontal": "Horizontaal spiegelen",
+    "flipVertical": "Verticaal spiegelen",
+    "cropRatio": "Bijsnijdverhouding",
+    "original": "Origineel",
+    "square": "Vierkant",
+    "format": "Formaat",
+    "quality": "Kwaliteit",
+    "cancel": "Annuleren",
+    "save": "Wijzigingen opslaan"
+  },
+  "workspace": {
+    "authRequired": "Log in om afbeeldingen te verwerken",
+    "authRequiredDetail": "Meld u aan om uw afbeeldingen veilig te uploaden en te verwerken.",
+    "chooseImage": "Afbeelding kiezen",
+    "dragDrop": "Sleep je afbeelding hierheen",
+    "formats": "JPG / PNG / WebP / AVIF ondersteund",
+    "selectAria": "Kies een afbeelding om te verwerken",
+    "label": "Werkruimte",
+    "readyCount": "{count, plural, one {# afbeelding klaar} other {# afbeeldingen klaar}}",
+    "status": {
+      "ready": "Gereed",
+      "processing": "Verwerken",
+      "done": "Gereed",
+      "error": "Verwerking mislukt"
+    },
+    "remove": "Afbeelding verwijderen",
+    "retry": "Opnieuw proberen",
+    "download": "Downloaden",
+    "edit": "Bewerken",
+    "redo": "Opnieuw doen",
+    "addMore": "Meer toevoegen",
+    "prompt": "Beschrijving",
+    "creativity": "Creativiteit",
+    "similarity": "Gelijkenis",
+    "output": "Uitvoerformaat",
+    "model": "Reimagine-model",
+    "scale": "Schaal",
+    "portrait": "Portret",
+    "detail": "Details",
+    "portraitModel": "Portretmodel - 2048px",
+    "detailModel": "Gedetailleerd model - 2048px",
+    "removeUploaded": "Verwijderen",
+    "startProcessing": "Verwerking starten",
+    "clear": "Wissen",
+    "downloadResults": "Resultaten downloaden",
+    "cancel": "Annuleren",
+    "processing": "Bezig met verwerken…",
+    "start": "Afbeelding verwerken",
+    "local": "Veilig geüpload voor deze taak",
+    "limit": "Limiet lange zijde 4096 px",
+    "toast": {
+      "busy": "Er wordt nog een taak verwerkt",
+      "busyDetail": "Wacht tot deze is voltooid of annuleer deze eerst",
+      "noImages": "Er kunnen geen afbeeldingen worden toegevoegd",
+      "noImagesDetail": "JPG, PNG, WebP en AVIF tot 20 MB per bestand worden ondersteund",
+      "added": "{count, plural, one {# afbeelding toegevoegd} other {# afbeeldingen toegevoegd}}",
+      "batchLimit": "Maximaal {count} afbeeldingen per groep",
+      "addedDetail": "Voeg meer afbeeldingen toe of start de verwerking",
+      "cancelled": "Verwerking geannuleerd",
+      "cancelledDetail": "De originele bestanden blijven in deze werkruimte",
+      "resultError": "Kan geen resultaat genereren",
+      "partialError": "Sommige afbeeldingen zijn mislukt",
+      "complete": "Verwerking voltooid",
+      "completeDetail": "Resultaten zijn klaar om te bewerken of downloaden",
+      "downloaded": "Resultaat gedownload",
+      "zipStarted": "ZIP-download gestart",
+      "resultCount": "{count, plural, one {# resultaat} other {# resultaten}}",
+      "downloadError": "Download mislukt",
+      "downloadErrorDetail": "Probeer elke afbeelding afzonderlijk te downloaden",
+      "editSaved": "Bewerkingen opgeslagen",
+      "editError": "Bewerken mislukt",
+      "retry": "Probeer het opnieuw"
+    },
+    "api": {
+      "resultMissing": "De API heeft geen afbeeldingsresultaat geretourneerd",
+      "timeout": "Er is een time-out opgetreden voor de afbeeldingstaak",
+      "failed": "De afbeeldingstaak is mislukt",
+      "cancelled": "De afbeeldingstaak is geannuleerd",
+      "editorUnsupported": "Deze browser ondersteunt geen afbeeldingsbewerking",
+      "imageReadFailed": "De afbeelding kon niet worden gelezen",
+      "encodeFailed": "Het afbeeldingsresultaat kon niet worden gegenereerd"
+    },
+    "promptPlaceholder": "Beschrijf het gewenste detail, de stijl of transformatie…",
+    "reimagineDefaultPrompt": "natuurlijke details, zuivere textuur, hoge kwaliteit",
+    "apiPrompt": {
+      "home": "Schaal deze afbeelding op naar een helder resultaat met hoge resolutie met scherpere randen, natuurlijke texturen, realistische fijne details en waarbij de originele compositie behouden blijft. Voeg geen onderwerpen toe of verwijder deze niet.",
+      "enhancer": "Verbeter dit beeld met natuurlijke scherpte, schonere texturen, minder ruis en compressieartefacten en verbeterde fijne details, terwijl het oorspronkelijke onderwerp, de kleuren, de belichting en de compositie behouden blijven.",
+      "reimagine": "Maak een duidelijkere, gedetailleerdere versie van dit beeld, waarbij je de gevraagde creatieve richting volgt en het herkenbare onderwerp behoudt."
+    }
+  },
+  "landing": {
+    "heroContent": {
+      "home": {
+        "eyebrow": "Online AI-afbeeldingsupscaler",
+        "title": {
+          "before": "Vergroot beelden met AI.",
+          "emphasis": "Laat elk detail spreken."
+        },
+        "description": "Vergroot foto’s, illustraties, productafbeeldingen, portretten en oude foto’s met AI. Kies uitvoer in 2K of 4K, bekijk de details en download het resultaat. De beschikbare resolutie hangt af van het model en de accountlimieten."
+      },
+      "enhancer": {
+        "eyebrow": "Online AI-afbeeldingsverbeteraar",
+        "title": {
+          "before": "Verbeter de beeldkwaliteit",
+          "emphasis": "met AI"
+        },
+        "description": "Maak zachte, ruisende, gecomprimeerde of lage-resolutieafbeeldingen duidelijker."
+      },
+      "reimagine": {
+        "eyebrow": "Gratis Reimagine Upscaler",
+        "title": {
+          "before": "Beeld opnieuw bedenken en vergroten",
+          "emphasis": "met AI"
+        },
+        "description": "Upload een afbeelding, voeg een prompt toe en bepaal creativiteit en gelijkenis voor een duidelijkere, rijkere versie."
+      }
+    },
+    "featureCards": {
+      "home": [
+        {
+          "number": "01",
+          "title": "Geavanceerde AI-opschaling",
+          "body": "Verhoog de resolutie met scherpere randen, duidelijkere texturen en natuurlijkere details."
+        },
+        {
+          "number": "02",
+          "title": "Afbeeldingen met 2K- en 4K-uitvoer",
+          "body": "Kies het uitvoerformaat dat geschikt is voor websites, productvermeldingen, sociale berichten, presentaties of drukwerk."
+        },
+        {
+          "number": "03",
+          "title": "Batch-upscaling van afbeeldingen",
+          "body": "Verwerk meerdere afbeeldingen in één efficiënte workflow in plaats van dezelfde upload- en exportstappen te herhalen."
+        },
+        {
+          "number": "04",
+          "title": "Workflow voor beeldverbetering",
+          "body": "Verbeter foto's, anime, portretten, e-commerce-afbeeldingen en oude foto's met een praktische online tool."
+        },
+        {
+          "number": "05",
+          "title": "Privacy-first verwerking",
+          "body": "Geüploade bestanden en gemaakte resultaten worden beheerd volgens het bewaar- en verwijderbeleid van de dienst."
+        },
+        {
+          "number": "06",
+          "title": "Afbeeldingen voor persoonlijke en zakelijke projecten",
+          "body": "Gebruik verbeterde afbeeldingen in marketing, klantenwerk, e-commerce, creatieve projecten en persoonlijk werk."
+        }
+      ],
+      "enhancer": [
+        {
+          "number": "01",
+          "title": "Verscherp onscherpe beelden",
+          "body": "Herstel de helderheid van de randen en het lokale contrast terwijl gezichten, kleuren en belichting natuurlijk blijven."
+        },
+        {
+          "number": "02",
+          "title": "Verbeter de beeldkwaliteit online",
+          "body": "Verbeter afbeeldingen van lage kwaliteit voor sociale media, websites, presentaties, drukwerk en productvermeldingen."
+        },
+        {
+          "number": "03",
+          "title": "Verbeter afbeeldingsdetails",
+          "body": "Herstel fijne textuur, haar, stof, productranden, lijnwerk en andere zichtbare details."
+        },
+        {
+          "number": "04",
+          "title": "Verminder ruis en compressieartefacten",
+          "body": "Ruim schermafbeeldingen, oude uploads, gecomprimeerde foto's, JPEG-artefacten en schade aan webafbeeldingen op."
+        },
+        {
+          "number": "05",
+          "title": "Verscherp AI-kunst en gegenereerde afbeeldingen",
+          "body": "Verfijn textuur en details in afbeeldingen gemaakt met OpenAI, Midjourney, Flux, Stable Diffusion en andere AI-tools."
+        },
+        {
+          "number": "06",
+          "title": "Optimaliseer portretten, producten en illustraties",
+          "body": "Verbeter portretten, productfoto's, anime, illustraties en digitale kunst met behoud van de oorspronkelijke richting."
+        }
+      ],
+      "reimagine": [
+        {
+          "number": "01",
+          "title": "Direct begeleide nieuwe verbeelding",
+          "body": "Beschrijf het gewenste resultaat, van duidelijkere architectuur tot filmische portretten, rijker anime-lijnwerk of realistische producttextuur."
+        },
+        {
+          "number": "02",
+          "title": "Creativiteitscontrole",
+          "body": "Verlaag de creativiteit voor een stabiele, getrouwe verbetering of verhoog deze om meer zichtbare variatie en nieuwe details te introduceren."
+        },
+        {
+          "number": "03",
+          "title": "Sterkte gelijkenis",
+          "body": "Bepaal hoe nauw de uitvoer de oorspronkelijke lay-out, onderwerpkenmerken en herkenbare structuur behoudt."
+        },
+        {
+          "number": "04",
+          "title": "Creatieve opschaling",
+          "body": "Voeg gegenereerde details toe tijdens het opschalen voor concept art, illustratie, interieurs, architectuur, portretten en experimenten."
+        },
+        {
+          "number": "05",
+          "title": "Portret- en detailmodellen",
+          "body": "Kies modelgedrag voor natuurlijke gezichten, sterker detailherstel of een creatievere interpretatie."
+        },
+        {
+          "number": "06",
+          "title": "Privacy-first verwerking",
+          "body": "Geüploade bestanden en gemaakte resultaten worden beheerd volgens het bewaar- en verwijderbeleid van de dienst."
+        }
+      ]
+    },
+    "useCases": {
+      "home": [
+        {
+          "image": "/reference/upscale-image-online.jpeg",
+          "beforeImage": "/reference/upscale-image-online.jpeg",
+          "afterImage": "/reference/upscale-image-online.jpeg",
+          "title": "Schaal afbeeldingen online op voor internet, print en sociale media",
+          "body": "Zet kleine, wazige of korrelige afbeeldingen om in duidelijkere beelden met hoge resolutie voor websites, thumbnails, presentaties, posters, e-commerce en sociale berichten.",
+          "cta": "Een afbeelding opschalen"
+        },
+        {
+          "image": "/reference/batch-upscaler.jpeg",
+          "beforeImage": "/reference/batch-upscaler.jpeg",
+          "afterImage": "/reference/batch-upscaler.jpeg",
+          "title": "Batch-upscaling van afbeeldingen voor efficiënte productie",
+          "body": "Houd productfoto's, marketingmiddelen, anime-afbeeldingen of klantbestanden consistent terwijl u meer afbeeldingen verwerkt met minder handmatige stappen.",
+          "cta": "Ontdek batch-opschaling"
+        },
+        {
+          "image": "/reference/enhance-subjects.jpeg",
+          "beforeImage": "/reference/enhance-subjects.jpeg",
+          "afterImage": "/reference/enhance-subjects.jpeg",
+          "title": "Verbeter portretten, producten, anime en oude foto's",
+          "body": "Verbeter avatars, productafbeeldingen, illustraties, scans, reisfoto's en oudere afbeeldingen die een meer bruikbare resolutie nodig hebben.",
+          "cta": "Verbeter de beeldkwaliteit"
+        }
+      ],
+      "enhancer": [
+        {
+          "image": "/reference/enhancer/enhancer-sample-1-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-1-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-1-after.webp",
+          "title": "Verscherp onscherpe beelden en herstel verloren details",
+          "body": "Verbeter onscherpe beelden of beelden van lage kwaliteit terwijl het resultaat natuurlijk blijft. Deze AI-beeldverbetering verbetert de helderheid van de randen, herstelt de fijne textuur en vermindert onscherpte, ruis en compressieartefacten zonder dat het beeld er overbewerkt uitziet.",
+          "cta": "Een afbeelding scherper maken"
+        },
+        {
+          "image": "/reference/enhancer/enhancer-sample-2-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-2-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-2-after.webp",
+          "title": "Optimaliseer afbeeldingen met een lage resolutie voor sociale media, drukwerk en e-commerce",
+          "body": "Maak duidelijkere afbeeldingen met een hoge resolutie voor sociale media, presentaties, drukwerk, achtergronden, productvermeldingen en professioneel delen. AI-verbetering vergroot de bruikbare details en verbetert tegelijkertijd de resolutie voor verschillende uitvoerformaten.",
+          "cta": "Opschalen en optimaliseren"
+        },
+        {
+          "image": "/reference/enhancer/enhancer-sample-3-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-3-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-3-after.webp",
+          "title": "Verbeter AI-kunst, portretten, schermafbeeldingen en productafbeeldingen",
+          "body": "Gebruik deze verbetering voor door AI gegenereerde afbeeldingen, portretten, anime, illustraties, schermafbeeldingen en productafbeeldingen. Het verscherpt de textuur, verwijdert artefacten, voegt zichtbare details toe en verbetert de helderheid terwijl de oorspronkelijke visuele richting behouden blijft.",
+          "cta": "Verbeter creatieve beelden"
+        }
+      ],
+      "reimagine": [
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-building-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-building-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-building-after.jpg",
+          "title": "Geef architectuur en interieurs opnieuw vorm met rijkere details",
+          "body": "Zet architectuur-, interieur- en exterieurafbeeldingen met een lage resolutie om in duidelijkere beelden met een rijkere oppervlaktetextuur, schonere randen en een sterkere ruimtelijke diepte. Gebruik aanwijzingen om materialen, verlichting en sfeer te begeleiden, terwijl de kracht van de gelijkenis de oorspronkelijke structuur herkenbaar houdt.",
+          "cta": "Probeer AI opnieuw uit te vinden"
+        },
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-anime-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-anime-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-anime-after.jpg",
+          "title": "Voeg creatieve details toe aan anime, illustratie en AI-kunst",
+          "body": "Gebruik Reimagine AI als een begeleide verbetering voor anime, illustraties, lijntekeningen en door AI gegenereerde afbeeldingen. Houd de originele stijl herkenbaar en voeg een rijkere textuur, duidelijkere details en een meer gepolijste afwerking toe.",
+          "cta": "Verbeter een illustratie"
+        },
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-face-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-face-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-face-after.jpg",
+          "title": "Verbeter portretten terwijl gezichten herkenbaar blijven",
+          "body": "Stel portretten opnieuw voor door de helderheid, huiddetails, haartextuur en belichting te verbeteren, terwijl gelijkeniscontroles de persoon herkenbaar houden. Het werkt goed voor profielfoto's, oude foto's, bewerkte afbeeldingen en creatieve portretten.",
+          "cta": "Een portret opnieuw bedenken"
+        }
+      ]
+    },
+    "featureIntro": {
+      "home": {
+        "kicker": "Zie hoe AI-opschaling de helderheid verbetert",
+        "title": {
+          "before": "Geavanceerde AI-opschaling,",
+          "emphasis": "gebouwd voor echt werk."
+        },
+        "description": "Vergroot foto’s, illustraties, productafbeeldingen, portretten en oude foto’s met AI. Kies uitvoer in 2K of 4K, bekijk de details en download het resultaat. De beschikbare resolutie hangt af van het model en de accountlimieten."
+      },
+      "enhancer": {
+        "kicker": "Verbeter de kwaliteit, verscherp details en verwijder visuele ruis.",
+        "title": {
+          "before": "AI-beeldverbetering,",
+          "emphasis": "praktisch gemaakt."
+        },
+        "description": "Verscherp onscherpe afbeeldingen, voeg details toe, verminder ruis, verwijder compressieartefacten en verbeter afbeeldingen van lage kwaliteit zonder handmatig retoucheren."
+      },
+      "reimagine": {
+        "kicker": "Een creatieve upscaler voor gecontroleerde beeldtransformatie",
+        "title": {
+          "before": "Denk opnieuw aan AI,",
+          "emphasis": "voor creatieve verbetering."
+        },
+        "description": "Gebruik aanwijzingen, modelkeuze, creativiteit en gelijkenissterkte om realistische details toe te voegen terwijl u beslist of de uitvoer trouw blijft of een nieuwe variatie verkent."
+      }
+    },
+    "routeWorkflow": {
+      "home": {
+        "kicker": "Een afbeelding online opschalen",
+        "title": {
+          "before": "Drie stappen naar",
+          "emphasis": "duidelijkere uitvoer."
+        },
+        "description": "Upload een bestand, kies de uitvoerresolutie, bekijk het resultaat en download een scherpere afbeelding.",
+        "steps": [
+          [
+            "Stap 1",
+            "Upload een JPG-, PNG- of WebP-afbeelding",
+            "Kies een foto met lage resolutie, productafbeelding, anime-illustratie, portret, oude foto of afbeelding."
+          ],
+          [
+            "Stap 2",
+            "Kies uitvoer in 2K of 4K",
+            "Kies uitvoer in 2K of 4K terwijl AI details, texturen en randen verbetert."
+          ],
+          [
+            "Stap 3",
+            "Bekijk, verbeter en download",
+            "Vergelijk voor en na, voer eventuele bewerkingen uit en download het resultaat in hoge resolutie."
+          ]
+        ]
+      },
+      "enhancer": {
+        "kicker": "Hoe u de beeldkwaliteit online kunt verbeteren",
+        "title": {
+          "before": "In drie stappen",
+          "emphasis": "duidelijkere restauratie."
+        },
+        "description": "Verscherp een afbeelding, verbeter de fotokwaliteit en creëer een duidelijker resultaat met hoge resolutie met AI-verbetering.",
+        "steps": [
+          [
+            "Stap 1",
+            "Upload een wazige afbeelding of afbeelding van lage kwaliteit",
+            "De workflow verwerkt wazige, gecomprimeerde, ruisige, oude en door AI gegenereerde afbeeldingen met een lage resolutie."
+          ],
+          [
+            "Stap 2",
+            "Kies een verbeterde uitvoer",
+            "Selecteer de uitvoerkwaliteit voor snelle verscherping, sterkere details of een helderder beeld met hoge resolutie."
+          ],
+          [
+            "Stap 3",
+            "Bekijk een voorbeeld van het resultaat en download",
+            "Vergelijk herstelde details, scherpere randen en duidelijkere textuur voordat u downloadt."
+          ]
+        ]
+      },
+      "reimagine": {
+        "kicker": "Hoe je een afbeelding online opnieuw kunt bedenken",
+        "title": {
+          "before": "Drie stappen naar",
+          "emphasis": "creatieve output."
+        },
+        "description": "Begin met een afbeelding, begeleid het resultaat met een prompt en breng creativiteit in evenwicht met gelijkenis voordat u gaat downloaden.",
+        "steps": [
+          [
+            "Stap 1",
+            "Upload de afbeelding die u opnieuw wilt opbouwen",
+            "Gebruik een portret, product, architectuur, interieur, anime, illustratie, AI-afbeelding of oude foto."
+          ],
+          [
+            "Stap 2",
+            "Voeg een prompt toe en kies sterkte",
+            "Kies modelgedrag en pas vervolgens Creativiteit en gelijkenis aan om de transformatie te besturen."
+          ],
+          [
+            "Stap 3",
+            "Bekijk een voorbeeld, verfijn en download",
+            "Bekijk het resultaat, pas de balans tussen details en natuurgetrouwheid aan en download de uiteindelijke afbeelding."
+          ]
+        ]
+      }
+    },
+    "testimonials": [
+      [
+        "Eleonore Lefaix",
+        "Siecledigital.fr-editor",
+        "ImgUpscaler maakt het opschalen van afbeeldingen eenvoudig en ondersteunt batchverwerking, zodat gebruikers meerdere afbeeldingen tegelijk kunnen verwerken."
+      ],
+      [
+        "Eva Williams",
+        "De foto-editor repareren",
+        "Wanneer u meerdere afbeeldingen moet opschalen en een groot aantal visuele elementen moet verbeteren zonder handmatige stappen te herhalen, is ImgUpscaler een praktische keuze."
+      ],
+      [
+        "Matic Broz",
+        "Redacteur",
+        "Het opschalen van afbeeldingen hoeft niet duur of ingewikkeld te zijn. ImgUpscaler biedt een eenvoudige en intuïtieve manier om afbeeldingen online te vergroten."
+      ],
+      [
+        "Sravan",
+        "Product Hunt-gebruiker",
+        "ImgUpscaler werkt met veel afbeeldingstypen, van landschappen en productfoto's tot oude foto's die meer zichtbare details nodig hebben."
+      ]
+    ],
+    "faqs": {
+      "home": [
+        [
+          "Wat is ImgUpscaler?",
+          "ImgUpscaler is een online hulpmiddel om foto’s, illustraties, productafbeeldingen en portretten met AI te vergroten. Kies uitvoer in 2K of 4K. De beschikbare afmetingen hangen af van het model en de accountlimieten."
+        ],
+        [
+          "Hoe werkt een AI-beeldopschaler?",
+          "Het geselecteerde AI-model analyseert randen, texturen en kleurrelaties voordat details met een hogere resolutie worden gegenereerd in plaats van simpelweg pixels uit te rekken."
+        ],
+        [
+          "Hoe kan ik een afbeelding online opschalen?",
+          "Upload een JPG-, PNG-, WebP- of AVIF-afbeelding, kies een uitvoerformaat, bekijk een voorbeeld en download de verwerkte afbeelding."
+        ],
+        [
+          "Kan ik een afbeelding opschalen naar 4K?",
+          "Ja. Je kunt kiezen voor een 4K-uitvoer. De API past het geselecteerde model en de accountlimieten toe op de gevraagde oplossing."
+        ],
+        [
+          "Wat is het verschil tussen opschaling en verbetering?",
+          "Upscaling richt zich op het vergroten van de canvasgrootte en resolutie. Verbetering richt zich op helderheid, ruis, textuur en kleur. Beide kunnen dezelfde upload- en downloadworkflow gebruiken."
+        ],
+        [
+          "Kan AI-verbetering een wazig beeld herstellen?",
+          "Het kan lichte onscherpte, compressieruis en gekartelde randen verbeteren, maar kan geen herstel garanderen van informatie die nooit is vastgelegd of volledig verborgen is."
+        ],
+        [
+          "Welke beeldformaten worden ondersteund?",
+          "Ondersteunde formaten zijn JPG, PNG, WebP en AVIF, tot 20 MB per afbeelding."
+        ],
+        [
+          "Kan ik meerdere afbeeldingen tegelijk opschalen?",
+          "Ja. De werkruimte accepteert maximaal 20 afbeeldingen en verwerkt deze in wachtrijvolgorde, waarbij elk resultaat kan worden gedownload zodra het gereed is."
+        ],
+        [
+          "Zijn mijn geüploade afbeeldingen privé?",
+          "Afbeeldingen worden geüpload via ondertekende URL's met een korte levensduur, verwerkt door het geselecteerde model en geretourneerd als privéresultaten onder het API-retentiebeleid."
+        ],
+        [
+          "Hoe lang worden geüploade afbeeldingen bewaard?",
+          "Bronbestanden en resultaten volgen het API-retentiebeleid en worden verwijderd volgens het opschoonschema van de service."
+        ],
+        [
+          "Kan ik de opgeschaalde afbeeldingen commercieel gebruiken?",
+          "De frontend beperkt het exportgebruik niet. Commerciële licenties, modeluitvoerverantwoordelijkheid en bronbeeldrechten moeten in de productievoorwaarden worden gedefinieerd."
+        ],
+        [
+          "Welke afbeeldingen werken het beste met AI-opschaling?",
+          "Foto's met een lage resolutie, productafbeeldingen, portretten, anime-kunst, scans en licht gecomprimeerde oude foto's laten vaak de duidelijkste verbetering zien."
+        ],
+        [
+          "Is het opschalen van AI beter dan het reguliere formaat wijzigen?",
+          "Regelmatige formaatwijziging interpoleert bestaande pixels. AI-opschaling probeert details te reconstrueren; het resultaat is afhankelijk van de bronkwaliteit, het model en de doelgrootte."
+        ],
+        [
+          "Moet ik software installeren?",
+          "Nee. Gebruik de tool rechtstreeks in uw browser; beeldverwerking vindt plaats op onze servers."
+        ]
+      ],
+      "enhancer": [
+        [
+          "Wat is een AI-beeldversterker?",
+          "Een AI-beeldverbetering verbetert automatisch de beeldkwaliteit door onscherpte te verscherpen, details te herstellen, ruis te verminderen en compressieartefacten te verwijderen zonder handmatige bewerking."
+        ],
+        [
+          "Hoe verbeter ik de beeldkwaliteit online?",
+          "Upload een afbeelding, kies een verbeteringsuitvoer, bekijk een voorbeeld van het resultaat en download deze. De workflow wordt uitgevoerd in de browser."
+        ],
+        [
+          "Kan AI een wazig beeld duidelijker maken?",
+          "AI kan milde onscherpte, ruis en compressieschade verbeteren, maar kan geen herstel garanderen van details die nooit zijn vastgelegd."
+        ],
+        [
+          "Kan ik de beelddetails verbeteren zonder handmatig te bewerken?",
+          "Ja. De versterker verwerkt automatisch randen, texturen, ruis en compressie-artefacten."
+        ],
+        [
+          "Wat is het verschil tussen verbetering en opschaling?",
+          "Enhancement richt zich op helderheid, textuur en ruis. Bij opschaling wordt gekeken naar de canvasgrootte en resolutie."
+        ],
+        [
+          "Zal de versterker onscherpte en ruis automatisch verminderen?",
+          "Het geselecteerde AI-model voert ruisonderdrukking en herstel uit voordat het resultaat wordt geretourneerd."
+        ],
+        [
+          "Ondersteunt het gecomprimeerde JPEG- of webafbeeldingen?",
+          "Ja. JPG, PNG, WebP en AVIF worden ondersteund."
+        ],
+        [
+          "Kan ik door AI gegenereerde afbeeldingen verbeteren?",
+          "Ja. AI-kunst, portretten, productafbeeldingen en illustraties werken goed met deze workflow."
+        ],
+        [
+          "Kan ik portretten op natuurlijke wijze verbeteren?",
+          "Gebruik een gemiddelde sterkte en vergelijk het resultaat voordat u downloadt om te veel verscherping te voorkomen."
+        ],
+        [
+          "Kan ik productfoto's verbeteren?",
+          "Ja. De versterker werkt voor e-commercevermeldingen, marketingmiddelen en websiteafbeeldingen."
+        ],
+        [
+          "Zal de verbetering de originele kleuren veranderen?",
+          "Het geselecteerde AI-model regelt de versterkingssterkte en kleurgetrouwheid voor het geretourneerde resultaat."
+        ],
+        [
+          "Welke afbeeldingen werken het beste met de versterker?",
+          "Portretten, screenshots, oude foto's, productafbeeldingen, anime en webafbeeldingen met een lage resolutie zijn goede kandidaten."
+        ],
+        [
+          "Kan ik een voorbeeld van een verbeterde afbeelding bekijken voordat ik deze download?",
+          "Ja. Het resultaat verschijnt eerst in de werkruimte en kan worden bewerkt of gedownload."
+        ],
+        [
+          "Heb ik bewerkingsvaardigheden nodig om de versterker te gebruiken?",
+          "Nee. Upload een afbeelding, kies een uitvoer en download het resultaat."
+        ]
+      ],
+      "reimagine": [
+        [
+          "Wat is AI opnieuw voorstellen?",
+          "Reimagine AI is de snelle, creatieve opschaler van ImgUpscaler. Het vergroot een afbeelding terwijl het nieuwe details, textuur en visuele variatie genereert op basis van uw prompt en instellingen."
+        ],
+        [
+          "Waarin verschilt Reimagine AI van een reguliere upscaler?",
+          "Een reguliere upscaler richt zich op het behouden van de bron en het verhogen van de resolutie. Reimagine AI kan ook generatieve details toevoegen vanaf een prompt."
+        ],
+        [
+          "Wat is een creatieve beeldopschaler?",
+          "Het combineert resolutieverbetering met generatieve AI om nieuwe details, textuur, patronen en stilistische verbeteringen uit de bron af te leiden."
+        ],
+        [
+          "Hoe beïnvloeden aanwijzingen een opnieuw bedacht resultaat?",
+          "Prompts beschrijven de belichting, materialen, stijl, detailniveau, sfeer of hoe het onderwerp moet worden behandeld."
+        ],
+        [
+          "Wat doet de Creativiteitscontrole?",
+          "Hogere creativiteit introduceert meer variatie, textuur en nieuwe visuele details. Een lagere creativiteit houdt het resultaat dichter bij de bron."
+        ],
+        [
+          "Wat is gelijkenissterkte?",
+          "Een grotere gelijkenis helpt de oorspronkelijke lay-out, onderwerpkenmerken en herkenbare structuur te behouden."
+        ],
+        [
+          "Welke instellingen geven stabiele resultaten?",
+          "Gebruik minder creativiteit en meer gelijkenis voor portretten en afbeeldingen waarbij de originele compositie ertoe doet."
+        ],
+        [
+          "Kan ik een portret opnieuw bedenken zonder het gezicht al te veel te veranderen?",
+          "Ja. Gebruik het portretmodel met minder creativiteit en meer gelijkenis."
+        ],
+        [
+          "Welke afbeeldingstypen werken het beste met Reimagine AI?",
+          "Portretten, architectuur, interieurs, anime-kunst, illustraties, productfoto's en oude foto's zijn goede kandidaten."
+        ],
+        [
+          "Is Reimagine AI een alternatief voor Magnific?",
+          "Het kan worden gebruikt als een lichtgewicht, promptgestuurde creatieve opschaler."
+        ],
+        [
+          "Kan ik Reimagine AI-uitvoer commercieel gebruiken?",
+          "Ja, onderhevig aan toepasselijk recht en de rechten verbonden aan de originele afbeeldingen."
+        ],
+        [
+          "Zijn geüploade afbeeldingen privé?",
+          "De API maakt gebruik van kortstondige ondertekende URL's en het geconfigureerde opruimbeleid voor geüploade afbeeldingen en resultaten."
+        ]
+      ]
+    },
+    "video": {
+      "title": "Zie hoe AI-beeldopschaling de duidelijkheid verbetert",
+      "description": "Vergroot foto’s, illustraties, productafbeeldingen, portretten en oude foto’s met AI. Kies uitvoer in 2K of 4K, bekijk de details en download het resultaat. De beschikbare resolutie hangt af van het model en de accountlimieten.",
+      "alt": "ImgUpscaler videopresentatie",
+      "caption": "Bekijk op YouTube ↗"
+    },
+    "useCaseIntro": {
+      "kicker": "AI-beeldopschaling voor echt creatief werk",
+      "title": {
+        "before": "Maak duidelijker materiaal voor",
+        "emphasis": "web, print en sociale media."
+      },
+      "description": "Van snelle online opschaling tot batch-ready workflows, ImgUpscaler is gebouwd voor makers, teams en bedrijven die duidelijkere beelden nodig hebben zonder ingewikkelde bewerkingsinstellingen."
+    },
+    "testimonialIntro": {
+      "title": "Wat mensen zeggen over ImgUpscaler",
+      "description": "Makers, redacteuren, marketeers en gewone gebruikers vertrouwen op ImgUpscaler wanneer ze een praktische online upscaler nodig hebben voor duidelijkere, beter bruikbare visuele middelen. Veelgestelde vragen over"
+    },
+    "faqIntro": {
+      "home": {
+        "title": "AI-upscaler voor afbeeldingen",
+        "description": "Antwoorden over ImgUpscaler, online opschalen van afbeeldingen, beeldverbetering, bestandsprivacy, ondersteunde formaten en veelvoorkomende gebruiksscenario's."
+      },
+      "enhancer": {
+        "title": "Veelgestelde vragen over beeldverbetering",
+        "description": "Lees meer over foto’s verscherpen, ruis verminderen, texturen herstellen en resultaten bekijken."
+      },
+      "reimagine": {
+        "title": "Veelgestelde vragen over beeldhercreatie",
+        "description": "Lees hoe beschrijvingen, creativiteit, gelijkenis en de modelkeuze het nieuwe beeld beïnvloeden."
+      }
+    },
+    "comparison": {
+      "before": "Vóór",
+      "after": "Na",
+      "labelled": "voor en na vergelijking",
+      "adjust": "Aanpassen voor en na vergelijking"
+    }
+  },
+  "pricing": {
+    "title": "Kies een plan voor jouw beeldworkflow",
+    "description": "Probeer ImgUpscaler en Reimagine gratis. Upgrade wanneer je meer credits of een groter volume nodig hebt.",
+    "monthly": "Maandelijks",
+    "annual": "Jaarlijks",
+    "annualBadge": "Beste keuze",
+    "popular": "Meest populair",
+    "annualPrice": "/maand · jaarlijks gefactureerd",
+    "billingNote": "Veilig afrekenen. Annuleer op elk moment via de factureringspagina van je account.",
+    "valueTitle": "Waarom upgraden loont",
+    "valueDescription": "Betaalde abonnementen zijn ontworpen voor echte projecten die meer verwerkingskracht, een snellere workflow en duidelijkere beelduitvoer nodig hebben, niet alleen voor incidentele tests.",
+    "benefits": [
+      [
+        "Meer ruimte om te creëren",
+        "Gebruik meer credits voor AI-opschaling, fotoverbetering en Reimagine AI zonder de limiet voor het gratis abonnement te bereiken."
+      ],
+      [
+        "Batchworkflows",
+        "Verwerk e-commercefoto's, sociale media, AI-kunst, portretten of klantresultaten sneller in één consistente workflow."
+      ],
+      [
+        "Geavanceerde creatieve tools",
+        "Ontgrendel workflows voor verbetering met grotere volumes, geef AI opnieuw vorm en duidelijkere commerciële uitvoer."
+      ],
+      [
+        "Advertentievrije betaalde abonnementen",
+        "Houd uw werkruimte gefocust op bewerken en exporteren, met minder afleiding."
+      ],
+      [
+        "Veilige facturering",
+        "Het afrekenen wordt afgehandeld door een beveiligde betalingsprovider, terwijl planwijzigingen beschikbaar blijven in uw account."
+      ],
+      [
+        "Gebouwd voor zakelijk werk",
+        "Creëer visuele beelden van hogere kwaliteit voor productvermeldingen, advertenties, portfolio's, sociale berichten, presentaties en klantprojecten."
+      ]
+    ],
+    "faqKicker": "Veelgestelde vragen over prijzen",
+    "faqTitle": "Vragen over tegoeden, facturering en",
+    "faqEmphasis": "upgrades plannen.",
+    "faqDescription": "Antwoorden over tegoeden, factureringscycli, abonnementswijzigingen, afrekenen en het kiezen van het juiste ImgUpscaler-abonnement.",
+    "plans": [
+      {
+        "id": "free",
+        "name": "Gratis",
+        "monthly": "$0",
+        "annual": "$0",
+        "label": "Begin hier",
+        "description": "Het beste voor het uitproberen van AI-opschaling en het elke maand verbeteren van een klein aantal afbeeldingen.",
+        "features": [
+          "50 credits / maand",
+          "Geen abonnement vereist",
+          "Probeer AI-opschaling en -verbetering",
+          "Een nieuw idee van AI-toegang",
+          "Verwerking van één afbeelding",
+          "Inclusief advertenties"
+        ],
+        "featured": false,
+        "action": "Gratis proberen",
+        "footnote": "Geen betaald abonnement vereist."
+      },
+      {
+        "id": "premium",
+        "name": "Plus",
+        "monthly": "$9.90",
+        "annual": "$6.14",
+        "label": "Voor reguliere makers",
+        "description": "Zeer geschikt voor makers, marketeers en kleine teams die afbeeldingen vaak verbeteren.",
+        "features": [
+          "500 credits/maand",
+          "E-mailondersteuning",
+          "AI-toegang opnieuw voorstellen",
+          "Batchverwerking",
+          "Advertentievrije werkruimte",
+          "Het beste voor alledaagse makers"
+        ],
+        "featured": true,
+        "highlight": "500 credits/maand",
+        "action": "Plus kiezen"
+      },
+      {
+        "id": "business",
+        "name": "Zakelijk",
+        "monthly": "$19.90",
+        "annual": "$12.34",
+        "label": "Voor grotere volumes",
+        "description": "Gebouwd voor bedrijven en productieworkflows die meer verwerkingscapaciteit nodig hebben.",
+        "features": [
+          "Onbeperkte credits",
+          "E-mailondersteuning",
+          "Enkelvoudige en batchverwerking",
+          "AI-toegang opnieuw vormgeven",
+          "Advertentievrije werkruimte",
+          "Beste voor zakelijk volume"
+        ],
+        "featured": false,
+        "highlight": "Onbeperkt krediet",
+        "action": "Zakelijk kiezen"
+      }
+    ],
+    "faqs": [
+      [
+        "Welk abonnement moet ik kiezen?",
+        "Kies Gratis als u alleen ImgUpscaler test. Kies Plus als u afbeeldingen regelmatig verbetert en batchverwerking, meer credits, Reimagine AI en een advertentievrije werkruimte nodig heeft. Kies Zakelijk als voor commercieel of productiewerk onbeperkte credits nodig zijn."
+      ],
+      [
+        "Waarvoor kunnen credits worden gebruikt?",
+        "Credits worden gebruikt voor AI-verwerkingstaken zoals opschaling, verbetering en gerelateerde creatieve workflows. Betaalde abonnementen bieden meer terugkerende capaciteit voor elke factureringscyclus."
+      ],
+      [
+        "Kan ik op elk moment opzeggen?",
+        "Ja. U kunt annuleren via de factureringspagina van uw account. Toegang en tegoeden blijven beschikbaar totdat de huidige factureringscyclus eindigt."
+      ],
+      [
+        "Hoe kan ik meer credits krijgen?",
+        "Upgrade naar een hoger abonnement voor een groter terugkerend bedrag. Plus of Zakelijk is meestal beter geschikt voor afbeeldingensets of frequent Reimagine AI-gebruik."
+      ],
+      [
+        "Is betaling veilig?",
+        "Ja. De betalingsverwerking wordt afgehandeld door een beveiligde provider en transacties worden gecodeerd."
+      ],
+      [
+        "Kan ik later upgraden of downgraden?",
+        "Ja. U kunt uw abonnement op elk gewenst moment wijzigen via het gedeelte Facturering van uw account."
+      ],
+      [
+        "Wat moet ik doen als de betaling mislukt?",
+        "Neem contact op met support@imgupscaler.com met het e-mailadres van uw account en de geschatte betalingstermijn, zodat het team u kan helpen."
+      ],
+      [
+        "Wanneer worden er kosten in rekening gebracht?",
+        "Uw abonnement wordt automatisch verlengd op dezelfde dag van elke maandelijkse of jaarlijkse betalingscyclus, op basis van uw oorspronkelijke aankoopdatum."
+      ],
+      [
+        "Kan ik de resultaten commercieel gebruiken?",
+        "Ja. Gratis en betaalde output kan worden gebruikt voor persoonlijke en commerciële projecten, met inachtneming van de toepasselijke wetgeving en rechten op de bronafbeeldingen."
+      ]
+    ],
+    "monthlyPrice": "/maand"
+  },
+  "header": {
+    "navigation": "Primaire navigatie",
+    "accountMenu": "Accountmenu",
+    "closeMenu": "Menu sluiten",
+    "openMenu": "Menu openen",
+    "planLabel": "Plannen",
+    "planFree": "Gratis",
+    "planPremium": "Plus",
+    "unknownValue": "—",
+    "creditsLabel": "Kredieten",
+    "account": "Rekening",
+    "billing": "Facturering",
+    "signOut": "Uitloggen",
+    "signIn": "Inloggen"
+  },
+  "footer": {
+    "privacy": "Privacybeleid",
+    "terms": "Servicevoorwaarden",
+    "cookies": "Koekjes",
+    "contact": "Contacteer",
+    "switchLanguage": "Taal wijzigen",
+    "copyright": "© 2026 ImgUpscaler. Alle rechten voorbehouden.",
+    "languageNames": {
+      "en": "English",
+      "zh": "简体中文",
+      "ja": "日本語",
+      "ko": "한국어",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt-BR": "Português (Brasil)",
+      "it": "Italiano",
+      "ru": "Русский",
+      "ar": "العربية",
+      "tr": "Türkçe",
+      "nl": "Nederlands"
+    }
+  },
+  "account": {
+    "back": "Terug naar werkruimte",
+    "member": "LID",
+    "profile": "Profiel",
+    "billing": "Facturering",
+    "security": "Beveiliging",
+    "title": "Mijn account",
+    "current": "HUIDIG PLAN",
+    "credits": "BESCHIKBARE CREDITS",
+    "save": "Wijzigingen opslaan",
+    "redeem": "Code inwisselen",
+    "redeemAction": "Inwisselen",
+    "upgrade": "Plan upgraden",
+    "signOut": "Uitloggen",
+    "update": "Wachtwoord bijwerken",
+    "danger": "Gevarenzone",
+    "delete": "Account verwijderen",
+    "saved": "Profiel bijgewerkt.",
+    "deleted": "Account verwijderd.",
+    "loadFailed": "Kan uw account niet laden.",
+    "loading": "Account laden…",
+    "signInPrompt": "Log in om je account te bekijken en te beheren.",
+    "unknown": "—",
+    "planFree": "Gratis",
+    "planPremium": "Plus",
+    "saveFailed": "Kan uw profiel niet opslaan.",
+    "redeemed": "Code ingewisseld.",
+    "redeemFailed": "Kan die code niet inwisselen.",
+    "deleteConfirm": "Uw account en alle accountgegevens verwijderen?",
+    "deleteFailed": "Kan uw account niet verwijderen.",
+    "passwordUpdated": "Wachtwoord bijgewerkt.",
+    "passwordFailed": "Kan uw wachtwoord niet bijwerken.",
+    "email": "E-mail",
+    "avatar": "Avatar-URL",
+    "currentPassword": "Huidig ​​wachtwoord",
+    "newPassword": "Nieuw wachtwoord",
+    "billingNote": "Bekijk uw abonnement, beschikbare tegoeden en factureringsstatus. Abonnements- en betalingswijzigingen worden bevestigd door uw betalingsprovider.",
+    "signIn": "Inloggen",
+    "settings": "Accountinstellingen",
+    "displayName": "Weergavenaam",
+    "profileKicker": "Profiel",
+    "dangerDescription": "Verwijder je account en wis accountgegevens definitief.",
+    "placeholderAvatar": "https://example.com/avatar.png"
+  },
+  "legal": {
+    "back": "Terug naar werkruimte",
+    "pages": {
+      "privacy-policy": {
+        "title": "Privacybeleid",
+        "intro": "ImgUpscaler is een online dienst voor het opschalen en verbeteren van AI-afbeeldingen, beheerd door Sparklightforce Limited. Op deze pagina wordt uitgelegd welke informatie we verzamelen, hoe we deze gebruiken en uw keuzes.",
+        "sections": [
+          [
+            "1. Informatie die we verzamelen",
+            "We kunnen uw e-mailadres, accountnaam, profielafbeelding, authenticatieprovider, geüploade afbeeldingen, gegenereerde resultaten, factuurstatus, tegoed, gebruiksgeschiedenis, apparaat- en browserinformatie, IP-adres, cookies en ondersteuningsberichten verzamelen."
+          ],
+          [
+            "2. Hoe we informatie gebruiken",
+            "We gebruiken informatie om beeldverwerking uit te voeren, accounts te beheren, gebruikers te authenticeren, tegoeden en facturering te verstrekken, misbruik te voorkomen, ondersteuningsverzoeken te beantwoorden, de betrouwbaarheid te verbeteren, de productprestaties te meten en te voldoen aan wettelijke verplichtingen. Wij verkopen geen persoonlijke informatie."
+          ],
+          [
+            "3. Geüploade afbeeldingen en gegenereerde resultaten",
+            "Afbeeldingen worden verwerkt om opschalings-, verbeterings-, voorbeeld- en downloadfuncties te bieden. Uploads en resultaten worden afgehandeld volgens het API-bewaar- en opschoonbeleid."
+          ],
+          [
+            "4. Cookies en analyses",
+            "Cookies kunnen ervoor zorgen dat gebruikers aangemeld blijven, voorkeuren onthouden, de service beschermen, verkeer analyseren en de prestaties verbeteren. Analytics- en advertentiepartners kunnen beperkte gebruiksgegevens verwerken onder hun eigen beleid en toepasselijke wetgeving."
+          ],
+          [
+            "5. Beveiliging en bewaring",
+            "Wij maken gebruik van redelijke technische en organisatorische veiligheidsmaatregelen. Account-, facturerings- en gebruiksgegevens worden alleen bewaard als dat nodig is om de service te verlenen, geschillen op te lossen, misbruik te voorkomen en aan wettelijke verplichtingen te voldoen."
+          ],
+          [
+            "6. Uw keuzes",
+            "U kunt contact opnemen met support@imgupscaler.com om toegang, correctie of verwijdering van accountgegevens aan te vragen. U kunt cookies beheren via uw browserinstellingen, hoewel de vereiste functies mogelijk niet meer werken."
+          ],
+          [
+            "7. Neem contact met ons op",
+            "Vragen over dit beleid kunt u sturen naar support@imgupscaler.com. Sparklightforce Limited: KAMER 1503-09, 15/F, CAUSEWAY BAY CENTRE, 15-23 SUGAR STREET, CAUSEWAY BAY, HONG KONG."
+          ]
+        ]
+      },
+      "terms": {
+        "title": "Servicevoorwaarden",
+        "intro": "Door ImgUpscaler te gebruiken, gaat u akkoord met deze servicevoorwaarden. Beschikbare functies, verwerkingstoeslagen en betaalde voordelen worden beschreven op de huidige product- en accountpagina's.",
+        "sections": [
+          [
+            "1. Serviceomvang",
+            "ImgUpscaler biedt online beeldopschaling, -verbetering en Reimagine AI-workflows. Functies, modellen, limieten en beschikbaarheid kunnen veranderen naarmate het product evolueert."
+          ],
+          [
+            "2. Gebruikersinhoud",
+            "U moet eigenaar zijn van of toestemming hebben om elke afbeelding die u uploadt te verwerken. Upload geen onwettige, inbreukmakende, schadelijke of ongeautoriseerde persoonlijke inhoud."
+          ],
+          [
+            "3. Dienstbeperkingen",
+            "De resultaten zijn afhankelijk van het geselecteerde model, de invoerafbeelding, de accountlimieten en de huidige beschikbaarheid van de service. De dienst garandeert geen bepaalde output of commerciële geschiktheid."
+          ],
+          [
+            "4. Tegoeden en abonnementen",
+            "In productie worden tegoeden, abonnementen, terugbetalingen en factureringsstatus bepaald door de accountpagina en de records van de betalingsprovider. Commercieel gebruik is nog steeds afhankelijk van de bronbeeldrechten en de toepasselijke wetgeving."
+          ],
+          [
+            "5. Acceptabel gebruik",
+            "Omzeil geen limieten, maak geen misbruik van batchverwerking, interfereer niet met de service, val modellen aan en gebruik de service niet op onrechtmatige wijze. We kunnen taken onderbreken vanwege veiligheids-, onderhouds- of juridische redenen."
+          ],
+          [
+            "6. Contactpersoon",
+            "Stuur voor hulp een e-mail naar support@imgupscaler.com."
+          ]
+        ]
+      },
+      "cookies": {
+        "title": "Koekjes",
+        "intro": "Cookies zijn kleine tekstbestanden die op uw apparaat worden opgeslagen. Op deze pagina wordt uitgelegd hoe cookies aanmelding, voorkeuren, analyses en advertenties kunnen ondersteunen, samen met uw keuzes.",
+        "sections": [
+          [
+            "1. Essentiële cookies",
+            "Essentiële cookies houden sessies actief, behouden beveiligingsinstellingen en ondersteunen kernfunctionaliteit. Ze kunnen over het algemeen niet worden uitgeschakeld in onze systemen."
+          ],
+          [
+            "2. Prestatie- en functionele cookies",
+            "Prestatiecookies helpen ons te begrijpen hoe bezoekers de dienst gebruiken. Functionele cookies onthouden taal- en andere voorkeuren."
+          ],
+          [
+            "3. Cookies van derden",
+            "Aanbieders van analyses, advertenties, betalingen en authenticatie kunnen cookies van derden instellen volgens hun eigen privacybeleid."
+          ],
+          [
+            "4. Uw keuzes",
+            "U kunt cookies in uw browser verwijderen of blokkeren. Als u de vereiste cookies uitschakelt, kan het inloggen, uploaden of afrekenen mogelijk niet correct werken."
+          ],
+          [
+            "5. Contactpersoon",
+            "Vragen over het cookiegebruik kunt u sturen naar support@imgupscaler.com."
+          ]
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "home": {
+      "title": "Afbeeldingen online vergroten met AI | Img.Upscaler",
+      "description": "Vergroot foto's en illustraties online met AI. Herstel fijne details, verscherp afbeeldingen met een lage resolutie en download duidelijkere resultaten in het formaat dat u nodig heeft."
+    },
+    "enhancer": {
+      "title": "Foto’s verscherpen en verbeteren met AI | Img.Upscaler",
+      "description": "Verbeter de helderheid van foto's met een online AI-beeldverbeteraar. Verminder ruis en compressieartefacten, verscherp texturen en bekijk een voorbeeld van het resultaat voordat u het downloadt."
+    },
+    "reimagine": {
+      "title": "Afbeeldingen opnieuw vormgeven met AI | Img.Upscaler",
+      "description": "Geef foto's, illustraties en interieurs opnieuw vorm met AI. Begeleid het resultaat met een prompt, pas de creativiteit en gelijkenis aan en bekijk een voorbeeld van uw nieuwe afbeelding."
+    },
+    "pricing": {
+      "title": "Abonnementen en prijzen voor beeldvergroting | Img.Upscaler",
+      "description": "Vergelijk plannen voor het opschalen van afbeeldingen, credits en opties voor batchverwerking. Vind het juiste abonnement voor fotoverbetering, creatieve projecten en zakelijke workflows."
+    },
+    "account": {
+      "title": "Uw account en tegoeden | Img.Upscaler",
+      "description": "Beheer uw profiel, accountbeveiliging, beschikbare tegoeden voor beeldverwerking en factureringsinstellingen vanuit uw Img.Upscaler-account."
+    },
+    "privacy": {
+      "title": "Privacybeleid | Img.Upscaler",
+      "description": "Lees hoe Img.Upscaler omgaat met accountgegevens, geüploade foto's, gegenereerde afbeeldingen, retentie en uw privacykeuzes."
+    },
+    "terms": {
+      "title": "Servicevoorwaarden | Img.Upscaler",
+      "description": "Bekijk de voorwaarden voor het gebruik van Img.Upscaler, inclusief eigendom van afbeeldingen, acceptabel gebruik, verwerkingslimieten, accounttegoeden en abonnementen."
+    },
+    "cookies": {
+      "title": "Cookiebeleid | Img.Upscaler",
+      "description": "Ontdek hoe cookies inloggen, beveiliging, voorkeuren en analyses op de Img.Upscaler ondersteunen, en hoe u deze in uw browser kunt beheren."
+    },
+    "root": {
+      "title": "Img.Upscaler",
+      "description": "Vergroot, verbeter en herinterpreteer afbeeldingen online met AI."
+    }
+  }
+}

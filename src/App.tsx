@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import type { Route } from '@/src/lib/types'
@@ -10,15 +11,16 @@ import { pathToRoute, routeToPath } from '@/src/lib/locale-routing'
 import { Icon } from '@/src/components/ui/icons'
 import { SiteHeader } from '@/src/components/site/site-header'
 import { SiteFooter } from '@/src/components/site/site-footer'
-import { LoginDialog } from '@/src/components/site/login-dialog'
-import { EditorDialog } from '@/src/features/workspace/editor-dialog'
 import { useWorkspaceController } from '@/src/features/workspace/use-workspace-controller'
 import { Hero } from '@/src/features/landing/hero'
 import { FaqSection } from '@/src/features/landing/faq'
-import { TestimonialsSection, UseCasesSection, VideoSection, WorkflowSection } from '@/src/features/landing/sections'
-import { PricingPage } from '@/src/features/pricing/pricing-page'
+import { FeatureSection, UseCasesSection, WorkflowSection } from '@/src/features/landing/sections'
 import { api } from '@/src/lib/api/client'
 import { useAuthStore } from '@/src/stores/auth-store'
+
+const LoginDialog = dynamic(() => import('@/src/components/site/login-dialog').then((module) => module.LoginDialog))
+const EditorDialog = dynamic(() => import('@/src/features/workspace/editor-dialog').then((module) => module.EditorDialog))
+const PricingPage = dynamic(() => import('@/src/features/pricing/pricing-page').then((module) => module.PricingPage))
 
 export default function App() {
   const pathname = usePathname()
@@ -44,7 +46,7 @@ export default function App() {
       <SiteHeader onLogin={() => setLoginOpen(true)} onNavigate={navigate} />
       {route === 'pricing' ? <div id="main-content"><PricingPage onChoose={navigate} onLogin={() => setLoginOpen(true)} /></div> : <LandingPage route={route} controller={controller} onUseCase={scrollToWorkspace} />}
       <SiteFooter locale={locale} />
-      {FEATURE_FLAGS.enableImageEditor && <EditorDialog controller={controller} />}
+      {FEATURE_FLAGS.enableImageEditor && controller.editingItemId && <EditorDialog controller={controller} />}
       {controller.toast && <Toast message={controller.toast} />}
       {loginOpen && <LoginDialog onClose={() => setLoginOpen(false)} onGoogle={async () => {
         try {
@@ -70,7 +72,7 @@ export default function App() {
 }
 
 function LandingPage({ route, controller, onUseCase }: { route: Exclude<Route, 'pricing'>; controller: ReturnType<typeof useWorkspaceController>; onUseCase: () => void }) {
-  return <main id="main-content"><Hero route={route} controller={controller} /><VideoSection route={route} /><UseCasesSection route={route} onUseCase={onUseCase} /><WorkflowSection route={route} onStart={onUseCase} items={controller.items} />{route === 'home' && <TestimonialsSection />}<FaqSection route={route} /></main>
+  return <main id="main-content"><Hero route={route} controller={controller} /><UseCasesSection route={route} onUseCase={onUseCase} /><FeatureSection route={route} /><WorkflowSection route={route} /><FaqSection route={route} /></main>
 }
 
 function Toast({ message }: { message: { title: string; detail?: string } }) {

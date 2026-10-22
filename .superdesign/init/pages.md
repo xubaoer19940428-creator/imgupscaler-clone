@@ -1,0 +1,810 @@
+# Page dependency trees
+## app/zh/page.tsx
+- `app/zh/page.tsx`
+  - `src/components/site/page-structured-data.tsx`
+    - `src/lib/locale.ts`
+    - `src/lib/locale-routing.ts`
+      - `src/lib/types.ts`
+      - `src/lib/constants.ts`
+        - `src/lib/feature-flags.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+    - `src/lib/site-metadata.ts`
+      - `messages/de.json`
+      - `messages/ar.json`
+      - `messages/en.json`
+      - `messages/es.json`
+      - `messages/fr.json`
+      - `messages/it.json`
+      - `messages/ja.json`
+      - `messages/ko.json`
+      - `messages/nl.json`
+      - `messages/pt-BR.json`
+      - `messages/ru.json`
+      - `messages/tr.json`
+      - `messages/zh.json`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/site-config.ts`
+      - `src/lib/seo.ts`
+        - `src/lib/locale.ts` (shared)
+        - `src/lib/locale-routing.ts` (shared)
+        - `src/lib/site-config.ts` (shared)
+      - `src/lib/seo-images.ts`
+        - `messages/en.json` (shared)
+    - `src/lib/seo.ts` (shared)
+    - `src/lib/seo-images.ts` (shared)
+    - `src/lib/site-config.ts` (shared)
+  - `src/App.tsx`
+    - `src/lib/types.ts` (shared)
+    - `src/lib/feature-flags.ts` (shared)
+    - `src/lib/locale.ts` (shared)
+    - `src/lib/locale-routing.ts` (shared)
+    - `src/components/ui/icons.tsx`
+    - `src/components/site/site-header.tsx`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/api/client.ts`
+        - `src/lib/api/account.ts`
+          - `src/lib/api/request.ts`
+            - `src/lib/api/types.ts`
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts`
+        - `src/lib/api/affiliate.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/ai.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/auth.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/content.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/discovery.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/favorites.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/files.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/inbox.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/models.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/payment.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/support.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/request.ts` (shared)
+      - `src/stores/auth-store.ts`
+        - `src/lib/api/types.ts` (shared)
+      - `src/components/site/mobile-account-panel.tsx`
+        - `src/components/ui/icons.tsx` (shared)
+    - `src/components/site/site-footer.tsx`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+    - `src/features/workspace/use-workspace-controller.ts`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/downloads.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/image-processing.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/services/imgupscaler-api.ts`
+        - `src/lib/types.ts` (shared)
+        - `src/lib/api/client.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/stores/workspace-store.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/stores/auth-store.ts` (shared)
+    - `src/features/landing/hero.tsx`
+      - `src/lib/types.ts` (shared)
+      - `src/features/workspace/workspace-panel.tsx`
+        - `src/lib/constants.ts` (shared)
+        - `src/lib/feature-flags.ts` (shared)
+        - `src/lib/types.ts` (shared)
+        - `src/components/ui/button.tsx`
+          - `src/lib/utils.ts`
+        - `src/components/ui/card.tsx`
+          - `src/lib/utils.ts` (shared)
+        - `src/components/ui/icons.tsx` (shared)
+        - `src/components/ui/textarea.tsx`
+          - `src/lib/utils.ts` (shared)
+        - `src/features/workspace/use-workspace-controller.ts` (shared)
+      - `src/features/workspace/use-workspace-controller.ts` (shared)
+      - `src/features/landing/data.tsx`
+        - `src/lib/types.ts` (shared)
+    - `src/features/landing/faq.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/features/landing/data.tsx` (shared)
+    - `src/features/landing/sections.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/features/landing/data.tsx` (shared)
+    - `src/lib/api/client.ts` (shared)
+    - `src/stores/auth-store.ts` (shared)
+    - `src/components/site/login-dialog.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+    - `src/features/workspace/editor-dialog.tsx`
+      - `src/components/ui/button.tsx` (shared)
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/features/workspace/use-workspace-controller.ts` (shared)
+    - `src/features/pricing/pricing-page.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+  - `src/lib/site-metadata.ts` (shared)
+
+## app/zh/enhancer/page.tsx
+- `app/zh/enhancer/page.tsx`
+  - `src/components/site/page-structured-data.tsx`
+    - `src/lib/locale.ts`
+    - `src/lib/locale-routing.ts`
+      - `src/lib/types.ts`
+      - `src/lib/constants.ts`
+        - `src/lib/feature-flags.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+    - `src/lib/site-metadata.ts`
+      - `messages/de.json`
+      - `messages/ar.json`
+      - `messages/en.json`
+      - `messages/es.json`
+      - `messages/fr.json`
+      - `messages/it.json`
+      - `messages/ja.json`
+      - `messages/ko.json`
+      - `messages/nl.json`
+      - `messages/pt-BR.json`
+      - `messages/ru.json`
+      - `messages/tr.json`
+      - `messages/zh.json`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/site-config.ts`
+      - `src/lib/seo.ts`
+        - `src/lib/locale.ts` (shared)
+        - `src/lib/locale-routing.ts` (shared)
+        - `src/lib/site-config.ts` (shared)
+      - `src/lib/seo-images.ts`
+        - `messages/en.json` (shared)
+    - `src/lib/seo.ts` (shared)
+    - `src/lib/seo-images.ts` (shared)
+    - `src/lib/site-config.ts` (shared)
+  - `src/App.tsx`
+    - `src/lib/types.ts` (shared)
+    - `src/lib/feature-flags.ts` (shared)
+    - `src/lib/locale.ts` (shared)
+    - `src/lib/locale-routing.ts` (shared)
+    - `src/components/ui/icons.tsx`
+    - `src/components/site/site-header.tsx`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/api/client.ts`
+        - `src/lib/api/account.ts`
+          - `src/lib/api/request.ts`
+            - `src/lib/api/types.ts`
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts`
+        - `src/lib/api/affiliate.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/ai.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/auth.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/content.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/discovery.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/favorites.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/files.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/inbox.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/models.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/payment.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/support.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/request.ts` (shared)
+      - `src/stores/auth-store.ts`
+        - `src/lib/api/types.ts` (shared)
+      - `src/components/site/mobile-account-panel.tsx`
+        - `src/components/ui/icons.tsx` (shared)
+    - `src/components/site/site-footer.tsx`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+    - `src/features/workspace/use-workspace-controller.ts`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/downloads.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/image-processing.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/services/imgupscaler-api.ts`
+        - `src/lib/types.ts` (shared)
+        - `src/lib/api/client.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/stores/workspace-store.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/stores/auth-store.ts` (shared)
+    - `src/features/landing/hero.tsx`
+      - `src/lib/types.ts` (shared)
+      - `src/features/workspace/workspace-panel.tsx`
+        - `src/lib/constants.ts` (shared)
+        - `src/lib/feature-flags.ts` (shared)
+        - `src/lib/types.ts` (shared)
+        - `src/components/ui/button.tsx`
+          - `src/lib/utils.ts`
+        - `src/components/ui/card.tsx`
+          - `src/lib/utils.ts` (shared)
+        - `src/components/ui/icons.tsx` (shared)
+        - `src/components/ui/textarea.tsx`
+          - `src/lib/utils.ts` (shared)
+        - `src/features/workspace/use-workspace-controller.ts` (shared)
+      - `src/features/workspace/use-workspace-controller.ts` (shared)
+      - `src/features/landing/data.tsx`
+        - `src/lib/types.ts` (shared)
+    - `src/features/landing/faq.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/features/landing/data.tsx` (shared)
+    - `src/features/landing/sections.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/features/landing/data.tsx` (shared)
+    - `src/lib/api/client.ts` (shared)
+    - `src/stores/auth-store.ts` (shared)
+    - `src/components/site/login-dialog.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+    - `src/features/workspace/editor-dialog.tsx`
+      - `src/components/ui/button.tsx` (shared)
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/features/workspace/use-workspace-controller.ts` (shared)
+    - `src/features/pricing/pricing-page.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+  - `src/lib/site-metadata.ts` (shared)
+
+## app/zh/reimagine/page.tsx
+- `app/zh/reimagine/page.tsx`
+  - `src/components/site/page-structured-data.tsx`
+    - `src/lib/locale.ts`
+    - `src/lib/locale-routing.ts`
+      - `src/lib/types.ts`
+      - `src/lib/constants.ts`
+        - `src/lib/feature-flags.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+    - `src/lib/site-metadata.ts`
+      - `messages/de.json`
+      - `messages/ar.json`
+      - `messages/en.json`
+      - `messages/es.json`
+      - `messages/fr.json`
+      - `messages/it.json`
+      - `messages/ja.json`
+      - `messages/ko.json`
+      - `messages/nl.json`
+      - `messages/pt-BR.json`
+      - `messages/ru.json`
+      - `messages/tr.json`
+      - `messages/zh.json`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/site-config.ts`
+      - `src/lib/seo.ts`
+        - `src/lib/locale.ts` (shared)
+        - `src/lib/locale-routing.ts` (shared)
+        - `src/lib/site-config.ts` (shared)
+      - `src/lib/seo-images.ts`
+        - `messages/en.json` (shared)
+    - `src/lib/seo.ts` (shared)
+    - `src/lib/seo-images.ts` (shared)
+    - `src/lib/site-config.ts` (shared)
+  - `src/App.tsx`
+    - `src/lib/types.ts` (shared)
+    - `src/lib/feature-flags.ts` (shared)
+    - `src/lib/locale.ts` (shared)
+    - `src/lib/locale-routing.ts` (shared)
+    - `src/components/ui/icons.tsx`
+    - `src/components/site/site-header.tsx`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/api/client.ts`
+        - `src/lib/api/account.ts`
+          - `src/lib/api/request.ts`
+            - `src/lib/api/types.ts`
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts`
+        - `src/lib/api/affiliate.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/ai.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/auth.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/content.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/discovery.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/favorites.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/files.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/inbox.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/models.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/payment.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/support.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/request.ts` (shared)
+      - `src/stores/auth-store.ts`
+        - `src/lib/api/types.ts` (shared)
+      - `src/components/site/mobile-account-panel.tsx`
+        - `src/components/ui/icons.tsx` (shared)
+    - `src/components/site/site-footer.tsx`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+    - `src/features/workspace/use-workspace-controller.ts`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/downloads.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/image-processing.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/services/imgupscaler-api.ts`
+        - `src/lib/types.ts` (shared)
+        - `src/lib/api/client.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/stores/workspace-store.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/stores/auth-store.ts` (shared)
+    - `src/features/landing/hero.tsx`
+      - `src/lib/types.ts` (shared)
+      - `src/features/workspace/workspace-panel.tsx`
+        - `src/lib/constants.ts` (shared)
+        - `src/lib/feature-flags.ts` (shared)
+        - `src/lib/types.ts` (shared)
+        - `src/components/ui/button.tsx`
+          - `src/lib/utils.ts`
+        - `src/components/ui/card.tsx`
+          - `src/lib/utils.ts` (shared)
+        - `src/components/ui/icons.tsx` (shared)
+        - `src/components/ui/textarea.tsx`
+          - `src/lib/utils.ts` (shared)
+        - `src/features/workspace/use-workspace-controller.ts` (shared)
+      - `src/features/workspace/use-workspace-controller.ts` (shared)
+      - `src/features/landing/data.tsx`
+        - `src/lib/types.ts` (shared)
+    - `src/features/landing/faq.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/features/landing/data.tsx` (shared)
+    - `src/features/landing/sections.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/features/landing/data.tsx` (shared)
+    - `src/lib/api/client.ts` (shared)
+    - `src/stores/auth-store.ts` (shared)
+    - `src/components/site/login-dialog.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+    - `src/features/workspace/editor-dialog.tsx`
+      - `src/components/ui/button.tsx` (shared)
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/features/workspace/use-workspace-controller.ts` (shared)
+    - `src/features/pricing/pricing-page.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+  - `src/lib/site-metadata.ts` (shared)
+
+## app/zh/pricing/page.tsx
+- `app/zh/pricing/page.tsx`
+  - `src/components/site/page-structured-data.tsx`
+    - `src/lib/locale.ts`
+    - `src/lib/locale-routing.ts`
+      - `src/lib/types.ts`
+      - `src/lib/constants.ts`
+        - `src/lib/feature-flags.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+    - `src/lib/site-metadata.ts`
+      - `messages/de.json`
+      - `messages/ar.json`
+      - `messages/en.json`
+      - `messages/es.json`
+      - `messages/fr.json`
+      - `messages/it.json`
+      - `messages/ja.json`
+      - `messages/ko.json`
+      - `messages/nl.json`
+      - `messages/pt-BR.json`
+      - `messages/ru.json`
+      - `messages/tr.json`
+      - `messages/zh.json`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/site-config.ts`
+      - `src/lib/seo.ts`
+        - `src/lib/locale.ts` (shared)
+        - `src/lib/locale-routing.ts` (shared)
+        - `src/lib/site-config.ts` (shared)
+      - `src/lib/seo-images.ts`
+        - `messages/en.json` (shared)
+    - `src/lib/seo.ts` (shared)
+    - `src/lib/seo-images.ts` (shared)
+    - `src/lib/site-config.ts` (shared)
+  - `src/App.tsx`
+    - `src/lib/types.ts` (shared)
+    - `src/lib/feature-flags.ts` (shared)
+    - `src/lib/locale.ts` (shared)
+    - `src/lib/locale-routing.ts` (shared)
+    - `src/components/ui/icons.tsx`
+    - `src/components/site/site-header.tsx`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/api/client.ts`
+        - `src/lib/api/account.ts`
+          - `src/lib/api/request.ts`
+            - `src/lib/api/types.ts`
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts`
+        - `src/lib/api/affiliate.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/ai.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/auth.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/content.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/discovery.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/favorites.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/files.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/inbox.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/models.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/payment.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/support.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/request.ts` (shared)
+      - `src/stores/auth-store.ts`
+        - `src/lib/api/types.ts` (shared)
+      - `src/components/site/mobile-account-panel.tsx`
+        - `src/components/ui/icons.tsx` (shared)
+    - `src/components/site/site-footer.tsx`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+    - `src/features/workspace/use-workspace-controller.ts`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/downloads.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/image-processing.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/services/imgupscaler-api.ts`
+        - `src/lib/types.ts` (shared)
+        - `src/lib/api/client.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/stores/workspace-store.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/stores/auth-store.ts` (shared)
+    - `src/features/landing/hero.tsx`
+      - `src/lib/types.ts` (shared)
+      - `src/features/workspace/workspace-panel.tsx`
+        - `src/lib/constants.ts` (shared)
+        - `src/lib/feature-flags.ts` (shared)
+        - `src/lib/types.ts` (shared)
+        - `src/components/ui/button.tsx`
+          - `src/lib/utils.ts`
+        - `src/components/ui/card.tsx`
+          - `src/lib/utils.ts` (shared)
+        - `src/components/ui/icons.tsx` (shared)
+        - `src/components/ui/textarea.tsx`
+          - `src/lib/utils.ts` (shared)
+        - `src/features/workspace/use-workspace-controller.ts` (shared)
+      - `src/features/workspace/use-workspace-controller.ts` (shared)
+      - `src/features/landing/data.tsx`
+        - `src/lib/types.ts` (shared)
+    - `src/features/landing/faq.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/features/landing/data.tsx` (shared)
+    - `src/features/landing/sections.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/features/landing/data.tsx` (shared)
+    - `src/lib/api/client.ts` (shared)
+    - `src/stores/auth-store.ts` (shared)
+    - `src/components/site/login-dialog.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+    - `src/features/workspace/editor-dialog.tsx`
+      - `src/components/ui/button.tsx` (shared)
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/features/workspace/use-workspace-controller.ts` (shared)
+    - `src/features/pricing/pricing-page.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+      - `src/lib/types.ts` (shared)
+  - `src/lib/site-metadata.ts` (shared)
+
+## app/zh/account/page.tsx
+- `app/zh/account/page.tsx`
+  - `src/components/site/account-page.tsx`
+    - `src/lib/types.ts`
+    - `src/lib/locale-routing.ts`
+      - `src/lib/types.ts` (shared)
+      - `src/lib/constants.ts`
+        - `src/lib/feature-flags.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/locale.ts`
+    - `src/lib/locale.ts` (shared)
+    - `src/lib/api/types.ts`
+    - `src/lib/api/client.ts`
+      - `src/lib/api/account.ts`
+        - `src/lib/api/request.ts`
+          - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/pagination.ts`
+      - `src/lib/api/affiliate.ts`
+        - `src/lib/api/request.ts` (shared)
+      - `src/lib/api/ai.ts`
+        - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/pagination.ts` (shared)
+      - `src/lib/api/auth.ts`
+        - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+      - `src/lib/api/content.ts`
+        - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/pagination.ts` (shared)
+      - `src/lib/api/discovery.ts`
+        - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/pagination.ts` (shared)
+      - `src/lib/api/favorites.ts`
+        - `src/lib/api/request.ts` (shared)
+      - `src/lib/api/files.ts`
+        - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/pagination.ts` (shared)
+      - `src/lib/api/inbox.ts`
+        - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/pagination.ts` (shared)
+      - `src/lib/api/models.ts`
+        - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/pagination.ts` (shared)
+      - `src/lib/api/payment.ts`
+        - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/pagination.ts` (shared)
+      - `src/lib/api/support.ts`
+        - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/pagination.ts` (shared)
+      - `src/lib/api/request.ts` (shared)
+    - `src/stores/auth-store.ts`
+      - `src/lib/api/types.ts` (shared)
+    - `src/components/site/site-footer.tsx`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+    - `src/components/site/site-header.tsx`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+      - `src/components/ui/icons.tsx`
+      - `src/lib/api/client.ts` (shared)
+      - `src/stores/auth-store.ts` (shared)
+      - `src/components/site/mobile-account-panel.tsx`
+        - `src/components/ui/icons.tsx` (shared)
+    - `src/components/site/login-dialog.tsx`
+      - `src/components/ui/icons.tsx` (shared)
+    - `src/components/ui/icons.tsx` (shared)
+  - `src/lib/site-metadata.ts`
+    - `messages/de.json`
+    - `messages/ar.json`
+    - `messages/en.json`
+    - `messages/es.json`
+    - `messages/fr.json`
+    - `messages/it.json`
+    - `messages/ja.json`
+    - `messages/ko.json`
+    - `messages/nl.json`
+    - `messages/pt-BR.json`
+    - `messages/ru.json`
+    - `messages/tr.json`
+    - `messages/zh.json`
+    - `src/lib/locale.ts` (shared)
+    - `src/lib/locale-routing.ts` (shared)
+    - `src/lib/site-config.ts`
+    - `src/lib/seo.ts`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/site-config.ts` (shared)
+    - `src/lib/seo-images.ts`
+      - `messages/en.json` (shared)
+
+## app/zh/privacy-policy/page.tsx
+- `app/zh/privacy-policy/page.tsx`
+  - `src/components/site/page-structured-data.tsx`
+    - `src/lib/locale.ts`
+    - `src/lib/locale-routing.ts`
+      - `src/lib/types.ts`
+      - `src/lib/constants.ts`
+        - `src/lib/feature-flags.ts`
+        - `src/lib/types.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+    - `src/lib/site-metadata.ts`
+      - `messages/de.json`
+      - `messages/ar.json`
+      - `messages/en.json`
+      - `messages/es.json`
+      - `messages/fr.json`
+      - `messages/it.json`
+      - `messages/ja.json`
+      - `messages/ko.json`
+      - `messages/nl.json`
+      - `messages/pt-BR.json`
+      - `messages/ru.json`
+      - `messages/tr.json`
+      - `messages/zh.json`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/site-config.ts`
+      - `src/lib/seo.ts`
+        - `src/lib/locale.ts` (shared)
+        - `src/lib/locale-routing.ts` (shared)
+        - `src/lib/site-config.ts` (shared)
+      - `src/lib/seo-images.ts`
+        - `messages/en.json` (shared)
+    - `src/lib/seo.ts` (shared)
+    - `src/lib/seo-images.ts` (shared)
+    - `src/lib/site-config.ts` (shared)
+  - `src/components/site/legal-page.tsx`
+    - `src/lib/types.ts` (shared)
+    - `src/lib/locale-routing.ts` (shared)
+    - `src/lib/locale.ts` (shared)
+    - `src/lib/legal-content.ts`
+    - `src/components/site/site-footer.tsx`
+      - `src/lib/locale.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+    - `src/components/site/site-header.tsx`
+      - `src/lib/constants.ts` (shared)
+      - `src/lib/types.ts` (shared)
+      - `src/lib/locale-routing.ts` (shared)
+      - `src/lib/locale.ts` (shared)
+      - `src/components/ui/icons.tsx`
+      - `src/lib/api/client.ts`
+        - `src/lib/api/account.ts`
+          - `src/lib/api/request.ts`
+            - `src/lib/api/types.ts`
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts`
+        - `src/lib/api/affiliate.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/ai.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/auth.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+        - `src/lib/api/content.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/discovery.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/favorites.ts`
+          - `src/lib/api/request.ts` (shared)
+        - `src/lib/api/files.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/inbox.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/models.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/payment.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/support.ts`
+          - `src/lib/api/request.ts` (shared)
+          - `src/lib/api/types.ts` (shared)
+          - `src/lib/api/pagination.ts` (shared)
+        - `src/lib/api/request.ts` (shared)
+      - `src/stores/auth-store.ts`
+        - `src/lib/api/types.ts` (shared)
+      - `src/components/site/mobile-account-panel.tsx`
+        - `src/components/ui/icons.tsx` (shared)
+  - `src/lib/site-metadata.ts` (shared)
+
+Every page also imports locale layout, LocalizedRoot, IntlProvider and all src/styles.css imports. Dynamic dialogs are separate UI states. Primary home branch: SiteHeader → Hero(WorkspacePanel) → VideoSection(home) → UseCasesSection → WorkflowSection(CompareCard) → TestimonialsSection → FaqSection → SiteFooter.

@@ -1,0 +1,296 @@
+/* SOURCE: src/styles/06-reference-layout.css */
+/* Reference alignment layer: the original site uses a white editorial layout,
+   a 980px landing column, compact cards and generous alternating use cases. */
+:root {
+  font-family: 'Plus Jakarta Sans', 'DM Sans', sans-serif;
+  --ink: #090b10;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --blue: #1b61c9;
+  background: #fff;
+}
+body { background: #fff; color: var(--ink); }
+.site-header { height: 64px; background: rgba(255,255,255,.8); border-bottom-color: #e5e7eb; }
+.header-inner { max-width: 1280px; padding: 0 32px; }
+.brand { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -.06em; }
+.brand, .footer-brand { text-decoration: none; }
+.brand-mark { display: none; }
+.main-nav { gap: 2px; }
+.nav-link, .ghost-button { padding: 8px 12px; border-radius: 0; color: #111827; font-size: 14px; font-weight: 700; }
+.nav-link:hover, .nav-link.active, .ghost-button:hover { background: transparent; }
+.nav-link.active { box-shadow: inset 0 -2px var(--blue); }
+.avatar-button { width: 38px; height: 38px; border-color: #e5e7eb; }
+.hero-section { min-height: 0; padding: 112px 32px 64px; margin: 0 auto; isolation: isolate; }
+.hero-section:before { inset: 0 50% 0 -30%; background: radial-gradient(circle at 12% 8%, rgba(22,104,220,.2), transparent 45%); }
+.hero-section:after { inset: 0 -30% 0 50%; background: radial-gradient(circle at 88% 0%, rgba(12,186,153,.17), transparent 40%); }
+.hero-copy { max-width: 896px; padding-top: 0; }
+.eyebrow { padding: 4px 16px; color: #6b7280; background: rgba(255,255,255,.8); border-color: #e5e7eb; font-size: 12px; font-weight: 600; letter-spacing: .08em; }
+.hero-copy h1, .pricing-hero h1 { margin-top: 24px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(42px, 4.2vw, 60px); line-height: 1.25; letter-spacing: -.055em; font-weight: 600; color: #090b10; }
+.hero-copy h1 { text-wrap: balance; }
+.hero-copy h1 em, .pricing-hero h1 em { color: inherit; }
+.hero-copy > p, .pricing-hero > p { max-width: 672px; margin: 20px auto 0; color: #6b7280; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; line-height: 28px; }
+.workspace-card { width: min(920px, 100%); margin: 40px auto 0; padding: 25px; border: 1px solid rgba(229,231,235,.8); border-radius: 18px; background: rgba(255,255,255,.85); box-shadow: 0 18px 60px rgba(15,23,42,.05); }
+.drop-zone, .drop-zone.has-files { min-height: 256px; border: 3px dashed rgba(17,24,39,.45); border-radius: 18px; background: rgba(255,255,255,.6); }
+.drop-zone:hover { border-color: rgba(27,97,201,.6); background: rgba(248,250,252,.6); }
+.drop-empty { gap: 8px; }
+.upload-cta { padding: 12px 18px; border-radius: 8px; background: #111827; box-shadow: none; font-size: 14px; }
+.drop-empty strong { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; }
+.drop-empty span { color: #6b7280; font-size: 13px; }
+.video-section { max-width: 980px; padding: 32px 32px 64px; }
+.feature-section { max-width: none; padding: 32px max(32px, calc((100% - 980px) / 2 + 32px)) 64px; }
+.video-section .section-heading > p, .feature-section .section-heading > p, .reference-section .section-heading > p, .workflow-section .section-heading > p, .testimonial-section .section-heading > p, .faq-section .section-heading > p { margin-top: 12px; }
+.video-section .feature-grid { margin-top: 48px; }
+.video-section .section-heading, .feature-section .section-heading { display: block; max-width: 672px; margin: 0 auto 48px; text-align: center; }
+.section-heading h2 { margin-top: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 36px; line-height: 40px; letter-spacing: -.04em; font-weight: 600; }
+.section-heading > p { max-width: 672px; margin: 20px auto 0; color: #6b7280; font-size: 16px; line-height: 28px; }
+.section-heading .kicker { display: none; }
+.video-card { border: 1px solid rgba(229,231,235,.7); border-radius: 16px; padding: 8px; box-shadow: 0 18px 50px rgba(14,24,39,.1); }
+.video-card img { width: 100%; height: auto; max-height: none; border-radius: 12px; }
+.video-play, .video-caption { display: none; }
+.feature-grid { grid-template-columns: repeat(3, 1fr); gap: 24px 20px; }
+.feature-card { min-height: 152px; padding: 0; border: 0; border-radius: 0; background: transparent; text-align: center; }
+.feature-card:hover { transform: none; border-color: transparent; box-shadow: none; }
+.feature-number, .feature-icon, .feature-line { display: none; }
+.feature-card h3 { margin-top: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; line-height: 26px; font-weight: 600; }
+.feature-card p { margin-top: 8px; color: #6b7280; font-size: 14px; line-height: 24px; }
+.feature-section .feature-card { min-height: 172px; }
+.reference-section { max-width: 980px; padding: 64px 32px; }
+.reference-section .section-heading { display: block; max-width: 672px; margin: 0 auto 80px; text-align: left; }
+.reference-section .section-heading h2 { text-align: left; }
+.reference-grid { display: block; }
+.reference-card { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 48px; margin-bottom: 80px; overflow: visible; border: 0; border-radius: 0; background: transparent; }
+.reference-card:last-child { margin-bottom: 0; }
+.reference-copy { padding: 0; }
+.reference-copy h3 { margin-top: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; line-height: 36px; letter-spacing: -.04em; font-weight: 600; }
+.reference-copy p { margin-top: 16px; color: #6b7280; font-size: 16px; line-height: 28px; }
+.reference-visual { min-width: 0; }
+.reference-visual > img, .reference-card.with-compare > .compare-card { display: block; width: 100%; height: 360px; margin: 0; border-radius: 24px; object-fit: cover; box-shadow: 0 18px 42px rgba(15,23,42,.1); }
+.reference-visual > .compare-card { height: 360px; }
+.reference-card:nth-child(even) .reference-copy { order: 2; }
+.reference-card:nth-child(even) .reference-visual { order: 1; }
+.md-order-1, .md-order-2 { order: unset; }
+.text-link { margin-top: 26px; padding: 10px 16px; border: 1px solid #e5e7eb; border-radius: 999px; color: #111827; background: #fff; font-size: 13px; }
+.workflow-section { padding: 56px 0 95px; background: rgba(243,245,247,.65); }
+.workflow-section .section-wrap { max-width: 980px; }
+.workflow-section .section-heading { display: block; max-width: 672px; margin: 0 auto 40px; text-align: center; }
+.workflow-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 0; }
+.workflow-step { display: block; height: 206px; min-height: 206px; padding: 20px; border: 1px solid rgba(229,231,235,.75); border-radius: 16px; color: var(--ink); background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.workflow-step > span { color: #6b7280; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600; }
+.workflow-step h3 { margin-top: 16px; color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; line-height: 28px; }
+.workflow-step p { margin-top: 8px; color: #6b7280; font-size: 14px; line-height: 24px; }
+.workflow-section .compare-card { height: auto; aspect-ratio: 978 / 733; margin-top: 64px; border-radius: 16px; box-shadow: 0 18px 50px rgba(14,24,39,.1); }
+.compare-image img { width: 100%; height: 100%; object-fit: cover; }
+.compare-label { bottom: 14px; padding: 4px 8px; border: 0; border-radius: 5px; background: rgba(0,0,0,.55); font-size: 11px; }
+.compare-handle span { width: 40px; height: 40px; background: #fff; border-color: #fff; }
+.compare-handle span:before, .compare-handle span:after { border-color: #111827; }
+.testimonial-section { max-width: 980px; padding: 56px 32px; }
+.testimonial-section .section-heading { display: block; max-width: 672px; margin: 0 auto 32px; text-align: center; }
+.testimonial-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.testimonial-card { min-height: 202px; padding: 20px; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.testimonial-card p { margin-top: 12px; font-size: 14px; line-height: 24px; }
+.faq-section { max-width: 980px; padding: 56px 32px 44px; }
+.faq-section .section-heading { display: block; max-width: 672px; margin: 0 auto 32px; text-align: center; }
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item, .faq-item:last-child { margin-bottom: 12px; padding: 20px; border: 1px solid rgba(229,231,235,.9); border-radius: 12px; background: #fff; }
+.faq-item button { grid-template-columns: 1fr 24px; gap: 12px; padding: 0; }
+.faq-item button > span { display: none; }
+.faq-item button strong { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; line-height: 28px; }
+.faq-item p { max-width: none; margin-top: 12px; padding: 0; color: #6b7280; font-size: 16px; line-height: 28px; }
+.site-footer { max-width: none; margin: 0; padding: 0; background: #f8fafc; border-top: 1px solid #e5e7eb; }
+.site-footer-inner { width: min(1280px, 100%); min-height: 95px; margin: 0 auto; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-brand { font-size: 16px; font-weight: 700; }
+.site-footer p, .footer-links { font-size: 13px; }
+.footer-links { gap: 20px; }
+
+
+/* SOURCE: src/styles/07-page-shells.css */
+/* Pricing page follows the reference's wide three-plan first panel, then a
+   benefits panel and a narrow FAQ column. */
+.pricing-page { padding: 0; background: radial-gradient(circle at 10% 8%, rgba(22,104,220,.16), transparent 45%), radial-gradient(circle at 90% 0%, rgba(12,186,153,.12), transparent 38%), #fff; }
+.pricing-hero { width: min(1280px, 100%); max-width: 1280px; height: 346px; padding: 100px 32px 0; text-align: center; }
+.pricing-hero h1 { max-width: 896px; margin: 0 auto; font-size: 60px; line-height: 60px; }
+.pricing-hero > p { margin-top: 20px; }
+.billing-toggle { margin-top: 24px; }
+.plans-grid { position: relative; width: min(1280px, 100%); max-width: 1280px; height: 725px; padding: 0 64px 136px; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.plan-card { min-height: 553px; padding: 28px; border-radius: 24px; }
+.plan-card.featured { transform: none; }
+.plan-price { font-family: 'Plus Jakarta Sans', sans-serif; }
+.billing-note { position: absolute; right: 64px; bottom: 48px; left: 64px; color: #6b7280; text-align: center; font-size: 12px; }
+.pricing-note { width: min(1280px, 100%); max-width: 1280px; height: 142px; padding: 16px 32px 20px; }
+.pricing-note > div { display: flex; align-items: center; gap: 12px; }
+.pricing-note h2 { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; }
+.pricing-note > p { max-width: 672px; margin: 12px auto 0; color: #6b7280; font-size: 16px; line-height: 28px; text-align: center; }
+.pricing-benefits { width: min(1280px, 100%); max-width: 1280px; height: 446px; padding: 0 32px 40px; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pricing-benefits article { min-height: 0; height: 190px; padding: 20px; border-radius: 16px; }
+.pricing-faq { width: 980px; max-width: 100%; height: 1074px; padding: 56px 32px 80px; }
+.pricing-faq .section-heading { display: block; max-width: 672px; margin: 0 auto 32px; text-align: center; }
+.pricing-faq .section-heading h2 { font-size: 36px; line-height: 40px; }
+.pricing-faq .section-heading > p { margin-top: 12px; }
+
+/* Account and policy shells use the same centered card rhythm as the
+   reference's authenticated pages. */
+.account-page { padding: 128px 20px 18px; background: #fff; }
+.account-shell { width: min(896px, 100%); }
+.account-heading { height: 150px; padding: 28px 32px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.account-heading > div > a { display: none; }
+.account-heading .kicker { display: block; }
+.account-heading h1 { margin-top: 6px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; letter-spacing: -.04em; }
+.account-heading p { margin-top: 7px; font-size: 13px; }
+.account-credit { min-width: 120px; padding: 16px; font-size: 26px; border-radius: 14px; }
+.account-layout { display: block; margin-top: 20px; }
+.account-tabs { display: flex; height: 58px; padding: 8px; border-radius: 12px; }
+.account-tabs button { flex: 1; text-align: center; }
+.account-panel { min-height: 616px; margin-top: 20px; padding: 32px; border-radius: 16px; }
+.legal-page { min-height: 0; padding: 0 20px 80px; background: #fff; }
+.legal-card { width: min(768px, 100%); padding: 96px 0 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.legal-card .legal-back { display: none; }
+.legal-card h1 { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 36px; line-height: 43px; text-align: center; }
+.legal-card .legal-intro { margin-top: 16px; color: #4b5563; font-size: 16px; line-height: 24px; }
+.legal-card section { margin-top: 20px; }
+.legal-card h2 { margin-top: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; line-height: 32px; }
+.legal-card p { margin-top: 12px; color: #4b5563; font-size: 16px; line-height: 24px; }
+
+
+/* SOURCE: src/styles/08-cascade-responsive.css */
+/* Shared footer: keep the brand, copyright and utility links aligned as one
+   predictable row on desktop, then collapse in a deliberate order on mobile. */
+.site-footer-inner { width: min(1280px, calc(100% - 64px)); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 28px; }
+.site-footer { display: block; width: 100%; max-width: none; }
+.site-footer-inner p { margin: 0; white-space: nowrap; }
+.site-footer-inner .footer-links { justify-content: flex-end; flex-wrap: wrap; row-gap: 8px; }
+
+/* The visible handle is a pointer target; the transparent range input remains
+   focusable for keyboard users and provides the native slider semantics. */
+.compare-card { touch-action: none; user-select: none; cursor: ew-resize; }
+.compare-card.is-dragging { cursor: grabbing; }
+.compare-drag-layer { position: absolute; inset: 0; z-index: 5; cursor: ew-resize; touch-action: none; }
+.compare-range { z-index: 3; pointer-events: auto; }
+.compare-handle { z-index: 4; }
+
+@media (max-width: 980px) {
+  .site-footer-inner { width: min(100% - 36px, 720px); grid-template-columns: 1fr auto; gap: 10px 20px; }
+  .site-footer-inner p { grid-column: 1 / -1; grid-row: 2; }
+  .site-footer-inner .footer-links { grid-column: 1 / -1; grid-row: 3; justify-content: flex-start; }
+}
+
+@media (max-width: 720px) {
+  .site-footer-inner { width: calc(100% - 32px); display: flex; align-items: flex-start; flex-direction: column; gap: 12px; padding: 24px 0 30px; }
+  .site-footer-inner p { white-space: normal; }
+  .site-footer-inner .footer-links { width: 100%; justify-content: flex-start; gap: 12px 18px; }
+}
+
+/* Keep a generous breathing zone between the plan cards and the value
+   section. The reference intentionally separates these two decisions. */
+.pricing-page .plans-grid { height: 725px; padding-bottom: 136px; margin-bottom: 0; }
+@media (max-width: 720px) {
+  .pricing-page .plans-grid { height: auto; padding-bottom: 96px; margin-bottom: 0; }
+}
+
+@media (max-width: 720px) {
+  .site-header { height: 64px; }
+  .header-inner { padding: 0 16px; }
+  .brand { font-size: 20px; }
+  .hero-section { padding: 72px 16px 48px; }
+  .hero-copy h1, .pricing-hero h1 { font-size: 42px; line-height: 1.2; }
+  .hero-copy > p, .pricing-hero > p { font-size: 16px; line-height: 26px; }
+  .workspace-card { margin-top: 32px; padding: 16px; border-radius: 16px; }
+  .drop-zone, .drop-zone.has-files { min-height: 240px; }
+  .video-section, .feature-section, .reference-section, .workflow-section .section-wrap, .testimonial-section, .faq-section { padding-right: 16px; padding-left: 16px; }
+  .feature-section { max-width: none; }
+  .video-section .section-heading, .feature-section .section-heading, .reference-section .section-heading, .workflow-section .section-heading, .testimonial-section .section-heading, .faq-section .section-heading { margin-bottom: 32px; }
+  .section-heading h2 { font-size: 30px; line-height: 36px; }
+  .feature-grid, .workflow-steps, .testimonial-grid { grid-template-columns: 1fr; }
+  .feature-card { min-height: 0; text-align: left; }
+  .reference-card { grid-template-columns: 1fr; gap: 24px; margin-bottom: 56px; }
+  .reference-card:nth-child(even) .reference-copy, .reference-card:nth-child(even) .reference-visual { order: unset; }
+  .reference-copy h3 { font-size: 25px; line-height: 32px; }
+  .reference-copy p { font-size: 15px; line-height: 26px; }
+  .reference-visual > img, .reference-card.with-compare > .compare-card { height: auto; aspect-ratio: 1; }
+  .workflow-step { min-height: 0; }
+  .workflow-section .compare-card { margin-top: 40px; }
+  .site-footer-inner { display: block; padding: 24px 16px 32px; }
+  .site-footer-inner p { margin: 14px 0; }
+}
+
+
+/* SOURCE: src/styles/09-final-header-footer.css */
+/* Final cascade guard: the legacy responsive layer above used a block footer
+   and could collapse its three children into one crowded text run. */
+.site-footer { display: block !important; width: 100%; max-width: none; }
+.site-footer-inner { width: min(1280px, calc(100% - 64px)); min-height: 112px; margin: 0 auto; padding: 26px 0; display: flex !important; align-items: center; gap: 28px; }
+.site-footer-inner .footer-brand { flex: 0 0 auto; }
+.site-footer-inner p { flex: 1 1 auto; min-width: 0; margin: 0 !important; white-space: normal; }
+.site-footer-inner .footer-links { flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px 18px; }
+@media (max-width: 980px) {
+  .site-footer-inner { width: min(100% - 36px, 720px); flex-wrap: wrap; gap: 10px 20px; }
+  .site-footer-inner p { flex: 1 1 220px; }
+  .site-footer-inner .footer-links { flex: 1 1 100%; justify-content: flex-start; }
+}
+@media (max-width: 720px) {
+  .site-footer-inner { width: calc(100% - 32px); min-height: 0; padding: 24px 0 30px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .site-footer-inner p { flex: none; }
+  .site-footer-inner .footer-links { width: 100%; flex: none; justify-content: flex-start; gap: 12px 18px; }
+}
+
+/* Keep the comparison affordance mathematically centered inside its circular handle. */
+.compare-handle span { display: grid; place-items: center; transform: translate(-50%, -50%); }
+.compare-handle span:before, .compare-handle span:after { top: 50%; }
+.compare-handle span:before { left: 8px; transform: translateY(-50%) rotate(-45deg); }
+.compare-handle span:after { right: 8px; transform: translateY(-50%) rotate(135deg); }
+
+/* The transparent native range owns pointer input as well as keyboard input.
+   Keeping it above the artwork avoids browser-specific event retargeting while
+   the custom drag layer remains a visual/instructional surface only. */
+.compare-drag-layer { pointer-events: none; }
+.compare-range { z-index: 5; }
+.compare-handle { z-index: 6; }
+
+/* Header alignment: mirror the reference site's compact three-zone bar.
+   The logo stays left, navigation sits in the visual center, and auth actions
+   share a subtle divider on the right. */
+.site-header { position: sticky; top: 0; height: 64px; background: rgba(255,255,255,.84); border-bottom: 1px solid #e5e7eb; backdrop-filter: blur(16px); }
+.header-inner { width: min(1280px, calc(100% - 64px)); max-width: none; height: 64px; margin: 0 auto; padding: 0; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 32px; }
+.brand { display: inline-flex; align-items: center; color: #090b10; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -.065em; line-height: 1; white-space: nowrap; }
+.main-nav { display: flex; align-items: center; justify-self: center; gap: 2px; margin: 0; }
+.nav-link { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 12px; border-radius: 8px; color: #111827; background: transparent; font-size: 14px; font-weight: 500; line-height: 20px; transition: color .2s ease, background .2s ease; }
+.nav-link:hover, .nav-link.active { color: #111827; background: #f3f5f8; box-shadow: none; }
+.header-actions { display: flex; align-items: center; justify-self: end; gap: 0; }
+.header-auth { display: flex; align-items: center; gap: 4px; padding-left: 12px; border-left: 1px solid #e5e7eb; }
+.site-header .ghost-button { min-height: 40px; padding: 8px 12px; border-radius: 8px; color: #111827; background: transparent; font-size: 14px; font-weight: 500; }
+.site-header .ghost-button:hover { background: #f3f5f8; }
+.site-header .dark-button { min-height: 40px; padding: 8px 16px; border-radius: 8px; color: #fff; background: #294eff; font-size: 14px; font-weight: 600; box-shadow: none; }
+.site-header .dark-button:hover { background: #1d3fd9; box-shadow: none; transform: none; }
+.site-header .header-login-button { margin-left: 8px; }
+.menu-button { display: none; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 1px solid #e5e7eb; border-radius: 8px; color: #111827; background: #fff; }
+.menu-button:hover { background: #f3f5f8; }
+
+@media (max-width: 720px) {
+  .site-header { height: 64px; }
+  .header-inner { width: calc(100% - 32px); height: 64px; display: flex; justify-content: space-between; gap: 12px; }
+  .brand { font-size: 22px; }
+  .main-nav { position: absolute; top: 72px; right: 16px; left: 16px; display: none; flex-direction: column; align-items: stretch; gap: 2px; padding: 8px; border: 1px solid #e5e7eb; border-radius: 12px; background: rgba(255,255,255,.97); box-shadow: 0 18px 45px rgba(15,23,42,.12); }
+  .main-nav.open { display: flex; }
+  .nav-link { justify-content: flex-start; width: 100%; min-height: 42px; }
+  .header-auth { display: none; }
+  .header-actions { margin-left: auto; }
+  .menu-button { display: inline-flex; }
+}
+
+/* Footer language control mirrors the reference: a small pill inside the
+   utility-link row, with a menu anchored directly above it. */
+.footer-language { position: relative; display: inline-flex; align-items: center; }
+.footer-language-button { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 999px; color: #111827; background: #f8fafc; font-size: 12px; font-weight: 600; line-height: 18px; white-space: nowrap; transition: border-color .2s ease, background .2s ease, color .2s ease; }
+.footer-language-button svg { flex: 0 0 auto; transition: transform .2s ease; }
+.footer-language-button:hover, .footer-language-button[aria-expanded='true'] { border-color: #d3d9e4; color: #111827; background: #fff; }
+.footer-language-button[aria-expanded='true'] svg { transform: rotate(180deg); }
+.footer-language-menu { position: absolute; inset-inline-end: 0; bottom: calc(100% + 8px); z-index: 40; display: grid; min-width: 160px; max-height: min(60vh, 384px); overflow-y: auto; padding: 5px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; box-shadow: 0 12px 28px rgba(15,23,42,.12); }
+.footer-language-menu[hidden] { display: none; }
+.footer-language-menu a { display: flex; align-items: center; min-height: 32px; padding: 6px 9px; border-radius: 7px; color: #111827; font-size: 12px; font-weight: 600; line-height: 18px; text-decoration: none; white-space: nowrap; }
+.footer-language-menu a:hover { color: #111827; background: #f3f5f8; }
+
+@media (max-width: 720px) {
+  .site-footer-inner .footer-links { align-items: flex-start; }
+  .footer-language-menu { inset-inline-end: auto; inset-inline-start: 0; }
+}
+
+

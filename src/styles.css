@@ -6,7 +6,6 @@
  * earlier component defaults. New component styles should go in the matching
  * module instead of growing this file.
  */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 @import './styles/01-foundation.css';
 @import './styles/02-hero-workspace.css';
 @import './styles/03-landing-sections.css';
@@ -17,3 +16,4 @@
 @import './styles/08-cascade-responsive.css';
 @import './styles/09-final-header-footer.css';
 @import './styles/10-final-page-fixes.css';
+@import './styles/11-studio.css';

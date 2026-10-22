@@ -1,8 +1,9 @@
-import { LegalPage } from '../../../src/components/site/legal-page'
-import { pageMetadata } from '../../../src/lib/site-metadata'
+import { PageStructuredData } from '@/src/components/site/page-structured-data'
+import { LegalPage } from '@/src/components/site/legal-page'
+import { pageMetadata } from '@/src/lib/site-metadata'
 
 export const metadata = pageMetadata('zh', 'privacy')
 
 export default function PrivacyPolicyPage() {
-  return <LegalPage locale="zh" page="privacy-policy" />
+  return <><PageStructuredData locale="zh" page="privacy" /><LegalPage locale="zh" page="privacy-policy" /></>
 }

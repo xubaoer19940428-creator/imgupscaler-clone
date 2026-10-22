@@ -1,0 +1,1017 @@
+{
+  "nav": {
+    "upscaler": "Ampliar imágenes",
+    "enhancer": "Mejorar imágenes",
+    "reimagine": "Reimaginar",
+    "pricing": "Precios"
+  },
+  "auth": {
+    "kicker": "Cuenta / Inicio de sesión",
+    "title": "Bienvenido de nuevo",
+    "description": "Inicia sesión para sincronizar créditos, suscripciones e historial de procesamiento.",
+    "close": "Cerrar inicio de sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "passwordPlaceholder": "Al menos 8 caracteres",
+    "submit": "Iniciar sesión",
+    "google": "Continuar con Google",
+    "googleLoading": "Conectando con Google…",
+    "googleFailed": "Error al iniciar sesión con Google",
+    "googleFailedDetail": "El servicio de Google no está disponible. Inténtalo de nuevo o usa el correo electrónico.",
+    "or": "o",
+    "submitted": "Sesión iniciada",
+    "submittedDetail": "Tu sesión está activa.",
+    "loginFailed": "Error al iniciar sesión",
+    "loginFailedDetail": "Comprueba tu correo y contraseña e inténtalo de nuevo.",
+    "emailPlaceholder": "tu@ejemplo.com"
+  },
+  "editor": {
+    "kicker": "Editar resultado",
+    "title": "Editar imagen procesada",
+    "description": "Recortar, rotar, voltear y elegir la calidad de exportación.",
+    "close": "Cerrar",
+    "previewAlt": "Vista previa mejorada",
+    "rotate": "Girar",
+    "flipHorizontal": "Voltear horizontal",
+    "flipVertical": "Voltear vertical",
+    "cropRatio": "Proporción de recorte",
+    "original": "Originales",
+    "square": "Cuadrado",
+    "format": "Formato",
+    "quality": "Calidad",
+    "cancel": "Cancelar",
+    "save": "Guardar cambios"
+  },
+  "workspace": {
+    "authRequired": "Inicia sesión para procesar imágenes",
+    "authRequiredDetail": "Inicia sesión para cargar y procesar tus imágenes de forma segura.",
+    "chooseImage": "Elegir imagen",
+    "dragDrop": "Suelta tu imagen aquí",
+    "formats": "Compatible con JPG / PNG / WebP / AVIF",
+    "selectAria": "Elegir una imagen para procesar",
+    "label": "Espacio de trabajo",
+    "readyCount": "{count, plural, one {# imagen lista} other {# imágenes listas}}",
+    "status": {
+      "ready": "Listo",
+      "processing": "Procesando",
+      "done": "Listo",
+      "error": "Procesamiento fallido"
+    },
+    "remove": "Eliminar imagen",
+    "retry": "Reintentar",
+    "download": "Descargar",
+    "edit": "Editar",
+    "redo": "Rehacer",
+    "addMore": "Añadir más",
+    "prompt": "Indicaciones",
+    "creativity": "Creatividad",
+    "similarity": "Similitud",
+    "output": "Tamaño de salida",
+    "model": "Modelo Reimagine",
+    "scale": "Escala",
+    "portrait": "Retrato",
+    "detail": "Detalle",
+    "portraitModel": "Modelo vertical - 2048px",
+    "detailModel": "Modelo detallado - 2048px",
+    "removeUploaded": "Eliminar",
+    "startProcessing": "Iniciar procesamiento",
+    "clear": "Limpiar",
+    "downloadResults": "Descargar resultados",
+    "cancel": "Cancelar",
+    "processing": "Procesando…",
+    "start": "Procesar imagen",
+    "local": "Subida de forma segura para esta tarea",
+    "limit": "Límite del lado largo: 4096 px",
+    "toast": {
+      "busy": "Una tarea aún se está procesando",
+      "busyDetail": "Espere a que termine o cancélelo primero",
+      "noImages": "No se pueden agregar imágenes",
+      "noImagesDetail": "Se admiten JPG, PNG, WebP y AVIF hasta 20 MB por archivo",
+      "added": "{count, plural, one {Se añadió # imagen} other {Se añadieron # imágenes}}",
+      "batchLimit": "Hasta {count} imágenes por lote",
+      "addedDetail": "Agregue más imágenes o comience a procesar",
+      "cancelled": "Procesamiento cancelado",
+      "cancelledDetail": "Los archivos originales permanecen en este espacio de trabajo",
+      "resultError": "No se pudo generar un resultado",
+      "partialError": "Algunas imágenes fallaron",
+      "complete": "Procesamiento completo",
+      "completeDetail": "Los resultados están listos para editar o descargar",
+      "downloaded": "Resultado descargado",
+      "zipStarted": "Descarga ZIP iniciada",
+      "resultCount": "{count, plural, one {# resultado} other {# resultados}}",
+      "downloadError": "Descarga fallida",
+      "downloadErrorDetail": "Intente descargar cada imagen por separado",
+      "editSaved": "Ediciones guardadas",
+      "editError": "Edición fallida",
+      "retry": "Inténtelo de nuevo"
+    },
+    "api": {
+      "resultMissing": "La API no devolvió un resultado de imagen",
+      "timeout": "La tarea de imagen expiró",
+      "failed": "La tarea de imagen falló",
+      "cancelled": "La tarea de imagen fue cancelada",
+      "editorUnsupported": "Este navegador no admite la edición de imágenes",
+      "imageReadFailed": "No se pudo leer la imagen",
+      "encodeFailed": "No se pudo generar el resultado de la imagen"
+    },
+    "promptPlaceholder": "Describe el detalle, estilo o transformación que quieres…",
+    "reimagineDefaultPrompt": "detalle natural, textura limpia, alta calidad",
+    "apiPrompt": {
+      "home": "Mejora esta imagen para obtener un resultado limpio y de alta resolución con bordes más nítidos, texturas naturales, detalles finos realistas y la composición original preservada. No agregue ni elimine temas.",
+      "enhancer": "Mejore esta imagen con nitidez natural, texturas más limpias, ruido reducido y artefactos de compresión, y detalles finos mejorados mientras conserva el sujeto, los colores, la iluminación y la composición originales.",
+      "reimagine": "Cree una versión más clara y detallada de esta imagen siguiendo la dirección creativa solicitada y preservando el tema reconocible."
+    }
+  },
+  "landing": {
+    "heroContent": {
+      "home": {
+        "eyebrow": "Upscaler de imágenes con IA en línea",
+        "title": {
+          "before": "Amplía imágenes con IA.",
+          "emphasis": "Realza cada detalle."
+        },
+        "description": "Amplía fotos, ilustraciones, imágenes de productos, retratos y fotos antiguas con IA. Elige salida en 2K o 4K, revisa los detalles y descarga el resultado. La resolución disponible depende del modelo y de los límites de la cuenta."
+      },
+      "enhancer": {
+        "eyebrow": "Mejorador de imágenes con IA en línea",
+        "title": {
+          "before": "Mejora la calidad de las imágenes",
+          "emphasis": "con IA"
+        },
+        "description": "Haz más claras las imágenes suaves, ruidosas, comprimidas o de baja resolución."
+      },
+      "reimagine": {
+        "eyebrow": "Upscaler Reimagine gratis",
+        "title": {
+          "before": "Reimagina y amplía",
+          "emphasis": "imágenes con IA"
+        },
+        "description": "Sube una imagen, añade un prompt y controla la creatividad y el parecido."
+      }
+    },
+    "featureCards": {
+      "home": [
+        {
+          "number": "01",
+          "title": "Mejora avanzada de IA",
+          "body": "Aumente la resolución con bordes más nítidos, texturas más claras y detalles más naturales."
+        },
+        {
+          "number": "02",
+          "title": "Imágenes de alta resolución en 2K y 4K",
+          "body": "Elija el tamaño de salida que se ajuste a sitios web, listados de productos, publicaciones en redes sociales, presentaciones o impresiones."
+        },
+        {
+          "number": "03",
+          "title": "Mejora de escala de imágenes por lotes",
+          "body": "Procese varias imágenes en un flujo de trabajo eficiente en lugar de repetir los mismos pasos de carga y exportación."
+        },
+        {
+          "number": "04",
+          "title": "Flujo de trabajo de mejora de imágenes",
+          "body": "Mejore fotografías, anime, retratos, imágenes de comercio electrónico e imágenes antiguas con una práctica herramienta en línea."
+        },
+        {
+          "number": "05",
+          "title": "Procesamiento que prioriza la privacidad",
+          "body": "Los archivos subidos y los resultados se gestionan según la política de conservación y eliminación del servicio."
+        },
+        {
+          "number": "06",
+          "title": "Imágenes para proyectos personales y comerciales",
+          "body": "Utilice imágenes mejoradas en marketing, trabajo con clientes, comercio electrónico, proyectos creativos y trabajo personal."
+        }
+      ],
+      "enhancer": [
+        {
+          "number": "01",
+          "title": "Mejore las imágenes borrosas",
+          "body": "Restaure la claridad de los bordes y el contraste local mientras mantiene los rostros, el color y la iluminación naturales."
+        },
+        {
+          "number": "02",
+          "title": "Mejore la calidad de la imagen en línea",
+          "body": "Mejore las imágenes de baja calidad para redes sociales, sitios web, presentaciones, impresiones y listados de productos."
+        },
+        {
+          "number": "03",
+          "title": "Mejorar los detalles de la imagen",
+          "body": "Recuperar texturas finas, cabello, telas, bordes de productos, líneas y otros detalles visibles."
+        },
+        {
+          "number": "04",
+          "title": "Reduce el ruido y los artefactos de compresión",
+          "body": "Limpia capturas de pantalla, cargas antiguas, fotos comprimidas, artefactos JPEG y daños en imágenes web."
+        },
+        {
+          "number": "05",
+          "title": "Mejore el arte de la IA y las imágenes generadas",
+          "body": "Refina la textura y los detalles de las imágenes creadas con OpenAI, Midjourney, Flux, Stable Diffusion y otras herramientas de IA."
+        },
+        {
+          "number": "06",
+          "title": "Optimice retratos, productos y obras de arte",
+          "body": "Mejore retratos, fotografías de productos, anime, ilustraciones y arte digital conservando la dirección original."
+        }
+      ],
+      "reimagine": [
+        {
+          "number": "01",
+          "title": "Reimaginación guiada rápidamente",
+          "body": "Describe el resultado que deseas, desde una arquitectura más clara hasta retratos cinematográficos, líneas de anime más ricas o texturas de productos realistas."
+        },
+        {
+          "number": "02",
+          "title": "Control de la creatividad",
+          "body": "Disminuya la creatividad para obtener una mejora estable y fiel o aumente para introducir variaciones más visibles y nuevos detalles."
+        },
+        {
+          "number": "03",
+          "title": "Fuerza de semejanza",
+          "body": "Controle en qué medida la salida mantiene el diseño original, las características del sujeto y la estructura reconocible."
+        },
+        {
+          "number": "04",
+          "title": "Mejora creativa",
+          "body": "Agregue detalles generados mientras mejora el arte conceptual, la ilustración, los interiores, la arquitectura, los retratos y los experimentos."
+        },
+        {
+          "number": "05",
+          "title": "Modelos de retrato y detalle",
+          "body": "Elija el comportamiento del modelo para rostros naturales, una recuperación de detalles más sólida o una interpretación más creativa."
+        },
+        {
+          "number": "06",
+          "title": "Procesamiento que prioriza la privacidad",
+          "body": "Los archivos subidos y los resultados se gestionan según la política de conservación y eliminación del servicio."
+        }
+      ]
+    },
+    "useCases": {
+      "home": [
+        {
+          "image": "/reference/upscale-image-online.jpeg",
+          "beforeImage": "/reference/upscale-image-online.jpeg",
+          "afterImage": "/reference/upscale-image-online.jpeg",
+          "title": "Imágenes exclusivas en línea para web, impresión y redes sociales",
+          "body": "Convierta imágenes pequeñas, borrosas o pixeladas en imágenes más claras de alta resolución para sitios web, miniaturas, presentaciones, carteles, comercio electrónico y publicaciones sociales.",
+          "cta": "Mejorar una imagen"
+        },
+        {
+          "image": "/reference/batch-upscaler.jpeg",
+          "beforeImage": "/reference/batch-upscaler.jpeg",
+          "afterImage": "/reference/batch-upscaler.jpeg",
+          "title": "Mejorar imágenes por lotes para una producción eficiente",
+          "body": "Mantenga consistentes las fotografías de productos, recursos de marketing, imágenes de anime o archivos de clientes mientras procesa más imágenes con menos pasos manuales.",
+          "cta": "Explore la ampliación por lotes"
+        },
+        {
+          "image": "/reference/enhance-subjects.jpeg",
+          "beforeImage": "/reference/enhance-subjects.jpeg",
+          "afterImage": "/reference/enhance-subjects.jpeg",
+          "title": "Mejore retratos, productos, anime y fotografías antiguas",
+          "body": "Mejore avatares, imágenes de productos, ilustraciones, escaneos, fotografías de viajes e imágenes más antiguas que necesitan una resolución más utilizable.",
+          "cta": "Mejora la calidad de la imagen"
+        }
+      ],
+      "enhancer": [
+        {
+          "image": "/reference/enhancer/enhancer-sample-1-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-1-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-1-after.webp",
+          "title": "Mejora las imágenes borrosas y restaura los detalles perdidos",
+          "body": "Mejora las imágenes borrosas o de baja calidad manteniendo el resultado natural. Este potenciador de imágenes con IA mejora la claridad de los bordes, restaura la textura fina y reduce el desenfoque, el ruido y los artefactos de compresión sin que la imagen parezca sobreprocesada.",
+          "cta": "Mejorar una imagen"
+        },
+        {
+          "image": "/reference/enhancer/enhancer-sample-2-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-2-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-2-after.webp",
+          "title": "Optimice imágenes de baja resolución para redes sociales, impresión y comercio electrónico",
+          "body": "Cree imágenes de alta resolución más claras para redes sociales, presentaciones, impresión, fondos de pantalla, listados de productos y uso compartido profesional. La mejora de la IA aumenta los detalles utilizables al tiempo que mejora la resolución para diferentes tamaños de salida.",
+          "cta": "Mejore y optimice"
+        },
+        {
+          "image": "/reference/enhancer/enhancer-sample-3-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-3-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-3-after.webp",
+          "title": "Mejore el arte, los retratos, las capturas de pantalla y las imágenes de productos de IA",
+          "body": "Utilice este potenciador para imágenes, retratos, anime, ilustraciones, capturas de pantalla y elementos visuales de productos generados por IA. Mejora la textura, elimina artefactos, agrega detalles visibles y mejora la claridad al tiempo que preserva la dirección visual original.",
+          "cta": "Mejore las imágenes creativas"
+        }
+      ],
+      "reimagine": [
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-building-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-building-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-building-after.jpg",
+          "title": "Reimagine la arquitectura y los interiores con detalles más ricos",
+          "body": "Convierta las imágenes de arquitectura, interiores y exteriores de baja resolución en imágenes más claras con una textura de superficie más rica, bordes más limpios y una mayor profundidad espacial. Utilice indicaciones para guiar los materiales, la iluminación y el estado de ánimo mientras la fuerza de la semejanza mantiene reconocible la estructura original.",
+          "cta": "Pruebe Reimagine AI"
+        },
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-anime-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-anime-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-anime-after.jpg",
+          "title": "Agregue detalles creativos al anime, ilustración y arte con IA",
+          "body": "Utilice Reimagine AI como una mejora guiada por indicaciones para anime, ilustraciones, arte lineal e imágenes generadas por IA. Mantenga reconocible el estilo original mientras agrega una textura más rica, detalles más claros y un acabado más pulido.",
+          "cta": "Mejorar una ilustración"
+        },
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-face-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-face-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-face-after.jpg",
+          "title": "Mejore los retratos manteniendo los rostros reconocibles",
+          "body": "Vuelva a imaginar los retratos mejorando la claridad, los detalles de la piel, la textura del cabello y la iluminación mientras los controles de semejanza mantienen a la persona reconocible. Funciona bien para fotografías de perfil, fotografías antiguas, imágenes editadas y retratos creativos.",
+          "cta": "Reimagine un retrato"
+        }
+      ]
+    },
+    "featureIntro": {
+      "home": {
+        "kicker": "Vea cómo la mejora de la IA mejora la claridad",
+        "title": {
+          "before": "Mejora avanzada de la IA,",
+          "emphasis": "creado para el trabajo real."
+        },
+        "description": "Amplía fotos, ilustraciones, imágenes de productos, retratos y fotos antiguas con IA. Elige salida en 2K o 4K, revisa los detalles y descarga el resultado. La resolución disponible depende del modelo y de los límites de la cuenta."
+      },
+      "enhancer": {
+        "kicker": "Mejore la calidad, agudice los detalles y elimine el ruido visual",
+        "title": {
+          "before": "Mejora de imagen AI,",
+          "emphasis": "hecho práctico."
+        },
+        "description": "Mejore las imágenes borrosas, agregue detalles, reduzca el ruido, elimine los artefactos de compresión y mejore las imágenes de baja calidad sin retoques manuales."
+      },
+      "reimagine": {
+        "kicker": "Un escalador creativo para la transformación de imágenes controladas",
+        "title": {
+          "before": "Reimaginar la IA,",
+          "emphasis": "para la mejora creativa."
+        },
+        "description": "Utilice indicaciones, elección de modelo, creatividad y fuerza de semejanza para agregar detalles realistas mientras decide si el resultado se mantiene fiel o explora una nueva variación."
+      }
+    },
+    "routeWorkflow": {
+      "home": {
+        "kicker": "Cómo mejorar una imagen en línea",
+        "title": {
+          "before": "Tres pasos para",
+          "emphasis": "salida más clara."
+        },
+        "description": "Cargue un archivo, elija la resolución de salida, obtenga una vista previa del resultado y descargue una imagen más clara.",
+        "steps": [
+          [
+            "Paso 1",
+            "Cargue una imagen JPG, PNG o WebP",
+            "Elija una foto de baja resolución, una imagen de producto, una ilustración de anime, un retrato, una foto antigua o un gráfico."
+          ],
+          [
+            "Paso 2",
+            "Elegir salida en 2K o 4K",
+            "Elija una salida de 2K o 4K mientras la IA mejora los detalles, la textura y los bordes."
+          ],
+          [
+            "Paso 3",
+            "Vista previa, mejora y descarga",
+            "Compare el antes y el después, realice modificaciones y descargue el resultado en alta resolución."
+          ]
+        ]
+      },
+      "enhancer": {
+        "kicker": "Cómo mejorar la calidad de la imagen en línea",
+        "title": {
+          "before": "Tres pasos para",
+          "emphasis": "restauración más clara."
+        },
+        "description": "Mejora la nitidez de una imagen, mejora la calidad de la fotografía y crea un resultado de alta resolución más claro con la mejora de la IA.",
+        "steps": [
+          [
+            "Paso 1",
+            "Cargue una imagen borrosa o de baja calidad",
+            "El flujo de trabajo maneja imágenes borrosas, comprimidas, ruidosas, de baja resolución, antiguas y generadas por IA."
+          ],
+          [
+            "Paso 2",
+            "Elija una salida mejorada",
+            "Seleccione la calidad de salida para obtener una nitidez rápida, detalles más intensos o una imagen de alta resolución más clara."
+          ],
+          [
+            "Paso 3",
+            "Vista previa del resultado y descarga",
+            "Compare los detalles restaurados, los bordes más nítidos y la textura más clara antes de descargarlos."
+          ]
+        ]
+      },
+      "reimagine": {
+        "kicker": "Cómo reinventar una imagen en línea",
+        "title": {
+          "before": "Tres pasos para",
+          "emphasis": "producción creativa."
+        },
+        "description": "Comience con una imagen, oriente el resultado con un mensaje y equilibre la creatividad con la semejanza antes de descargarla.",
+        "steps": [
+          [
+            "Paso 1",
+            "Sube la imagen que deseas reconstruir",
+            "Utilice un retrato, producto, arquitectura, interior, anime, ilustración, imagen de IA o foto antigua."
+          ],
+          [
+            "Paso 2",
+            "Agregue un mensaje y elija la fuerza",
+            "Elija el comportamiento del modelo, luego ajuste la Creatividad y la Semejanza para controlar la transformación."
+          ],
+          [
+            "Paso 3",
+            "Obtenga una vista previa, refine y descargue",
+            "Revise el resultado, ajuste el equilibrio de detalle y fidelidad y descargue la imagen final. Editor"
+          ]
+        ]
+      }
+    },
+    "testimonials": [
+      [
+        "Eleonore Lefaix",
+        "Siecledigital.fr",
+        "ImgUpscaler simplifica el escalado de imágenes y admite el procesamiento por lotes, para que los usuarios puedan manejar varias imágenes a la vez."
+      ],
+      [
+        "Eva Williams",
+        "Reparar el editor de fotos",
+        "Cuando necesita ampliar varias imágenes y mejorar un gran conjunto de recursos visuales sin repetir los pasos manuales, ImgUpscaler es una opción práctica."
+      ],
+      [
+        "Matic Broz",
+        "Redactor",
+        "La ampliación de imágenes no debería ser costosa ni complicada. ImgUpscaler ofrece una forma sencilla e intuitiva de ampliar imágenes en línea. Usuario de"
+      ],
+      [
+        "Sravan",
+        "Product Hunt,",
+        "ImgUpscaler funciona con muchos tipos de imágenes, desde paisajes y fotografías de productos hasta imágenes antiguas que necesitan detalles más visibles."
+      ]
+    ],
+    "faqs": {
+      "home": [
+        [
+          "¿Qué es ImgUpscaler?",
+          "ImgUpscaler es una herramienta en línea para ampliar fotos, ilustraciones, imágenes de productos y retratos con IA. Puedes elegir una salida en 2K o 4K. Los tamaños disponibles dependen del modelo y de los límites de la cuenta."
+        ],
+        [
+          "¿Cómo funciona un escalador de imágenes con IA?",
+          "El modelo de IA seleccionado analiza bordes, texturas y relaciones de color antes de generar detalles de mayor resolución en lugar de simplemente estirar píxeles."
+        ],
+        [
+          "¿Cómo puedo mejorar una imagen en línea?",
+          "Cargue una imagen JPG, PNG, WebP o AVIF, elija un tamaño de salida, luego obtenga una vista previa y descargue la imagen procesada."
+        ],
+        [
+          "¿Puedo mejorar una imagen a 4K?",
+          "Sí. Puedes elegir una salida 4K. La API aplica el modelo seleccionado y los límites de la cuenta a la resolución solicitada."
+        ],
+        [
+          "¿Cuál es la diferencia entre ampliación y mejora?",
+          "Upscaling se centra en aumentar el tamaño y la resolución del lienzo. La mejora se centra en la claridad, el ruido, la textura y el color. Ambos pueden utilizar el mismo flujo de trabajo de carga y descarga."
+        ],
+        [
+          "¿Puede la mejora de la IA corregir una imagen borrosa?",
+          "Puede mejorar el desenfoque leve, el ruido de compresión y los bordes irregulares, pero no puede garantizar la recuperación de información que nunca se capturó o que está completamente oscurecida."
+        ],
+        [
+          "¿Qué formatos de imagen son compatibles?",
+          "Los formatos admitidos son JPG, PNG, WebP y AVIF, hasta 20 MB por imagen."
+        ],
+        [
+          "¿Puedo mejorar varias imágenes a la vez?",
+          "Sí. El espacio de trabajo acepta hasta 20 imágenes y las procesa en orden de cola, y cada resultado está disponible para descargar cuando esté listo."
+        ],
+        [
+          "¿Mis imágenes cargadas son privadas? Las imágenes",
+          "se cargan a través de URL firmadas de corta duración, las procesa el modelo seleccionado y se devuelven como resultados privados según la política de retención de API."
+        ],
+        [
+          "¿Durante cuánto tiempo se almacenan las imágenes cargadas?",
+          "Los archivos fuente y los resultados siguen la política de retención de API y se eliminan de acuerdo con el programa de limpieza del servicio."
+        ],
+        [
+          "¿Puedo utilizar las imágenes mejoradas comercialmente?",
+          "La interfaz no restringe el uso de exportación. Las licencias comerciales, la responsabilidad de la producción del modelo y los derechos de la imagen fuente deben definirse en los términos de producción."
+        ],
+        [
+          "¿Qué imágenes funcionan mejor con la mejora de IA?",
+          "Las fotografías de baja resolución, imágenes de productos, retratos, arte anime, escaneos y fotografías antiguas ligeramente comprimidas suelen mostrar la mejora más clara."
+        ],
+        [
+          "¿La ampliación de la IA es mejor que el cambio de tamaño normal?",
+          "El cambio de tamaño regular interpola los píxeles existentes. La mejora de la IA intenta reconstruir los detalles; el resultado depende de la calidad de la fuente, el modelo y el tamaño de destino."
+        ],
+        [
+          "¿Necesito instalar software?",
+          "No. Utilice la herramienta directamente en su navegador; El procesamiento de imágenes se realiza en nuestros servidores."
+        ]
+      ],
+      "enhancer": [
+        [
+          "¿Qué es un potenciador de imágenes con IA?",
+          "Un potenciador de imágenes con IA mejora automáticamente la calidad de la imagen al enfocar el desenfoque, restaurar detalles, reducir el ruido y eliminar artefactos de compresión sin edición manual."
+        ],
+        [
+          "¿Cómo mejoro la calidad de la imagen en línea?",
+          "Cargue una imagen, elija una salida de mejora, obtenga una vista previa del resultado y descárguela. El flujo de trabajo se ejecuta en el navegador."
+        ],
+        [
+          "¿Puede la IA aclarar una imagen borrosa?",
+          "AI puede mejorar el desenfoque leve, el ruido y el daño por compresión, pero no puede garantizar la recuperación de detalles que nunca se capturaron."
+        ],
+        [
+          "¿Puedo mejorar los detalles de la imagen sin editarla manualmente?",
+          "Sí. El potenciador procesa automáticamente bordes, texturas, ruido y artefactos de compresión."
+        ],
+        [
+          "¿Cuál es la diferencia entre mejora y ampliación de escala?",
+          "Enhancement se centra en la claridad, la textura y el ruido. La mejora se centra en el tamaño y la resolución del lienzo."
+        ],
+        [
+          "¿El potenciador reducirá el desenfoque y el ruido automáticamente?",
+          "El modelo de IA seleccionado realiza la eliminación de ruido y la restauración antes de devolver el resultado."
+        ],
+        [
+          "¿Admite JPEG comprimido o imágenes web?",
+          "Sí. Se admiten JPG, PNG, WebP y AVIF."
+        ],
+        [
+          "¿Puedo mejorar las imágenes generadas por IA?",
+          "Sí. El arte, los retratos, las imágenes de productos y las ilustraciones con IA funcionan bien con este flujo de trabajo."
+        ],
+        [
+          "¿Puedo mejorar los retratos de forma natural?",
+          "Utilice una fuerza moderada y compare el resultado antes de descargar para evitar un afilado excesivo."
+        ],
+        [
+          "¿Puedo mejorar las fotos del producto?",
+          "Sí. El potenciador funciona para listados de comercio electrónico, activos de marketing e imágenes de sitios web."
+        ],
+        [
+          "¿La mejora cambiará los colores originales?",
+          "El modelo de IA seleccionado controla la intensidad de la mejora y la fidelidad del color para el resultado devuelto."
+        ],
+        [
+          "¿Qué imágenes funcionan mejor con el potenciador?",
+          "Retratos, capturas de pantalla, fotografías antiguas, imágenes de productos, anime e imágenes web de baja resolución son buenos candidatos."
+        ],
+        [
+          "¿Puedo obtener una vista previa de una imagen mejorada antes de descargarla?",
+          "Sí. El resultado aparece primero en el espacio de trabajo y se puede editar o descargar."
+        ],
+        [
+          "¿Necesito conocimientos de edición para utilizar el potenciador?",
+          "No. Cargue una imagen, elija una salida y descargue el resultado."
+        ]
+      ],
+      "reimagine": [
+        [
+          "¿Qué es Reimaginar la IA?",
+          "Reimagine AI es el escalador creativo guiado por indicaciones de ImgUpscaler. Amplía una imagen mientras genera nuevos detalles, texturas y variaciones visuales a partir de sus indicaciones y configuraciones."
+        ],
+        [
+          "¿En qué se diferencia Reimagine AI de un escalador normal?",
+          "Un escalador normal se centra en preservar la fuente y al mismo tiempo aumentar la resolución. Reimagine AI también puede agregar detalles generativos desde un mensaje."
+        ],
+        [
+          "¿Qué es un escalador de imágenes creativo?",
+          "Combina la mejora de la resolución con IA generativa para inferir nuevos detalles, texturas, patrones y mejoras estilísticas a partir de la fuente."
+        ],
+        [
+          "¿Cómo afectan las indicaciones a un resultado reinventado? Las indicaciones",
+          "describen la iluminación, los materiales, el estilo, el nivel de detalle, la atmósfera o cómo se debe tratar el tema."
+        ],
+        [
+          "¿Qué hace el control de Creatividad?",
+          "Una mayor creatividad introduce más variación, textura y nuevos detalles visuales. Una menor creatividad mantiene el resultado más cerca de la fuente."
+        ],
+        [
+          "¿Qué es la fuerza de semejanza?",
+          "Un mayor parecido ayuda a preservar el diseño original, las características del tema y la estructura reconocible."
+        ],
+        [
+          "¿Qué configuraciones dan resultados estables?",
+          "Utilice menos creatividad y mayor parecido para retratos e imágenes donde la composición original importa."
+        ],
+        [
+          "¿Puedo reimaginar un retrato sin cambiar demasiado el rostro?",
+          "Sí. Utilice el modelo de retrato con menor creatividad y mayor parecido."
+        ],
+        [
+          "¿Qué tipos de imágenes funcionan mejor con Reimagine AI?",
+          "Retratos, arquitectura, interiores, arte anime, ilustraciones, fotografías de productos y fotografías antiguas son buenos candidatos."
+        ],
+        [
+          "¿Es Reimagine AI una alternativa a Magnific?",
+          "Se puede utilizar como un escalador creativo ligero guiado por indicaciones."
+        ],
+        [
+          "¿Puedo utilizar comercialmente las salidas de Reimagine AI?",
+          "Sí, sujeto a la ley aplicable y los derechos asociados con las imágenes originales."
+        ],
+        [
+          "¿Las imágenes cargadas son privadas?",
+          "La API utiliza URL firmadas de corta duración y su política de limpieza configurada para las imágenes y los resultados cargados."
+        ]
+      ]
+    },
+    "video": {
+      "title": "Vea cómo la mejora de imágenes mediante IA mejora la claridad",
+      "description": "Amplía fotos, ilustraciones, imágenes de productos, retratos y fotos antiguas con IA. Elige salida en 2K o 4K, revisa los detalles y descarga el resultado. La resolución disponible depende del modelo y de los límites de la cuenta.",
+      "alt": "Presentación del video de ImgUpscaler",
+      "caption": "Míralo en YouTube ↗"
+    },
+    "useCaseIntro": {
+      "kicker": "Mejora de imágenes mediante IA para un trabajo creativo real",
+      "title": {
+        "before": "Prepare activos más claros para",
+        "emphasis": "web, medios impresos y redes sociales."
+      },
+      "description": "Desde una rápida mejora en línea hasta flujos de trabajo listos para lotes, ImgUpscaler está diseñado para creadores, equipos y empresas que necesitan imágenes más claras sin configuraciones de edición complicadas."
+    },
+    "testimonialIntro": {
+      "title": "Lo que dice la gente sobre ImgUpscaler",
+      "description": "Los creadores, editores, especialistas en marketing y usuarios cotidianos confían en ImgUpscaler cuando necesitan un práctico escalador en línea para obtener activos visuales más claros y utilizables."
+    },
+    "faqIntro": {
+      "home": {
+        "title": "Preguntas frecuentes sobre ampliación de imágenes",
+        "description": "Respuestas sobre ImgUpscaler, mejora de imágenes en línea, mejora de imágenes, privacidad de archivos, formatos admitidos y casos de uso comunes."
+      },
+      "enhancer": {
+        "title": "Preguntas frecuentes sobre mejora de imágenes",
+        "description": "Respuestas sobre nitidez, reducción de ruido, recuperación de texturas y vista previa de las imágenes mejoradas."
+      },
+      "reimagine": {
+        "title": "Preguntas frecuentes sobre reimaginación",
+        "description": "Descubre cómo las indicaciones, la creatividad, el parecido y el modelo elegido influyen en la nueva imagen."
+      }
+    },
+    "comparison": {
+      "before": "Antes",
+      "after": "Después",
+      "labelled": "Comparación antes y después",
+      "adjust": "Ajustar la comparación antes y después"
+    }
+  },
+  "pricing": {
+    "title": "Elige un plan para tu flujo de imágenes",
+    "description": "Puedes probarlo gratis. Mejora tu plan cuando lo necesites.",
+    "monthly": "Mensual",
+    "annual": "Anual",
+    "annualBadge": "Mejor valor",
+    "popular": "Más popular",
+    "annualPrice": "/mes · facturado anualmente",
+    "billingNote": "Pago seguro. Cancela cuando quieras.",
+    "valueTitle": "Por qué vale la pena actualizar",
+    "valueDescription": "Los planes pagos están diseñados para proyectos reales que necesitan más potencia de procesamiento, un flujo de trabajo más rápido y una salida de imagen más clara, no solo pruebas ocasionales.",
+    "benefits": [
+      [
+        "Más espacio para crear",
+        "Utilice más créditos en mejora de IA, mejora de fotografías y Reimagine AI sin alcanzar el límite del plan gratuito."
+      ],
+      [
+        "Flujos de trabajo por lotes",
+        "Procese fotografías de comercio electrónico, activos sociales, arte de IA, retratos o entregas de clientes más rápido en un flujo de trabajo consistente."
+      ],
+      [
+        "Herramientas creativas avanzadas",
+        "Desbloquee flujos de trabajo de mejora de mayor volumen, reimagine la IA y resultados más claros y listos para uso comercial."
+      ],
+      [
+        "Planes pagos sin publicidad",
+        "Mantenga su espacio de trabajo enfocado en editar y exportar con menos distracciones."
+      ],
+      [
+        "Facturación segura",
+        "El pago lo realiza un proveedor de pagos seguro, mientras que los cambios de plan permanecen disponibles en su cuenta."
+      ],
+      [
+        "Creado para el trabajo empresarial",
+        "Cree imágenes de mayor calidad para listados de productos, anuncios, carteras, publicaciones en redes sociales, presentaciones y proyectos de clientes."
+      ]
+    ],
+    "faqKicker": "Preguntas frecuentes sobre precios",
+    "faqTitle": "Preguntas sobre créditos, facturación y",
+    "faqEmphasis": "Actualizaciones del plan.",
+    "faqDescription": "Respuestas sobre créditos, ciclos de facturación, cambios de plan, pago y elección del plan ImgUpscaler correcto.",
+    "plans": [
+      {
+        "id": "free",
+        "name": "Gratis",
+        "monthly": "$0",
+        "annual": "$0",
+        "label": "Comience aquí",
+        "description": "Lo mejor para probar la ampliación de la IA y mejorar una pequeña cantidad de imágenes cada mes.",
+        "features": [
+          "50 créditos / mes",
+          "No se requiere suscripción",
+          "Pruebe la ampliación y mejora de la IA",
+          "Reimagine el acceso a la IA",
+          "Procesamiento de una sola imagen",
+          "Incluye anuncios"
+        ],
+        "featured": false,
+        "action": "Probar gratis",
+        "footnote": "No se requiere suscripción paga."
+      },
+      {
+        "id": "premium",
+        "name": "Avanzado",
+        "monthly": "$9.90",
+        "annual": "$6.14",
+        "label": "Para creadores habituales",
+        "description": "Una excelente opción para creadores, especialistas en marketing y equipos pequeños que mejoran las imágenes con frecuencia.",
+        "features": [
+          "500 créditos / mes",
+          "Soporte por correo electrónico",
+          "Reimagine el acceso a IA",
+          "Procesamiento por lotes",
+          "Espacio de trabajo sin publicidad",
+          "Lo mejor para los creadores cotidianos"
+        ],
+        "featured": true,
+        "highlight": "500 créditos/mes",
+        "action": "Elegir Avanzado"
+      },
+      {
+        "id": "business",
+        "name": "Empresas",
+        "monthly": "$19.90",
+        "annual": "$12.34",
+        "label": "Para mayor volumen",
+        "description": "Creado para empresas y flujos de trabajo de producción que necesitan más capacidad de procesamiento.",
+        "features": [
+          "Créditos ilimitados",
+          "Soporte por correo electrónico",
+          "Procesamiento único y por lotes",
+          "Reimagine el acceso a IA",
+          "Espacio de trabajo sin publicidad",
+          "Lo mejor para el volumen de negocios"
+        ],
+        "featured": false,
+        "highlight": "Créditos ilimitados",
+        "action": "Elegir Empresas"
+      }
+    ],
+    "faqs": [
+      [
+        "¿Qué plan debo elegir?",
+        "Elija Gratis si solo está probando ImgUpscaler. Elija Avanzado si mejora imágenes con regularidad y necesita procesamiento por lotes, más créditos, Reimagine AI y un espacio de trabajo sin publicidad. Elija Negocios cuando el trabajo comercial o de producción requiera créditos ilimitados."
+      ],
+      [
+        "¿Para qué se pueden utilizar los créditos? Los créditos",
+        "se utilizan para tareas de procesamiento de IA, como ampliación, mejora y flujos de trabajo creativos relacionados. Los planes pagos brindan capacidad más recurrente para cada ciclo de facturación."
+      ],
+      [
+        "¿Puedo cancelar en cualquier momento?",
+        "Sí. Puede cancelar desde la página de facturación de la cuenta. El acceso y los créditos permanecen disponibles hasta que finalice el ciclo de facturación actual."
+      ],
+      [
+        "¿Cómo puedo obtener más créditos?",
+        "Actualice a un plan superior para obtener una asignación recurrente mayor. Avanzado o Empresas suele ser mejor para conjuntos de imágenes o para el uso frecuente de Reimagine AI."
+      ],
+      [
+        "¿Es seguro el pago?",
+        "Sí. El procesamiento de pagos lo realiza un proveedor seguro y las transacciones están encriptadas."
+      ],
+      [
+        "¿Puedo actualizar o degradar más tarde?",
+        "Sí. Puedes cambiar tu plan en cualquier momento desde la sección Facturación de tu cuenta."
+      ],
+      [
+        "¿Qué debo hacer si falla el pago?",
+        "Comuníquese con support@imgupscaler.com con el correo electrónico de su cuenta y el tiempo de pago aproximado para que el equipo pueda ayudarlo."
+      ],
+      [
+        "¿Cuándo me cobran?",
+        "Su suscripción se renueva automáticamente el mismo día de cada ciclo de facturación mensual o anual, según su fecha de compra original."
+      ],
+      [
+        "¿Puedo utilizar los resultados comercialmente?",
+        "Sí. Las producciones gratuitas y de pago se pueden utilizar para proyectos personales y comerciales, sujeto a la ley aplicable y a los derechos de las imágenes originales."
+      ]
+    ],
+    "monthlyPrice": "/mes"
+  },
+  "header": {
+    "navigation": "Navegación principal",
+    "accountMenu": "Menú de cuenta",
+    "closeMenu": "Cerrar menú",
+    "openMenu": "Abrir menú",
+    "planLabel": "Planificar",
+    "planFree": "Gratis",
+    "planPremium": "Avanzado",
+    "unknownValue": "—",
+    "creditsLabel": "Créditos",
+    "account": "Cuenta",
+    "billing": "Facturación",
+    "signOut": "Cerrar sesión",
+    "signIn": "Iniciar sesión"
+  },
+  "footer": {
+    "privacy": "Política de privacidad",
+    "terms": "Términos del servicio",
+    "cookies": "galletas",
+    "contact": "Contacto",
+    "switchLanguage": "Cambiar idioma",
+    "copyright": "© 2026 ImgUpscaler. Reservados todos los derechos.",
+    "languageNames": {
+      "en": "English",
+      "zh": "简体中文",
+      "ja": "日本語",
+      "ko": "한국어",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt-BR": "Português (Brasil)",
+      "it": "Italiano",
+      "ru": "Русский",
+      "ar": "العربية",
+      "tr": "Türkçe",
+      "nl": "Nederlands"
+    }
+  },
+  "account": {
+    "back": "Volver al espacio de trabajo",
+    "member": "MIEMBRO",
+    "profile": "Perfil",
+    "billing": "Facturación",
+    "security": "Seguridad",
+    "title": "Mi cuenta",
+    "current": "PLAN ACTUAL",
+    "credits": "CRÉDITOS DISPONIBLES",
+    "save": "Guardar cambios",
+    "redeem": "Canjear código",
+    "redeemAction": "Canjear",
+    "upgrade": "Mejorar plan",
+    "signOut": "Cerrar sesión",
+    "update": "Actualizar contraseña",
+    "danger": "Zona de peligro",
+    "delete": "Eliminar cuenta",
+    "saved": "Perfil actualizado. Cuenta",
+    "deleted": "eliminada.",
+    "loadFailed": "No se puede cargar su cuenta.",
+    "loading": "Cargando cuenta…",
+    "signInPrompt": "Inicia sesión para ver y administrar tu cuenta.",
+    "unknown": "—",
+    "planFree": "Gratis",
+    "planPremium": "Avanzado",
+    "saveFailed": "No se puede guardar su perfil. Código",
+    "redeemed": "canjeado.",
+    "redeemFailed": "No se puede canjear ese código.",
+    "deleteConfirm": "¿Eliminar su cuenta y todos los datos de la cuenta?",
+    "deleteFailed": "No se puede eliminar su cuenta.",
+    "passwordUpdated": "Contraseña actualizada.",
+    "passwordFailed": "No se puede actualizar su contraseña.",
+    "email": "Correo electrónico",
+    "avatar": "URL del avatar",
+    "currentPassword": "Contraseña actual",
+    "newPassword": "Nueva contraseña",
+    "billingNote": "Vea su plan, créditos disponibles y estado de facturación. Los cambios de suscripción y pago son confirmados por su proveedor de pagos.",
+    "signIn": "Iniciar sesión",
+    "settings": "Configuración de la cuenta",
+    "displayName": "Nombre visible",
+    "profileKicker": "Perfil",
+    "dangerDescription": "Elimina permanentemente los datos de la cuenta.",
+    "placeholderAvatar": "https://example.com/avatar.png"
+  },
+  "legal": {
+    "back": "Volver al espacio de trabajo",
+    "pages": {
+      "privacy-policy": {
+        "title": "Política de privacidad",
+        "intro": "ImgUpscaler es un servicio de mejora y escalado de imágenes de IA en línea operado por Sparklightforce Limited. Esta página explica la información que recopilamos, cómo la usamos y sus opciones.",
+        "sections": [
+          [
+            "1. Información que recopilamos",
+            "Podemos recopilar su dirección de correo electrónico, nombre de cuenta, imagen de perfil, proveedor de autenticación, imágenes cargadas, resultados generados, estado de facturación, saldo de crédito, historial de uso, información del dispositivo y del navegador, dirección IP, cookies y mensajes de soporte."
+          ],
+          [
+            "2. Cómo utilizamos la información",
+            "Usamos información para operar el procesamiento de imágenes, administrar cuentas, autenticar usuarios, proporcionar créditos y facturación, prevenir abusos, responder solicitudes de soporte, mejorar la confiabilidad, medir el rendimiento del producto y cumplir con obligaciones legales. No vendemos información personal."
+          ],
+          [
+            "3. Imágenes cargadas y resultados generados Las imágenes",
+            "se procesan para proporcionar funciones de ampliación, mejora, vista previa y descarga. Las cargas y los resultados se manejan según la política de limpieza y retención de API."
+          ],
+          [
+            "4. Cookies y análisis Las cookies",
+            "pueden mantener a los usuarios conectados, recordar preferencias, proteger el servicio, analizar el tráfico y mejorar el rendimiento. Los socios de análisis y publicidad pueden procesar datos de uso limitados según sus propias políticas y la ley aplicable."
+          ],
+          [
+            "5. Seguridad y retención",
+            "Utilizamos salvaguardias técnicas y organizativas razonables. Los registros de cuenta, facturación y uso se conservan solo según sea necesario para brindar el servicio, resolver disputas, prevenir abusos y cumplir obligaciones legales."
+          ],
+          [
+            "6. Tus opciones",
+            "Puede comunicarse con support@imgupscaler.com para solicitar acceso, corrección o eliminación de la información de la cuenta. Puede administrar las cookies a través de la configuración de su navegador, aunque las funciones requeridas pueden dejar de funcionar."
+          ],
+          [
+            "7. Contáctenos",
+            "Las preguntas sobre esta política se pueden enviar a support@imgupscaler.com. Sparklightforce Limited: SALA 1503-09, 15/F, CAUSEWAY BAY CENTRE, 15-23 SUGAR STREET, CAUSEWAY BAY, HONG KONG."
+          ]
+        ]
+      },
+      "terms": {
+        "title": "Términos de servicio",
+        "intro": "Al utilizar ImgUpscaler, acepta estos términos de servicio. Las funciones disponibles, las asignaciones de procesamiento y los beneficios pagados se describen en las páginas actuales del producto y de la cuenta.",
+        "sections": [
+          [
+            "1. Alcance del servicio",
+            "ImgUpscaler proporciona flujos de trabajo de mejora y ampliación de imágenes en línea y Reimagine AI. Las características, modelos, límites y disponibilidad pueden cambiar a medida que evoluciona el producto."
+          ],
+          [
+            "2. Contenido del usuario",
+            "Debes ser propietario o tener permiso para procesar cada imagen que subas. No cargue contenido personal ilegal, infractor, dañino o no autorizado."
+          ],
+          [
+            "3. Limitaciones del servicio",
+            "Los resultados dependen del modelo seleccionado, la imagen ingresada, los límites de la cuenta y la disponibilidad actual del servicio. El servicio no garantiza una producción particular o idoneidad comercial."
+          ],
+          [
+            "4. Créditos y suscripciones",
+            "En producción, los créditos, las suscripciones, los reembolsos y el estado de facturación se rigen por la página de la cuenta y los registros del proveedor de pagos. El uso comercial aún depende de los derechos de la imagen original y de la ley aplicable."
+          ],
+          [
+            "5. Uso aceptable",
+            "No eluda límites, no abuse del procesamiento por lotes, interfiera con el servicio, ataque modelos ni utilice el servicio ilegalmente. Podemos pausar tareas por razones legales, de seguridad o de mantenimiento."
+          ],
+          [
+            "6. Contacto",
+            "Para obtener ayuda, envíe un correo electrónico a support@imgupscaler.com. Cookies"
+          ]
+        ]
+      },
+      "cookies": {
+        "title": "Las cookies",
+        "intro": "son pequeños archivos de texto almacenados en su dispositivo. Esta página explica cómo las cookies pueden respaldar el inicio de sesión, las preferencias, los análisis y la publicidad, junto con sus opciones.",
+        "sections": [
+          [
+            "1. Cookies esenciales",
+            "Las cookies esenciales mantienen las sesiones activas, preservan la configuración de seguridad y admiten la funcionalidad principal. Por lo general, no se pueden desactivar en nuestros sistemas."
+          ],
+          [
+            "2. Cookies funcionales y de rendimiento",
+            "Las cookies de rendimiento nos ayudan a comprender cómo los visitantes utilizan el servicio. Las cookies funcionales recuerdan el idioma y otras preferencias."
+          ],
+          [
+            "3. Cookies de terceros",
+            "Los proveedores de análisis, publicidad, pagos y autenticación pueden establecer cookies de terceros según sus propias políticas de privacidad."
+          ],
+          [
+            "4. Tus opciones",
+            "Puedes eliminar o bloquear las cookies en tu navegador. Deshabilitar las cookies requeridas puede impedir que el inicio de sesión, las cargas o el pago funcionen correctamente."
+          ],
+          [
+            "5. Póngase en contacto con",
+            "Las preguntas sobre el uso de cookies se pueden enviar a support@imgupscaler.com."
+          ]
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "home": {
+      "title": "Ampliar imágenes con IA en línea | Img.Upscaler",
+      "description": "Amplíe fotografías e ilustraciones en línea con IA. Restaure detalles finos, mejore imágenes de baja resolución y descargue resultados más claros en el tamaño que necesita."
+    },
+    "enhancer": {
+      "title": "Mejorar la calidad de fotos con IA | Img.Upscaler",
+      "description": "Mejore la claridad de las fotografías con un potenciador de imágenes con IA en línea. Reduzca el ruido y los artefactos de compresión, mejore las texturas y obtenga una vista previa del resultado antes de descargarlo."
+    },
+    "reimagine": {
+      "title": "Reimaginar imágenes con IA y texto | Img.Upscaler",
+      "description": "Reimagina fotografías, ilustraciones e interiores con IA. Guíe el resultado con una indicación, ajuste la creatividad y el parecido, y obtenga una vista previa de su nueva imagen."
+    },
+    "pricing": {
+      "title": "Planes y precios para ampliar imágenes | Img.Upscaler",
+      "description": "Compare planes de mejora de imágenes, créditos y opciones de procesamiento por lotes. Encuentre el plan adecuado para la mejora de fotografías, proyectos creativos y flujos de trabajo comerciales."
+    },
+    "account": {
+      "title": "Su Cuenta y Créditos | Img.Upscaler",
+      "description": "Administre su perfil, la seguridad de su cuenta, los créditos de procesamiento de imágenes disponibles y la configuración de facturación desde su cuenta Img.Upscaler."
+    },
+    "privacy": {
+      "title": "Política de privacidad | Img.Upscaler",
+      "description": "Lea cómo Img.Upscaler maneja la información de la cuenta, las fotos cargadas, las imágenes generadas, la retención y sus opciones de privacidad."
+    },
+    "terms": {
+      "title": "Términos de servicio | Img.Upscaler",
+      "description": "Revise los términos de uso de Img.Upscaler, incluida la propiedad de la imagen, el uso aceptable, los límites de procesamiento, los créditos de la cuenta y las suscripciones."
+    },
+    "cookies": {
+      "title": "Política de cookies | Img.Upscaler",
+      "description": "Descubra cómo las cookies respaldan el inicio de sesión, la seguridad, las preferencias y el análisis en Img.Upscaler, y cómo administrarlas en su navegador."
+    },
+    "root": {
+      "title": "Img.Upscaler",
+      "description": "Amplíe, mejore y reinvente imágenes en línea con IA."
+    }
+  }
+}

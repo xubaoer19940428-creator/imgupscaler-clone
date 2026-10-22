@@ -1,4 +1,3 @@
-import JSZip from 'jszip'
 import type { FileItem } from '@/src/lib/types'
 
 export function itemName(item: FileItem) {
@@ -18,6 +17,7 @@ export function downloadUrl(url: string, name: string) {
 
 export async function downloadZip(items: FileItem[]) {
   // ZIP is used for multi-select so browsers do not block a burst of download clicks.
+  const { default: JSZip } = await import('jszip')
   const zip = new JSZip()
   await Promise.all(items.map(async (item) => zip.file(itemName(item), await (await fetch(item.resultUrl as string)).blob())))
   const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE' })

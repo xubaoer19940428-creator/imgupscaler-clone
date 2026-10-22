@@ -1,10 +1,12 @@
 import type { Route } from './types'
 import { isRouteVisible } from './constants'
-import type { Locale } from './locale'
+import { DEFAULT_LOCALE, LOCALES, type Locale } from './locale'
 
-/** Remove legacy language prefixes without making them part of new links. */
+const localePrefixPattern = new RegExp(`^/(?:${LOCALES.map((locale) => locale.replace('-', '\\-')).join('|')})(?=/|$)`)
+
+/** Remove a language prefix before resolving the application route. */
 export function stripLegacyLocalePrefix(pathname: string): string {
-  return pathname.replace(/^\/(?:zh|en)(?=\/|$)/, '') || '/'
+  return pathname.replace(localePrefixPattern, '') || '/'
 }
 
 /** Convert a pathname to the application route used by the page shell. */
@@ -19,13 +21,13 @@ export function pathToRoute(pathname: string): Route {
 /** Build a stable, language-neutral application URL. */
 export function routeToPath(route: Route, locale: Locale = 'en'): string {
   const path = route === 'home' ? '' : `/${route}`
-  return locale === 'zh' ? `/zh${path || ''}` : path || '/'
+  return locale === DEFAULT_LOCALE ? path || '/' : `/${locale}${path || ''}`
 }
 
 /** Build a localized path while preserving an existing query string. */
 export function pagePath(pathname: string, locale: Locale, search = ''): string {
   const path = stripLegacyLocalePrefix(pathname)
-  const localized = locale === 'zh' ? `/zh${path === '/' ? '' : path}` : path
+  const localized = locale === DEFAULT_LOCALE ? path : `/${locale}${path === '/' ? '' : path}`
   return `${localized || '/'}${search}`
 }
 

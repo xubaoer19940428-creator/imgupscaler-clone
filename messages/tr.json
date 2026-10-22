@@ -1,0 +1,1017 @@
+{
+  "nav": {
+    "upscaler": "Görsel büyütme",
+    "enhancer": "Görsel iyileştirme",
+    "reimagine": "Yeniden tasarla",
+    "pricing": "Fiyatlar"
+  },
+  "auth": {
+    "kicker": "Hesap / Giriş",
+    "title": "Tekrar hoş geldiniz",
+    "description": "Kredilerinizi, aboneliklerinizi ve işlem geçmişinizi senkronize etmek için giriş yapın.",
+    "close": "Girişi kapat",
+    "email": "E-posta",
+    "password": "Şifre",
+    "passwordPlaceholder": "En az 8 karakter",
+    "submit": "Giriş yap",
+    "google": "Google ile devam et",
+    "googleLoading": "Google’a bağlanılıyor…",
+    "googleFailed": "Google ile giriş başarısız",
+    "googleFailedDetail": "Google giriş hizmeti kullanılamıyor. Tekrar deneyin veya e-posta kullanın.",
+    "or": "veya",
+    "submitted": "Giriş yapıldı",
+    "submittedDetail": "Oturumunuz etkin.",
+    "loginFailed": "Giriş başarısız",
+    "loginFailedDetail": "E-postanızı ve şifrenizi kontrol edip tekrar deneyin.",
+    "emailPlaceholder": "siz@ornek.com"
+  },
+  "editor": {
+    "kicker": "Sonucu düzenle",
+    "title": "İşlenen görüntüyü düzenleyin",
+    "description": "Kırpın, döndürün, çevirin ve dışa aktarma kalitesini seçin.",
+    "close": "Kapat",
+    "previewAlt": "Geliştirilmiş önizleme",
+    "rotate": "Döndür",
+    "flipHorizontal": "Yatay çevir",
+    "flipVertical": "Dikey çevir",
+    "cropRatio": "Kırpma oranı",
+    "original": "Orijinal",
+    "square": "Kare",
+    "format": "Biçim",
+    "quality": "Kalite",
+    "cancel": "İptal",
+    "save": "Değişiklikleri kaydet"
+  },
+  "workspace": {
+    "authRequired": "Görüntüleri işlemek için giriş yapın",
+    "authRequiredDetail": "Resimlerinizi güvenli bir şekilde yüklemek ve işlemek için oturum açın.",
+    "chooseImage": "Görüntü seç",
+    "dragDrop": "Görüntünüzü buraya bırakın",
+    "formats": "JPG / PNG / WebP / AVIF desteklenir",
+    "selectAria": "İşlemek için bir görüntü seçin",
+    "label": "Çalışma alanı",
+    "readyCount": "{count} görsel hazır",
+    "status": {
+      "ready": "Hazır",
+      "processing": "İşleniyor",
+      "done": "Tamamlandı",
+      "error": "İşleme başarısız oldu"
+    },
+    "remove": "Görüntüyü kaldır",
+    "retry": "Tekrar dene",
+    "download": "İndir",
+    "edit": "Düzenle",
+    "redo": "Yeniden yap",
+    "addMore": "Daha fazla ekle",
+    "prompt": "İstemi",
+    "creativity": "Yaratıcılık",
+    "similarity": "Benzerlik",
+    "output": "Çıktı boyutu",
+    "model": "Reimagine modeli",
+    "scale": "Ölçek",
+    "portrait": "Portre",
+    "detail": "Detay",
+    "portraitModel": "Portre Modeli - 2048 piksel",
+    "detailModel": "Ayrıntılı Model - 2048 piksel",
+    "removeUploaded": "Kaldır",
+    "startProcessing": "İşlemeyi başlat",
+    "clear": "Temizle",
+    "downloadResults": "Sonuçları indir",
+    "cancel": "İptal",
+    "processing": "İşleniyor…",
+    "start": "Görüntüyü işle",
+    "local": "Bu görev için güvenle yüklendi",
+    "limit": "Uzun kenar sınırı 4096 px",
+    "toast": {
+      "busy": "Bir görev hala işleniyor",
+      "busyDetail": "Bitirmesini bekleyin veya önce iptal edin",
+      "noImages": "Hiçbir resim eklenemez",
+      "noImagesDetail": "Dosya başına 20 MB'a kadar JPG, PNG, WebP ve AVIF desteklenir",
+      "added": "{count} görsel eklendi",
+      "batchLimit": "Her grupta en fazla {count} görsel",
+      "addedDetail": "Daha fazla resim ekleyin veya işlemeye başlayın",
+      "cancelled": "İşleme iptal edildi",
+      "cancelledDetail": "Orijinal dosyalar bu çalışma alanında kalıyor",
+      "resultError": "Bir sonuç oluşturulamadı",
+      "partialError": "Bazı resimler başarısız oldu",
+      "complete": "İşleme tamamlandı",
+      "completeDetail": "Sonuçlar düzenlemeye veya indirmeye hazır",
+      "downloaded": "Sonuç indirildi",
+      "zipStarted": "ZIP indirme başlatıldı",
+      "resultCount": "{count} sonuç",
+      "downloadError": "İndirme başarısız oldu",
+      "downloadErrorDetail": "Her resmi ayrı ayrı indirmeyi deneyin",
+      "editSaved": "Düzenlemeler kaydedildi",
+      "editError": "Düzenleme başarısız oldu",
+      "retry": "Lütfen tekrar deneyin"
+    },
+    "api": {
+      "resultMissing": "API bir resim sonucu döndürmedi",
+      "timeout": "Resim görevi zaman aşımına uğradı",
+      "failed": "Resim görevi başarısız oldu",
+      "cancelled": "Resim görevi iptal edildi",
+      "editorUnsupported": "Bu tarayıcı resim düzenlemeyi desteklemiyor",
+      "imageReadFailed": "Resim okunamadı",
+      "encodeFailed": "Görüntü sonucu oluşturulamadı"
+    },
+    "promptPlaceholder": "İstediğiniz ayrıntıyı, stili veya dönüşümü açıklayın…",
+    "reimagineDefaultPrompt": "doğal ayrıntı, temiz doku, yüksek kalite",
+    "apiPrompt": {
+      "home": "Bu görüntüyü daha keskin kenarlar, doğal dokular, gerçekçi ince ayrıntılar ve orijinal kompozisyonun korunduğu temiz, yüksek çözünürlüklü bir sonuca yükseltin. Konu eklemeyin veya çıkarmayın.",
+      "enhancer": "Orijinal konuyu, renkleri, aydınlatmayı ve kompozisyonu korurken bu görüntüyü doğal keskinlik, daha temiz dokular, azaltılmış gürültü ve sıkıştırma kusurları ve iyileştirilmiş ince ayrıntılarla geliştirin.",
+      "reimagine": "İstenilen yaratıcı yönü takip ederek ve tanınabilir konuyu koruyarak bu görüntünün daha net, daha ayrıntılı bir versiyonunu oluşturun."
+    }
+  },
+  "landing": {
+    "heroContent": {
+      "home": {
+        "eyebrow": "Çevrimiçi AI görüntü büyütücü",
+        "title": {
+          "before": "Görselleri yapay zekayla büyütün.",
+          "emphasis": "Her ayrıntıyı öne çıkarın."
+        },
+        "description": "Fotoğrafları, çizimleri, ürün görsellerini, portreleri ve eski fotoğrafları yapay zekayla büyütün. 2K veya 4K çıktı seçin, ayrıntıları inceleyin ve sonucu indirin. Kullanılabilir çözünürlük modele ve hesap sınırlarına bağlıdır."
+      },
+      "enhancer": {
+        "eyebrow": "Çevrimiçi AI görüntü iyileştirici",
+        "title": {
+          "before": "Görüntü kalitesini iyileştirin",
+          "emphasis": "AI ile"
+        },
+        "description": "Yumuşak, gürültülü, sıkıştırılmış veya düşük çözünürlüklü görüntüleri daha net hale getirin."
+      },
+      "reimagine": {
+        "eyebrow": "Ücretsiz Reimagine Upscaler",
+        "title": {
+          "before": "Görüntüleri yeniden hayal edin ve büyütün",
+          "emphasis": "AI ile"
+        },
+        "description": "Bir görüntü yükleyin, istem ekleyin ve daha net, zengin bir sürüm oluşturmak için yaratıcılık ile benzerliği ayarlayın."
+      }
+    },
+    "featureCards": {
+      "home": [
+        {
+          "number": "01",
+          "title": "Gelişmiş AI yükseltme",
+          "body": "Daha keskin kenarlar, daha net dokular ve daha doğal ayrıntılarla çözünürlüğü artırın."
+        },
+        {
+          "number": "02",
+          "title": "2K ve 4K yüksek çözünürlüklü çıktı",
+          "body": "Web sitelerine, ürün listelerine, sosyal paylaşımlara, sunumlara veya baskıya uygun çıktı boyutunu seçin."
+        },
+        {
+          "number": "03",
+          "title": "Toplu görüntü ölçeklendirme",
+          "body": "Aynı yükleme ve dışa aktarma adımlarını tekrarlamak yerine birden fazla görüntüyü tek bir verimli iş akışında işleyin."
+        },
+        {
+          "number": "04",
+          "title": "Görüntü iyileştirme iş akışı",
+          "body": "Pratik bir çevrimiçi araçla fotoğrafları, animeleri, portreleri, e-ticaret görsellerini ve eski resimleri geliştirin."
+        },
+        {
+          "number": "05",
+          "title": "Gizlilik öncelikli işleme",
+          "body": "Yüklenen dosyalar ve oluşturulan sonuçlar, hizmetin dosya saklama ve silme politikasına göre yönetilir."
+        },
+        {
+          "number": "06",
+          "title": "Kişisel ve ticari projeler için görseller",
+          "body": "Geliştirilmiş görselleri pazarlama, müşteri çalışmaları, e-ticaret, yaratıcı projeler ve kişisel çalışmalarda kullanın."
+        }
+      ],
+      "enhancer": [
+        {
+          "number": "01",
+          "title": "Bulanık görüntüleri keskinleştirin",
+          "body": "Yüzleri, rengi ve aydınlatmayı doğal tutarken kenar netliğini ve yerel kontrastı geri yükleyin."
+        },
+        {
+          "number": "02",
+          "title": "Çevrimiçi görüntü kalitesini artırın",
+          "body": "Sosyal medya, web siteleri, sunumlar, baskı ve ürün listeleri için düşük kaliteli görüntüleri iyileştirin."
+        },
+        {
+          "number": "03",
+          "title": "Görüntü ayrıntılarını geliştirin",
+          "body": "İnce dokuyu, saçları, kumaşı, ürün kenarlarını, çizgileri ve diğer görünür ayrıntıları kurtarın."
+        },
+        {
+          "number": "04",
+          "title": "Gürültüyü ve sıkıştırma bozulmalarını azaltın",
+          "body": "Ekran görüntülerini, eski yüklemeleri, sıkıştırılmış fotoğrafları, JPEG bozulmalarını ve web görüntüsü hasarlarını temizleyin."
+        },
+        {
+          "number": "05",
+          "title": "Yapay zeka sanatını ve oluşturulan görüntüleri keskinleştirin",
+          "body": "OpenAI, Midjourney, Flux, Stable Diffusion ve diğer yapay zeka araçlarıyla oluşturulan görüntülerde dokuyu ve ayrıntıları iyileştirin."
+        },
+        {
+          "number": "06",
+          "title": "Portreleri, ürünleri ve çizimleri optimize edin",
+          "body": "Orijinal yönünü koruyarak portreleri, ürün fotoğraflarını, animeyi, illüstrasyonları ve dijital sanatı geliştirin."
+        }
+      ],
+      "reimagine": [
+        {
+          "number": "01",
+          "title": "Hızlı yönlendirmeli yeniden hayal etme",
+          "body": "Daha net mimariden sinematik portrelere, daha zengin anime çizgilerine veya gerçekçi ürün dokusuna kadar istediğiniz sonucu açıklayın."
+        },
+        {
+          "number": "02",
+          "title": "Yaratıcılık kontrolü",
+          "body": "İstikrarlı, aslına sadık bir geliştirme için yaratıcılığı azaltın veya daha görünür çeşitlilik ve yeni ayrıntılar sunmak için yaratıcılığı artırın."
+        },
+        {
+          "number": "03",
+          "title": "Benzerlik gücü",
+          "body": "Çıktının orijinal düzeni, konu özelliklerini ve tanınabilir yapıyı ne kadar yakından koruduğunu kontrol edin."
+        },
+        {
+          "number": "04",
+          "title": "Yaratıcı ölçeklendirme",
+          "body": "Konsept sanatı, illüstrasyon, iç mekan, mimari, portreler ve deneyler için ölçeklendirme yaparken oluşturulan ayrıntıları ekleyin."
+        },
+        {
+          "number": "05",
+          "title": "Portre ve detay modelleri",
+          "body": "Doğal yüzler, daha güçlü detay kurtarma veya daha yaratıcı bir yorumlama için model davranışını seçin."
+        },
+        {
+          "number": "06",
+          "title": "Gizlilik öncelikli işleme",
+          "body": "Yüklenen dosyalar ve oluşturulan sonuçlar, hizmetin dosya saklama ve silme politikasına göre yönetilir."
+        }
+      ]
+    },
+    "useCases": {
+      "home": [
+        {
+          "image": "/reference/upscale-image-online.jpeg",
+          "beforeImage": "/reference/upscale-image-online.jpeg",
+          "afterImage": "/reference/upscale-image-online.jpeg",
+          "title": "Görüntüleri web, baskı ve sosyal medya için çevrimiçi olarak yükseltin",
+          "body": "Küçük, bulanık veya pikselli görüntüleri web siteleri, küçük resimler, sunumlar, posterler, e-ticaret ve sosyal gönderiler için daha net, yüksek çözünürlüklü görsellere dönüştürün.",
+          "cta": "Bir görüntüyü yükseltin"
+        },
+        {
+          "image": "/reference/batch-upscaler.jpeg",
+          "beforeImage": "/reference/batch-upscaler.jpeg",
+          "afterImage": "/reference/batch-upscaler.jpeg",
+          "title": "Verimli üretim için toplu görüntü ölçeklendirme",
+          "body": "Daha az manuel adımla daha fazla görüntüyü işlerken ürün fotoğraflarını, pazarlama varlıklarını, anime görsellerini veya müşteri dosyalarını tutarlı tutun.",
+          "cta": "Toplu yükseltmeyi keşfedin"
+        },
+        {
+          "image": "/reference/enhance-subjects.jpeg",
+          "beforeImage": "/reference/enhance-subjects.jpeg",
+          "afterImage": "/reference/enhance-subjects.jpeg",
+          "title": "Portreleri, ürünleri, animeleri ve eski fotoğrafları geliştirin",
+          "body": "Daha fazla kullanılabilir çözünürlük gerektiren avatarları, ürün görsellerini, illüstrasyonları, taramaları, seyahat fotoğraflarını ve eski görselleri iyileştirin.",
+          "cta": "Görüntü kalitesini artırın"
+        }
+      ],
+      "enhancer": [
+        {
+          "image": "/reference/enhancer/enhancer-sample-1-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-1-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-1-after.webp",
+          "title": "Bulanık görüntüleri keskinleştirin ve kaybolan ayrıntıları geri yükleyin",
+          "body": "Sonucu doğal tutarken bulanık veya düşük kaliteli görüntüleri geliştirin. Bu AI görüntü geliştirici, görüntünün aşırı işlenmiş görünmesine neden olmadan kenar netliğini artırır, ince dokuyu geri yükler ve bulanıklığı, gürültüyü ve sıkıştırma bozukluklarını azaltır.",
+          "cta": "Görüntüyü keskinleştirin"
+        },
+        {
+          "image": "/reference/enhancer/enhancer-sample-2-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-2-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-2-after.webp",
+          "title": "Düşük çözünürlüklü görüntüleri sosyal medya, baskı ve e-ticaret için optimize edin",
+          "body": "Sosyal medya, sunumlar, baskı, duvar kağıtları, ürün listeleri ve profesyonel paylaşım için daha net, yüksek çözünürlüklü görüntüler oluşturun. Yapay zeka geliştirmesi, farklı çıktı boyutları için çözünürlüğü geliştirirken kullanılabilir ayrıntıları da artırır.",
+          "cta": "Yükseltme ve optimize etme"
+        },
+        {
+          "image": "/reference/enhancer/enhancer-sample-3-before.webp",
+          "beforeImage": "/reference/enhancer/enhancer-sample-3-before.webp",
+          "afterImage": "/reference/enhancer/enhancer-sample-3-after.webp",
+          "title": "Yapay zeka sanatını, portreleri, ekran görüntülerini ve ürün görsellerini geliştirin",
+          "body": "Yapay zeka tarafından oluşturulan görüntüler, portreler, anime, illüstrasyonlar, ekran görüntüleri ve ürün görselleri için bu geliştiriciyi kullanın. Dokuyu keskinleştirir, kusurları ortadan kaldırır, görünür ayrıntılar ekler ve orijinal görsel yönü korurken netliği artırır.",
+          "cta": "Yaratıcı görüntüleri geliştirin"
+        }
+      ],
+      "reimagine": [
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-building-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-building-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-building-after.jpg",
+          "title": "Mimariyi ve iç mekanları daha zengin ayrıntılarla yeniden tasarlayın",
+          "body": "Düşük çözünürlüklü mimari, iç ve dış mekan görüntülerini daha zengin yüzey dokusu, daha net kenarlar ve daha güçlü mekansal derinlik ile daha net görsellere dönüştürün. Benzerlik gücü orijinal yapının tanınabilir kalmasını sağlarken malzemeleri, aydınlatmayı ve ruh halini yönlendirmek için ipuçlarını kullanın.",
+          "cta": "Reimagine AI'yi deneyin"
+        },
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-anime-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-anime-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-anime-after.jpg",
+          "title": "Anime, illüstrasyon ve AI sanatına yaratıcı ayrıntılar ekleyin",
+          "body": "Reimagine AI'yi anime, illüstrasyonlar, çizgi resimler ve AI tarafından oluşturulan görüntüler için hızlı yönlendirmeli bir geliştirici olarak kullanın. Daha zengin doku, daha net ayrıntılar ve daha parlak bir yüzey eklerken orijinal stili tanınabilir tutun.",
+          "cta": "Bir illüstrasyonu geliştirin"
+        },
+        {
+          "image": "/reference/reimagine/reimagine-upscaler-face-before.jpg",
+          "beforeImage": "/reference/reimagine/reimagine-upscaler-face-before.jpg",
+          "afterImage": "/reference/reimagine/reimagine-upscaler-face-after.jpg",
+          "title": "Yüzleri tanınabilir halde tutarken portreleri geliştirin",
+          "body": "Netliği, cilt ayrıntılarını, saç dokusunu ve aydınlatmayı iyileştirerek portreleri yeniden tasarlayın ve benzerlik kontrolleri kişinin tanınmasını sağlar. Profil fotoğrafları, eski resimler, düzenlenmiş resimler ve yaratıcı portreler için iyi çalışır.",
+          "cta": "Bir portreyi yeniden hayal edin"
+        }
+      ]
+    },
+    "featureIntro": {
+      "home": {
+        "kicker": "Yapay zeka yükseltmenin netliği nasıl artırdığını görün",
+        "title": {
+          "before": "Gelişmiş yapay zeka yükseltme,",
+          "emphasis": "gerçek iş için tasarlandı."
+        },
+        "description": "Fotoğrafları, çizimleri, ürün görsellerini, portreleri ve eski fotoğrafları yapay zekayla büyütün. 2K veya 4K çıktı seçin, ayrıntıları inceleyin ve sonucu indirin. Kullanılabilir çözünürlük modele ve hesap sınırlarına bağlıdır."
+      },
+      "enhancer": {
+        "kicker": "Kaliteyi artırın, ayrıntıları keskinleştirin ve görsel gürültüyü kaldırın",
+        "title": {
+          "before": "AI görüntü geliştirme,",
+          "emphasis": "pratik hale getirildi."
+        },
+        "description": "Bulanık görüntüleri keskinleştirin, ayrıntı ekleyin, gürültüyü azaltın, sıkıştırma bozukluklarını kaldırın ve düşük kaliteli görüntüleri manuel rötuş yapmadan iyileştirin."
+      },
+      "reimagine": {
+        "kicker": "Kontrollü görüntü dönüşümü için yaratıcı bir ölçekleyici",
+        "title": {
+          "before": "Yapay zekayı yeniden hayal edin,",
+          "emphasis": "yaratıcı geliştirme için."
+        },
+        "description": "Çıktının aslına sadık mı kalacağına yoksa yeni bir varyasyon mu araştıracağına karar verirken gerçekçi ayrıntılar eklemek için istemleri, model seçimini, yaratıcılığı ve benzerlik gücünü kullanın."
+      }
+    },
+    "routeWorkflow": {
+      "home": {
+        "kicker": "Bir görüntüyü çevrimiçi olarak nasıl yükseltebilirim?",
+        "title": {
+          "before": "Üç adım",
+          "emphasis": "daha net çıktı."
+        },
+        "description": "Bir dosya yükleyin, çıktı çözünürlüğünü seçin, sonucu önizleyin ve daha net bir görüntü indirin.",
+        "steps": [
+          [
+            "1. Adım",
+            "JPG, PNG veya WebP resmi yükleyin",
+            "Düşük çözünürlüklü bir fotoğraf, ürün görseli, anime illüstrasyonu, portre, eski fotoğraf veya grafik seçin."
+          ],
+          [
+            "2. Adım",
+            "2K veya 4K çıktı seçin",
+            "2K veya 4K çıktıyı seçin; yapay zeka ayrıntıları, dokuyu ve kenarları iyileştirsin."
+          ],
+          [
+            "3. Adım",
+            "Önizleyin, geliştirin ve indirin",
+            "Öncesini ve sonrasını karşılaştırın, gerekli düzenlemeleri yapın ve yüksek çözünürlüklü sonucu indirin."
+          ]
+        ]
+      },
+      "enhancer": {
+        "kicker": "Çevrimiçi görüntü kalitesi nasıl artırılır",
+        "title": {
+          "before": "Üç adım",
+          "emphasis": "daha net bir restorasyon."
+        },
+        "description": "Yapay zeka geliştirmesiyle görüntüyü keskinleştirin, fotoğraf kalitesini iyileştirin ve daha net, yüksek çözünürlüklü sonuçlar oluşturun.",
+        "steps": [
+          [
+            "1. Adım",
+            "Bulanık veya düşük kaliteli bir görüntü yükleyin",
+            "İş akışı bulanık, sıkıştırılmış, gürültülü, düşük çözünürlüklü, eski ve yapay zeka tarafından oluşturulan görüntüleri işler."
+          ],
+          [
+            "Adım 2",
+            "Bir geliştirme çıktısı seçin",
+            "Hızlı keskinleştirme, daha güçlü ayrıntı veya daha net, yüksek çözünürlüklü bir görüntü için çıktı kalitesini seçin."
+          ],
+          [
+            "Adım 3",
+            "Sonucu önizleyin ve indirin",
+            "İndirmeden önce geri yüklenen ayrıntıları, daha keskin kenarları ve daha net dokuyu karşılaştırın."
+          ]
+        ]
+      },
+      "reimagine": {
+        "kicker": "Bir görüntüyü çevrimiçi olarak nasıl yeniden tasarlayabilirsiniz?",
+        "title": {
+          "before": "Üç adım",
+          "emphasis": "yaratıcı çıktı."
+        },
+        "description": "Bir görselle başlayın, bir istemle sonuca rehberlik edin ve indirmeden önce yaratıcılığı benzerlikle dengeleyin.",
+        "steps": [
+          [
+            "1. Adım",
+            "Yeniden oluşturmak istediğiniz görüntüyü yükleyin",
+            "Bir portre, ürün, mimari, iç mekan, anime, illüstrasyon, AI görseli veya eski bir fotoğraf kullanın."
+          ],
+          [
+            "2. Adım",
+            "Bir bilgi istemi ekleyin ve gücü seçin",
+            "Model davranışını seçin, ardından dönüşümü kontrol etmek için Yaratıcılık ve Benzerlik'i ayarlayın."
+          ],
+          [
+            "3. Adım",
+            "Önizleyin, hassaslaştırın ve indirin",
+            "Sonucu inceleyin, ayrıntı ve aslına uygunluk dengesini ayarlayın ve son görüntüyü indirin."
+          ]
+        ]
+      }
+    },
+    "testimonials": [
+      [
+        "Eleonore Lefaix",
+        "Siecledigital.fr editörü",
+        "ImgUpscaler, görüntü yükseltmeyi basitleştirir ve toplu işlemeyi destekler, böylece kullanıcılar aynı anda birden fazla görüntüyü işleyebilir."
+      ],
+      [
+        "Eva Williams",
+        "Fixthephoto düzenleyici",
+        "Manuel adımları tekrarlamadan birden fazla görüntüyü yükseltmeniz ve geniş bir görsel varlık kümesini iyileştirmeniz gerektiğinde, ImgUpscaler pratik bir seçimdir."
+      ],
+      [
+        "Matic Broz",
+        "Düzenleyici",
+        "Görüntü yükseltme pahalı veya karmaşık olmamalıdır. ImgUpscaler, görüntüleri çevrimiçi olarak büyütmenin basit ve sezgisel bir yolunu sunar."
+      ],
+      [
+        "Sravan",
+        "Ürün Avı kullanıcısı",
+        "ImgUpscaler, manzaralar ve ürün fotoğraflarından daha görünür ayrıntılara ihtiyaç duyan eski resimlere kadar birçok görüntü türünde çalışır."
+      ]
+    ],
+    "faqs": {
+      "home": [
+        [
+          "ImgUpscaler nedir?",
+          "ImgUpscaler fotoğrafları, çizimleri, ürün görsellerini ve portreleri yapay zekayla büyüten çevrimiçi bir araçtır. 2K veya 4K çıktı seçebilirsiniz. Kullanılabilir boyutlar modele ve hesap sınırlarına bağlıdır."
+        ],
+        [
+          "Yapay zeka görüntü yükseltme aracı nasıl çalışır?",
+          "Seçilen yapay zeka modeli, pikselleri basitçe genişletmek yerine daha yüksek çözünürlüklü ayrıntılar oluşturmadan önce kenarları, dokuları ve renk ilişkilerini analiz eder."
+        ],
+        [
+          "Bir görüntüyü çevrimiçi ortamda nasıl yükseltirim?",
+          "Bir JPG, PNG, WebP veya AVIF görüntüsü yükleyin, bir çıktı boyutu seçin, ardından işlenen görüntüyü önizleyin ve indirin."
+        ],
+        [
+          "Bir görüntüyü 4K'ya yükseltebilir miyim?",
+          "Evet. 4K çıkış seçebilirsiniz. API, seçilen modeli ve hesap sınırlarını istenen çözüme uygular."
+        ],
+        [
+          "Yükseltme ve geliştirme arasındaki fark nedir?",
+          "Yükseltme tuval boyutunu ve çözünürlüğü artırmaya odaklanır. Geliştirme netlik, gürültü, doku ve renge odaklanır. Her ikisi de aynı yükleme ve indirme iş akışını kullanabilir."
+        ],
+        [
+          "Yapay zeka geliştirmesi bulanık bir görüntüyü düzeltebilir mi?",
+          "Hafif bulanıklığı, sıkıştırma gürültüsünü ve pürüzlü kenarları iyileştirebilir, ancak hiç yakalanmamış veya tamamen gizlenmiş bilgilerin kurtarılmasını garanti edemez."
+        ],
+        [
+          "Hangi görüntü formatları destekleniyor?",
+          "Desteklenen formatlar, resim başına 20 MB'a kadar JPG, PNG, WebP ve AVIF'dir."
+        ],
+        [
+          "Aynı anda birden fazla görüntünün ölçeğini yükseltebilir miyim?",
+          "Evet. Çalışma alanı en fazla 20 görüntüyü kabul eder ve bunları sıra sırasına göre işler; her sonuç hazır olduğunda indirilebilir."
+        ],
+        [
+          "Yüklediğim görseller gizli mi?",
+          "Resimler kısa ömürlü imzalı URL'ler aracılığıyla yüklenir, seçilen model tarafından işlenir ve API saklama politikası kapsamında özel sonuçlar olarak döndürülür."
+        ],
+        [
+          "Yüklenen görseller ne kadar süreyle saklanır?",
+          "Kaynak dosyaları ve sonuçları, API saklama politikasına uygundur ve hizmet temizleme planına göre kaldırılır."
+        ],
+        [
+          "Yükseltilmiş görüntüleri ticari olarak kullanabilir miyim?",
+          "Ön uç, dışa aktarma kullanımını kısıtlamaz. Ticari lisanslama, model çıktı sorumluluğu ve kaynak-görüntü hakları üretim şartlarında tanımlanmalıdır."
+        ],
+        [
+          "Yapay zeka yükseltmeyle hangi görüntüler en iyi şekilde çalışır?",
+          "Düşük çözünürlüklü fotoğraflar, ürün görselleri, portreler, anime çizimleri, taramalar ve hafifçe sıkıştırılmış eski fotoğraflar genellikle en net gelişmeyi gösterir."
+        ],
+        [
+          "AI yükseltme, normal yeniden boyutlandırmadan daha mı iyi?",
+          "Düzenli yeniden boyutlandırma, mevcut piksellerin enterpolasyonunu yapar. AI yükseltme, ayrıntıları yeniden yapılandırmaya çalışır; sonuç, kaynağın kalitesine, modele ve hedef boyutuna bağlıdır."
+        ],
+        [
+          "Yazılımı yüklemem gerekiyor mu?",
+          "Hayır. Aracı doğrudan tarayıcınızda kullanın; görüntü işleme sunucularımızda gerçekleşir."
+        ]
+      ],
+      "enhancer": [
+        [
+          "Yapay zeka görüntü geliştirici nedir?",
+          "Bir AI görüntü geliştirici, bulanıklığı keskinleştirerek, ayrıntıları geri yükleyerek, gürültüyü azaltarak ve manuel düzenlemeye gerek kalmadan sıkıştırma bozulmalarını ortadan kaldırarak görüntü kalitesini otomatik olarak artırır."
+        ],
+        [
+          "Çevrimiçi görüntü kalitesini nasıl artırabilirim?",
+          "Bir görsel yükleyin, bir geliştirme çıktısı seçin, sonucu önizleyin ve indirin. İş akışı tarayıcıda çalışır."
+        ],
+        [
+          "Yapay zeka bulanık bir görüntüyü daha net hale getirebilir mi?",
+          "Yapay zeka, hafif düzeydeki bulanıklığı, gürültüyü ve sıkıştırma hasarını iyileştirebilir ancak hiçbir zaman yakalanmayan ayrıntıların kurtarılmasını garanti edemez."
+        ],
+        [
+          "Elle düzenleme yapmadan görüntü ayrıntılarını iyileştirebilir miyim?",
+          "Evet. Geliştirici, kenarları, dokuları, gürültüyü ve sıkıştırma bozulmalarını otomatik olarak işler."
+        ],
+        [
+          "Geliştirme ve yükseltme arasındaki fark nedir?",
+          "Geliştirme netlik, doku ve gürültüye odaklanır. Yükseltme tuval boyutuna ve çözünürlüğüne odaklanır."
+        ],
+        [
+          "Geliştirici bulanıklığı ve gürültüyü otomatik olarak azaltacak mı?",
+          "Seçilen AI modeli, sonucu döndürmeden önce gürültü giderme ve restorasyon gerçekleştirir."
+        ],
+        [
+          "Sıkıştırılmış JPEG veya web görsellerini destekliyor mu?",
+          "Evet. JPG, PNG, WebP ve AVIF desteklenir."
+        ],
+        [
+          "Yapay zeka tarafından oluşturulan görüntüleri geliştirebilir miyim?",
+          "Evet. Yapay zeka sanatı, portreler, ürün görselleri ve illüstrasyonlar bu iş akışıyla iyi çalışır."
+        ],
+        [
+          "Portreleri doğal bir şekilde geliştirebilir miyim?",
+          "Aşırı keskinleştirmeyi önlemek için indirmeden önce orta düzeyde bir güç kullanın ve sonucu karşılaştırın."
+        ],
+        [
+          "Ürün fotoğraflarını geliştirebilir miyim?",
+          "Evet. Geliştirici, e-ticaret listeleri, pazarlama varlıkları ve web sitesi görselleri için çalışır."
+        ],
+        [
+          "Geliştirme orijinal renkleri değiştirir mi?",
+          "Seçilen yapay zeka modeli, döndürülen sonuç için geliştirme gücünü ve renk doğruluğunu kontrol eder."
+        ],
+        [
+          "Geliştiriciyle hangi görüntüler en iyi şekilde çalışır?",
+          "Portreler, ekran görüntüleri, eski fotoğraflar, ürün görselleri, anime ve düşük çözünürlüklü web görselleri iyi adaylardır."
+        ],
+        [
+          "İndirmeden önce geliştirilmiş bir resmin ön izlemesini yapabilir miyim?",
+          "Evet. Sonuç önce çalışma alanında görünür ve düzenlenebilir veya indirilebilir."
+        ],
+        [
+          "Geliştiriciyi kullanmak için düzenleme becerilerine ihtiyacım var mı?",
+          "Hayır. Bir resim yükleyin, bir çıktı seçin ve sonucu indirin."
+        ]
+      ],
+      "reimagine": [
+        [
+          "Reimagine AI nedir?",
+          "Reimagine AI, ImgUpscaler'ın hızlı yönlendirmeli yaratıcı ölçekleyicisidir. İsteminizden ve ayarlarınızdan yeni ayrıntı, doku ve görsel çeşitlilik oluştururken görüntüyü büyütür."
+        ],
+        [
+          "Reimagine AI'nin normal bir ölçekleyiciden farkı nedir?",
+          "Normal bir yükseltme, çözünürlüğü artırırken kaynağı korumaya odaklanır. Reimagine AI aynı zamanda bir istemden üretken ayrıntılar da ekleyebilir."
+        ],
+        [
+          "Yaratıcı görüntü ölçekleyici nedir?",
+          "Kaynaktan yeni ayrıntılar, dokular, desenler ve stilistik iyileştirmeler elde etmek için çözünürlük geliştirmeyi üretken yapay zeka ile birleştirir."
+        ],
+        [
+          "Bilgi istemleri yeniden tasarlanan sonucu nasıl etkiler?",
+          "Bilgi istemleri aydınlatmayı, malzemeleri, stili, ayrıntı düzeyini, atmosferi veya konunun nasıl ele alınması gerektiğini açıklar."
+        ],
+        [
+          "Yaratıcılık kontrolü ne işe yarar?",
+          "Daha yüksek yaratıcılık, daha fazla çeşitlilik, doku ve yeni görsel ayrıntı sunar. Düşük yaratıcılık, sonucu kaynağa daha yakın tutar."
+        ],
+        [
+          "Benzerlik gücü nedir?",
+          "Daha yüksek benzerlik, orijinal düzenin, konu özelliklerinin ve tanınabilir yapının korunmasına yardımcı olur."
+        ],
+        [
+          "Hangi ayarlar kararlı sonuçlar verir?",
+          "Orijinal kompozisyonun önemli olduğu portreler ve resimler için daha düşük yaratıcılık ve daha yüksek benzerlik kullanın."
+        ],
+        [
+          "Yüzü çok fazla değiştirmeden bir portreyi yeniden hayal edebilir miyim?",
+          "Evet. Daha düşük yaratıcılığa ve daha yüksek benzerliğe sahip portre modelini kullanın."
+        ],
+        [
+          "Hangi görüntü türleri Reimagine AI ile en iyi şekilde çalışır?",
+          "Portreler, mimari, iç mekanlar, anime sanatı, illüstrasyonlar, ürün fotoğrafları ve eski fotoğraflar iyi adaylardır."
+        ],
+        [
+          "Reimagine AI, Magnific'e bir alternatif midir?",
+          "Hafif, hızlı yönlendirmeli yaratıcı bir ölçekleyici olarak kullanılabilir."
+        ],
+        [
+          "Reimagine AI çıktılarını ticari olarak kullanabilir miyim?",
+          "Evet, geçerli yasalara ve orijinal görsellerle ilgili haklara tabidir."
+        ],
+        [
+          "Yüklenen görseller gizli mi?",
+          "API, yüklenen resimler ve sonuçlar için kısa ömürlü imzalı URL'leri ve yapılandırılmış temizleme politikasını kullanır."
+        ]
+      ]
+    },
+    "video": {
+      "title": "AI görüntü yükseltmenin netliği nasıl artırdığını görün",
+      "description": "Fotoğrafları, çizimleri, ürün görsellerini, portreleri ve eski fotoğrafları yapay zekayla büyütün. 2K veya 4K çıktı seçin, ayrıntıları inceleyin ve sonucu indirin. Kullanılabilir çözünürlük modele ve hesap sınırlarına bağlıdır.",
+      "alt": "ImgUpscaler video vitrini",
+      "caption": "YouTube'da izleyin ↗"
+    },
+    "useCaseIntro": {
+      "kicker": "Gerçek yaratıcı çalışmalar için AI görüntü yükseltme",
+      "title": {
+        "before": "Daha net varlıklar hazırlayın",
+        "emphasis": "web, baskı ve sosyal medya."
+      },
+      "description": "Hızlı çevrimiçi yükseltmeden toplu kullanıma hazır iş akışlarına kadar ImgUpscaler, karmaşık düzenleme ayarları olmadan daha net görsellere ihtiyaç duyan yaratıcılar, ekipler ve işletmeler için tasarlanmıştır."
+    },
+    "testimonialIntro": {
+      "title": "İnsanlar ImgUpscaler hakkında ne söylüyor",
+      "description": "İçerik oluşturucular, editörler, pazarlamacılar ve sıradan kullanıcılar, daha net, daha kullanışlı görsel varlıklar için pratik bir çevrimiçi yükseltmeye ihtiyaç duyduklarında ImgUpscaler'a güveniyorlar."
+    },
+    "faqIntro": {
+      "home": {
+        "title": "AI görüntü yükseltme SSS'leri",
+        "description": "ImgUpscaler, çevrimiçi görüntü yükseltme, görüntü geliştirme, dosya gizliliği, desteklenen formatlar ve yaygın kullanım örnekleri hakkındaki yanıtlar."
+      },
+      "enhancer": {
+        "title": "Görsel iyileştirme hakkında sık sorulan sorular",
+        "description": "Fotoğraf netleştirme, gürültü azaltma, doku onarımı ve sonuç önizlemesi hakkında bilgi edinin."
+      },
+      "reimagine": {
+        "title": "Yeniden tasarlama hakkında sık sorulan sorular",
+        "description": "Açıklamaların, yaratıcılığın, benzerliğin ve model seçiminin yeni görseli nasıl etkilediğini öğrenin."
+      }
+    },
+    "comparison": {
+      "before": "Önce",
+      "after": "Sonra",
+      "labelled": "karşılaştırmadan önce ve sonra",
+      "adjust": "Karşılaştırmadan önce ve sonra ayarlayın"
+    }
+  },
+  "pricing": {
+    "title": "Görüntü iş akışınız için bir plan seçin",
+    "description": "ImgUpscaler ve Reimagine’ı ücretsiz deneyin. Daha fazla kredi veya yüksek hacim gerektiğinde yükseltin.",
+    "monthly": "Aylık",
+    "annual": "Yıllık",
+    "annualBadge": "En iyi değer",
+    "popular": "En popüler",
+    "annualPrice": "/ay · yıllık faturalandırılır",
+    "billingNote": "Güvenli ödeme. Hesabınızın faturalandırma sayfasından istediğiniz zaman iptal edin.",
+    "valueTitle": "Yükseltme neden işe yarar",
+    "valueDescription": "Ücretli planlar, yalnızca ara sıra yapılan testler için değil, daha fazla işlem gücü, daha hızlı iş akışı ve daha net görüntü çıktısı gerektiren gerçek projeler için tasarlanmıştır.",
+    "benefits": [
+      [
+        "Oluşturmak için daha fazla alan",
+        "Ücretsiz plan sınırına ulaşmadan AI yükseltme, fotoğraf geliştirme ve Reimagine AI için daha fazla kredi kullanın."
+      ],
+      [
+        "Toplu iş akışları",
+        "E-ticaret fotoğraflarını, sosyal varlıkları, yapay zeka sanat eserlerini, portreleri veya müşteri teslimatlarını tek bir tutarlı iş akışında daha hızlı işleyin."
+      ],
+      [
+        "Gelişmiş yaratıcı araçlar",
+        "Daha yüksek hacimli geliştirme iş akışlarının, Reimagine AI'nın ve ticari kullanıma hazır daha net çıktıların kilidini açın."
+      ],
+      [
+        "Reklamsız ücretli planlar",
+        "Dikkatinizi daha az dağıtarak çalışma alanınızı düzenleme ve dışa aktarmaya odaklayın."
+      ],
+      [
+        "Güvenli faturalandırma",
+        "Ödeme, güvenli bir ödeme sağlayıcısı tarafından gerçekleştirilir, plan değişiklikleri ise hesabınızda kalır."
+      ],
+      [
+        "Ticari işler için tasarlandı",
+        "Ürün listeleri, reklamlar, portföyler, sosyal gönderiler, sunumlar ve müşteri projeleri için daha yüksek kaliteli görseller oluşturun."
+      ]
+    ],
+    "faqKicker": "Fiyatlandırma SSS'leri",
+    "faqTitle": "Krediler, faturalandırma ve",
+    "faqEmphasis": "planı yükseltmeleriyle ilgili sorular.",
+    "faqDescription": "Krediler, fatura döngüleri, plan değişiklikleri, ödeme ve doğru ImgUpscaler planının seçilmesiyle ilgili yanıtlar.",
+    "plans": [
+      {
+        "id": "free",
+        "name": "Ücretsiz",
+        "monthly": "$0",
+        "annual": "$0",
+        "label": "Buradan başlayın",
+        "description": "Yapay zeka yükseltmeyi denemek ve her ay az sayıda görüntüyü iyileştirmek için en iyisi.",
+        "features": [
+          "50 kredi / ay",
+          "Abonelik gerekmez",
+          "Yapay zeka yükseltme ve iyileştirmeyi deneyin",
+          "Yapay zeka erişimini yeniden tasarlayın",
+          "Tek görüntü işleme",
+          "Reklamları içerir"
+        ],
+        "featured": false,
+        "action": "Ücretsiz dene",
+        "footnote": "Ücretli abonelik gerekmez."
+      },
+      {
+        "id": "premium",
+        "name": "Gelişmiş",
+        "monthly": "$9.90",
+        "annual": "$6.14",
+        "label": "Düzenli yaratıcılar için",
+        "description": "Görüntüleri sıklıkla iyileştiren yaratıcılar, pazarlamacılar ve küçük ekipler için güçlü bir seçim.",
+        "features": [
+          "500 kredi / ay",
+          "E-posta desteği",
+          "Yapay zeka erişimini yeniden tasarlayın",
+          "Toplu işleme",
+          "Reklamsız çalışma alanı",
+          "Gündelik yaratıcılar için en iyisi"
+        ],
+        "featured": true,
+        "highlight": "500 kredi / ay",
+        "action": "Gelişmiş planı seç"
+      },
+      {
+        "id": "business",
+        "name": "İşletme",
+        "monthly": "$19.90",
+        "annual": "$12.34",
+        "label": "Daha yüksek hacimler için",
+        "description": "Daha fazla işlem kapasitesine ihtiyaç duyan işletmeler ve üretim iş akışları için tasarlandı.",
+        "features": [
+          "Sınırsız kredi",
+          "E-posta desteği",
+          "Tekli ve toplu işleme",
+          "Yapay zeka erişimini yeniden tasarlayın",
+          "Reklamsız çalışma alanı",
+          "İş hacmi için en iyisi"
+        ],
+        "featured": false,
+        "highlight": "Sınırsız kredi",
+        "action": "İşletme planını seç"
+      }
+    ],
+    "faqs": [
+      [
+        "Hangi planı seçmeliyim?",
+        "Yalnızca ImgUpscaler'ı test ediyorsanız Ücretsiz'i seçin. Görüntüleri düzenli olarak geliştiriyorsanız ve toplu işleme, daha fazla krediye, Reimagine AI'ye ve reklamsız bir çalışma alanına ihtiyacınız varsa Gelişmiş'u seçin. Ticari veya üretim işi sınırsız kredi gerektirdiğinde İşletme'yi seçin."
+      ],
+      [
+        "Krediler ne için kullanılabilir?",
+        "Kredileri, ölçeklendirme, geliştirme ve ilgili yaratıcı iş akışları gibi yapay zeka işleme görevleri için kullanılır. Ücretli planlar, her faturalandırma döngüsü için daha fazla yinelenen kapasite sağlar."
+      ],
+      [
+        "İstediğim zaman iptal edebilir miyim?",
+        "Evet. Hesap faturalandırma sayfasından iptal edebilirsiniz. Erişim ve krediler mevcut faturalandırma döngüsü sona erene kadar kullanılabilir durumda kalacaktır."
+      ],
+      [
+        "Nasıl daha fazla kredi alabilirim?",
+        "Daha büyük yinelenen ödenek için daha yüksek bir plana yükseltin. Gelişmiş veya İşletme genellikle görüntü setleri veya sık sık Reimagine AI kullanımı için daha uygundur."
+      ],
+      [
+        "Ödeme güvenli mi?",
+        "Evet. Ödeme işlemleri güvenli bir sağlayıcı tarafından gerçekleştirilir ve işlemler şifrelenir."
+      ],
+      [
+        "Daha sonra yükseltebilir veya düşürebilir miyim?",
+        "Evet. Planınızı istediğiniz zaman hesabınızın Faturalandırma bölümünden değiştirebilirsiniz."
+      ],
+      [
+        "Ödeme başarısız olursa ne yapmalıyım?",
+        "Ekibin yardımcı olabilmesi için support@imgupscaler.com ile hesabınızın e-posta adresini ve yaklaşık ödeme süresini belirterek iletişime geçin."
+      ],
+      [
+        "Ne zaman ücretlendirilirim?",
+        "Aboneliğiniz, orijinal satın alma tarihinize bağlı olarak her aylık veya yıllık faturalandırma döngüsünün aynı gününde otomatik olarak yenilenir."
+      ],
+      [
+        "Sonuçları ticari olarak kullanabilir miyim?",
+        "Evet. Ücretsiz ve ücretli çıktılar, geçerli yasalara ve kaynak görüntülerin haklarına tabi olarak kişisel ve ticari projeler için kullanılabilir."
+      ]
+    ],
+    "monthlyPrice": "/ay"
+  },
+  "header": {
+    "navigation": "Birincil gezinme",
+    "accountMenu": "Hesap menüsü",
+    "closeMenu": "Menüyü kapat",
+    "openMenu": "Menüyü aç",
+    "planLabel": "Planı",
+    "planFree": "Ücretsiz",
+    "planPremium": "Gelişmiş",
+    "unknownValue": "—",
+    "creditsLabel": "Krediler",
+    "account": "Hesap",
+    "billing": "Faturalandırma",
+    "signOut": "Çıkış yap",
+    "signIn": "Giriş yap"
+  },
+  "footer": {
+    "privacy": "Gizlilik Politikası",
+    "terms": "Hizmet Şartları",
+    "cookies": "Çerezleri",
+    "contact": "İletişim",
+    "switchLanguage": "Dili değiştir",
+    "copyright": "© 2026 ImgUpscaler. Her hakkı saklıdır.",
+    "languageNames": {
+      "en": "English",
+      "zh": "简体中文",
+      "ja": "日本語",
+      "ko": "한국어",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt-BR": "Português (Brasil)",
+      "it": "Italiano",
+      "ru": "Русский",
+      "ar": "العربية",
+      "tr": "Türkçe",
+      "nl": "Nederlands"
+    }
+  },
+  "account": {
+    "back": "Çalışma alanına dön",
+    "member": "ÜYE",
+    "profile": "Profil",
+    "billing": "Faturalandırma",
+    "security": "Güvenlik",
+    "title": "Hesabım",
+    "current": "MEVCUT PLAN",
+    "credits": "KULLANILABİLİR KREDİLER",
+    "save": "Değişiklikleri kaydet",
+    "redeem": "Kodu kullan",
+    "redeemAction": "Kullan",
+    "upgrade": "Planı yükselt",
+    "signOut": "Çıkış yap",
+    "update": "Şifreyi güncelle",
+    "danger": "Tehlikeli bölge",
+    "delete": "Hesabı sil",
+    "saved": "Profili güncellendi.",
+    "deleted": "Hesabı silindi.",
+    "loadFailed": "Hesabınız yüklenemiyor.",
+    "loading": "Hesap yükleniyor…",
+    "signInPrompt": "Hesabınızı görüntülemek ve yönetmek için giriş yapın.",
+    "unknown": "—",
+    "planFree": "Ücretsiz",
+    "planPremium": "Gelişmiş",
+    "saveFailed": "Profiliniz kaydedilemiyor.",
+    "redeemed": "Kod kullanıldı.",
+    "redeemFailed": "Bu kod kullanılamıyor.",
+    "deleteConfirm": "Hesabınız ve tüm hesap verileriniz silinsin mi?",
+    "deleteFailed": "Hesabınız silinemiyor.",
+    "passwordUpdated": "Şifresi güncellendi.",
+    "passwordFailed": "Şifreniz güncellenemiyor.",
+    "email": "E-posta",
+    "avatar": "Avatar URL'si",
+    "currentPassword": "Mevcut şifre",
+    "newPassword": "Yeni şifre",
+    "billingNote": "Planınızı, mevcut kredilerinizi ve fatura durumunuzu görüntüleyin. Abonelik ve ödeme değişiklikleri ödeme sağlayıcınız tarafından onaylanır.",
+    "signIn": "Giriş yap",
+    "settings": "Hesap ayarları",
+    "displayName": "Görünen ad",
+    "profileKicker": "Profil",
+    "dangerDescription": "Hesabınızı silin ve hesap düzeyindeki verileri kalıcı olarak kaldırın.",
+    "placeholderAvatar": "https://example.com/avatar.png"
+  },
+  "legal": {
+    "back": "Çalışma alanına geri dön",
+    "pages": {
+      "privacy-policy": {
+        "title": "Gizlilik Politikası",
+        "intro": "ImgUpscaler, Sparklightforce Limited tarafından işletilen çevrimiçi bir yapay zeka görüntü yükseltme ve geliştirme hizmetidir. Bu sayfada topladığımız bilgiler, bunları nasıl kullandığımız ve tercihleriniz açıklanmaktadır.",
+        "sections": [
+          [
+            "1. Topladığımız Bilgiler",
+            "E-posta adresinizi, hesap adınızı, profil resminizi, kimlik doğrulama sağlayıcınızı, yüklenen resimlerinizi, oluşturulan sonuçları, fatura durumunuzu, kredi bakiyenizi, kullanım geçmişinizi, cihaz ve tarayıcı bilgilerinizi, IP adresinizi, çerezlerinizi ve destek mesajlarınızı toplayabiliriz."
+          ],
+          [
+            "2. Bilgileri Nasıl Kullanıyoruz",
+            "Bilgileri görüntü işlemeyi yürütmek, hesapları yönetmek, kullanıcıların kimliğini doğrulamak, kredi ve faturalandırma sağlamak, kötüye kullanımı önlemek, destek taleplerini yanıtlamak, güvenilirliği artırmak, ürün performansını ölçmek ve yasal yükümlülüklere uymak için kullanırız. Kişisel bilgileri satmıyoruz."
+          ],
+          [
+            "3. Yüklenen Görüntüler ve Oluşturulan Sonuçlar",
+            "Görüntüler, yükseltme, geliştirme, önizleme ve indirme özellikleri sağlamak için işlenir. Yüklemeler ve sonuçlar, API saklama ve temizleme politikası kapsamında işlenir."
+          ],
+          [
+            "4. Çerezler ve Analizler",
+            "Çerezler kullanıcıların oturum açmasını sağlayabilir, tercihleri ​​hatırlayabilir, hizmeti koruyabilir, trafiği analiz edebilir ve performansı artırabilir. Analitik ve reklam ortakları, sınırlı kullanım verilerini kendi politikaları ve geçerli yasalar kapsamında işleyebilir."
+          ],
+          [
+            "5. Güvenlik ve Saklama",
+            "Makul teknik ve organizasyonel önlemler kullanıyoruz. Hesap, fatura ve kullanım kayıtları yalnızca hizmeti sağlamak, anlaşmazlıkları çözmek, kötüye kullanımı önlemek ve yasal yükümlülükleri yerine getirmek için gerektiği kadar saklanır."
+          ],
+          [
+            "6. Seçimleriniz",
+            "Hesap bilgilerine erişim, düzeltme veya silme talebinde bulunmak için support@imgupscaler.com ile iletişime geçebilirsiniz. Çerezleri tarayıcınızın ayarları aracılığıyla yönetebilirsiniz, ancak gerekli özellikler çalışmayı durdurabilir."
+          ],
+          [
+            "7. Bize Ulaşın",
+            "Bu politikayla ilgili sorular support@imgupscaler.com adresine gönderilebilir. Sparklightforce Limited: ODA 1503-09, 15/F, Causeway BAY CENTRE, 15-23 SUGAR STREET, Causeway BAY, HONG KONG."
+          ]
+        ]
+      },
+      "terms": {
+        "title": "Hizmet Koşulları",
+        "intro": "ImgUpscaler'u kullanarak bu hizmet şartlarını kabul etmiş olursunuz. Mevcut özellikler, işlem ödenekleri ve ücretli avantajlar mevcut ürün ve hesap sayfalarında açıklanmaktadır.",
+        "sections": [
+          [
+            "1. Hizmet Kapsamı",
+            "ImgUpscaler, çevrimiçi görüntü yükseltme, geliştirme ve AI iş akışlarını yeniden tasarlama olanağı sağlar. Ürün geliştikçe özellikler, modeller, sınırlar ve kullanılabilirlik değişebilir."
+          ],
+          [
+            "2. Kullanıcı İçeriği",
+            "Yüklediğiniz her görselin sahibi olmanız veya işleme izninizin olması gerekir. Yasa dışı, ihlal edici, zararlı veya yetkisiz kişisel içerik yüklemeyin."
+          ],
+          [
+            "3. Hizmet Sınırlamaları",
+            "Sonuçlar seçilen modele, giriş görüntüsüne, hesap sınırlarına ve mevcut hizmet kullanılabilirliğine bağlıdır. Hizmet belirli bir çıktıyı veya ticari uygunluğu garanti etmez."
+          ],
+          [
+            "4. Krediler ve Abonelikler",
+            "Üretimde, krediler, abonelikler, geri ödemeler ve faturalandırma durumu, hesap sayfası ve ödeme sağlayıcı kayıtları tarafından yönetilir. Ticari kullanım hâlâ kaynak görsel haklarına ve geçerli yasalara bağlıdır."
+          ],
+          [
+            "5. Kabul Edilebilir Kullanım",
+            "Limitleri aşmayın, toplu işlemeyi kötüye kullanmayın, hizmete müdahale etmeyin, modellere saldırmayın veya hizmeti yasa dışı kullanmayın. Güvenlik, bakım veya yasal nedenlerle görevleri duraklatabiliriz."
+          ],
+          [
+            "6.",
+            "ile iletişime geçin Yardım için support@imgupscaler.com'e e-posta gönderin."
+          ]
+        ]
+      },
+      "cookies": {
+        "title": "Çerezleri",
+        "intro": "Çerezleri, cihazınızda saklanan küçük metin dosyalarıdır. Bu sayfada, çerezlerin seçimlerinizin yanı sıra oturum açmayı, tercihleri, analizleri ve reklamları nasıl destekleyebileceği açıklanmaktadır.",
+        "sections": [
+          [
+            "1. Temel Çerezler",
+            "Temel çerezler oturumları aktif tutar, güvenlik ayarlarını korur ve temel işlevleri destekler. Genellikle sistemlerimizde devre dışı bırakılamazlar."
+          ],
+          [
+            "2. Performans ve İşlevsel Çerezler",
+            "Performans çerezleri, ziyaretçilerin hizmeti nasıl kullandığını anlamamıza yardımcı olur. İşlevsel çerezler dili ve diğer tercihleri ​​hatırlar."
+          ],
+          [
+            "3. Üçüncü Taraf Çerezleri",
+            "Analytics, reklam, ödeme ve kimlik doğrulama sağlayıcıları, kendi gizlilik politikaları kapsamında üçüncü taraf çerezleri ayarlayabilir."
+          ],
+          [
+            "4. Seçimleriniz",
+            "Tarayıcınızda çerezleri silebilir veya engelleyebilirsiniz. Gerekli çerezlerin devre dışı bırakılması oturum açma, yükleme veya ödeme işlemlerinin düzgün çalışmasını engelleyebilir."
+          ],
+          [
+            "5.",
+            "ile iletişime geçin Çerez kullanımına ilişkin sorular support@imgupscaler.com'e gönderilebilir."
+          ]
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "home": {
+      "title": "Yapay zekayla çevrimiçi görsel büyütme | Img.Upscaler",
+      "description": "Yapay zeka ile fotoğrafları ve illüstrasyonları çevrimiçi olarak büyütün. İnce ayrıntıları geri yükleyin, düşük çözünürlüklü görüntüleri keskinleştirin ve ihtiyacınız olan boyutta daha net sonuçlar indirin."
+    },
+    "enhancer": {
+      "title": "Yapay zekayla fotoğraf kalitesini iyileştirme | Img.Upscaler",
+      "description": "Çevrimiçi yapay zekalı görüntü geliştiriciyle fotoğraf netliğini artırın. İndirmeden önce gürültüyü ve sıkıştırma bozulmalarını azaltın, dokuları keskinleştirin ve sonucu önizleyin."
+    },
+    "reimagine": {
+      "title": "Yapay zeka ve metinle görselleri yeniden tasarla | Img.Upscaler",
+      "description": "Yapay zeka ile fotoğrafları, illüstrasyonları ve iç mekanları yeniden hayal edin. Sonucu bir istemle yönlendirin, yaratıcılığı ve benzerliği ayarlayın ve yeni görüntünüzün önizlemesini yapın."
+    },
+    "pricing": {
+      "title": "Görsel büyütme planları ve fiyatları | Img.Upscaler",
+      "description": "Görüntü yükseltme planlarını, kredileri ve toplu işleme seçeneklerini karşılaştırın. Fotoğraf geliştirme, yaratıcı projeler ve iş akışları için doğru planı bulun."
+    },
+    "account": {
+      "title": "Hesabınız ve Kredileriniz | Img.Upscaler",
+      "description": "Img.Upscaler hesabınızdan profilinizi, hesap güvenliğinizi, mevcut görüntü işleme kredilerinizi ve faturalandırma ayarlarınızı yönetin."
+    },
+    "privacy": {
+      "title": "Gizlilik Politikası | Img.Upscaler",
+      "description": "Img.Upscaler'nin hesap bilgilerini, yüklenen fotoğrafları, oluşturulan görselleri, saklamayı ve gizlilik tercihlerinizi nasıl işlediğini okuyun."
+    },
+    "terms": {
+      "title": "Hizmet Şartları | Img.Upscaler",
+      "description": "Görüntü sahipliği, kabul edilebilir kullanım, işleme sınırları, hesap kredileri ve abonelikler dahil olmak üzere Img.Upscaler kullanım koşullarını inceleyin."
+    },
+    "cookies": {
+      "title": "Çerez Politikası | Img.Upscaler",
+      "description": "Çerezlerin Img.Upscaler'de oturum açmayı, güvenliği, tercihleri ve analizleri nasıl desteklediğini ve bunları tarayıcınızda nasıl yöneteceğinizi öğrenin."
+    },
+    "root": {
+      "title": "Img.Upscaler",
+      "description": "Yapay zeka ile görüntüleri çevrimiçi olarak büyütün, geliştirin ve yeniden hayal edin."
+    }
+  }
+}

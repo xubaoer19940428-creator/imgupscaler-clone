@@ -44,7 +44,7 @@
   },
   "workspace": {
     "authRequired": "Sign in to process images",
-    "authRequiredDetail": "Your files are uploaded through the authenticated Mixu API.",
+    "authRequiredDetail": "Sign in to securely upload and process your images.",
     "chooseImage": "Choose image",
     "dragDrop": "Drop your image here",
     "formats": "JPG / PNG / WebP / AVIF supported",
@@ -127,10 +127,10 @@
       "home": {
         "eyebrow": "AI Image Upscaler Online",
         "title": {
-          "before": "Upscale and enhance images",
-          "emphasis": "with AI online"
+          "before": "AI image upscaling.",
+          "emphasis": "Every detail, elevated."
         },
-        "description": "Turn low-resolution photos, anime, products, portraits, and old images into sharper, higher-resolution visuals with a simple browser workflow."
+        "description": "Enlarge photos, illustrations, product images, portraits, and old pictures with AI. Choose 2K or 4K output, preview the details, and download a clearer image. Available resolution depends on the selected model and account limits."
       },
       "enhancer": {
         "eyebrow": "AI Image Enhancer Online",
@@ -158,7 +158,7 @@
         },
         {
           "number": "02",
-          "title": "2x and 4x image upscaling",
+          "title": "2K and 4K image output",
           "body": "Choose the output size that fits websites, product listings, social posts, presentations, or print."
         },
         {
@@ -174,11 +174,11 @@
         {
           "number": "05",
           "title": "Privacy-first processing",
-          "body": "Uploads and generated results are handled securely and removed automatically after processing."
+          "body": "Uploaded files and generated results follow the service’s file retention and cleanup policy."
         },
         {
           "number": "06",
-          "title": "Ready for real projects",
+          "title": "Images for personal and commercial projects",
           "body": "Use enhanced images in marketing, client work, ecommerce, creative projects, and personal work."
         }
       ],
@@ -243,7 +243,7 @@
         {
           "number": "06",
           "title": "Privacy-first processing",
-          "body": "Uploads and generated results are handled securely and removed automatically after processing."
+          "body": "Uploaded files and generated results follow the service’s file retention and cleanup policy."
         }
       ]
     },
@@ -334,7 +334,7 @@
           "before": "Advanced AI upscaling,",
           "emphasis": "built for real work."
         },
-        "description": "ImgUpscaler uses AI super-resolution to enlarge images 2x or 4x, recover detail, and make visual assets easier to use in real projects."
+        "description": "Enlarge photos, illustrations, product images, portraits, and old pictures with AI. Choose 2K or 4K output, preview the details, and download a clearer image. Available resolution depends on the selected model and account limits."
       },
       "enhancer": {
         "kicker": "Improve quality, sharpen detail, and remove visual noise",
@@ -360,7 +360,7 @@
           "before": "Three steps to",
           "emphasis": "clearer output."
         },
-        "description": "Upload a file, choose a scale, preview the result, and download a clearer image.",
+        "description": "Upload a file, choose an output resolution, preview the result, and download a clearer image.",
         "steps": [
           [
             "Step 1",
@@ -369,8 +369,8 @@
           ],
           [
             "Step 2",
-            "Choose 2x or 4x upscaling",
-            "Pick the scale you need while AI improves detail, texture, and edges."
+            "Choose 2K or 4K output",
+            "Choose 2K or 4K output while AI improves detail, texture, and edges."
           ],
           [
             "Step 3",
@@ -456,7 +456,7 @@
       "home": [
         [
           "What is ImgUpscaler?",
-          "ImgUpscaler is an online AI image upscaler that enlarges images and improves clarity at 2x or 4x. It is designed for photos, anime art, product images, portraits, old pictures, and other visual assets that need a more usable resolution."
+          "ImgUpscaler is an online AI image upscaler for photos, illustrations, products, and portraits. Choose 2K or 4K output to create a higher-resolution image; available output sizes depend on the model and account limits."
         ],
         [
           "How does an AI image upscaler work?",
@@ -464,7 +464,7 @@
         ],
         [
           "How do I upscale an image online?",
-          "Upload a JPG, PNG, WebP, or AVIF file, choose the scale, wait for the preview, and download the processed WebP result."
+          "Upload a JPG, PNG, WebP, or AVIF image, choose an output size, then preview and download the processed image."
         ],
         [
           "Can I upscale an image to 4K?",
@@ -480,7 +480,7 @@
         ],
         [
           "Which image formats are supported?",
-          "The frontend accepts JPG, PNG, WebP, and AVIF images up to 20MB per file."
+          "Supported formats are JPG, PNG, WebP, and AVIF, up to 20 MB per image."
         ],
         [
           "Can I upscale multiple images at once?",
@@ -508,7 +508,7 @@
         ],
         [
           "Do I need to install software?",
-          "No. The Next.js frontend works in a browser, while a real inference service can run on the server side."
+          "No. Use the tool directly in your browser; image processing takes place on our servers."
         ]
       ],
       "enhancer": [
@@ -622,7 +622,7 @@
     },
     "video": {
       "title": "See how AI image upscaling improves clarity",
-      "description": "ImgUpscaler uses AI super resolution to enlarge images by 2x or 4x, recover detail, and make visual assets easier to use in real projects. Watch the workflow, then explore the tools built for everyday image enhancement.",
+      "description": "Enlarge photos, illustrations, product images, portraits, and old pictures with AI. Choose 2K or 4K output, preview the details, and download a clearer image. Available resolution depends on the selected model and account limits.",
       "alt": "ImgUpscaler video showcase",
       "caption": "Watch on YouTube ↗"
     },
@@ -639,8 +639,18 @@
       "description": "Creators, editors, marketers, and everyday users rely on ImgUpscaler when they need a practical online upscaler for clearer, more usable visual assets."
     },
     "faqIntro": {
-      "title": "AI image upscaler FAQs",
-      "description": "Answers about ImgUpscaler, online image upscaling, image enhancement, file privacy, supported formats, and common use cases."
+      "home": {
+        "title": "AI image upscaler FAQs",
+        "description": "Answers about ImgUpscaler, online image upscaling, image enhancement, file privacy, supported formats, and common use cases."
+      },
+      "enhancer": {
+        "title": "AI Image Enhancer FAQs",
+        "description": "Answers about sharpening photos, reducing noise, restoring texture, and previewing enhanced images."
+      },
+      "reimagine": {
+        "title": "Reimagine AI FAQs",
+        "description": "Learn how prompts, creativity, resemblance, and model selection guide a reimagined image."
+      }
     },
     "comparison": {
       "before": "Before",
@@ -808,12 +818,24 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "cookies": "Cookies",
-    "blog": "Blog",
     "contact": "Contact",
     "switchLanguage": "Switch language",
-    "currentLanguage": "English",
-    "alternateLanguage": "简体中文",
-    "copyright": "© 2026 ImgUpscaler. All rights reserved."
+    "copyright": "© 2026 ImgUpscaler. All rights reserved.",
+    "languageNames": {
+      "en": "English",
+      "zh": "简体中文",
+      "ja": "日本語",
+      "ko": "한국어",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt-BR": "Português (Brasil)",
+      "it": "Italiano",
+      "ru": "Русский",
+      "ar": "العربية",
+      "tr": "Türkçe",
+      "nl": "Nederlands"
+    }
   },
   "account": {
     "back": "Back to workspace",
@@ -851,7 +873,7 @@
     "avatar": "Avatar URL",
     "currentPassword": "Current password",
     "newPassword": "New password",
-    "billingNote": "Upgrades, cancellations, payment history, and credit deductions must be maintained by your server and payment webhooks.",
+    "billingNote": "View your plan, available credits, and billing status. Subscription and payment changes are confirmed by your payment provider.",
     "signIn": "Sign in",
     "settings": "Account settings",
     "displayName": "Display name",
@@ -898,7 +920,7 @@
       },
       "terms": {
         "title": "Terms of Service",
-        "intro": "Using ImgUpscaler means you agree to these service terms. Review and adapt them with legal counsel before launching production billing or model services.",
+        "intro": "By using ImgUpscaler, you agree to these terms of service. Available features, processing allowances, and paid benefits are described on the current product and account pages.",
         "sections": [
           [
             "1. Service Scope",
@@ -956,36 +978,40 @@
   },
   "metadata": {
     "home": {
-      "title": "AI Image Upscaler — Img.Upscaler",
-      "description": "Upscale images online with AI, enhance details, and download clearer high-resolution results."
+      "title": "AI Image Upscaler: Enlarge Photos Online | Img.Upscaler",
+      "description": "Enlarge photos and illustrations online with AI. Restore fine details, sharpen low-resolution images, and download clearer results in the size you need."
     },
     "enhancer": {
-      "title": "Image Enhancer — Img.Upscaler",
-      "description": "Enhance image details online with AI."
+      "title": "AI Image Enhancer: Sharpen Photos Online | Img.Upscaler",
+      "description": "Improve photo clarity with an online AI image enhancer. Reduce noise and compression artifacts, sharpen textures, and preview the result before downloading."
     },
     "reimagine": {
-      "title": "Reimagine AI — Img.Upscaler",
-      "description": "Reimagine images online with creative AI controls."
+      "title": "Reimagine Images with AI and Prompts | Img.Upscaler",
+      "description": "Reimagine photos, illustrations, and interiors with AI. Guide the result with a prompt, adjust creativity and resemblance, and preview your new image."
     },
     "pricing": {
-      "title": "Pricing — Img.Upscaler",
-      "description": "Choose a plan for your image workflow."
+      "title": "Image Upscaling Plans and Pricing | Img.Upscaler",
+      "description": "Compare image upscaling plans, credits, and batch processing options. Find the right plan for photo enhancement, creative projects, and business workflows."
     },
     "account": {
-      "title": "Account — Img.Upscaler"
+      "title": "Your Account and Credits | Img.Upscaler",
+      "description": "Manage your profile, account security, available image processing credits, and billing settings from your Img.Upscaler account."
     },
     "privacy": {
-      "title": "Privacy Policy — Img.Upscaler"
+      "title": "Privacy Policy | Img.Upscaler",
+      "description": "Read how Img.Upscaler handles account information, uploaded photos, generated images, retention, and your privacy choices."
     },
     "terms": {
-      "title": "Terms of Service — Img.Upscaler"
+      "title": "Terms of Service | Img.Upscaler",
+      "description": "Review the terms for using Img.Upscaler, including image ownership, acceptable use, processing limits, account credits, and subscriptions."
     },
     "cookies": {
-      "title": "Cookies — Img.Upscaler"
+      "title": "Cookie Policy | Img.Upscaler",
+      "description": "Learn how cookies support sign-in, security, preferences, and analytics on Img.Upscaler, and how to manage them in your browser."
     },
     "root": {
       "title": "Img.Upscaler",
-      "description": "AI image upscaling and enhancement in the browser."
+      "description": "Enlarge, enhance, and reimagine images online with AI."
     }
   }
 }

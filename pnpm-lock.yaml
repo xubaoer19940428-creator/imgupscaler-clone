@@ -51,6 +51,9 @@ importers:
         specifier: ^5.0.15
         version: 5.0.15(@types/react@19.3.0)(react@19.3.0)
     devDependencies:
+      '@formatjs/icu-messageformat-parser':
+        specifier: ^3.5.19
+        version: 3.5.19
       '@types/node':
         specifier: 26.6.1
         version: 26.6.1

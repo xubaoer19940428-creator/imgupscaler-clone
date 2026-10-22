@@ -9,7 +9,7 @@ import { getLandingContent } from './data'
 export function FaqSection({ route }: { route: Exclude<Route, 'pricing'> }) {
   const [openIndex, setOpenIndex] = useState(0)
   const content = getLandingContent(useMessages())
-  const intro = content.faqIntro
+  const intro = content.faqIntro[route]
   return <section className="faq-section section-wrap" id="faq"><div className="section-heading compact"><SectionHeadingLike title={intro.title} description={intro.description} /></div><div className="faq-list">{content.faqs[route].map(([question, answer], index) => { const expanded = openIndex === index; return <article className={expanded ? 'faq-item expanded' : 'faq-item'} key={question}><button aria-expanded={expanded} aria-controls={`faq-answer-${index}`} onClick={() => setOpenIndex(expanded ? -1 : index)}><span>{String(index + 1).padStart(2, '0')}</span><strong>{question}</strong><Icon name="chevron" /></button><p id={`faq-answer-${index}`} hidden={!expanded}>{answer}</p></article> })}</div></section>
 }
 

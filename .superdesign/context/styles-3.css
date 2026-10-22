@@ -1,0 +1,436 @@
+/* SOURCE: src/styles/10-final-page-fixes.css */
+/* Final reference alignment for the three-step workflow. The live site uses
+   natural-height cards, a centered 980px content column, and a two-column
+   tablet breakpoint before switching to one column on narrow phones. */
+.workflow-section { padding: 56px 16px 64px; background: rgba(243,245,247,.65); }
+.workflow-section .section-wrap { width: 100%; max-width: 980px; padding: 0; }
+.workflow-section .section-heading { display: block; max-width: 768px; margin: 0 auto 40px; text-align: center; }
+.workflow-section .section-heading > p { max-width: 672px; margin: 12px auto 0; }
+.workflow-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 0; }
+.workflow-step { display: block; min-width: 0; min-height: 0; height: auto; padding: 20px; border: 1px solid rgba(229,231,235,.75); border-radius: 16px; color: var(--ink); background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.workflow-step > span { display: block; color: #6b7280; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600; line-height: 20px; white-space: nowrap; }
+.workflow-step h3 { margin-top: 8px; color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; line-height: 28px; letter-spacing: -.02em; overflow-wrap: anywhere; text-wrap: balance; }
+.workflow-step p { margin-top: 8px; color: #6b7280; font-size: 14px; line-height: 24px; overflow-wrap: anywhere; }
+.workflow-section .compare-card { height: auto; aspect-ratio: 4 / 3; margin-top: 64px; border-radius: 16px; box-shadow: 0 18px 50px rgba(14,24,39,.1); }
+
+@media (max-width: 1023px) {
+  .workflow-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 639px) {
+  .workflow-section { padding-right: 16px; padding-left: 16px; }
+  .workflow-steps { grid-template-columns: 1fr; gap: 16px; }
+  .workflow-section .compare-card { margin-top: 40px; }
+}
+
+/* Keep the plan stack and its billing note in normal flow so the featured
+   card always has visible breathing room before the value section. */
+.pricing-page .plans-grid { height: auto; min-height: 0; padding: 0 64px 40px; row-gap: 24px; }
+.pricing-page .billing-note { position: static; grid-column: 1 / -1; margin: 0 auto; }
+
+@media (max-width: 720px) {
+  .pricing-page .plans-grid { padding-right: 16px; padding-bottom: 40px; padding-left: 16px; }
+}
+
+/* Footer uses two bounded groups, matching the reference DOM and preventing
+   the language pill from becoming a fourth overflowing column. */
+.site-footer-inner { width: min(1280px, calc(100% - 64px)); min-height: 112px; margin: 0 auto; padding: 26px 0; display: flex !important; align-items: center; justify-content: space-between; gap: 28px; }
+.footer-meta { min-width: 0; display: flex; align-items: center; gap: 16px; flex: 1 1 auto; }
+.footer-meta .footer-brand { flex: 0 0 auto; }
+.footer-meta p { min-width: 0; flex: 1 1 auto; }
+.site-footer-inner .footer-links { min-width: 0; max-width: 100%; flex: 0 1 auto; justify-content: flex-end; }
+.footer-language { min-width: 0; max-width: 100%; }
+.footer-language-button { min-width: 0; max-width: 100%;padding: 0 10px!important; }
+.footer-language-button span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 980px) {
+  .site-footer-inner { width: min(100% - 36px, 720px); flex-wrap: wrap; gap: 10px 20px; }
+  .footer-meta { flex: 1 1 100%; }
+  .site-footer-inner .footer-links { flex: 1 1 100%; justify-content: flex-start; }
+}
+
+@media (max-width: 720px) {
+  .site-footer-inner { width: calc(100% - 32px); min-height: 0; padding: 24px 0 30px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-meta { width: 100%; align-items: flex-start; flex-direction: column; gap: 8px; }
+  .footer-meta p { width: 100%; }
+  .site-footer-inner .footer-links { width: 100%; flex: none; justify-content: flex-start; gap: 12px 18px; }
+}
+
+/* Authenticated reference header: the avatar is the compact account entry on
+   desktop. On small screens account actions live in the expanded menu so the
+   header keeps only the brand and menu control. */
+.header-account { position: relative; display: inline-flex; align-items: center; }
+.header-account .avatar-button { width: 38px; height: 38px; border-color: #e5e7eb; background: #f8fafc; transition: border-color .2s ease, box-shadow .2s ease; }
+.header-account .avatar-button:hover,
+.header-account .avatar-button[aria-expanded='true'] { border-color: #b8c5da; box-shadow: 0 0 0 3px rgba(41,78,255,.08); }
+.account-popover { position: absolute; top: calc(100% + 8px); right: 0; z-index: 50; width: 256px; padding: 8px; border: 1px solid #e5e7eb; border-radius: 16px; background: #fff; box-shadow: 0 18px 44px rgba(15,23,42,.16); }
+.account-popover-profile { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 12px; border: 1px solid #e5e7eb; border-radius: 12px; background: rgba(248,250,252,.8); }
+.account-popover-avatar { width: 40px; height: 40px; flex: 0 0 40px; overflow: hidden; border: 1px solid #e5e7eb; border-radius: 50%; background: #f8fafc; }
+.account-popover-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.account-popover-avatar span, .avatar-button span, .mobile-account-avatar span, .account-profile-avatar span { display: grid; width: 100%; height: 100%; place-items: center; color: #3157c9; font-size: 12px; font-weight: 800; }
+.account-popover-identity { min-width: 0; display: grid; gap: 2px; }
+.account-popover-identity strong, .account-popover-identity span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.account-popover-identity strong { color: #111827; font-size: 14px; line-height: 20px; }
+.account-popover-identity span { color: #6b7280; font-size: 12px; line-height: 18px; }
+.account-popover-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; padding: 11px 12px; border: 1px solid #e5e7eb; border-radius: 12px; background: rgba(248,250,252,.8); }
+.account-popover-summary div { min-width: 0; display: grid; gap: 3px; }
+.account-popover-summary div:last-child { text-align: right; }
+.account-popover-summary span { color: #6b7280; font-size: 10px; font-weight: 600; letter-spacing: .1em; line-height: 14px; text-transform: uppercase; }
+.account-popover-summary strong { color: #111827; font-size: 14px; line-height: 20px; }
+.account-popover-links { display: grid; gap: 2px; margin-top: 8px; padding: 0 4px; }
+.account-popover-links a, .account-popover-links button { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 40px; padding: 8px 8px; border-radius: 10px; color: #111827; background: transparent; font-size: 14px; font-weight: 600; line-height: 20px; text-decoration: none; text-align: left; }
+.account-popover-links a:hover, .account-popover-links button:hover { background: #f3f5f8; }
+.account-popover-links svg { width: 16px; height: 16px; flex: 0 0 16px; }
+.account-popover-links button { margin-top: 4px; color: #ef4444; }
+.account-popover-links button:hover { background: rgba(239,68,68,.08); }
+
+@media (min-width: 721px) {
+  .header-account { margin-left: 8px; padding-left: 12px; border-left: 1px solid #e5e7eb; }
+}
+
+/* Mobile menu account area from the reference header. Keep it inside the
+   navigation panel so all authenticated actions remain reachable with one
+   thumb, while the desktop header continues to use the compact popover. */
+.mobile-nav-links { display: contents; }
+.mobile-nav-account { display: none; }
+.mobile-account-profile,
+.mobile-account-summary { min-width: 0; border: 1px solid #e5e7eb; background: rgba(248,250,252,.8); }
+.mobile-account-profile { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 12px; }
+.mobile-account-avatar { width: 40px; height: 40px; flex: 0 0 40px; overflow: hidden; border: 1px solid #e5e7eb; border-radius: 999px; background: #f8fafc; }
+.mobile-account-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mobile-account-identity { display: grid; min-width: 0; gap: 2px; }
+.mobile-account-identity strong,
+.mobile-account-identity span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mobile-account-identity strong { color: #111827; font-size: 14px; line-height: 20px; }
+.mobile-account-identity span { color: #6b7280; font-size: 12px; line-height: 18px; }
+.mobile-account-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; padding: 10px 12px; border-radius: 12px; }
+.mobile-account-summary div { min-width: 0; display: grid; gap: 3px; }
+.mobile-account-summary div:last-child { text-align: right; }
+.mobile-account-summary span { color: #6b7280; font-size: 10px; font-weight: 700; letter-spacing: .1em; line-height: 14px; text-transform: uppercase; }
+.mobile-account-summary strong { color: #111827; font-size: 14px; line-height: 20px; }
+.mobile-account-links { display: grid; gap: 2px; margin-top: 8px; }
+.mobile-account-links a,
+.mobile-account-links button { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 42px; padding: 9px 12px; border-radius: 10px; color: #111827; background: transparent; font-size: 14px; font-weight: 600; line-height: 20px; text-decoration: none; text-align: left; }
+.mobile-account-links a:hover,
+.mobile-account-links button:hover { background: #f3f5f8; }
+.mobile-account-links svg { width: 16px; height: 16px; flex: 0 0 16px; }
+.mobile-account-links button { margin-top: 4px; color: #ef4444; }
+.mobile-account-links button:hover { background: rgba(239,68,68,.08); }
+
+/* Narrow pricing layout: let every section size itself instead of inheriting
+   the desktop fixed heights that previously caused cramped cards and clipped
+   copy on 375–430px screens. */
+@media (max-width: 720px) {
+  .site-header .header-inner { width: calc(100% - 32px); padding: 0; }
+  .site-header .header-actions { display: inline-flex; margin-left: auto; gap: 8px; }
+  /* The mobile menu is the single account entry on phones. Hiding the
+     desktop popover trigger prevents duplicate account controls and leaves
+     the menu button aligned at the far right of the header. */
+  .site-header .header-account { display: none; }
+  .site-header .menu-button { width: 40px; height: 40px; }
+  .site-header .main-nav { top: 64px; right: 0; left: 0; width: 100%; padding: 0; border-radius: 0 0 14px 14px; }
+  .site-header .main-nav .mobile-nav-links { display: grid; gap: 2px; padding: 8px 16px; }
+  .site-header .main-nav .nav-link { min-height: 42px; padding: 10px 12px; border-radius: 9px; }
+  .site-header .main-nav .mobile-nav-account { display: block; border-top: 1px solid #e5e7eb; background: #fff; padding: 16px; }
+
+  .pricing-page { padding-top: 0; }
+  .pricing-hero { width: 100%; height: auto; padding: 56px 20px 0; }
+  .pricing-hero h1 { max-width: 360px; font-size: clamp(34px, 10vw, 44px); line-height: 1.12; letter-spacing: -.06em; }
+  .pricing-hero > p { max-width: 360px; margin-top: 16px; font-size: 15px; line-height: 24px; }
+  .billing-toggle { width: min(100%, 320px); justify-content: stretch; margin-top: 22px; }
+  .billing-toggle button { flex: 1 1 0; min-width: 0; padding: 9px 8px; font-size: 11px; }
+  .billing-toggle span { margin-left: 2px; }
+  .pricing-page .plans-grid { width: 100%; display: grid; grid-template-columns: 1fr; gap: 16px; padding: 48px 16px 56px; }
+  .pricing-page .plan-card { min-height: 0; padding: 22px 20px 20px; border-radius: 20px; }
+  .pricing-page .plan-card.featured { transform: none; }
+  .pricing-page .popular-badge { top: -11px; left: 20px; }
+  .pricing-page .plan-card h2 { margin-top: 10px; font-size: 25px; }
+  .pricing-page .plan-price { margin-top: 22px; font-size: clamp(38px, 11vw, 48px); line-height: 1; }
+  .pricing-page .plan-price small { font-size: 11px; }
+  .pricing-page .plan-card ul { gap: 11px; margin: 22px 0 24px; font-size: 13px; line-height: 20px; }
+  .pricing-page .plan-card li { align-items: flex-start; }
+  .pricing-page .plan-card li svg { margin-top: 2px; flex: 0 0 15px; }
+  .pricing-page .full { min-height: 44px; }
+  .pricing-page .billing-note { width: 100%; margin-top: 0; padding: 0 8px; font-size: 12px; line-height: 20px; text-align: center; }
+  .pricing-page .pricing-note { width: 100%; height: auto; display: block; padding: 36px 20px 48px; }
+  .pricing-page .pricing-note > div { justify-content: center; gap: 10px; }
+  .pricing-page .pricing-note h2 { font-size: 24px; line-height: 32px; }
+  .pricing-page .pricing-note > p { max-width: 360px; margin-top: 12px; font-size: 14px; line-height: 24px; }
+  .pricing-page .pricing-benefits { width: 100%; height: auto; grid-template-columns: 1fr; gap: 12px; padding: 0 16px 48px; }
+  .pricing-page .pricing-benefits article { height: auto; min-height: 0; padding: 18px; border-radius: 14px; }
+  .pricing-page .pricing-benefits h3 { font-size: 16px; line-height: 24px; }
+  .pricing-page .pricing-benefits p { margin-top: 8px; font-size: 13px; line-height: 22px; }
+  .pricing-page .pricing-faq { width: 100%; height: auto; padding: 40px 16px 64px; }
+  .pricing-page .pricing-faq .section-heading { margin-bottom: 24px; }
+  .pricing-page .pricing-faq .section-heading h2 { font-size: 30px; line-height: 36px; }
+  .pricing-page .pricing-faq .section-heading > p { font-size: 14px; line-height: 23px; }
+  .pricing-page .faq-item { margin-bottom: 10px; padding: 16px; }
+  .pricing-page .faq-item button strong { font-size: 14px; line-height: 22px; }
+  .pricing-page .faq-item p { font-size: 13px; line-height: 22px; }
+}
+
+@media (max-width: 380px) {
+  .account-popover { right: 0; width: min(256px, calc(100vw - 32px)); }
+  .pricing-hero { padding-right: 16px; padding-left: 16px; }
+  .pricing-page .plan-card { padding-right: 16px; padding-left: 16px; }
+}
+
+/* Account page alignment. The previous shell kept a desktop fixed height on
+   the summary card, so the credits block could collide with the tabs on a
+   phone. These rules make every account section natural-height and mirror the
+   reference account hierarchy: identity first, account facts second, tabs
+   third, and the active settings panel last. */
+.account-page {
+  min-height: calc(100vh - 64px);
+  padding: 48px 16px 72px;
+  background: radial-gradient(circle at 8% 0%, rgba(27,97,201,.08), transparent 34%), #f8fafc;
+}
+.account-shell { width: min(896px, 100%); margin: 0 auto; }
+.account-empty { padding: 48px 32px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.06); text-align: center; }
+.account-empty h1 { margin-top: 10px; color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; }
+.account-empty p { max-width: 420px; margin: 12px auto 22px; color: var(--muted); line-height: 1.7; }
+.account-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 8px 24px rgba(15,23,42,.04);
+}
+.account-identity { display: flex; align-items: center; min-width: 0; gap: 16px; }
+.account-profile-avatar {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #f1f5f9;
+}
+.account-profile-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.account-identity-copy { min-width: 0; }
+.account-identity-copy .kicker { display: inline-flex; padding: 3px 10px; border: 1px solid rgba(27,97,201,.24); border-radius: 999px; color: var(--blue); background: rgba(27,97,201,.06); font-size: 11px; font-weight: 700; letter-spacing: .06em; line-height: 16px; text-transform: uppercase; }
+.account-identity-copy h1 { max-width: 260px; margin: 8px 0 0; overflow: hidden; color: #111827; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 700; line-height: 28px; letter-spacing: -.04em; text-overflow: ellipsis; white-space: nowrap; }
+.account-identity-copy p { max-width: 300px; margin: 2px 0 0; overflow: hidden; color: #6b7280; font-size: 13px; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
+.account-summary { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; min-width: 0; }
+.account-summary > div { min-width: 132px; padding: 10px 14px; border: 1px solid #e5e7eb; border-radius: 12px; background: rgba(248,250,252,.8); }
+.account-summary > div > span { display: block; color: #6b7280; font-size: 10px; font-weight: 700; letter-spacing: .08em; line-height: 14px; text-transform: uppercase; }
+.account-summary strong { display: inline-flex; align-items: center; gap: 5px; margin-top: 2px; color: #111827; font-size: 14px; line-height: 20px; }
+.account-summary-zap { color: var(--blue); font-size: 16px; line-height: 1; }
+.account-layout { display: block; margin-top: 20px; }
+.account-tabs { display: flex; align-items: center; gap: 4px; width: 100%; padding: 8px; border: 1px solid #e5e7eb; border-radius: 14px; background: rgba(255,255,255,.96); box-shadow: 0 4px 14px rgba(15,23,42,.03); }
+.account-tabs button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex: 1 1 0; min-height: 42px; padding: 9px 12px; border-radius: 10px; color: #6b7280; background: transparent; font-size: 13px; font-weight: 600; line-height: 20px; white-space: nowrap; }
+.account-tabs button svg { width: 16px; height: 16px; flex: 0 0 16px; }
+.account-tabs button:hover { color: #111827; background: #f3f5f8; }
+.account-tabs button.active { color: var(--blue); background: rgba(27,97,201,.08); box-shadow: inset 0 0 0 1px rgba(27,97,201,.12); }
+.account-panel { min-height: 0; margin-top: 20px; display: grid; gap: 16px; padding: 24px; border: 1px solid #e5e7eb; border-radius: 16px; background: rgba(255,255,255,.98); box-shadow: 0 10px 28px rgba(15,23,42,.05); }
+.account-panel h2 { margin: 2px 0 0; color: #111827; font-size: 26px; line-height: 32px; }
+.account-panel label { gap: 7px; color: #4b5563; font-size: 12px; font-weight: 700; }
+.account-panel input { min-height: 44px; padding: 10px 12px; border-color: #d9e0ea; border-radius: 10px; color: #111827; background: #fff; font-size: 14px; }
+.account-panel > .dark-button { min-height: 44px; margin-top: 2px; }
+.account-plan { gap: 14px; padding: 16px; border-radius: 14px; }
+.account-feedback { margin-top: 2px; }
+
+@media (max-width: 720px) {
+  .account-page { padding: 40px 16px 56px; }
+  .account-heading { display: grid; gap: 20px; padding: 20px; }
+  .account-identity { gap: 12px; }
+  .account-profile-avatar { width: 52px; height: 52px; flex-basis: 52px; }
+  .account-identity-copy h1 { max-width: calc(100vw - 138px); font-size: 20px; line-height: 26px; }
+  .account-identity-copy p { max-width: calc(100vw - 138px); font-size: 12px; }
+  .account-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-content: stretch; gap: 8px; }
+  .account-summary > div { min-width: 0; padding: 10px 12px; }
+  .account-summary > div > span { font-size: 9px; letter-spacing: .06em; }
+  .account-tabs { gap: 2px; padding: 6px; }
+  .account-tabs button { min-height: 44px; gap: 5px; padding: 8px 5px; font-size: 12px; }
+  .account-tabs button svg { width: 15px; height: 15px; flex-basis: 15px; }
+  .account-panel { gap: 14px; margin-top: 16px; padding: 20px; border-radius: 14px; }
+  .account-panel h2 { font-size: 24px; line-height: 30px; }
+  .account-panel input { min-height: 46px; }
+  .account-plan { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .account-plan .dark-button { grid-column: 1 / -1; width: 100%; }
+}
+
+@media (max-width: 380px) {
+  .account-page { padding-right: 12px; padding-left: 12px; }
+  .account-heading { padding: 16px; }
+  .account-tabs button { font-size: 11px; }
+  .account-panel { padding: 16px; }
+}
+
+/* Reimagine's uploaded state follows the reference tool layout: one large
+   contained preview, model choices, a compact settings card, then actions. */
+.workspace-card-reimagine-uploaded {
+  padding: 20px;
+  border-color: rgba(229, 231, 235, .8);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 18px 60px rgba(15, 23, 42, .05);
+}
+.workspace-card-reimagine-uploaded .reimagine-uploaded-surface {
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.reimagine-preview {
+  position: relative;
+  width: 100%;
+}
+.reimagine-preview-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: min(72vh, 44rem);
+  min-height: 280px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fff;
+}
+.reimagine-preview-inner img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(72vh, 44rem);
+  object-fit: contain;
+}
+.reimagine-preview-status,
+.reimagine-preview-error {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  max-width: calc(100% - 24px);
+  padding: 6px 9px;
+  overflow: hidden;
+  border-radius: 7px;
+  color: #986006;
+  background: rgba(255, 248, 232, .94);
+  font-size: 11px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.reimagine-preview-error {
+  color: #b33b45;
+  background: rgba(255, 241, 241, .95);
+}
+.workspace-card-reimagine-uploaded .reimagine-controls {
+  display: grid;
+  gap: 16px;
+  padding-top: 16px;
+}
+.reimagine-model-picker {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.reimagine-model-picker button {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  color: #111827;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.reimagine-model-picker button:hover {
+  border-color: var(--blue);
+  background: #f8fafc;
+}
+.reimagine-model-picker button.selected {
+  border-color: var(--blue);
+  color: #fff;
+  background: var(--blue);
+}
+.reimagine-settings {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fff;
+}
+.reimagine-settings label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+}
+.reimagine-settings textarea {
+  min-height: 82px;
+  resize: vertical;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  color: #111827;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.reimagine-settings textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(27, 97, 201, .1);
+}
+.reimagine-settings .slider-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 0;
+}
+.reimagine-settings .slider-row label {
+  gap: 8px;
+}
+.reimagine-settings .slider-row label > span {
+  display: flex;
+  justify-content: space-between;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+}
+.reimagine-settings .slider-row b {
+  color: #111827;
+  font-weight: 600;
+}
+.reimagine-settings input[type='range'] {
+  width: 100%;
+  accent-color: var(--blue);
+}
+.reimagine-actions {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 16px;
+}
+.reimagine-actions .outline-button,
+.reimagine-actions .process-button {
+  min-height: 42px;
+}
+
+@media (max-width: 720px) {
+  .workspace-card-reimagine-uploaded { padding: 16px; }
+  .reimagine-preview-inner { min-height: 220px; }
+  .reimagine-model-picker { grid-template-columns: 1fr; gap: 8px; }
+  .reimagine-settings { padding: 14px; }
+  .reimagine-actions { align-items: stretch; }
+  .reimagine-actions button { flex: 1 1 100%; }
+}
+
