@@ -22,8 +22,8 @@ button, a { transition: background-color .18s, color .18s, border-color .18s, tr
 .app-shell { overflow: clip; }
 .site-header { height: 76px; background: rgba(255,254,251,.96); border-color: var(--line); backdrop-filter: blur(12px); }
 .header-inner { height: 76px; width: min(1260px, calc(100% - 64px)); gap: 24px; }
-.brand, .footer-brand { gap: 12px; color: var(--ink); font-size: 23px; font-weight: 700; letter-spacing: -.055em; }
-.brand::before, .footer-brand::before { content: ''; display: inline-block; width: 22px; height: 22px; border: 2px solid currentColor; border-radius: 3px; box-shadow: 5px -5px 0 -2px var(--cream), 5px -5px 0 0 currentColor; margin-inline-end: 4px; }
+.brand, .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-size: 23px; font-weight: 700; letter-spacing: -.055em; text-decoration: none; }
+.brand::before, .footer-brand::before { display: none; }
 .main-nav { gap: 8px; }
 .nav-link { min-height: 42px; padding: 10px 14px; font-weight: 500; text-decoration: none; color: var(--muted); border-radius: 10px; }
 .nav-link.active { background: #eaeef2; color: var(--blue); }
@@ -230,7 +230,7 @@ button, a { transition: background-color .18s, color .18s, border-color .18s, tr
   .site-header, .header-inner { height: 68px; }
   .site-header .header-inner { width: calc(100% - 40px); }
   .brand { font-size: 20px; }
-  .brand::before { width: 18px; height: 18px; }
+  .brand::before { display: none; }
   .site-header .main-nav { top: 68px; border-color: var(--line); background: var(--paper); }
   .site-header .main-nav .nav-link { font-size: 14px; }
   .site-header .main-nav .mobile-nav-account { background: var(--paper); border-color: var(--line); }

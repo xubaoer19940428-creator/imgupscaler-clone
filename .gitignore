@@ -130,3 +130,5 @@ exports/
 
 # Temporary design drafts
 .superdesign/tmp/
+# CocoIndex Code (ccc)
+/.cocoindex_code/

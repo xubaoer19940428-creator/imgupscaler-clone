@@ -49,13 +49,13 @@ npm start
 
 可见文案统一维护在 `messages/*.json`。服务器布局直接设置正确的 `lang` 和 `dir`，阿拉伯语使用从右向左的阅读方向，浏览器只接收当前语种的消息。`app/(en)` 是英文页面的路由分组，不会在网址中显示。
 
-上线前，在构建环境中将 `NEXT_PUBLIC_SITE_URL` 设置为项目自己的正式域名，并重新构建：
+上线前，在构建环境中将 `NEXT_PUBLIC_SITE_URL` 设置为主域名 `https://photosharp.app`，并重新构建：
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://your-domain.example pnpm run build
+NEXT_PUBLIC_SITE_URL=https://photosharp.app pnpm run build
 ```
 
-正式域名用于自引用 canonical、各语言 hreflang（含 `x-default`）、Open Graph、Twitter 分享信息和 `/sitemap.xml`。公开页面由服务器输出 WebSite、WebPage 结构化数据，非首页公开页面还提供 BreadcrumbList。站点地图包含 91 个公开页面、相互对应的语言版本，以及工具页面展示的图片地址。账户页设为 `noindex`，不进入站点地图。未设置正式域名时，本地预览不开放索引，robots 禁止抓取，站点地图为空，避免输出错误的正式网址。
+正式域名用于自引用 canonical、各语言 hreflang（含 `x-default`）、Open Graph、Twitter 分享信息和 `/sitemap.xml`。公开页面由服务器输出 WebSite、WebPage 结构化数据，非首页公开页面还提供 BreadcrumbList。站点地图包含 91 个公开页面、相互对应的语言版本，以及工具页面展示的图片地址。账户页设为 `noindex`，不进入站点地图。`photoupscale.app` 与 `photopop.app` 是部署别名，由 `proxy.ts` 返回永久跳转到 `photosharp.app`，避免重复页面被索引。未设置正式域名时，本地预览不开放索引，robots 禁止抓取，站点地图为空，避免输出错误的正式网址。
 
 营销展示图片使用 Next.js 响应式图片优化，按显示尺寸提供 WebP，并保留图片尺寸和替代文本；用户上传图片继续使用原有预览流程。生产部署需运行 Next.js 服务以提供 `/_next/image` 图片优化。ZIP 库在批量下载时加载，登录弹窗、编辑器与定价组件独立拆包，减少工具首页的初始脚本体积。
 

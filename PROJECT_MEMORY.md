@@ -770,3 +770,8 @@ npm run build
 - **修改入口**：`src/styles/11-studio.css` 是当前主题来源；`.superdesign/design-system.md` 与 README 已同步。远端 Superdesign v3 为历史稿，不能覆盖本地最新配色与圆角。
 - **继续工作时保留**：13 语言、移动端和 RTL、现有上传/处理流程与 SEO；页脚博客入口保持删除。品牌名暂沿用现有名称。
 - **验证与待办**：最新主题构建及 TypeScript 通过（108 个静态条目），已检查桌面、375px 手机端和文字对比度。未提交或部署；正式上线仍待正式域名、品牌与自有素材。下一步按用户新的具体反馈继续调整。
+
+### 2026-10-23（接入正式域名）
+- 用户提供 `photosharp.app`、`photoupscale.app`、`photopop.app`，后续部署使用这三个域名。
+- SEO 主域名定为 `https://photosharp.app`；`photoupscale.app` 和 `photopop.app` 作为别名，通过根目录 `proxy.ts` 返回 308 永久跳转，避免重复页面被索引。部署时三个域名需指向同一 Next.js 应用，并设置 `NEXT_PUBLIC_SITE_URL=https://photosharp.app`。
+- `src/lib/site-config.ts` 增加三个域名白名单，`.env.example` 与 README 更新部署说明。当前仅完成代码接入，未部署；线上域名在本次检查时均返回 Cloudflare 521，需待用户部署源站后复核 HTTPS、robots、sitemap 和真实抓取状态。
