@@ -10,6 +10,7 @@ export function proxy(request: NextRequest) {
     const destination = request.nextUrl.clone()
     destination.protocol = SITE_URL.protocol
     destination.host = SITE_URL.host
+    destination.port = SITE_URL.port
     return NextResponse.redirect(destination, 308)
   }
 
