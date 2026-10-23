@@ -23,7 +23,7 @@ button, a { transition: background-color .18s, color .18s, border-color .18s, tr
 .site-header { height: 76px; background: rgba(255,254,251,.96); border-color: var(--line); backdrop-filter: blur(12px); }
 .header-inner { height: 76px; width: min(1260px, calc(100% - 64px)); gap: 24px; }
 .brand, .footer-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-size: 23px; font-weight: 700; letter-spacing: -.055em; text-decoration: none; }
-.brand::before, .footer-brand::before { display: none; }
+.brand::before, .brand::after, .footer-brand::before, .footer-brand::after { display: none !important; content: none !important; }
 .main-nav { gap: 8px; }
 .nav-link { min-height: 42px; padding: 10px 14px; font-weight: 500; text-decoration: none; color: var(--muted); border-radius: 10px; }
 .nav-link.active { background: #eaeef2; color: var(--blue); }
@@ -136,7 +136,6 @@ button, a { transition: background-color .18s, color .18s, border-color .18s, tr
 .footer-meta { flex-direction: column; align-items: flex-start; gap: 16px; }
 .footer-meta p { color: var(--muted); font-size: 11px; }
 .footer-brand { font-size: 24px; }
-.footer-brand::before { box-shadow: 5px -5px 0 -2px #efede7, 5px -5px 0 0 currentColor; }
 .footer-links { color: var(--muted); font-size: 12px; }
 .footer-language-button { min-height: 38px; border-color: #cfcbc2; border-radius: 10px; background: transparent; color: var(--ink); }
 .footer-language-menu { background: var(--paper); border-color: var(--line); border-radius: 12px; }
@@ -230,7 +229,7 @@ button, a { transition: background-color .18s, color .18s, border-color .18s, tr
   .site-header, .header-inner { height: 68px; }
   .site-header .header-inner { width: calc(100% - 40px); }
   .brand { font-size: 20px; }
-  .brand::before { display: none; }
+  .brand::before, .brand::after { display: none !important; content: none !important; }
   .site-header .main-nav { top: 68px; border-color: var(--line); background: var(--paper); }
   .site-header .main-nav .nav-link { font-size: 14px; }
   .site-header .main-nav .mobile-nav-account { background: var(--paper); border-color: var(--line); }
