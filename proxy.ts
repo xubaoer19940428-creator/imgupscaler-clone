@@ -4,7 +4,7 @@ import { SITE_ALIASES, SITE_INDEXABLE, SITE_URL } from './src/lib/site-config'
 export function proxy(request: NextRequest) {
   if (!SITE_INDEXABLE) return NextResponse.next()
 
-  const requestHost = request.nextUrl.hostname.toLowerCase()
+  const requestHost = (request.headers.get('host') ?? request.nextUrl.hostname).split(':')[0].toLowerCase()
   const canonicalHost = SITE_URL.hostname.toLowerCase()
   if (SITE_ALIASES.includes(requestHost as (typeof SITE_ALIASES)[number]) && requestHost !== canonicalHost) {
     const destination = request.nextUrl.clone()
