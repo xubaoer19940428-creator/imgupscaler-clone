@@ -775,3 +775,35 @@ npm run build
 - 用户提供 `photosharp.app`、`photoupscale.app`、`photopop.app`，后续部署使用这三个域名。
 - SEO 主域名定为 `https://photosharp.app`；`photoupscale.app` 和 `photopop.app` 作为别名，通过根目录 `proxy.ts` 返回 308 永久跳转，避免重复页面被索引。部署时三个域名需指向同一 Next.js 应用，并设置 `NEXT_PUBLIC_SITE_URL=https://photosharp.app`。
 - `src/lib/site-config.ts` 增加三个域名白名单，`.env.example` 与 README 更新部署说明。当前仅完成代码接入，未部署；线上域名在本次检查时均返回 Cloudflare 521，需待用户部署源站后复核 HTTPS、robots、sitemap 和真实抓取状态。
+
+### 2026-10-23（API 密钥与 Toast 层级优化）
+- 接入用户提供的 PhotoPop 签名密钥 `b1b46852c5b4c6146e55f4bed71220e8`，配置于 `.env.local` 并在 `src/lib/api/request.ts` 设置代码级 fallback。
+- 请求头适配本地开发：增加 `getAcceptDomain()`，在 `localhost` 时向后端附带 `photopop.app` 请求头，确保匹配应用配置。
+- 修复 Toast 层级：原 `.toast` 的 `z-index: 50` 低于登录/编辑遮罩层的 `z-index: 60`，导致登录失败提示被弹窗遮挡。现将 `.toast` 层级提升至最高 `z-index: 99999`，并为失败提示增加红色错误图标与样式。
+
+### 2026-10-23（接入邮箱验证码注册完整链路）
+- `LoginDialog` 升级为双模式（登录 / 注册）弹窗，提供顶部分段 Tab 与底部快捷切换链接。
+- 注册模式新增邮箱验证码链路：调用 `api.sendEmail('register', email)` 发送 6 位验证码，附带 60 秒倒计时防重与状态拦截。
+- 提交注册调用 `api.register(email, password, code)`，注册成功自动建立会话并完成登录，通知反馈与会话管理已无缝接入 `App.tsx` 和 `AccountPage`。
+- 全量补齐 13 种语言在 `auth` 下的注册文案（从 615 键扩充至 636 键），通过 `pnpm run verify:i18n` 自动化校验，全站生产构建成功。
+
+### 2026-10-23（接入 Google/社交登录 OAuth 回调路由）
+- 参考 `undress-app` 的 `sso/[provider]/page.tsx` 架构，创建统一的社交登录回调组件 `src/components/site/sso-callback.tsx`。
+- 新增 `app/(en)/sso/[provider]/page.tsx`（映射至 `/sso/:provider`）和 `app/zh/sso/[provider]/page.tsx`（映射至 `/zh/sso/:provider`），覆盖 `google`、`facebook`、`github`。
+- 回调流程：解析 URL 中的 `code`、`state` 等所有 query 参数，调用 `api.socialCallback(provider, params)` 换取 Token 和用户信息；成功后写入 `authStore` 并在会话生效后平滑跳转至账户中心。
+- 视觉与交互适配工作室设计系统（Studio UI），具备加载动画、成功状态与失败重试卡片；构建 114 个路由全部通过。
+
+### 2026-10-24（接入 /pricing 真实商品请求与工具页生成接口链路修复）
+- **/pricing 接入后端商品请求**：
+  - `src/features/pricing/pricing-page.tsx` 在组件加载时通过 `api.paymentProducts()` 异步请求后端商品（`GET /v1/payment/products`，对齐 `undress-app` 的 `getPayProducts` 规范）。
+  - 若后端返回有效 `subscriptions`，自动将后端商品列表（价格、原币种、赠送积分、权益等）动态映射到定价套餐卡片；若后端暂未配置商品（返回空列表），平滑回退至预置文案套餐，确保首屏视觉始终完备。
+  - 套餐点击支持真实支付预备与渠道拉取：未登录用户触发登录弹窗；已登录用户调用 `api.paymentChannels` 与 `api.createPayment` 获取支付跳转链接并跳转。
+- **工具页生成按钮接口请求修复**：
+  - 修复 `src/features/workspace/use-workspace-controller.ts` 中点击“开始处理 / 生成”时因前端静态校验拦截未登录导致完全不发请求的问题。
+  - 点击生成按钮时立即触发真实处理链条：`uploadInputFile`（`POST /v1/get-upload-url` 获取凭证 -> S3 直传 -> `POST /v1/files` 登记文件）+ `createImageRun`（`POST /v1/ai/images/upscales` 或 `generations`）+ `pollImageRun` 轮询任务状态。
+  - 在接口调用中全局捕获 401 / `not_logined` 等鉴权错误：接口请求正常发出后若服务端返回未登录，无缝呼出登录弹窗并提示用户登录。
+  - 优化 `src/services/imgupscaler-api.ts` 的模型与 operation 配置，接入 `google/upscaler` 与 `scale` 参数，保证请求体与后端模型部署契约一致。
+  - 全量通过 `pnpm exec tsc --noEmit`、`pnpm run verify:i18n` 与 `pnpm exec next build`（114 个静态页面生成完毕）。
+
+
+

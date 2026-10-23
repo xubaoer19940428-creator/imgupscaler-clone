@@ -15,7 +15,7 @@ import { useWorkspaceController } from '@/src/features/workspace/use-workspace-c
 import { Hero } from '@/src/features/landing/hero'
 import { FaqSection } from '@/src/features/landing/faq'
 import { FeatureSection, UseCasesSection, WorkflowSection } from '@/src/features/landing/sections'
-import { api } from '@/src/lib/api/client'
+import { api, ApiError } from '@/src/lib/api/client'
 import { useAuthStore } from '@/src/stores/auth-store'
 
 const LoginDialog = dynamic(() => import('@/src/components/site/login-dialog').then((module) => module.LoginDialog))
@@ -62,8 +62,20 @@ export default function App() {
           setSession(session.token, session.user_info)
           setLoginOpen(false)
           setToast({ title: authT('submitted') })
-        } catch {
+        } catch (error) {
           setToast({ title: authT('loginFailed'), detail: authT('loginFailedDetail') })
+          throw error
+        }
+      }} onRegister={async (email, password, code) => {
+        try {
+          const session = await api.register(email, password, code)
+          setSession(session.token, session.user_info)
+          setLoginOpen(false)
+          setToast({ title: authT('registered') })
+        } catch (error) {
+          const msg = error instanceof ApiError && error.message ? error.message : authT('registerFailedDetail')
+          setToast({ title: authT('registerFailed'), detail: msg })
+          throw error
         }
       }} />}
       {toast && <Toast message={toast} />}
@@ -76,5 +88,16 @@ function LandingPage({ route, controller, onUseCase }: { route: Exclude<Route, '
 }
 
 function Toast({ message }: { message: { title: string; detail?: string } }) {
-  return <div className="toast" role="status" aria-live="polite"><div className="toast-icon"><Icon name="check" /></div><div><strong>{message.title}</strong>{message.detail && <span>{message.detail}</span>}</div></div>
+  const isError = /failed|error|失败/i.test(`${message.title} ${message.detail || ''}`)
+  return (
+    <div className={`toast ${isError ? 'toast-error' : ''}`} role="status" aria-live="polite">
+      <div className="toast-icon">
+        <Icon name={isError ? 'close' : 'check'} />
+      </div>
+      <div>
+        <strong>{message.title}</strong>
+        {message.detail && <span>{message.detail}</span>}
+      </div>
+    </div>
+  )
 }

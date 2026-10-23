@@ -21,12 +21,18 @@ export type ImageApiRequest = {
 type ImageRouteConfig = { operation: AiMediaOperation; model: string | undefined }
 const terminalStatuses = new Set(['completed', 'failed', 'cancelled'])
 const routeConfig: Record<Exclude<Route, 'pricing'>, ImageRouteConfig> = {
-  // nano-banana-pro is registered for the canonical `generations` operation
-  // in ai_models.csv/ai_model_deployments.csv. Keep both image tools aligned
-  // with that deployment instead of sending an unsupported `upscales` run.
-  home: { operation: 'generations', model: 'google/nano-banana-pro' },
-  enhancer: { operation: 'generations', model: 'google/nano-banana-pro' },
-  reimagine: { operation: operationFromEnv(process.env.NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_OPERATION, 'transforms'), model: process.env.NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_MODEL },
+  home: {
+    operation: operationFromEnv(process.env.NEXT_PUBLIC_IMGUPSCALER_UPSCALE_OPERATION, 'upscales'),
+    model: process.env.NEXT_PUBLIC_IMGUPSCALER_UPSCALE_MODEL || 'google/upscaler',
+  },
+  enhancer: {
+    operation: operationFromEnv(process.env.NEXT_PUBLIC_IMGUPSCALER_ENHANCER_OPERATION, 'upscales'),
+    model: process.env.NEXT_PUBLIC_IMGUPSCALER_ENHANCER_MODEL || 'topazlabs/image-upscale',
+  },
+  reimagine: {
+    operation: operationFromEnv(process.env.NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_OPERATION, 'generations'),
+    model: process.env.NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_MODEL || 'google/nano-banana-pro',
+  },
 }
 
 const MEDIA_OPERATIONS: ReadonlySet<string> = new Set(['generations', 'variations', 'edits', 'upscales', 'transforms'])
@@ -39,15 +45,16 @@ function operationFromEnv(value: string | undefined, fallback: AiMediaOperation)
 export async function createImageResult(input: ImageApiRequest) {
   const config = routeConfig[input.route]
   const inputUrl = await uploadInputFile(input.file, input.signal)
+  const scaleNum = Number(input.scale) || 2
   const body: AiMediaRequest = {
-    // Reimagine keeps its existing configurable model; Upscale and Enhance
-    // are pinned in routeConfig to the CSV-backed nano-banana deployment.
-    model: config.model || 'openai/gpt-image-1',
+    model: config.model || 'google/upscaler',
     stream: false,
     n: 1,
     response_format: 'url',
     output_format: 'jpeg',
     input_references: [{ type: 'image_url', image_url: { url: inputUrl } }],
+    image_url: inputUrl,
+    scale: scaleNum,
     resolution: resolutionFor(input.scale),
   }
   if (input.prompt?.trim()) body.prompt = input.prompt.trim()

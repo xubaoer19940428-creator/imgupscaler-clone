@@ -82,16 +82,21 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
     setToast({ title: t('toast.cancelled'), detail: t('toast.cancelledDetail') })
   }
 
+  useEffect(() => {
+    useAuthStore.getState().hydrate()
+  }, [])
+
   const process = async (targetIds?: string[]) => {
     if (route === 'pricing' || !workspace.items.length || workspace.processing) return
-    if (!authToken) {
-      setToast({ title: t('authRequired'), detail: t('authRequiredDetail') })
-      onRequireAuth?.()
-      return
-    }
-    const ids = new Set(targetIds?.length
-      ? targetIds
-      : workspace.items.filter((item) => item.status === 'ready' || item.status === 'error').map((item) => item.id))
+
+    // Ensure session is hydrated from storage
+    useAuthStore.getState().hydrate()
+
+    const ids = new Set(
+      targetIds?.length
+        ? targetIds
+        : workspace.items.map((item) => item.id),
+    )
     const targets = workspace.items.filter((item) => ids.has(item.id))
     if (!targets.length) return
     const runId = ++runRef.current
@@ -109,14 +114,31 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
       if (!mountedRef.current || runRef.current !== runId) return
       let resultUrl: string | undefined
       try {
-        resultUrl = await createImageResult({ file: item.file, route, scale: workspace.scale, creativity: workspace.creativity, similarity: workspace.similarity, prompt: workspace.prompt.trim() || t(`apiPrompt.${route}`), signal: abortController.signal })
+        resultUrl = await createImageResult({
+          file: item.file,
+          route,
+          scale: workspace.scale,
+          creativity: workspace.creativity,
+          similarity: workspace.similarity,
+          prompt: workspace.prompt.trim() || t(`apiPrompt.${route}`),
+          signal: abortController.signal,
+        })
         if (!mountedRef.current || runRef.current !== runId) {
           URL.revokeObjectURL(resultUrl)
           return
         }
         results.push({ ...item, resultUrl, resultFormat: 'jpeg', status: 'done' })
-      } catch (error) {
+      } catch (error: any) {
         if (!mountedRef.current || runRef.current !== runId) return
+        console.error('Workspace task execution error:', error)
+        const isAuth =
+          error?.status === 401 ||
+          error?.code === 20001 ||
+          /not_logined|authentication_failed|unauthorized|auth_required/i.test(error?.message || '')
+        if (isAuth) {
+          setToast({ title: t('authRequired'), detail: t('authRequiredDetail') })
+          onRequireAuth?.()
+        }
         results.push({ ...item, status: 'error', error: workspaceErrorMessage(error, t) })
       }
       store.setProgress(workspaceRoute, { completed: results.length, total: targets.length })

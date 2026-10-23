@@ -192,12 +192,24 @@ button, a { transition: background-color .18s, color .18s, border-color .18s, tr
 .editor-close { background: #f0eee8; color: var(--ink); border-radius: 10px; }
 .editor-subtitle, .login-dialog label, .login-divider { color: var(--muted); }
 .google-login-button { border-color: var(--line); border-radius: 10px; }
+.login-tabs { display: flex; gap: 4px; padding: 4px; background: #eeede7; border-radius: 12px; }
+.login-tab { flex: 1; padding: 8px 12px; font-size: 13px; font-weight: 500; border-radius: 9px; border: 0; background: transparent; color: var(--muted); cursor: pointer; transition: all .15s ease; }
+.login-tab.active { background: var(--paper); color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,.08); font-weight: 600; }
+.code-input-group { display: flex; gap: 8px; align-items: center; }
+.code-input-group input { flex: 1; }
+.send-code-button { flex-shrink: 0; min-width: 96px; height: 38px; padding: 0 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink); font-size: 12px; font-weight: 600; cursor: pointer; transition: all .15s ease; white-space: nowrap; }
+.send-code-button:hover:not(:disabled) { background: #f0eee8; border-color: #8995a1; }
+.send-code-button:disabled { opacity: 0.55; cursor: not-allowed; }
+.login-switch-row { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: var(--muted); margin-top: 4px; }
+.login-switch-row button { background: none; border: none; padding: 0; color: var(--ink); font-size: 12px; font-weight: 600; text-decoration: underline; cursor: pointer; }
+.login-notice { padding: 9px 12px; border-radius: 10px; font-size: 12px; background: #edf7ed; color: #1e4620; border: 1px solid rgba(46,125,50,0.2); }
+.login-error { padding: 9px 12px; border-radius: 10px; font-size: 12px; background: #fdeded; color: #5f2120; border: 1px solid rgba(211,47,47,0.2); }
 .account-popover { right: auto; inset-inline-end: 0; background: var(--paper); border-color: var(--line); border-radius: 14px; }
 .account-popover-profile, .account-popover-summary, .mobile-account-profile, .mobile-account-summary { border-color: var(--line); background: #f5f3ee; }
-.account-popover-links a:hover, .account-popover-links button:hover { background: #f0eee8; }
-.toast { border-color: var(--line); border-radius: 14px; background: var(--paper); }
+.toast { position: fixed; right: 23px; bottom: 23px; z-index: 99999; border-color: var(--line); border-radius: 14px; background: var(--paper); box-shadow: 0 16px 48px rgba(0,0,0,.18); }
 .toast-icon { color: var(--ink); background: #eeede7; }
-.reveal { animation-duration: .5s; }
+.toast.toast-error { border-color: rgba(220, 38, 38, 0.35); }
+.toast.toast-error .toast-icon { color: #fff; background: #dc2626; }
 @media (max-width: 1100px) {
   .header-inner { gap: 16px; }
   .nav-link { padding-inline: 10px; font-size: 12px; }
@@ -296,6 +308,16 @@ button, a { transition: background-color .18s, color .18s, border-color .18s, tr
   .header-login-button { display: none; }
   .hero-copy h1 { letter-spacing: -.04em; }
 }
+.sso-callback-shell { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--canvas, #f7f6f2); }
+.sso-callback-card { display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(440px, 100%); padding: 44px 32px; border: 1px solid var(--line, #e2dfd8); border-radius: 20px; background: var(--paper, #fffefb); box-shadow: 0 24px 80px rgba(37, 42, 48, 0.08); text-align: center; }
+.sso-callback-card h2 { font-size: 20px; font-weight: 600; color: var(--ink, #252a30); margin: 0; }
+.sso-callback-card p { font-size: 14px; color: var(--muted, #6b6b66); margin: 0; line-height: 1.5; }
+.sso-error-detail { padding: 8px 14px; border-radius: 10px; background: #fdeded; color: #5f2120; border: 1px solid rgba(211, 47, 47, 0.2); font-size: 13px !important; word-break: break-word; }
+.sso-spinner { width: 44px; height: 44px; border: 3px solid #e2dfd8; border-top-color: var(--blue, #293b50); border-radius: 50%; animation: sso-spin 0.8s linear infinite; margin-bottom: 6px; }
+@keyframes sso-spin { to { transform: rotate(360deg); } }
+.sso-status-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; margin-bottom: 6px; }
+.sso-status-icon.success { background: #e8f5e9; color: #2e7d32; }
+.sso-status-icon.error { background: #fdeded; color: #dc2626; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }

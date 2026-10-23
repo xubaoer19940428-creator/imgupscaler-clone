@@ -1,6 +1,7 @@
 import {
   buildSignedUrl,
   get,
+  getAcceptDomain,
   getAuthToken,
   post,
   type ApiRequestConfig,
@@ -145,7 +146,7 @@ export function openRunStream(
 
   if (typeof window !== "undefined") {
     // SSE 也要携带与 Axios 请求相同的域名、语言和时区上下文。
-    headers.set("accept-domain", window.location.host);
+    headers.set("accept-domain", getAcceptDomain());
     headers.set(
       "lang",
       document.documentElement.lang?.toLowerCase().startsWith("zh")

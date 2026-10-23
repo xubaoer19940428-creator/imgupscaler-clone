@@ -8,7 +8,7 @@ import type { Route } from '@/src/lib/types'
 import { routeToPath } from '@/src/lib/locale-routing'
 import type { Locale } from '@/src/lib/locale'
 import type { ApiUser } from '@/src/lib/api/types'
-import { api } from '@/src/lib/api/client'
+import { api, ApiError } from '@/src/lib/api/client'
 import { useAuthStore } from '@/src/stores/auth-store'
 import { SiteFooter } from './site-footer'
 import { SiteHeader } from './site-header'
@@ -51,13 +51,20 @@ export function AccountPage({ locale: providedLocale }: { locale?: Locale } = {}
     setMessage(authT('submitted'))
   }
 
+  const register = async (email: string, password: string, code: string) => {
+    const session = await api.register(email, password, code)
+    auth.setSession(session.token, session.user_info)
+    setLoginOpen(false)
+    setMessage(authT('registered'))
+  }
+
   const signInWithGoogle = async () => {
     const { redirect_url } = await api.socialLogin('google')
     window.location.assign(redirect_url)
   }
 
   const signOut = async () => { await api.logout().catch(() => undefined); auth.clearSession() }
-  return <div className="app-shell"><SiteHeader onLogin={() => setLoginOpen(true)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell">{loading ? <p className="account-feedback">{t('loading')}</p> : !auth.user ? <section className="account-empty"><span className="kicker">{t('member')}</span><h1>{t('title')}</h1><p>{t('signInPrompt')}</p><button className="dark-button" type="button" onClick={() => setLoginOpen(true)}>{t('signIn')} <Icon name="arrow" /></button></section> : <><AccountHeading t={t} user={auth.user} /><div className="account-layout"><AccountTabs tab={tab} t={t} onChange={setTab} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel t={t} user={auth.user} onNotify={setMessage} onUser={auth.setUser} onSignOut={signOut} />}{tab === 'billing' && <BillingPanel t={t} locale={locale} user={auth.user} />}{tab === 'security' && <SecurityPanel t={t} onNotify={setMessage} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></>}</div></main><SiteFooter locale={locale} />{loginOpen && <LoginDialog onClose={() => setLoginOpen(false)} onGoogle={signInWithGoogle} onSubmit={async (email, password) => { try { await signIn(email, password) } catch { setMessage(authT('loginFailedDetail')) } }} />}</div>
+  return <div className="app-shell"><SiteHeader onLogin={() => setLoginOpen(true)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell">{loading ? <p className="account-feedback">{t('loading')}</p> : !auth.user ? <section className="account-empty"><span className="kicker">{t('member')}</span><h1>{t('title')}</h1><p>{t('signInPrompt')}</p><button className="dark-button" type="button" onClick={() => setLoginOpen(true)}>{t('signIn')} <Icon name="arrow" /></button></section> : <><AccountHeading t={t} user={auth.user} /><div className="account-layout"><AccountTabs tab={tab} t={t} onChange={setTab} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel t={t} user={auth.user} onNotify={setMessage} onUser={auth.setUser} onSignOut={signOut} />}{tab === 'billing' && <BillingPanel t={t} locale={locale} user={auth.user} />}{tab === 'security' && <SecurityPanel t={t} onNotify={setMessage} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></>}</div></main><SiteFooter locale={locale} />{loginOpen && <LoginDialog onClose={() => setLoginOpen(false)} onGoogle={signInWithGoogle} onSubmit={async (email, password) => { try { await signIn(email, password) } catch (err) { setMessage(authT('loginFailedDetail')); throw err; } }} onRegister={async (email, password, code) => { try { await register(email, password, code) } catch (err) { const msg = err instanceof ApiError && err.message ? err.message : authT('registerFailedDetail'); setMessage(msg); throw err; } }} />}</div>
 }
 
 function AccountHeading({ t, user }: { t: ReturnType<typeof useTranslations<'account'>>; user: ApiUser }) {

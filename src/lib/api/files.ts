@@ -137,14 +137,18 @@ export async function uploadInputFile(file: File, signal?: AbortSignal) {
   const ticket = await uploadTicket(file.name, file.type, signal);
   const fileUrl = await uploadToTicket(ticket, file, signal);
 
-  await createFile({
-    file_name: file.name,
-    file_url: fileUrl,
-    file_size: file.size,
-    mime_type: file.type,
-    file_type: "image",
-    purpose: "ai_input",
-  });
+  try {
+    await createFile({
+      file_name: file.name,
+      file_url: fileUrl || ticket.cdn_url,
+      file_size: file.size,
+      mime_type: file.type,
+      file_type: "image",
+      purpose: "ai_input",
+    });
+  } catch (err) {
+    console.warn("createFile warning:", err);
+  }
 
-  return fileUrl;
+  return fileUrl || ticket.cdn_url;
 }

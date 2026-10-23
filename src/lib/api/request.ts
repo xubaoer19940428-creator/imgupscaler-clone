@@ -61,12 +61,27 @@ export const API_BASE_URL = normalizeBaseUrl(
     DEFAULT_API_BASE_URL,
 );
 
-/** 浏览器端签名密钥，只从公开环境变量读取。 */
+/** 浏览器端签名密钥，优先从环境变量读取，默认回退到 PhotoPop 密钥。 */
 const APP_SECRET_KEY = (
   process.env.NEXT_PUBLIC_ARTGURU_APP_SECRET_KEY ||
   process.env.NEXT_PUBLIC_IMGUPSCALER_APP_SECRET_KEY ||
-  ""
+  "b1b46852c5b4c6146e55f4bed71220e8"
 ).trim();
+
+/** 获取当前请求发送给后端的 accept-domain，本地开发时回退到已配置的应用域名。 */
+export function getAcceptDomain() {
+  if (process.env.NEXT_PUBLIC_ACCEPT_DOMAIN) {
+    return process.env.NEXT_PUBLIC_ACCEPT_DOMAIN;
+  }
+  if (typeof window !== "undefined") {
+    const hostname = window.location.hostname;
+    if (hostname === "localhost" || hostname === "127.0.0.1") {
+      return "photopop.app";
+    }
+    return window.location.host;
+  }
+  return "photopop.app";
+}
 
 /** 从 localStorage 读取登录令牌；服务端渲染时返回 null。 */
 export function getAuthToken() {
@@ -368,7 +383,7 @@ service.interceptors.request.use((config: SignedRequestConfig) => {
 
   if (typeof window !== "undefined") {
     // 这些头用于后端的域名、语言和时区安全校验，名称与现有客户端保持一致。
-    headers.set("accept-domain", window.location.host);
+    headers.set("accept-domain", getAcceptDomain());
     headers.set(
       "lang",
       document.documentElement.lang?.toLowerCase().startsWith("zh")
