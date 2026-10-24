@@ -16,7 +16,7 @@ export function PageStructuredData({ locale, page }: { locale: Locale; page: Met
     '@type': 'BreadcrumbList',
     '@id': `${url}#breadcrumb`,
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Img.Upscaler', item: home },
+      { '@type': 'ListItem', position: 1, name: 'Photosharp', item: home },
       { '@type': 'ListItem', position: 2, name: title.split(' | ')[0], item: url },
     ],
   } : null

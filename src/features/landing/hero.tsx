@@ -7,6 +7,7 @@ import type { WorkspaceController } from '@/src/features/workspace/use-workspace
 import { getLandingContent, renderLandingTitle } from './data'
 import { CompareCard } from './sections'
 import { HERO_IMAGES } from '@/src/lib/landing-images'
+import { Icon } from '@/src/components/ui/icons'
 
 /**
  * Hero 只组合首屏文案和工作区，具体上传/处理状态由 workspace feature 管理。
@@ -15,12 +16,20 @@ import { HERO_IMAGES } from '@/src/lib/landing-images'
 export function Hero({ route, controller }: { route: Exclude<Route, 'pricing'>; controller: WorkspaceController }) {
   const content = getLandingContent(useMessages()).heroContent[route]
   const t = useTranslations('landing.comparison')
+  const workspaceT = useTranslations('workspace')
   const artwork = HERO_IMAGES[route]
   const hasFiles = controller.items.length > 0
   return <section className="hero-section">
     <div className="hero-copy reveal">
       <div className="hero-heading"><div className="eyebrow"><span className="eyebrow-dot" />{content.eyebrow}</div><h1>{renderLandingTitle(content.title)}</h1></div>
-      <p>{content.description}</p>
+      <div className="hero-copy-side">
+        <p>{content.description}</p>
+        <div className="hero-proof-row" aria-label={workspaceT('label')}>
+          <span><Icon name="spark" />2K / 4K {workspaceT('output')}</span>
+          <span><Icon name="check" />{workspaceT('formats')}</span>
+          <span><Icon name="lock" />{workspaceT('local')}</span>
+        </div>
+      </div>
     </div>
     <div className={`studio-workbench${hasFiles ? ' has-files' : ''}`}>
       <WorkspacePanel route={route} controller={controller} />

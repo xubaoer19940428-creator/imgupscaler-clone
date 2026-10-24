@@ -43,7 +43,7 @@ export function pageMetadata(locale: Locale, page: MetadataPage): Metadata {
     },
     robots: { index: SITE_INDEXABLE && publicPage, follow: true, ...(publicPage ? { 'max-image-preview': 'large' as const } : {}) },
     openGraph: {
-      type: 'website', siteName: 'Img.Upscaler', title, description, url,
+      type: 'website', siteName: 'Photosharp', title, description, url,
       images: [{ url: image, alt: title }],
     },
     twitter: { card: 'summary_large_image', title, description, images: [image] },

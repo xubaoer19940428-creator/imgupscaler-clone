@@ -1,4 +1,4 @@
-# Img.Upscaler 图片工作室
+# Photosharp 图片工作室
 
 这是一个基于 Next.js App Router + React + TypeScript 的在线图片工作室。界面采用暖白、石灰灰、墨黑与低饱和墨蓝，首屏并排呈现上传工作区和效果对比，搭配图片用例、能力介绍、三步流程与 FAQ。定价、账户、法律页和弹窗共用同一视觉风格；工作区和账户数据通过 Mixu API 使用真实服务。
 
@@ -6,8 +6,8 @@
 
 项目早期版本参考以下内容，当前界面已重新设计：
 
-- 线上中文站：[Img.Upscaler 中文版](https://imgupscaler.com/zh)
-- 线上主站：[Img.Upscaler](https://imgupscaler.com/)
+- 线上中文站：[Photosharp 中文版](https://photosharp.app/zh)
+- 线上主站：[Photosharp](https://photosharp.app/)
 - 本地页面参考稿：`文稿/AI _ ImgUpscaler.html`
 
 本项目不包含参考站的后端服务、AI 模型、账户系统或支付系统。品牌名称暂沿用现有名称，`public/reference/` 中的图片属于当前开发占位素材，正式品牌和自有展示素材仍待替换。
@@ -83,11 +83,17 @@ SEO 实现依据 [Google 多语言页面指南](https://developers.google.com/se
 
 ```bash
 NEXT_PUBLIC_ARTGURU_API_BASE_URL=https://api.mixu.ai/v1
+NEXT_PUBLIC_ACCEPT_DOMAIN=photopop.app
 # 登录后由前端写入 imgupscaler-token；兼容已有 artguru-token
-NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_MODEL=openai/gpt-image-1
+NEXT_PUBLIC_IMGUPSCALER_UPSCALE_MODEL=google/upscaler
+NEXT_PUBLIC_IMGUPSCALER_UPSCALE_OPERATION=upscales
+NEXT_PUBLIC_IMGUPSCALER_ENHANCER_MODEL=topazlabs/image-upscale
+NEXT_PUBLIC_IMGUPSCALER_ENHANCER_OPERATION=upscales
+NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_MODEL=google/nano-banana-pro
+NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_OPERATION=generations
 ```
 
-适配层使用 `POST /v1/get-upload-url` 上传源图并登记 `/v1/files`，随后调用 `POST /v1/ai/images/{operation}`（Upscale 和 Enhance 使用 `google/nano-banana-pro` 的 `generations`，Reimagine 使用 `transforms`），再轮询 `GET /v1/ai/runs/{runId}`；取消任务调用对应的 `/cancel` 路径。实现位于 `src/services/imgupscaler-api.ts`。
+适配层使用 `POST /v1/get-upload-url` 上传源图并登记 `/v1/files`，随后调用 `POST /v1/ai/images/{operation}`（Upscale 使用 `google/upscaler`，Enhance 使用 `topazlabs/image-upscale` 的 `upscales`，Reimagine 使用 `google/nano-banana-pro` 的 `generations`），再轮询 `GET /v1/ai/runs/{runId}`；取消任务调用对应的 `/cancel` 路径。实现位于 `src/services/imgupscaler-api.ts`。
 
 ## 接后端的位置
 

@@ -9,13 +9,18 @@ import { Button } from '@/src/components/ui/button'
 import { Card } from '@/src/components/ui/card'
 import { Icon } from '@/src/components/ui/icons'
 import { Textarea } from '@/src/components/ui/textarea'
+import { formatBytes } from '@/src/lib/utils'
 import type { WorkspaceController } from './use-workspace-controller'
+import { ReferenceWorkflow } from './reference-workflow'
 
 
 export function WorkspacePanel({ route, controller }: { route: Route; controller: WorkspaceController }) {
+  if (route === 'home' || route === 'enhancer') return <ReferenceWorkflow route={route} controller={controller} />
   const t = useTranslations('workspace')
   const hasDone = controller.items.some((item) => item.status === 'done')
-  const options = route === 'reimagine' ? ['1', '2'] : route === 'enhancer' ? ['1', '2', '4'] : ['2', '4']
+  // The active upscaler deployments accept 2x and 4x. Exposing 1K here sent
+  // an invalid `scale: 1` to Topaz, whose schema only allows 2/4/6.
+  const options = route === 'reimagine' ? ['1', '2'] : ['2', '4']
   // The input is intentionally hidden: both click and drag/drop use the same
   // controller path, so validation and object-URL cleanup cannot diverge.
   const onInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -57,13 +62,133 @@ function EmptyDropZone({ t, onPick }: { route?: Route; t: ReturnType<typeof useT
 
 function FileGrid({ controller }: { controller: WorkspaceController }) {
   const t = useTranslations('workspace')
-  return <div className="file-grid">{controller.items.map((item) => <div className={`file-thumb${item.status === 'error' ? ' has-error' : ''}`} key={item.id}><img src={item.resultUrl ?? item.url} alt={item.file.name} /><span className={`thumb-status ${item.status}`}>{t(`status.${item.status}`)}</span>{item.error && <span className="thumb-error">{item.error}</span>}{!controller.processing && <button className="thumb-remove" onClick={() => controller.removeItem(item.id)} aria-label={t('remove')}>×</button>}{item.status === 'error' && <button className="thumb-retry" onClick={() => controller.process([item.id])}>{t('retry')}</button>}{item.status === 'done' && <div className="thumb-actions"><button onClick={() => controller.downloadItem(item.id)}>{t('download')}</button>{FEATURE_FLAGS.enableImageEditor && <button onClick={() => controller.openEditor(item.id)}>{t('edit')}</button>}<button onClick={() => controller.process([item.id])}>{t('redo')}</button></div>}</div>)}<button className="add-more" onClick={() => controller.inputRef.current?.click()} disabled={controller.processing}><Icon name="upload" />{t('addMore')}</button></div>
+  return (
+    <div className="file-grid">
+      {controller.items.map((item) => {
+        const src = item.resultUrl ?? item.url
+        return (
+          <div
+            className={`file-thumb${item.status === 'error' ? ' has-error' : ''}${item.status === 'done' ? ' is-done' : ''}${item.status === 'processing' ? ' is-processing' : ''}`}
+            key={item.id}
+          >
+            <div className="file-thumb-media">
+              <img src={src} alt="" aria-hidden="true" className="file-thumb-bg" />
+              <div className="file-thumb-backdrop-mask" />
+              <img src={src} alt={item.file.name} className="file-thumb-fg" />
+            </div>
 
+            <div className="thumb-top-bar">
+              <span className={`thumb-status-badge ${item.status}`}>
+                {item.status === 'processing' && <span className="thumb-pulse-dot" />}
+                {item.status === 'done' && <Icon name="check" className="thumb-check-icon" />}
+                {t(`status.${item.status}`)}
+              </span>
+              {!controller.processing && (
+                <button
+                  type="button"
+                  className="thumb-remove-btn"
+                  onClick={(e) => { e.stopPropagation(); controller.removeItem(item.id) }}
+                  aria-label={t('remove')}
+                  title={t('remove')}
+                >
+                  <Icon name="close" />
+                </button>
+              )}
+            </div>
+
+            <div className="thumb-meta-bar">
+              <div className="thumb-file-info">
+                <span className="thumb-file-name" title={item.file.name}>{item.file.name}</span>
+                <span className="thumb-file-size">{formatBytes(item.file.size)}</span>
+              </div>
+            </div>
+
+            {item.error && <span className="thumb-error-banner">{item.error}</span>}
+
+            {item.status === 'done' && (
+              <div className="thumb-action-overlay">
+                <button
+                  type="button"
+                  className="thumb-action-btn primary"
+                  onClick={(e) => { e.stopPropagation(); controller.downloadItem(item.id) }}
+                >
+                  <Icon name="download" />
+                  <span>{t('download')}</span>
+                </button>
+                {FEATURE_FLAGS.enableImageEditor && (
+                  <button
+                    type="button"
+                    className="thumb-action-btn"
+                    onClick={(e) => { e.stopPropagation(); controller.openEditor(item.id) }}
+                    title={t('edit')}
+                  >
+                    <Icon name="crop" />
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="thumb-action-btn"
+                  onClick={(e) => { e.stopPropagation(); controller.process([item.id]) }}
+                  title={t('redo')}
+                >
+                  <Icon name="rotate" />
+                </button>
+              </div>
+            )}
+
+            {item.status === 'error' && (
+              <div className="thumb-action-overlay error">
+                <button
+                  type="button"
+                  className="thumb-action-btn retry"
+                  onClick={(e) => { e.stopPropagation(); controller.process([item.id]) }}
+                >
+                  <Icon name="rotate" />
+                  <span>{t('retry')}</span>
+                </button>
+              </div>
+            )}
+          </div>
+        )
+      })}
+
+      <button
+        type="button"
+        className="add-more-card"
+        onClick={() => controller.inputRef.current?.click()}
+        disabled={controller.processing}
+      >
+        <div className="add-more-icon">
+          <Icon name="upload" />
+        </div>
+        <span className="add-more-title">{t('addMore')}</span>
+        <span className="add-more-hint">JPG / PNG / WebP / AVIF</span>
+      </button>
+    </div>
+  )
 }
 
 function ReimaginePreview({ item }: { item: FileItem }) {
   const t = useTranslations('workspace')
-  return <div className="reimagine-preview"><div className="reimagine-preview-inner"><img src={item.resultUrl ?? item.url} alt={item.file.name} /></div>{item.status === 'processing' && <span className="reimagine-preview-status">{t('processing')}</span>}{item.status === 'error' && item.error && <span className="reimagine-preview-error">{item.error}</span>}</div>
+  const src = item.resultUrl ?? item.url
+  return (
+    <div className="reimagine-preview">
+      <div className="reimagine-preview-inner">
+        <img src={src} alt="" aria-hidden="true" className="reimagine-preview-bg" />
+        <div className="reimagine-preview-mask" />
+        <img src={src} alt={item.file.name} className="reimagine-preview-fg" />
+      </div>
+      {item.status === 'processing' && (
+        <span className="reimagine-preview-status">
+          <span className="thumb-pulse-dot" />
+          {t('processing')}
+        </span>
+      )}
+      {item.status === 'error' && item.error && (
+        <span className="reimagine-preview-error">{item.error}</span>
+      )}
+    </div>
+  )
 }
 
 function ReimagineControls({ controller }: { controller: WorkspaceController }) {

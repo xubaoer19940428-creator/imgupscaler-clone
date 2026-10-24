@@ -46,22 +46,28 @@ export async function createImageResult(input: ImageApiRequest) {
   const config = routeConfig[input.route]
   const inputUrl = await uploadInputFile(input.file, input.signal)
   const scaleNum = Number(input.scale) || 2
-  const body: AiMediaRequest = {
-    model: config.model || 'google/upscaler',
-    stream: false,
-    n: 1,
-    response_format: 'url',
-    output_format: 'jpeg',
-    input_references: [{ type: 'image_url', image_url: { url: inputUrl } }],
-    image_url: inputUrl,
-    scale: scaleNum,
-    resolution: resolutionFor(input.scale),
-  }
-  if (input.prompt?.trim()) body.prompt = input.prompt.trim()
-  if (input.route === 'reimagine') {
-    body.creativity = input.creativity
-    body.similarity = input.similarity
-  }
+  const body: AiMediaRequest = input.route === 'reimagine'
+    ? {
+        model: config.model || 'google/nano-banana-pro',
+        stream: false,
+        n: 1,
+        response_format: 'url',
+        output_format: 'jpeg',
+        input_references: [{ type: 'image_url', image_url: { url: inputUrl } }],
+        resolution: resolutionFor(input.scale),
+        ...(input.prompt?.trim() ? { prompt: input.prompt.trim() } : {}),
+        creativity: input.creativity,
+        similarity: input.similarity,
+      }
+    : {
+        // The upscaler model schemas only accept image_url and scale. Keep
+        // generation-only fields out of this request so the AI router can
+        // select the configured upscales deployment deterministically.
+        model: config.model || 'google/upscaler',
+        stream: false,
+        image_url: inputUrl,
+        scale: scaleNum,
+      }
   const run = await createImageRun(config.operation, body, idempotencyKey(input.route), input.signal)
   return pollImageRun(run.run_id, input.signal)
 }

@@ -455,29 +455,29 @@
       [
         "Eleonore Lefaix",
         "Herausgeber von Siecledigital.fr",
-        "ImgUpscaler vereinfacht die Hochskalierung von Bildern und unterstützt die Stapelverarbeitung, sodass Benutzer mehrere Bilder gleichzeitig bearbeiten können."
+        "Photosharp vereinfacht die Hochskalierung von Bildern und unterstützt die Stapelverarbeitung, sodass Benutzer mehrere Bilder gleichzeitig bearbeiten können."
       ],
       [
         "Eva Williams",
         "Korrigieren Sie den Fotoeditor",
-        "Wenn Sie mehrere Bilder hochskalieren und eine große Menge visueller Assets verbessern müssen, ohne manuelle Schritte wiederholen zu müssen, ist ImgUpscaler eine praktische Wahl."
+        "Wenn Sie mehrere Bilder hochskalieren und eine große Menge visueller Assets verbessern müssen, ohne manuelle Schritte wiederholen zu müssen, ist Photosharp eine praktische Wahl."
       ],
       [
         "Matic Broz",
         "Herausgeber",
-        "Bildhochskalierung sollte nicht teuer oder kompliziert sein. ImgUpscaler bietet eine einfache und intuitive Möglichkeit, Bilder online zu vergrößern."
+        "Bildhochskalierung sollte nicht teuer oder kompliziert sein. Photosharp bietet eine einfache und intuitive Möglichkeit, Bilder online zu vergrößern."
       ],
       [
         "Sravan",
         "Product Hunt-Benutzer",
-        "ImgUpscaler funktioniert mit vielen Bildtypen, von Landschaften und Produktfotos bis hin zu alten Bildern, die mehr sichtbare Details benötigen."
+        "Photosharp funktioniert mit vielen Bildtypen, von Landschaften und Produktfotos bis hin zu alten Bildern, die mehr sichtbare Details benötigen."
       ]
     ],
     "faqs": {
       "home": [
         [
-          "Was ist ImgUpscaler?",
-          "ImgUpscaler ist ein Online-KI-Werkzeug zum Vergrößern von Fotos, Illustrationen, Produktbildern und Porträts. Wählen Sie eine Ausgabe in 2K oder 4K. Die verfügbaren Größen hängen vom Modell und den Kontolimits ab."
+          "Was ist Photosharp?",
+          "Photosharp ist ein Online-KI-Werkzeug zum Vergrößern von Fotos, Illustrationen, Produktbildern und Porträts. Wählen Sie eine Ausgabe in 2K oder 4K. Die verfügbaren Größen hängen vom Modell und den Kontolimits ab."
         ],
         [
           "Wie funktioniert ein KI-Bild-Upscaler?",
@@ -593,7 +593,7 @@
       "reimagine": [
         [
           "Was ist Reimagine AI?",
-          "Reimagine AI ist ImgUpscalers prompt geführter kreativer Upscaler. Es vergrößert ein Bild und generiert gleichzeitig neue Details, Texturen und visuelle Variationen aus Ihrer Eingabeaufforderung und Ihren Einstellungen."
+          "Reimagine AI ist Photosharps prompt geführter kreativer Upscaler. Es vergrößert ein Bild und generiert gleichzeitig neue Details, Texturen und visuelle Variationen aus Ihrer Eingabeaufforderung und Ihren Einstellungen."
         ],
         [
           "Wie unterscheidet sich Reimagine AI von einem normalen Upscaler?",
@@ -644,7 +644,7 @@
     "video": {
       "title": "Sehen Sie, wie die Hochskalierung von KI-Bildern die Klarheit verbessert",
       "description": "Vergrößern Sie Fotos, Illustrationen, Produktbilder, Porträts und alte Bilder mit KI. Wählen Sie 2K oder 4K, prüfen Sie die Details und laden Sie das Ergebnis herunter. Die verfügbare Auflösung hängt vom Modell und den Kontolimits ab.",
-      "alt": "ImgUpscaler-Video-Showcase",
+      "alt": "Photosharp-Video-Showcase",
       "caption": "Auf YouTube ansehen ↗"
     },
     "useCaseIntro": {
@@ -653,16 +653,16 @@
         "before": "Bereiten Sie klarere Vermögenswerte vor",
         "emphasis": "Web, Print und soziale Medien."
       },
-      "description": "Von der schnellen Online-Hochskalierung bis hin zu Batch-fähigen Workflows ist ImgUpscaler für Entwickler, Teams und Unternehmen konzipiert, die klarere Bilder ohne komplizierte Bearbeitungseinstellungen benötigen."
+      "description": "Von der schnellen Online-Hochskalierung bis hin zu Batch-fähigen Workflows ist Photosharp für Entwickler, Teams und Unternehmen konzipiert, die klarere Bilder ohne komplizierte Bearbeitungseinstellungen benötigen."
     },
     "testimonialIntro": {
-      "title": "Was die Leute über ImgUpscaler sagen",
-      "description": "Schöpfer, Redakteure, Vermarkter und alltägliche Benutzer verlassen sich auf ImgUpscaler, wenn sie einen praktischen Online-Upscaler für klarere, besser nutzbare visuelle Assets benötigen."
+      "title": "Was die Leute über Photosharp sagen",
+      "description": "Schöpfer, Redakteure, Vermarkter und alltägliche Benutzer verlassen sich auf Photosharp, wenn sie einen praktischen Online-Upscaler für klarere, besser nutzbare visuelle Assets benötigen."
     },
     "faqIntro": {
       "home": {
         "title": "AI-Bild-Upscaler – FAQs",
-        "description": "Antworten zu ImgUpscaler, Online-Bild-Upscaler, Bildverbesserung, Dateischutz, unterstützten Formaten und häufigen Anwendungsfällen."
+        "description": "Antworten zu Photosharp, Online-Bild-Upscaler, Bildverbesserung, Dateischutz, unterstützten Formaten und häufigen Anwendungsfällen."
       },
       "enhancer": {
         "title": "Häufige Fragen zur Bildverbesserung",
@@ -720,7 +720,7 @@
     "faqKicker": "Häufig gestellte Fragen zur Preisgestaltung",
     "faqTitle": "Fragen zu Gutschriften, Abrechnung usw",
     "faqEmphasis": "Planen Sie Upgrades.",
-    "faqDescription": "Antworten zu Gutschriften, Abrechnungszyklen, Planänderungen, zur Kasse und zur Auswahl des richtigen ImgUpscaler-Plans.",
+    "faqDescription": "Antworten zu Gutschriften, Abrechnungszyklen, Planänderungen, zur Kasse und zur Auswahl des richtigen Photosharp-Plans.",
     "plans": [
       {
         "id": "free",
@@ -783,7 +783,7 @@
     "faqs": [
       [
         "Welchen Plan soll ich wählen?",
-        "Wählen Sie „Kostenlos“, wenn Sie ImgUpscaler nur testen. Wählen Sie Plus, wenn Sie Bilder regelmäßig verbessern und eine Stapelverarbeitung, mehr Credits, Reimagine AI und einen werbefreien Arbeitsbereich benötigen. Wählen Sie „Unternehmen“, wenn für kommerzielle oder Produktionsarbeiten unbegrenzte Credits erforderlich sind."
+        "Wählen Sie „Kostenlos“, wenn Sie Photosharp nur testen. Wählen Sie Plus, wenn Sie Bilder regelmäßig verbessern und eine Stapelverarbeitung, mehr Credits, Reimagine AI und einen werbefreien Arbeitsbereich benötigen. Wählen Sie „Unternehmen“, wenn für kommerzielle oder Produktionsarbeiten unbegrenzte Credits erforderlich sind."
       ],
       [
         "Wofür können Credits verwendet werden?",
@@ -807,7 +807,7 @@
       ],
       [
         "Was soll ich tun, wenn die Zahlung fehlschlägt?",
-        "Kontaktieren Sie support@imgupscaler.com mit Ihrer Konto-E-Mail-Adresse und der ungefähren Zahlungszeit, damit das Team Ihnen helfen kann."
+        "Kontaktieren Sie support@photosharp.app mit Ihrer Konto-E-Mail-Adresse und der ungefähren Zahlungszeit, damit das Team Ihnen helfen kann."
       ],
       [
         "Wann werde ich belastet?",
@@ -841,7 +841,7 @@
     "cookies": "Kekse",
     "contact": "Kontakt",
     "switchLanguage": "Sprache wechseln",
-    "copyright": "© 2026 ImgUpscaler. Alle Rechte vorbehalten.",
+    "copyright": "© 2026 Photosharp. Alle Rechte vorbehalten.",
     "languageNames": {
       "en": "English",
       "zh": "简体中文",
@@ -907,7 +907,7 @@
     "pages": {
       "privacy-policy": {
         "title": "Datenschutzrichtlinie",
-        "intro": "ImgUpscaler ist ein Online-Dienst zur Hochskalierung und Verbesserung von KI-Bildern, der von Sparklightforce Limited betrieben wird. Auf dieser Seite wird erläutert, welche Informationen wir sammeln, wie wir sie verwenden und welche Möglichkeiten Sie haben.",
+        "intro": "Photosharp ist ein Online-Dienst zur Hochskalierung und Verbesserung von KI-Bildern, der von Sparklightforce Limited betrieben wird. Auf dieser Seite wird erläutert, welche Informationen wir sammeln, wie wir sie verwenden und welche Möglichkeiten Sie haben.",
         "sections": [
           [
             "1. Informationen, die wir sammeln",
@@ -931,21 +931,21 @@
           ],
           [
             "6. Ihre Wahlmöglichkeiten",
-            "Sie können sich an support@imgupscaler.com wenden, um Zugriff, Korrektur oder Löschung von Kontoinformationen zu beantragen. Sie können Cookies über Ihre Browsereinstellungen verwalten, es kann jedoch sein, dass erforderliche Funktionen nicht mehr funktionieren."
+            "Sie können sich an support@photosharp.app wenden, um Zugriff, Korrektur oder Löschung von Kontoinformationen zu beantragen. Sie können Cookies über Ihre Browsereinstellungen verwalten, es kann jedoch sein, dass erforderliche Funktionen nicht mehr funktionieren."
           ],
           [
             "7. Kontaktieren Sie uns",
-            "Fragen zu dieser Richtlinie können an support@imgupscaler.com gesendet werden. Sparklightforce Limited: ZIMMER 1503-09, 15/F, CAUSEWAY BAY CENTRE, 15-23 SUGAR STREET, CAUSEWAY BAY, HONGKONG."
+            "Fragen zu dieser Richtlinie können an support@photosharp.app gesendet werden. Sparklightforce Limited: ZIMMER 1503-09, 15/F, CAUSEWAY BAY CENTRE, 15-23 SUGAR STREET, CAUSEWAY BAY, HONGKONG."
           ]
         ]
       },
       "terms": {
         "title": "Nutzungsbedingungen",
-        "intro": "Durch die Nutzung von ImgUpscaler stimmen Sie diesen Nutzungsbedingungen zu. Verfügbare Funktionen, Bearbeitungsgebühren und kostenpflichtige Vorteile werden auf den aktuellen Produkt- und Kontoseiten beschrieben.",
+        "intro": "Durch die Nutzung von Photosharp stimmen Sie diesen Nutzungsbedingungen zu. Verfügbare Funktionen, Bearbeitungsgebühren und kostenpflichtige Vorteile werden auf den aktuellen Produkt- und Kontoseiten beschrieben.",
         "sections": [
           [
             "1. Serviceumfang",
-            "ImgUpscaler bietet Online-Bildhochskalierung, -verbesserung und die Neugestaltung von KI-Workflows. Funktionen, Modelle, Beschränkungen und Verfügbarkeit können sich im Zuge der Weiterentwicklung des Produkts ändern."
+            "Photosharp bietet Online-Bildhochskalierung, -verbesserung und die Neugestaltung von KI-Workflows. Funktionen, Modelle, Beschränkungen und Verfügbarkeit können sich im Zuge der Weiterentwicklung des Produkts ändern."
           ],
           [
             "2. Benutzerinhalte",
@@ -965,7 +965,7 @@
           ],
           [
             "6. Kontakt",
-            "Wenn Sie Hilfe benötigen, senden Sie eine E-Mail an support@imgupscaler.com."
+            "Wenn Sie Hilfe benötigen, senden Sie eine E-Mail an support@photosharp.app."
           ]
         ]
       },
@@ -991,7 +991,7 @@
           ],
           [
             "5. Kontakt zu",
-            "Fragen zur Cookie-Nutzung können an support@imgupscaler.com gesendet werden."
+            "Fragen zur Cookie-Nutzung können an support@photosharp.app gesendet werden."
           ]
         ]
       }
@@ -999,39 +999,39 @@
   },
   "metadata": {
     "home": {
-      "title": "Bilder mit KI online vergrößern | Img.Upscaler",
+      "title": "Bilder mit KI online vergrößern | Photosharp",
       "description": "Vergrößern Sie Fotos und Illustrationen online mit KI. Stellen Sie feine Details wieder her, schärfen Sie Bilder mit niedriger Auflösung und laden Sie klarere Ergebnisse in der von Ihnen benötigten Größe herunter."
     },
     "enhancer": {
-      "title": "Fotos mit KI schärfen und verbessern | Img.Upscaler",
+      "title": "Fotos mit KI schärfen und verbessern | Photosharp",
       "description": "Verbessern Sie die Klarheit von Fotos mit einem Online-KI-Bildverbesserer. Reduzieren Sie Rauschen und Komprimierungsartefakte, schärfen Sie Texturen und zeigen Sie vor dem Herunterladen eine Vorschau des Ergebnisses an."
     },
     "reimagine": {
-      "title": "Bilder mit KI kreativ neu gestalten | Img.Upscaler",
+      "title": "Bilder mit KI kreativ neu gestalten | Photosharp",
       "description": "Gestalten Sie Fotos, Illustrationen und Innenräume mit KI neu. Steuern Sie das Ergebnis mit einer Eingabeaufforderung, passen Sie Kreativität und Ähnlichkeit an und zeigen Sie eine Vorschau Ihres neuen Bildes an."
     },
     "pricing": {
-      "title": "Tarife und Preise für Bildvergrößerung | Img.Upscaler",
+      "title": "Tarife und Preise für Bildvergrößerung | Photosharp",
       "description": "Vergleichen Sie Bild-Upscaling-Pläne, Credits und Stapelverarbeitungsoptionen. Finden Sie den richtigen Plan für Fotoverbesserung, kreative Projekte und Geschäftsabläufe."
     },
     "account": {
-      "title": "Ihr Konto und Guthaben | Img.Upscaler",
-      "description": "Verwalten Sie Ihr Profil, die Kontosicherheit, das verfügbare Bildverarbeitungsguthaben und die Abrechnungseinstellungen über Ihr Img.Upscaler-Konto."
+      "title": "Ihr Konto und Guthaben | Photosharp",
+      "description": "Verwalten Sie Ihr Profil, die Kontosicherheit, das verfügbare Bildverarbeitungsguthaben und die Abrechnungseinstellungen über Ihr Photosharp-Konto."
     },
     "privacy": {
-      "title": "Datenschutzrichtlinie | Img.Upscaler",
-      "description": "Lesen Sie, wie Img.Upscaler mit Kontoinformationen, hochgeladenen Fotos, generierten Bildern, Aufbewahrung und Ihren Datenschutzoptionen umgeht."
+      "title": "Datenschutzrichtlinie | Photosharp",
+      "description": "Lesen Sie, wie Photosharp mit Kontoinformationen, hochgeladenen Fotos, generierten Bildern, Aufbewahrung und Ihren Datenschutzoptionen umgeht."
     },
     "terms": {
-      "title": "Nutzungsbedingungen | Img.Upscaler",
-      "description": "Lesen Sie die Bedingungen für die Nutzung von Img.Upscaler, einschließlich Bildeigentum, zulässige Nutzung, Verarbeitungsbeschränkungen, Kontoguthaben und Abonnements."
+      "title": "Nutzungsbedingungen | Photosharp",
+      "description": "Lesen Sie die Bedingungen für die Nutzung von Photosharp, einschließlich Bildeigentum, zulässige Nutzung, Verarbeitungsbeschränkungen, Kontoguthaben und Abonnements."
     },
     "cookies": {
-      "title": "Cookie-Richtlinie | Img.Upscaler",
-      "description": "Erfahren Sie, wie Cookies die Anmeldung, Sicherheit, Einstellungen und Analysen auf Img.Upscaler unterstützen und wie Sie sie in Ihrem Browser verwalten."
+      "title": "Cookie-Richtlinie | Photosharp",
+      "description": "Erfahren Sie, wie Cookies die Anmeldung, Sicherheit, Einstellungen und Analysen auf Photosharp unterstützen und wie Sie sie in Ihrem Browser verwalten."
     },
     "root": {
-      "title": "Img.Upscaler",
+      "title": "Photosharp",
       "description": "Vergrößern, verbessern und gestalten Sie Bilder online mit KI neu."
     }
   }

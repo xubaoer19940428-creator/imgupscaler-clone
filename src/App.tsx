@@ -61,6 +61,7 @@ export default function App() {
           const session = await api.login(email, password)
           setSession(session.token, session.user_info)
           setLoginOpen(false)
+          controller.resumePendingProcess()
           setToast({ title: authT('submitted') })
         } catch (error) {
           setToast({ title: authT('loginFailed'), detail: authT('loginFailedDetail') })
@@ -71,6 +72,7 @@ export default function App() {
           const session = await api.register(email, password, code)
           setSession(session.token, session.user_info)
           setLoginOpen(false)
+          controller.resumePendingProcess()
           setToast({ title: authT('registered') })
         } catch (error) {
           const msg = error instanceof ApiError && error.message ? error.message : authT('registerFailedDetail')

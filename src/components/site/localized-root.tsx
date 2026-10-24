@@ -20,7 +20,7 @@ export async function LocalizedRoot({ children, locale }: { children: React.Reac
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': `${absoluteUrl(pagePath('/', locale))}#website`,
-    name: 'Img.Upscaler',
+    name: 'Photosharp',
     url: absoluteUrl(pagePath('/', locale)),
     inLanguage: LANGUAGE_TAGS[locale],
   }

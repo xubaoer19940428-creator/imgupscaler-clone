@@ -455,29 +455,29 @@
       [
         "Eleonore Lefaix",
         "Siecledigital.fr editor",
-        "ImgUpscaler makes image upscaling simple and supports batch processing, so users can handle several images at once."
+        "Photosharp makes image upscaling simple and supports batch processing, so users can handle several images at once."
       ],
       [
         "Eva Williams",
         "Fixthephoto editor",
-        "When you need to upscale multiple images and improve a large set of visual assets without repeating manual steps, ImgUpscaler is a practical choice."
+        "When you need to upscale multiple images and improve a large set of visual assets without repeating manual steps, Photosharp is a practical choice."
       ],
       [
         "Matic Broz",
         "Editor",
-        "Image upscaling should not be expensive or complicated. ImgUpscaler offers a simple and intuitive way to enlarge images online."
+        "Image upscaling should not be expensive or complicated. Photosharp offers a simple and intuitive way to enlarge images online."
       ],
       [
         "Sravan",
         "Product Hunt user",
-        "ImgUpscaler works across many image types, from landscapes and product photos to old pictures that need more visible detail."
+        "Photosharp works across many image types, from landscapes and product photos to old pictures that need more visible detail."
       ]
     ],
     "faqs": {
       "home": [
         [
-          "What is ImgUpscaler?",
-          "ImgUpscaler is an online AI image upscaler for photos, illustrations, products, and portraits. Choose 2K or 4K output to create a higher-resolution image; available output sizes depend on the model and account limits."
+          "What is Photosharp?",
+          "Photosharp is an online AI image upscaler for photos, illustrations, products, and portraits. Choose 2K or 4K output to create a higher-resolution image; available output sizes depend on the model and account limits."
         ],
         [
           "How does an AI image upscaler work?",
@@ -593,7 +593,7 @@
       "reimagine": [
         [
           "What is Reimagine AI?",
-          "Reimagine AI is ImgUpscaler’s prompt-guided creative upscaler. It enlarges an image while generating new detail, texture, and visual variation from your prompt and settings."
+          "Reimagine AI is Photosharp’s prompt-guided creative upscaler. It enlarges an image while generating new detail, texture, and visual variation from your prompt and settings."
         ],
         [
           "How is Reimagine AI different from a regular upscaler?",
@@ -644,7 +644,7 @@
     "video": {
       "title": "See how AI image upscaling improves clarity",
       "description": "Enlarge photos, illustrations, product images, portraits, and old pictures with AI. Choose 2K or 4K output, preview the details, and download a clearer image. Available resolution depends on the selected model and account limits.",
-      "alt": "ImgUpscaler video showcase",
+      "alt": "Photosharp video showcase",
       "caption": "Watch on YouTube ↗"
     },
     "useCaseIntro": {
@@ -653,16 +653,16 @@
         "before": "Prepare clearer assets for",
         "emphasis": "web, print, and social media."
       },
-      "description": "From quick online upscaling to batch-ready workflows, ImgUpscaler is built for creators, teams, and businesses that need clearer visuals without complicated editing settings."
+      "description": "From quick online upscaling to batch-ready workflows, Photosharp is built for creators, teams, and businesses that need clearer visuals without complicated editing settings."
     },
     "testimonialIntro": {
-      "title": "What people say about ImgUpscaler",
-      "description": "Creators, editors, marketers, and everyday users rely on ImgUpscaler when they need a practical online upscaler for clearer, more usable visual assets."
+      "title": "What people say about Photosharp",
+      "description": "Creators, editors, marketers, and everyday users rely on Photosharp when they need a practical online upscaler for clearer, more usable visual assets."
     },
     "faqIntro": {
       "home": {
         "title": "AI image upscaler FAQs",
-        "description": "Answers about ImgUpscaler, online image upscaling, image enhancement, file privacy, supported formats, and common use cases."
+        "description": "Answers about Photosharp, online image upscaling, image enhancement, file privacy, supported formats, and common use cases."
       },
       "enhancer": {
         "title": "AI Image Enhancer FAQs",
@@ -682,7 +682,7 @@
   },
   "pricing": {
     "title": "Choose a plan for your image workflow",
-    "description": "ImgUpscaler and Reimagine are free to try. Upgrade when you need more credits, batch processing, or higher volume.",
+    "description": "Photosharp and Reimagine are free to try. Upgrade when you need more credits, batch processing, or higher volume.",
     "monthly": "Monthly",
     "annual": "Yearly",
     "annualBadge": "Best value",
@@ -720,7 +720,7 @@
     "faqKicker": "Pricing FAQs",
     "faqTitle": "Questions about credits, billing, and",
     "faqEmphasis": "plan upgrades.",
-    "faqDescription": "Answers about credits, billing cycles, plan changes, checkout, and choosing the right ImgUpscaler plan.",
+    "faqDescription": "Answers about credits, billing cycles, plan changes, checkout, and choosing the right Photosharp plan.",
     "plans": [
       {
         "id": "free",
@@ -783,7 +783,7 @@
     "faqs": [
       [
         "Which plan should I choose?",
-        "Choose Free if you are only testing ImgUpscaler. Choose Premium if you enhance images regularly and need batch processing, more credits, Reimagine AI, and an ad-free workspace. Choose Business when commercial or production work requires unlimited credits."
+        "Choose Free if you are only testing Photosharp. Choose Premium if you enhance images regularly and need batch processing, more credits, Reimagine AI, and an ad-free workspace. Choose Business when commercial or production work requires unlimited credits."
       ],
       [
         "What can credits be used for?",
@@ -807,7 +807,7 @@
       ],
       [
         "What should I do if payment fails?",
-        "Contact support@imgupscaler.com with your account email and approximate payment time so the team can help."
+        "Contact support@photosharp.app with your account email and approximate payment time so the team can help."
       ],
       [
         "When am I charged?",
@@ -841,7 +841,7 @@
     "cookies": "Cookies",
     "contact": "Contact",
     "switchLanguage": "Switch language",
-    "copyright": "© 2026 ImgUpscaler. All rights reserved.",
+    "copyright": "© 2026 Photosharp. All rights reserved.",
     "languageNames": {
       "en": "English",
       "zh": "简体中文",
@@ -907,7 +907,7 @@
     "pages": {
       "privacy-policy": {
         "title": "Privacy Policy",
-        "intro": "ImgUpscaler is an online AI image upscaling and enhancement service operated by Sparklightforce Limited. This page explains the information we collect, how we use it, and your choices.",
+        "intro": "Photosharp is an online AI image upscaling and enhancement service operated by Sparklightforce Limited. This page explains the information we collect, how we use it, and your choices.",
         "sections": [
           [
             "1. Information We Collect",
@@ -931,21 +931,21 @@
           ],
           [
             "6. Your Choices",
-            "You may contact support@imgupscaler.com to request access, correction, or deletion of account information. You can manage cookies through your browser settings, though required features may stop working."
+            "You may contact support@photosharp.app to request access, correction, or deletion of account information. You can manage cookies through your browser settings, though required features may stop working."
           ],
           [
             "7. Contact Us",
-            "Questions about this policy can be sent to support@imgupscaler.com. Sparklightforce Limited: ROOM 1503-09, 15/F, CAUSEWAY BAY CENTRE, 15-23 SUGAR STREET, CAUSEWAY BAY, HONG KONG."
+            "Questions about this policy can be sent to support@photosharp.app. Sparklightforce Limited: ROOM 1503-09, 15/F, CAUSEWAY BAY CENTRE, 15-23 SUGAR STREET, CAUSEWAY BAY, HONG KONG."
           ]
         ]
       },
       "terms": {
         "title": "Terms of Service",
-        "intro": "By using ImgUpscaler, you agree to these terms of service. Available features, processing allowances, and paid benefits are described on the current product and account pages.",
+        "intro": "By using Photosharp, you agree to these terms of service. Available features, processing allowances, and paid benefits are described on the current product and account pages.",
         "sections": [
           [
             "1. Service Scope",
-            "ImgUpscaler provides online image upscaling, enhancement, and Reimagine AI workflows. Features, models, limits, and availability may change as the product evolves."
+            "Photosharp provides online image upscaling, enhancement, and Reimagine AI workflows. Features, models, limits, and availability may change as the product evolves."
           ],
           [
             "2. User Content",
@@ -965,7 +965,7 @@
           ],
           [
             "6. Contact",
-            "For help, email support@imgupscaler.com."
+            "For help, email support@photosharp.app."
           ]
         ]
       },
@@ -991,7 +991,7 @@
           ],
           [
             "5. Contact",
-            "Questions about cookie usage can be sent to support@imgupscaler.com."
+            "Questions about cookie usage can be sent to support@photosharp.app."
           ]
         ]
       }
@@ -999,39 +999,39 @@
   },
   "metadata": {
     "home": {
-      "title": "AI Image Upscaler: Enlarge Photos Online | Img.Upscaler",
+      "title": "AI Image Upscaler: Enlarge Photos Online | Photosharp",
       "description": "Enlarge photos and illustrations online with AI. Restore fine details, sharpen low-resolution images, and download clearer results in the size you need."
     },
     "enhancer": {
-      "title": "AI Image Enhancer: Sharpen Photos Online | Img.Upscaler",
+      "title": "AI Image Enhancer: Sharpen Photos Online | Photosharp",
       "description": "Improve photo clarity with an online AI image enhancer. Reduce noise and compression artifacts, sharpen textures, and preview the result before downloading."
     },
     "reimagine": {
-      "title": "Reimagine Images with AI and Prompts | Img.Upscaler",
+      "title": "Reimagine Images with AI and Prompts | Photosharp",
       "description": "Reimagine photos, illustrations, and interiors with AI. Guide the result with a prompt, adjust creativity and resemblance, and preview your new image."
     },
     "pricing": {
-      "title": "Image Upscaling Plans and Pricing | Img.Upscaler",
+      "title": "Image Upscaling Plans and Pricing | Photosharp",
       "description": "Compare image upscaling plans, credits, and batch processing options. Find the right plan for photo enhancement, creative projects, and business workflows."
     },
     "account": {
-      "title": "Your Account and Credits | Img.Upscaler",
-      "description": "Manage your profile, account security, available image processing credits, and billing settings from your Img.Upscaler account."
+      "title": "Your Account and Credits | Photosharp",
+      "description": "Manage your profile, account security, available image processing credits, and billing settings from your Photosharp account."
     },
     "privacy": {
-      "title": "Privacy Policy | Img.Upscaler",
-      "description": "Read how Img.Upscaler handles account information, uploaded photos, generated images, retention, and your privacy choices."
+      "title": "Privacy Policy | Photosharp",
+      "description": "Read how Photosharp handles account information, uploaded photos, generated images, retention, and your privacy choices."
     },
     "terms": {
-      "title": "Terms of Service | Img.Upscaler",
-      "description": "Review the terms for using Img.Upscaler, including image ownership, acceptable use, processing limits, account credits, and subscriptions."
+      "title": "Terms of Service | Photosharp",
+      "description": "Review the terms for using Photosharp, including image ownership, acceptable use, processing limits, account credits, and subscriptions."
     },
     "cookies": {
-      "title": "Cookie Policy | Img.Upscaler",
-      "description": "Learn how cookies support sign-in, security, preferences, and analytics on Img.Upscaler, and how to manage them in your browser."
+      "title": "Cookie Policy | Photosharp",
+      "description": "Learn how cookies support sign-in, security, preferences, and analytics on Photosharp, and how to manage them in your browser."
     },
     "root": {
-      "title": "Img.Upscaler",
+      "title": "Photosharp",
       "description": "Enlarge, enhance, and reimagine images online with AI."
     }
   }

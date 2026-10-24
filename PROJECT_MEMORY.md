@@ -805,5 +805,81 @@ npm run build
   - 优化 `src/services/imgupscaler-api.ts` 的模型与 operation 配置，接入 `google/upscaler` 与 `scale` 参数，保证请求体与后端模型部署契约一致。
   - 全量通过 `pnpm exec tsc --noEmit`、`pnpm run verify:i18n` 与 `pnpm exec next build`（114 个静态页面生成完毕）。
 
+### 2026-10-24（修复工具页真实图片请求）
+- 用户反馈工具页仍无法发送真实处理请求。核对项目内 `ai_models.csv` 与 `ai_model_deployments.csv` 后确认 Upscale/Enhance 模型的输入 schema 是 `image_url` + `scale`，此前请求误带生成模型字段和 `input_references`，已按路由拆分为严格匹配的请求体；Reimagine 保留 `input_references`、`resolution` 和提示词字段。
+- 生成流程保留真实请求优先：先发送 `/v1/get-upload-url`，由后端返回鉴权错误后再显示登录弹窗；登录或注册成功后自动重试待处理任务，Network 中可以看到真实 API 请求。API 错误码会在工作区错误提示中保留，便于继续定位。
+- 文件上传后的 `/v1/files` 登记失败不再被吞掉，避免未登记文件继续创建模型 Run。补充 `NEXT_PUBLIC_ACCEPT_DOMAIN=photopop.app` 及新的模型/operation 环境变量说明。
+- 同时移除 Enhance 页的无效 `1K` 选项；当前 Topaz deployment 的 schema 只接受 2/4/6 倍，页面统一显示 2K/4K。
+- 进一步修复点击 Process 后看不到请求的问题：无登录态时记录待处理任务，登录或注册成功后由 `App.tsx` 自动调用 `controller.resumePendingProcess()`，无需用户再次点击；有登录态时仍直接进入上传和 Run 请求链路。
+- 追加修复 React Strict Mode 下的真实阻断：`mountedRef` 的 cleanup 曾把状态设为 `false` 后没有在下一次 effect setup 恢复，导致点击后 progress 更新但处理循环在第一步提前返回。挂载 effect 现在显式将 `mountedRef.current` 重置为 `true`。
+- 验证：`pnpm exec tsc --noEmit`、`pnpm run verify:i18n`、`pnpm run build`（114 个静态页面）和 `git diff --check` 通过。当前未使用真实用户 Token 执行模型 Run；匿名请求实测后端返回 `authentication_failed`，符合 API 文档的登录要求。
+
+### 2026-10-24（参考站气质视觉重做）
+- 用户反馈旧版界面过于平、缺少参考站的轻快和灵气。保留现有功能与页面结构，追加明亮创作工具视觉层：冷白背景、蓝色主动作、薄荷色工作区、柔和环境光、浮层阴影、胶囊导航和更有表现力的上传/对比工作台。
+- `src/styles/11-studio.css` 追加视觉刷新规则，重点重做 Header、Hero、上传区、对比区、工作区控件、流程卡片、FAQ、定价和账户页；`src/features/landing/hero.tsx` 增加本地化的输出/格式/安全工作流提示。
+- 第二轮细化参考站气质：Hero 改为居中叙事和更聚焦的工作台宽度，上传区采用更有存在感的 3px 虚线框和大主按钮，同时保留右侧对比预览，借用蓝绿光感但不复刻参考站布局。
+- 验证：TypeScript、13 语言检查、生产构建 114 路由和 `git diff --check` 通过。待用户实际浏览器复核后继续细调间距和颜色。
+
+### 2026-10-24（重构与升级工作区 drop-zone has-files 及卡片画廊 UI）
+- **问题根因**：原 `.drop-zone.has-files` 继承了虚线框（`border: 3px dashed` / `1px dashed`）与暗哑泥灰色背景（`#efede7`），多图列表使用粗暴的 160px 固定小方格，缺乏图片名字与文件大小，且状态/操作按钮缩在角落只有 8px 大小，缺乏专业工具美感。
+- **重构方案**：
+  - **工作区容器（Container）**：上传图片后，`.drop-zone.has-files` 彻底去除虚线边框，转换为高质感工作室画廊底板（`border: 1px solid var(--line)`，浅暖白背景 `#faf9f6`，微内阴影与 16px 圆角，内边距增至 20px），拖拽新文件时有高亮响应。
+  - **图片卡片（File Thumb Cards）**：采用自适应网格（`minmax(200px, 1fr)`），图片展示采用“高斯模糊环境底图 + 前景完整比例自适应”的高级画廊架构（底图 `blur(20px)` 铺满容器消除黑边与单调留白，前景 `object-fit: contain` 100% 完整展示人物与画面，彻底杜绝切头切边）；悬停微浮起与平滑平移；底部展示完整文件名（带省略号）与清晰的文件大小（`formatBytes`）；顶部左右放置半透明玻璃拟态状态胶囊（待处理 / 处理中带脉冲光点 / 已完成带勾 / 失败红胶囊）与圆形悬浮删除按钮。
+  - **完成与失败悬浮操作层（Action Overlay）**：处理完成时，悬停展示磨砂半透明遮罩与大尺寸操作按钮（下载、编辑、重做），失败时居中展示高亮“重试”按钮与错误横幅。
+  - **增补卡片（Add More Card）**：设计为现代工作室虚线增补位，带柔和的加号圆标、中文标题与格式说明，悬停响应顺滑。
+  - **图片比例与撑满规则（Aspect Ratio & Fill）**：解决此前人工设置 `max-width: 86%; max-height: 86%` 导致的四周空隙问题。明确卡片以前景图数值较高/较长的一边为主撑满父容器（`width: 100%; height: 100%; object-fit: contain;`）：竖图以高度 100% 顶天立地完全撑满卡片媒体区域，两侧由同图的高斯模糊氛围色填充；横图以宽度 100% 完全撑满，上下由高斯模糊色填充；零切边、零压缩、零无谓留白。
+- **验证**：`pnpm exec tsc --noEmit`、`pnpm run verify:i18n`（13 种语言验证）全部通过。
+
+### 2026-10-24（修复 account-heading 内容裁切）
+- 用户反馈账户页 `account-heading` 没有完整展示。根因是账户名和邮箱使用固定 `max-width`、`overflow: hidden`、省略号和单行布局，长用户名、邮箱或本地化文本会被截断；窄屏下摘要区域也缺少稳定的完整宽度布局。
+- `src/styles/11-studio.css` 追加账户标题的自然高度与可换行规则，移除名称/邮箱的强制省略，允许任意长度文本换行，并让移动端摘要独立占满容器宽度。
+- 验证：`pnpm exec tsc --noEmit`、`pnpm run build`（114 个静态页面）和 `git diff --check` 通过。
+
+### 2026-10-24（站内品牌切换为 photosharp.app）
+- 用户要求移除页面上的 `Img.Upscaler` 品牌，改用已确定的主域名 `photosharp.app`。
+- Header、Footer、Open Graph、WebSite/Breadcrumb 结构化数据和 13 种语言的 SEO、FAQ、法律及版权文案已统一使用 `photosharp.app`；Footer 联系邮箱同步切换为 `support@photosharp.app`。
+- API 路径、环境变量、localStorage token 和内部适配器名称保留 `IMGUPSCALER` 标识，避免破坏现有后端兼容契约。
+
+### 2026-10-24（品牌显示名去掉 .app 并首字母大写）
+- 用户补充要求品牌展示名使用 `Photosharp`，不显示 `.app` 后缀。
+- 页面品牌、SEO 的 `siteName`、结构化数据和多语言产品文案已改为 `Photosharp`；`photosharp.app` 仅保留给正式网址、canonical、链接和联系邮箱。
+
+### 2026-10-24（修复跨页面返回后上传图片预览失效）
+- 用户反馈在 Upscale 页选择图片但尚未开始上传，切换到其他页面后再返回，图片会显示错误。
+- 根因是工作区 store 跨路由保留了 `FileItem`，但控制器卸载清理同时撤销了这些图片的 `object URL`，导致回来后仍引用已失效的预览地址。
+- `src/features/workspace/use-workspace-controller.ts` 现在在卸载时只中止进行中的请求，并将处理中项目恢复为 `ready`；图片只在用户明确移除或清空时撤销 object URL，因此跨页面返回可以继续显示和处理。
+- 验证：`pnpm exec tsc --noEmit`、`pnpm run build`（114 个静态页面）和 `git diff --check` 通过。
+
+### 2026-10-24（个人中心 UI 优化）
+- 用户希望继续优化个人中心视觉。`src/styles/11-studio.css` 追加与首页一致的 Photosharp 工作室风格：身份卡使用蓝色/薄荷渐变和头像光环，方案与积分改为摘要卡，设置导航与内容面板采用更清晰的层级、阴影和状态色。
+- 移动端账户页改为三列设置标签、摘要卡自适应两列，长用户名和邮箱继续自然换行，危险操作区域使用独立的低对比度红色提示块。
+- 验证：`pnpm exec tsc --noEmit`、`pnpm run build`（114 个静态页面）和 `git diff --check` 通过。
+
+### 2026-10-24（收敛个人中心视觉）
+- 用户反馈上一版账户页装饰过重。已移除大面积渐变、强阴影和多层卡片堆叠，改为参考站式的白底、细边框、留白和蓝色选中线；账户摘要、侧边设置和内容面板保持清晰层级。
+- 桌面端使用简洁的身份头部和双列设置布局，移动端切换为三列标签与两列摘要卡；功能结构和账户操作保持不变。
+
+### 2026-10-24（移除个人中心 Security 标签）
+- 用户要求个人中心不再显示 `Security`。
+- `AccountTab` 现在只保留 `profile` 和 `billing`，移除了 Security 导航、密码修改面板及移动端对应的第三列布局；保留其他语言资源以维持消息键结构兼容。
+- 验证：`pnpm exec tsc --noEmit`、`pnpm run build`（114 个静态页面）和 `git diff --check` 通过。
+
+### 2026-10-24（移除移动账户菜单 Billing）
+- 用户要求从 `mobile-account-links` 移除 `Billing`。
+- 移动端账户菜单现在只显示账户入口和退出；桌面账户 Popover、个人中心账单页和支付流程保持不变。
+- 验证：`pnpm exec tsc --noEmit` 和 `git diff --check` 通过。
+
+### 2026-10-24（页面与真实 API 回归检查）
+- 本地开发站点实际请求通过：`/`、`/enhancer`、`/reimagine`、`/pricing`、`/account`、`/zh`、`/zh/enhancer`、`/zh/account` 均返回 200，并输出正确页面标题；`robots.txt` 与 `sitemap.xml` 也可访问。
+- 使用当前签名规则向 `https://api.mixu.ai/v1/payment/products` 发真实请求，返回 200 和 `code: 0`，商品列表当前为空。
+- 真实调用 `/v1/sso/profile` 与 `/v1/get-upload-url` 未携带用户 Token 时均返回 401 `not_logined`，鉴权行为符合预期；未执行真实图片 Run 或支付创建，避免产生外部任务和订单。
+
+### 2026-10-24（迁移 artguru-clone 工作流）
+- 用户要求把 `../artguru-clone` 的工具流程原样迁到当前项目。已先用 `ccc search` 定位并阅读 `src/components/artguru/workspace-reference.tsx` 与对应工作区样式，确认目标流程包含双栏上传/样例对比卡、单图参数侧栏、多图批处理门控、全屏处理状态和结果下载层。
+- 新增 `src/features/workspace/reference-workflow.tsx`，将 home/upscale 与 enhancer 接到上述结构；样例对比使用当前项目本地 reference 素材，上传、拖放、粘贴、样例切换和批量入口均可用，开始处理继续调用现有 `useWorkspaceController` 的真实上传、鉴权、Run 轮询和下载链路。
+- `src/features/workspace/workspace-panel.tsx` 现在只对 home/enhancer 使用 reference workflow，reimagine 保留原有 prompt 工作区；`use-workspace-controller.ts` 增加强制清理入口，确保全屏层关闭或取消请求时不会留下旧对象 URL。
+- `src/styles/11-studio.css` 追加 Artguru 同结构的上传卡、参数侧栏、批处理弹窗、全屏结果层和移动端布局。
+- 验证：`pnpm exec tsc --noEmit`、`pnpm run verify:i18n`、`pnpm run build`（114 个静态页面）、`git diff --check` 和 `ccc index` 均通过。Computer Use 仍因本机 Node runtime 缺失无法打开用户浏览器，因此尚未完成已登录浏览器中的点击回归。
+
 
 

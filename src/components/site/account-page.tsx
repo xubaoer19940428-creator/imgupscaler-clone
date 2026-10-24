@@ -15,7 +15,7 @@ import { SiteHeader } from './site-header'
 import { LoginDialog } from './login-dialog'
 import { Icon } from '@/src/components/ui/icons'
 
-type AccountTab = 'profile' | 'billing' | 'security'
+type AccountTab = 'profile' | 'billing'
 
 export function AccountPage({ locale: providedLocale }: { locale?: Locale } = {}) {
   const router = useRouter()
@@ -64,7 +64,7 @@ export function AccountPage({ locale: providedLocale }: { locale?: Locale } = {}
   }
 
   const signOut = async () => { await api.logout().catch(() => undefined); auth.clearSession() }
-  return <div className="app-shell"><SiteHeader onLogin={() => setLoginOpen(true)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell">{loading ? <p className="account-feedback">{t('loading')}</p> : !auth.user ? <section className="account-empty"><span className="kicker">{t('member')}</span><h1>{t('title')}</h1><p>{t('signInPrompt')}</p><button className="dark-button" type="button" onClick={() => setLoginOpen(true)}>{t('signIn')} <Icon name="arrow" /></button></section> : <><AccountHeading t={t} user={auth.user} /><div className="account-layout"><AccountTabs tab={tab} t={t} onChange={setTab} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel t={t} user={auth.user} onNotify={setMessage} onUser={auth.setUser} onSignOut={signOut} />}{tab === 'billing' && <BillingPanel t={t} locale={locale} user={auth.user} />}{tab === 'security' && <SecurityPanel t={t} onNotify={setMessage} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></>}</div></main><SiteFooter locale={locale} />{loginOpen && <LoginDialog onClose={() => setLoginOpen(false)} onGoogle={signInWithGoogle} onSubmit={async (email, password) => { try { await signIn(email, password) } catch (err) { setMessage(authT('loginFailedDetail')); throw err; } }} onRegister={async (email, password, code) => { try { await register(email, password, code) } catch (err) { const msg = err instanceof ApiError && err.message ? err.message : authT('registerFailedDetail'); setMessage(msg); throw err; } }} />}</div>
+  return <div className="app-shell"><SiteHeader onLogin={() => setLoginOpen(true)} onNavigate={navigate} /><main className="account-page" id="main-content"><div className="account-shell">{loading ? <p className="account-feedback">{t('loading')}</p> : !auth.user ? <section className="account-empty"><span className="kicker">{t('member')}</span><h1>{t('title')}</h1><p>{t('signInPrompt')}</p><button className="dark-button" type="button" onClick={() => setLoginOpen(true)}>{t('signIn')} <Icon name="arrow" /></button></section> : <><AccountHeading t={t} user={auth.user} /><div className="account-layout"><AccountTabs tab={tab} t={t} onChange={setTab} /><section className="account-panel" aria-live="polite">{tab === 'profile' && <ProfilePanel t={t} user={auth.user} onNotify={setMessage} onUser={auth.setUser} onSignOut={signOut} />}{tab === 'billing' && <BillingPanel t={t} locale={locale} user={auth.user} />}{message && <p className="account-feedback" role="status">{message}</p>}</section></div></>}</div></main><SiteFooter locale={locale} />{loginOpen && <LoginDialog onClose={() => setLoginOpen(false)} onGoogle={signInWithGoogle} onSubmit={async (email, password) => { try { await signIn(email, password) } catch (err) { setMessage(authT('loginFailedDetail')); throw err; } }} onRegister={async (email, password, code) => { try { await register(email, password, code) } catch (err) { const msg = err instanceof ApiError && err.message ? err.message : authT('registerFailedDetail'); setMessage(msg); throw err; } }} />}</div>
 }
 
 function AccountHeading({ t, user }: { t: ReturnType<typeof useTranslations<'account'>>; user: ApiUser }) {
@@ -75,8 +75,8 @@ function AccountHeading({ t, user }: { t: ReturnType<typeof useTranslations<'acc
 }
 
 function AccountTabs({ tab, t, onChange }: { tab: AccountTab; t: ReturnType<typeof useTranslations<'account'>>; onChange: (tab: AccountTab) => void }) {
-  const icons: Record<AccountTab, 'user' | 'credit-card' | 'lock'> = { profile: 'user', billing: 'credit-card', security: 'lock' }
-  return <nav className="account-tabs" aria-label={t('settings')}>{(['profile', 'billing', 'security'] as AccountTab[]).map((item) => <button type="button" key={item} className={tab === item ? 'active' : ''} onClick={() => onChange(item)}><Icon name={icons[item]} />{t(item)}</button>)}</nav>
+  const icons: Record<AccountTab, 'user' | 'credit-card'> = { profile: 'user', billing: 'credit-card' }
+  return <nav className="account-tabs" aria-label={t('settings')}>{(['profile', 'billing'] as AccountTab[]).map((item) => <button type="button" key={item} className={tab === item ? 'active' : ''} onClick={() => onChange(item)}><Icon name={icons[item]} />{t(item)}</button>)}</nav>
 }
 
 function ProfilePanel({ t, user, onNotify, onUser, onSignOut }: { t: ReturnType<typeof useTranslations<'account'>>; user: ApiUser; onNotify: (message: string) => void; onUser: (user: ApiUser | null) => void; onSignOut: () => void | Promise<void> }) {
@@ -93,13 +93,6 @@ function BillingPanel({ t, locale, user }: { t: ReturnType<typeof useTranslation
   const plan = user.is_vip || user.is_paid ? t('planPremium') : t('planFree')
   const credits = user.remain_coins !== undefined ? String(user.remain_coins) : t('unknown')
   return <><span className="kicker">{t('billing')}</span><h2>{t('billing')}</h2><div className="account-plan"><div><span>{t('current')}</span><strong>{plan}</strong></div><div><span>{t('credits')}</span><strong>{credits}</strong></div><Link href={routeToPath('pricing', locale)} className="dark-button">{t('upgrade')}</Link></div><p className="account-note">{t('billingNote')}</p></>
-}
-
-function SecurityPanel({ t, onNotify }: { t: ReturnType<typeof useTranslations<'account'>>; onNotify: (message: string) => void }) {
-  const [oldPassword, setOldPassword] = useState('')
-  const [newPassword, setNewPassword] = useState('')
-  const update = async () => { try { await api.changePassword(oldPassword, newPassword); setOldPassword(''); setNewPassword(''); onNotify(t('passwordUpdated')) } catch { onNotify(t('passwordFailed')) } }
-  return <><span className="kicker">{t('security')}</span><h2>{t('security')}</h2><label>{t('currentPassword')}<input name="currentPassword" value={oldPassword} onChange={(event) => setOldPassword(event.target.value)} type="password" autoComplete="current-password" /></label><label>{t('newPassword')}<input name="newPassword" value={newPassword} onChange={(event) => setNewPassword(event.target.value)} type="password" autoComplete="new-password" /></label><button className="dark-button" type="button" onClick={() => void update()}>{t('update')}</button></>
 }
 
 function initials(name: string) {

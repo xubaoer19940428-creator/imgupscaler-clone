@@ -15,7 +15,6 @@ const defaultEditState: EditState = { rotation: 0, flipX: false, flipY: false, c
 export function useWorkspaceController(route: Route, onRequireAuth?: () => void) {
   const t = useTranslations('workspace')
   const store = useWorkspaceStore()
-  const authToken = useAuthStore((state) => state.token)
   const workspaceRoute = route === 'pricing' ? 'home' : route
   const workspace = store.workspaces[workspaceRoute]
   const [toast, setToast] = useState<ToastMessage | null>(null)
@@ -27,20 +26,33 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
   const runRef = useRef(0)
   const abortRef = useRef<AbortController | null>(null)
   const mountedRef = useRef(true)
+  const pendingProcessRef = useRef(false)
 
-  // Keep the latest list outside async handlers so unmount cleanup can revoke every object URL.
+  // Keep the latest list outside async handlers for future task lifecycle work.
   useEffect(() => { itemsRef.current = workspace.items }, [workspace.items])
   useEffect(() => {
     if (!toast) return
     const timer = window.setTimeout(() => setToast(null), 3600)
     return () => window.clearTimeout(timer)
   }, [toast])
-  useEffect(() => () => {
-    mountedRef.current = false
-    runRef.current += 1
-    abortRef.current?.abort()
-    Object.values(useWorkspaceStore.getState().workspaces).forEach((slice) => slice.items.forEach(revokeItem))
-  }, [])
+  useEffect(() => {
+    // React Strict Mode runs effect setup/cleanup/setup in development. Reset
+    // the ref during setup so the second mount can process real requests.
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+      runRef.current += 1
+      abortRef.current?.abort()
+      // The Zustand store intentionally survives route changes. Source files
+      // and their object URLs must remain valid when the user returns to the
+      // workspace, so only the active request is cancelled here. Items are
+      // revoked when explicitly removed or cleared.
+      const workspaceStore = useWorkspaceStore.getState()
+      workspaceStore.setProcessing(workspaceRoute, false)
+      workspaceStore.setProgress(workspaceRoute, { completed: 0, total: 0 })
+      workspaceStore.setItems(workspaceRoute, (current) => current.map((item) => item.status === 'processing' ? { ...item, status: 'ready' } : item))
+    }
+  }, [workspaceRoute])
 
   const addFiles = (incoming: FileList | File[]) => {
     if (workspace.processing) return setToast({ title: t('toast.busy'), detail: t('toast.busyDetail') })
@@ -72,6 +84,11 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
     store.setItems(workspaceRoute, [])
   }
 
+  const forceClearItems = () => {
+    workspace.items.forEach(revokeItem)
+    store.setItems(workspaceRoute, [])
+  }
+
   const cancel = () => {
     runRef.current += 1
     abortRef.current?.abort()
@@ -88,9 +105,6 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
 
   const process = async (targetIds?: string[]) => {
     if (route === 'pricing' || !workspace.items.length || workspace.processing) return
-
-    // Ensure session is hydrated from storage
-    useAuthStore.getState().hydrate()
 
     const ids = new Set(
       targetIds?.length
@@ -136,6 +150,7 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
           error?.code === 20001 ||
           /not_logined|authentication_failed|unauthorized|auth_required/i.test(error?.message || '')
         if (isAuth) {
+          pendingProcessRef.current = true
           setToast({ title: t('authRequired'), detail: t('authRequiredDetail') })
           onRequireAuth?.()
         }
@@ -151,6 +166,12 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
     store.setProcessing(workspaceRoute, false)
     abortRef.current = null
     setToast({ title: results.some((item) => item.status === 'error') ? t('toast.partialError') : t('toast.complete'), detail: t('toast.completeDetail') })
+  }
+
+  const resumePendingProcess = () => {
+    if (!pendingProcessRef.current) return
+    pendingProcessRef.current = false
+    void process()
   }
 
   const downloadAll = async () => {
@@ -189,7 +210,7 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
     }
   }
 
-  return { ...workspace, setItems: (items: FileItem[] | ((current: FileItem[]) => FileItem[])) => store.setItems(workspaceRoute, items), setScale: (scale: string) => store.setScale(workspaceRoute, scale), setProcessing: (processing: boolean) => store.setProcessing(workspaceRoute, processing), setProgress: (progress: { completed: number; total: number }) => store.setProgress(workspaceRoute, progress), setPrompt: (prompt: string) => store.setPrompt(workspaceRoute, prompt), setCreativity: (creativity: number) => store.setCreativity(workspaceRoute, creativity), setSimilarity: (similarity: number) => store.setSimilarity(workspaceRoute, similarity), toast, dragging, setDragging, inputRef, addFiles, removeItem, clearItems, cancel, process, downloadAll, downloadItem, editingItemId, setEditingItemId, editState, setEditState, openEditor, saveEdit }
+  return { ...workspace, setItems: (items: FileItem[] | ((current: FileItem[]) => FileItem[])) => store.setItems(workspaceRoute, items), setScale: (scale: string) => store.setScale(workspaceRoute, scale), setProcessing: (processing: boolean) => store.setProcessing(workspaceRoute, processing), setProgress: (progress: { completed: number; total: number }) => store.setProgress(workspaceRoute, progress), setPrompt: (prompt: string) => store.setPrompt(workspaceRoute, prompt), setCreativity: (creativity: number) => store.setCreativity(workspaceRoute, creativity), setSimilarity: (similarity: number) => store.setSimilarity(workspaceRoute, similarity), toast, dragging, setDragging, inputRef, addFiles, removeItem, clearItems, forceClearItems, cancel, process, resumePendingProcess, downloadAll, downloadItem, editingItemId, setEditingItemId, editState, setEditState, openEditor, saveEdit }
 }
 
 export type WorkspaceController = ReturnType<typeof useWorkspaceController>
@@ -218,5 +239,8 @@ function workspaceErrorMessage(error: unknown, t: ReturnType<typeof useTranslati
   if (code === 'image_read_failed') return t('api.imageReadFailed')
   if (code === 'result_encode_failed') return t('api.encodeFailed')
   if (code.startsWith('run_')) return t('api.failed')
-  return t('toast.resultError')
+  // Keep the server's machine-readable error visible during integration so a
+  // rejected upload/model request is actionable instead of looking like a
+  // local demo failure. The translated fallback remains for unknown errors.
+  return code || t('toast.resultError')
 }

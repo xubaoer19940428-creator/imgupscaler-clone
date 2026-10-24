@@ -455,29 +455,29 @@
       [
         "Eleonore Lefaix",
         "Siecledigital.fr editörü",
-        "ImgUpscaler, görüntü yükseltmeyi basitleştirir ve toplu işlemeyi destekler, böylece kullanıcılar aynı anda birden fazla görüntüyü işleyebilir."
+        "Photosharp, görüntü yükseltmeyi basitleştirir ve toplu işlemeyi destekler, böylece kullanıcılar aynı anda birden fazla görüntüyü işleyebilir."
       ],
       [
         "Eva Williams",
         "Fixthephoto düzenleyici",
-        "Manuel adımları tekrarlamadan birden fazla görüntüyü yükseltmeniz ve geniş bir görsel varlık kümesini iyileştirmeniz gerektiğinde, ImgUpscaler pratik bir seçimdir."
+        "Manuel adımları tekrarlamadan birden fazla görüntüyü yükseltmeniz ve geniş bir görsel varlık kümesini iyileştirmeniz gerektiğinde, Photosharp pratik bir seçimdir."
       ],
       [
         "Matic Broz",
         "Düzenleyici",
-        "Görüntü yükseltme pahalı veya karmaşık olmamalıdır. ImgUpscaler, görüntüleri çevrimiçi olarak büyütmenin basit ve sezgisel bir yolunu sunar."
+        "Görüntü yükseltme pahalı veya karmaşık olmamalıdır. Photosharp, görüntüleri çevrimiçi olarak büyütmenin basit ve sezgisel bir yolunu sunar."
       ],
       [
         "Sravan",
         "Ürün Avı kullanıcısı",
-        "ImgUpscaler, manzaralar ve ürün fotoğraflarından daha görünür ayrıntılara ihtiyaç duyan eski resimlere kadar birçok görüntü türünde çalışır."
+        "Photosharp, manzaralar ve ürün fotoğraflarından daha görünür ayrıntılara ihtiyaç duyan eski resimlere kadar birçok görüntü türünde çalışır."
       ]
     ],
     "faqs": {
       "home": [
         [
-          "ImgUpscaler nedir?",
-          "ImgUpscaler fotoğrafları, çizimleri, ürün görsellerini ve portreleri yapay zekayla büyüten çevrimiçi bir araçtır. 2K veya 4K çıktı seçebilirsiniz. Kullanılabilir boyutlar modele ve hesap sınırlarına bağlıdır."
+          "Photosharp nedir?",
+          "Photosharp fotoğrafları, çizimleri, ürün görsellerini ve portreleri yapay zekayla büyüten çevrimiçi bir araçtır. 2K veya 4K çıktı seçebilirsiniz. Kullanılabilir boyutlar modele ve hesap sınırlarına bağlıdır."
         ],
         [
           "Yapay zeka görüntü yükseltme aracı nasıl çalışır?",
@@ -593,7 +593,7 @@
       "reimagine": [
         [
           "Reimagine AI nedir?",
-          "Reimagine AI, ImgUpscaler'ın hızlı yönlendirmeli yaratıcı ölçekleyicisidir. İsteminizden ve ayarlarınızdan yeni ayrıntı, doku ve görsel çeşitlilik oluştururken görüntüyü büyütür."
+          "Reimagine AI, Photosharp'ın hızlı yönlendirmeli yaratıcı ölçekleyicisidir. İsteminizden ve ayarlarınızdan yeni ayrıntı, doku ve görsel çeşitlilik oluştururken görüntüyü büyütür."
         ],
         [
           "Reimagine AI'nin normal bir ölçekleyiciden farkı nedir?",
@@ -644,7 +644,7 @@
     "video": {
       "title": "AI görüntü yükseltmenin netliği nasıl artırdığını görün",
       "description": "Fotoğrafları, çizimleri, ürün görsellerini, portreleri ve eski fotoğrafları yapay zekayla büyütün. 2K veya 4K çıktı seçin, ayrıntıları inceleyin ve sonucu indirin. Kullanılabilir çözünürlük modele ve hesap sınırlarına bağlıdır.",
-      "alt": "ImgUpscaler video vitrini",
+      "alt": "Photosharp video vitrini",
       "caption": "YouTube'da izleyin ↗"
     },
     "useCaseIntro": {
@@ -653,16 +653,16 @@
         "before": "Daha net varlıklar hazırlayın",
         "emphasis": "web, baskı ve sosyal medya."
       },
-      "description": "Hızlı çevrimiçi yükseltmeden toplu kullanıma hazır iş akışlarına kadar ImgUpscaler, karmaşık düzenleme ayarları olmadan daha net görsellere ihtiyaç duyan yaratıcılar, ekipler ve işletmeler için tasarlanmıştır."
+      "description": "Hızlı çevrimiçi yükseltmeden toplu kullanıma hazır iş akışlarına kadar Photosharp, karmaşık düzenleme ayarları olmadan daha net görsellere ihtiyaç duyan yaratıcılar, ekipler ve işletmeler için tasarlanmıştır."
     },
     "testimonialIntro": {
-      "title": "İnsanlar ImgUpscaler hakkında ne söylüyor",
-      "description": "İçerik oluşturucular, editörler, pazarlamacılar ve sıradan kullanıcılar, daha net, daha kullanışlı görsel varlıklar için pratik bir çevrimiçi yükseltmeye ihtiyaç duyduklarında ImgUpscaler'a güveniyorlar."
+      "title": "İnsanlar Photosharp hakkında ne söylüyor",
+      "description": "İçerik oluşturucular, editörler, pazarlamacılar ve sıradan kullanıcılar, daha net, daha kullanışlı görsel varlıklar için pratik bir çevrimiçi yükseltmeye ihtiyaç duyduklarında Photosharp'a güveniyorlar."
     },
     "faqIntro": {
       "home": {
         "title": "AI görüntü yükseltme SSS'leri",
-        "description": "ImgUpscaler, çevrimiçi görüntü yükseltme, görüntü geliştirme, dosya gizliliği, desteklenen formatlar ve yaygın kullanım örnekleri hakkındaki yanıtlar."
+        "description": "Photosharp, çevrimiçi görüntü yükseltme, görüntü geliştirme, dosya gizliliği, desteklenen formatlar ve yaygın kullanım örnekleri hakkındaki yanıtlar."
       },
       "enhancer": {
         "title": "Görsel iyileştirme hakkında sık sorulan sorular",
@@ -682,7 +682,7 @@
   },
   "pricing": {
     "title": "Görüntü iş akışınız için bir plan seçin",
-    "description": "ImgUpscaler ve Reimagine’ı ücretsiz deneyin. Daha fazla kredi veya yüksek hacim gerektiğinde yükseltin.",
+    "description": "Photosharp ve Reimagine’ı ücretsiz deneyin. Daha fazla kredi veya yüksek hacim gerektiğinde yükseltin.",
     "monthly": "Aylık",
     "annual": "Yıllık",
     "annualBadge": "En iyi değer",
@@ -720,7 +720,7 @@
     "faqKicker": "Fiyatlandırma SSS'leri",
     "faqTitle": "Krediler, faturalandırma ve",
     "faqEmphasis": "planı yükseltmeleriyle ilgili sorular.",
-    "faqDescription": "Krediler, fatura döngüleri, plan değişiklikleri, ödeme ve doğru ImgUpscaler planının seçilmesiyle ilgili yanıtlar.",
+    "faqDescription": "Krediler, fatura döngüleri, plan değişiklikleri, ödeme ve doğru Photosharp planının seçilmesiyle ilgili yanıtlar.",
     "plans": [
       {
         "id": "free",
@@ -783,7 +783,7 @@
     "faqs": [
       [
         "Hangi planı seçmeliyim?",
-        "Yalnızca ImgUpscaler'ı test ediyorsanız Ücretsiz'i seçin. Görüntüleri düzenli olarak geliştiriyorsanız ve toplu işleme, daha fazla krediye, Reimagine AI'ye ve reklamsız bir çalışma alanına ihtiyacınız varsa Gelişmiş'u seçin. Ticari veya üretim işi sınırsız kredi gerektirdiğinde İşletme'yi seçin."
+        "Yalnızca Photosharp'ı test ediyorsanız Ücretsiz'i seçin. Görüntüleri düzenli olarak geliştiriyorsanız ve toplu işleme, daha fazla krediye, Reimagine AI'ye ve reklamsız bir çalışma alanına ihtiyacınız varsa Gelişmiş'u seçin. Ticari veya üretim işi sınırsız kredi gerektirdiğinde İşletme'yi seçin."
       ],
       [
         "Krediler ne için kullanılabilir?",
@@ -807,7 +807,7 @@
       ],
       [
         "Ödeme başarısız olursa ne yapmalıyım?",
-        "Ekibin yardımcı olabilmesi için support@imgupscaler.com ile hesabınızın e-posta adresini ve yaklaşık ödeme süresini belirterek iletişime geçin."
+        "Ekibin yardımcı olabilmesi için support@photosharp.app ile hesabınızın e-posta adresini ve yaklaşık ödeme süresini belirterek iletişime geçin."
       ],
       [
         "Ne zaman ücretlendirilirim?",
@@ -841,7 +841,7 @@
     "cookies": "Çerezleri",
     "contact": "İletişim",
     "switchLanguage": "Dili değiştir",
-    "copyright": "© 2026 ImgUpscaler. Her hakkı saklıdır.",
+    "copyright": "© 2026 Photosharp. Her hakkı saklıdır.",
     "languageNames": {
       "en": "English",
       "zh": "简体中文",
@@ -907,7 +907,7 @@
     "pages": {
       "privacy-policy": {
         "title": "Gizlilik Politikası",
-        "intro": "ImgUpscaler, Sparklightforce Limited tarafından işletilen çevrimiçi bir yapay zeka görüntü yükseltme ve geliştirme hizmetidir. Bu sayfada topladığımız bilgiler, bunları nasıl kullandığımız ve tercihleriniz açıklanmaktadır.",
+        "intro": "Photosharp, Sparklightforce Limited tarafından işletilen çevrimiçi bir yapay zeka görüntü yükseltme ve geliştirme hizmetidir. Bu sayfada topladığımız bilgiler, bunları nasıl kullandığımız ve tercihleriniz açıklanmaktadır.",
         "sections": [
           [
             "1. Topladığımız Bilgiler",
@@ -931,21 +931,21 @@
           ],
           [
             "6. Seçimleriniz",
-            "Hesap bilgilerine erişim, düzeltme veya silme talebinde bulunmak için support@imgupscaler.com ile iletişime geçebilirsiniz. Çerezleri tarayıcınızın ayarları aracılığıyla yönetebilirsiniz, ancak gerekli özellikler çalışmayı durdurabilir."
+            "Hesap bilgilerine erişim, düzeltme veya silme talebinde bulunmak için support@photosharp.app ile iletişime geçebilirsiniz. Çerezleri tarayıcınızın ayarları aracılığıyla yönetebilirsiniz, ancak gerekli özellikler çalışmayı durdurabilir."
           ],
           [
             "7. Bize Ulaşın",
-            "Bu politikayla ilgili sorular support@imgupscaler.com adresine gönderilebilir. Sparklightforce Limited: ODA 1503-09, 15/F, Causeway BAY CENTRE, 15-23 SUGAR STREET, Causeway BAY, HONG KONG."
+            "Bu politikayla ilgili sorular support@photosharp.app adresine gönderilebilir. Sparklightforce Limited: ODA 1503-09, 15/F, Causeway BAY CENTRE, 15-23 SUGAR STREET, Causeway BAY, HONG KONG."
           ]
         ]
       },
       "terms": {
         "title": "Hizmet Koşulları",
-        "intro": "ImgUpscaler'u kullanarak bu hizmet şartlarını kabul etmiş olursunuz. Mevcut özellikler, işlem ödenekleri ve ücretli avantajlar mevcut ürün ve hesap sayfalarında açıklanmaktadır.",
+        "intro": "Photosharp'u kullanarak bu hizmet şartlarını kabul etmiş olursunuz. Mevcut özellikler, işlem ödenekleri ve ücretli avantajlar mevcut ürün ve hesap sayfalarında açıklanmaktadır.",
         "sections": [
           [
             "1. Hizmet Kapsamı",
-            "ImgUpscaler, çevrimiçi görüntü yükseltme, geliştirme ve AI iş akışlarını yeniden tasarlama olanağı sağlar. Ürün geliştikçe özellikler, modeller, sınırlar ve kullanılabilirlik değişebilir."
+            "Photosharp, çevrimiçi görüntü yükseltme, geliştirme ve AI iş akışlarını yeniden tasarlama olanağı sağlar. Ürün geliştikçe özellikler, modeller, sınırlar ve kullanılabilirlik değişebilir."
           ],
           [
             "2. Kullanıcı İçeriği",
@@ -965,7 +965,7 @@
           ],
           [
             "6.",
-            "ile iletişime geçin Yardım için support@imgupscaler.com'e e-posta gönderin."
+            "ile iletişime geçin Yardım için support@photosharp.app'e e-posta gönderin."
           ]
         ]
       },
@@ -991,7 +991,7 @@
           ],
           [
             "5.",
-            "ile iletişime geçin Çerez kullanımına ilişkin sorular support@imgupscaler.com'e gönderilebilir."
+            "ile iletişime geçin Çerez kullanımına ilişkin sorular support@photosharp.app'e gönderilebilir."
           ]
         ]
       }
@@ -999,39 +999,39 @@
   },
   "metadata": {
     "home": {
-      "title": "Yapay zekayla çevrimiçi görsel büyütme | Img.Upscaler",
+      "title": "Yapay zekayla çevrimiçi görsel büyütme | Photosharp",
       "description": "Yapay zeka ile fotoğrafları ve illüstrasyonları çevrimiçi olarak büyütün. İnce ayrıntıları geri yükleyin, düşük çözünürlüklü görüntüleri keskinleştirin ve ihtiyacınız olan boyutta daha net sonuçlar indirin."
     },
     "enhancer": {
-      "title": "Yapay zekayla fotoğraf kalitesini iyileştirme | Img.Upscaler",
+      "title": "Yapay zekayla fotoğraf kalitesini iyileştirme | Photosharp",
       "description": "Çevrimiçi yapay zekalı görüntü geliştiriciyle fotoğraf netliğini artırın. İndirmeden önce gürültüyü ve sıkıştırma bozulmalarını azaltın, dokuları keskinleştirin ve sonucu önizleyin."
     },
     "reimagine": {
-      "title": "Yapay zeka ve metinle görselleri yeniden tasarla | Img.Upscaler",
+      "title": "Yapay zeka ve metinle görselleri yeniden tasarla | Photosharp",
       "description": "Yapay zeka ile fotoğrafları, illüstrasyonları ve iç mekanları yeniden hayal edin. Sonucu bir istemle yönlendirin, yaratıcılığı ve benzerliği ayarlayın ve yeni görüntünüzün önizlemesini yapın."
     },
     "pricing": {
-      "title": "Görsel büyütme planları ve fiyatları | Img.Upscaler",
+      "title": "Görsel büyütme planları ve fiyatları | Photosharp",
       "description": "Görüntü yükseltme planlarını, kredileri ve toplu işleme seçeneklerini karşılaştırın. Fotoğraf geliştirme, yaratıcı projeler ve iş akışları için doğru planı bulun."
     },
     "account": {
-      "title": "Hesabınız ve Kredileriniz | Img.Upscaler",
-      "description": "Img.Upscaler hesabınızdan profilinizi, hesap güvenliğinizi, mevcut görüntü işleme kredilerinizi ve faturalandırma ayarlarınızı yönetin."
+      "title": "Hesabınız ve Kredileriniz | Photosharp",
+      "description": "Photosharp hesabınızdan profilinizi, hesap güvenliğinizi, mevcut görüntü işleme kredilerinizi ve faturalandırma ayarlarınızı yönetin."
     },
     "privacy": {
-      "title": "Gizlilik Politikası | Img.Upscaler",
-      "description": "Img.Upscaler'nin hesap bilgilerini, yüklenen fotoğrafları, oluşturulan görselleri, saklamayı ve gizlilik tercihlerinizi nasıl işlediğini okuyun."
+      "title": "Gizlilik Politikası | Photosharp",
+      "description": "Photosharp'nin hesap bilgilerini, yüklenen fotoğrafları, oluşturulan görselleri, saklamayı ve gizlilik tercihlerinizi nasıl işlediğini okuyun."
     },
     "terms": {
-      "title": "Hizmet Şartları | Img.Upscaler",
-      "description": "Görüntü sahipliği, kabul edilebilir kullanım, işleme sınırları, hesap kredileri ve abonelikler dahil olmak üzere Img.Upscaler kullanım koşullarını inceleyin."
+      "title": "Hizmet Şartları | Photosharp",
+      "description": "Görüntü sahipliği, kabul edilebilir kullanım, işleme sınırları, hesap kredileri ve abonelikler dahil olmak üzere Photosharp kullanım koşullarını inceleyin."
     },
     "cookies": {
-      "title": "Çerez Politikası | Img.Upscaler",
-      "description": "Çerezlerin Img.Upscaler'de oturum açmayı, güvenliği, tercihleri ve analizleri nasıl desteklediğini ve bunları tarayıcınızda nasıl yöneteceğinizi öğrenin."
+      "title": "Çerez Politikası | Photosharp",
+      "description": "Çerezlerin Photosharp'de oturum açmayı, güvenliği, tercihleri ve analizleri nasıl desteklediğini ve bunları tarayıcınızda nasıl yöneteceğinizi öğrenin."
     },
     "root": {
-      "title": "Img.Upscaler",
+      "title": "Photosharp",
       "description": "Yapay zeka ile görüntüleri çevrimiçi olarak büyütün, geliştirin ve yeniden hayal edin."
     }
   }
