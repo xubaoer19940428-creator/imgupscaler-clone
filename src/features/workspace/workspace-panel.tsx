@@ -11,11 +11,9 @@ import { Icon } from '@/src/components/ui/icons'
 import { Textarea } from '@/src/components/ui/textarea'
 import { formatBytes } from '@/src/lib/utils'
 import type { WorkspaceController } from './use-workspace-controller'
-import { ReferenceWorkflow } from './reference-workflow'
 
 
 export function WorkspacePanel({ route, controller }: { route: Route; controller: WorkspaceController }) {
-  if (route === 'home' || route === 'enhancer') return <ReferenceWorkflow route={route} controller={controller} />
   const t = useTranslations('workspace')
   const hasDone = controller.items.some((item) => item.status === 'done')
   // The active upscaler deployments accept 2x and 4x. Exposing 1K here sent
@@ -103,7 +101,7 @@ function FileGrid({ controller }: { controller: WorkspaceController }) {
               </div>
             </div>
 
-            {item.error && <span className="thumb-error-banner">{item.error}</span>}
+            {item.status === 'error' && item.error && <span className="thumb-error-banner">{item.error}</span>}
 
             {item.status === 'done' && (
               <div className="thumb-action-overlay">

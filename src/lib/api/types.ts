@@ -57,10 +57,15 @@ export type ImageInputReference = {
   image_url: { url: string };
 };
 
-/** Canonical image/video router fields accepted by the platform API. */
+/**
+ * Canonical image/video router fields accepted by the platform API.
+ * 平台统一图片/视频接口规范：
+ * - prompt 必填且非空
+ * - 参考图/源图统一必须使用 input_references 数组，严禁使用 image_url！
+ */
 export type AiMediaRequest = {
   model: string;
-  prompt?: string;
+  prompt: string;
   negative_prompt?: string;
   n?: number;
   size?: string;

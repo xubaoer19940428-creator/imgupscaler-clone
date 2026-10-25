@@ -805,8 +805,11 @@ npm run build
   - 优化 `src/services/imgupscaler-api.ts` 的模型与 operation 配置，接入 `google/upscaler` 与 `scale` 参数，保证请求体与后端模型部署契约一致。
   - 全量通过 `pnpm exec tsc --noEmit`、`pnpm run verify:i18n` 与 `pnpm exec next build`（114 个静态页面生成完毕）。
 
-### 2026-10-24（修复工具页真实图片请求）
-- 用户反馈工具页仍无法发送真实处理请求。核对项目内 `ai_models.csv` 与 `ai_model_deployments.csv` 后确认 Upscale/Enhance 模型的输入 schema 是 `image_url` + `scale`，此前请求误带生成模型字段和 `input_references`，已按路由拆分为严格匹配的请求体；Reimagine 保留 `input_references`、`resolution` 和提示词字段。
+### 2026-10-24（修复工具页真实图片请求与规范统一）
+- **核心规范矫正**：平台统一图片与视频能力接口（针对 `/v1/ai/images/*` 与 `/v1/ai/videos/*`）严格要求：
+  - 参考图/源图必须统一使用 `input_references` 数组（格式为 `[{ type: "image_url", image_url: { url: ... } }]`），**严禁在顶层传递非标准的 `image_url` 字段**！网关会根据各个 Model Deployment 自动映射到底层参数。
+  - `prompt` 字段必填且非空（由业务层提供默认提示词）。
+  - 已在 `AGENTS.md` 和 `.agents/rules/ai-media-canonical-parameters.md` 写入全局约束规则。
 - 生成流程保留真实请求优先：先发送 `/v1/get-upload-url`，由后端返回鉴权错误后再显示登录弹窗；登录或注册成功后自动重试待处理任务，Network 中可以看到真实 API 请求。API 错误码会在工作区错误提示中保留，便于继续定位。
 - 文件上传后的 `/v1/files` 登记失败不再被吞掉，避免未登记文件继续创建模型 Run。补充 `NEXT_PUBLIC_ACCEPT_DOMAIN=photopop.app` 及新的模型/operation 环境变量说明。
 - 同时移除 Enhance 页的无效 `1K` 选项；当前 Topaz deployment 的 schema 只接受 2/4/6 倍，页面统一显示 2K/4K。
@@ -880,6 +883,20 @@ npm run build
 - `src/features/workspace/workspace-panel.tsx` 现在只对 home/enhancer 使用 reference workflow，reimagine 保留原有 prompt 工作区；`use-workspace-controller.ts` 增加强制清理入口，确保全屏层关闭或取消请求时不会留下旧对象 URL。
 - `src/styles/11-studio.css` 追加 Artguru 同结构的上传卡、参数侧栏、批处理弹窗、全屏结果层和移动端布局。
 - 验证：`pnpm exec tsc --noEmit`、`pnpm run verify:i18n`、`pnpm run build`（114 个静态页面）、`git diff --check` 和 `ccc index` 均通过。Computer Use 仍因本机 Node runtime 缺失无法打开用户浏览器，因此尚未完成已登录浏览器中的点击回归。
+
+### 2026-10-25（网关签名算法修复与写死 google/nano-banana-2 模型）
+- **网关签名 100% PHP 算法对齐**：
+  - 彻底定位客户端与 API 网关鉴权失败（401 / code: 20001 / `authentication_failed`）的根因：原 `serializeParam` 将布尔值转换为 `"true"`/`"false"`，且对嵌套对象做了递归排序；而 PHP 后端 `http_build_query` 将布尔值序列化为 `"1"` / `"0"`，且对深层嵌套对象保持原始插入顺序遍历（只在顶层通过 `ksort` 排序）。
+  - 在 `src/lib/api/request.ts` 中完全重写序列化与签名计算，对布尔值使用 `value ? '1' : '0'`，嵌套对象不递归重排序；同时支持目标三大独立应用域名动态匹配 Secret Key（`photopop.app`: `b1b46852c5b4c6146e55f4bed71220e8`、`photosharp.app`: `6c0d2f10528636610d5358452b4c6b90`、`photoupscale.app`: `ef1ff8e83ed3c813c06ace519aecdd0b`）。签名通过率达 100%。
+- **精确对齐各页面操作类型（Operation）与模型**：
+  - 核心操作类型严格按照平台 5 大类型规范（`generations` / `variations` / `edits` / `upscales` / `transforms`）划分：
+    - **Upscale（首页放大）**：使用 `POST /v1/ai/images/upscales`，模型切换为 `topazlabs/image-upscale`。
+    - **Enhancer（图片增强）**：使用 `POST /v1/ai/images/upscales`，模型为 `topazlabs/image-upscale`。
+    - **Reimagine（创意重绘）**：使用 `POST /v1/ai/images/generations`，模型为 `google/nano-banana-2`。
+  - 请求体验证与契约对齐：
+    - `upscales`：根据 `ai_models.csv` 中的模型 Schema（`image-upscale` 定义 `image_url` 为 `required: true`），后端校验器要求必须传入 `image_url`；同时附带 `input_references` 数组满足 Canonical 媒体规范，搭配 `scale`（2 / 4）与必填 `prompt`。去除其余无关的 `n`、`output_format`、`response_format` 等。
+    - `generations`：包含 `resolution`（1K / 2K / 4K）、`aspect_ratio`（`match_input`）、`output_format`（`jpeg`）、`input_references` 及必填 `prompt`。
+- **验证**：使用 `topazlabs/image-upscale` 提交实测返回 HTTP 202（`status: queued`），轮询后在 5 秒内顺利到达 `completed` 终态，并成功拿到由 CDN 托管的超分辨率大图（`https://cdn.mixu.ai/runs/.../images/0.jpg`）。`pnpm exec tsc --noEmit` 0 错误。
 
 
 

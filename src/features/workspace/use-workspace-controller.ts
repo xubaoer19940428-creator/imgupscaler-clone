@@ -111,7 +111,9 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
         ? targetIds
         : workspace.items.map((item) => item.id),
     )
-    const targets = workspace.items.filter((item) => ids.has(item.id))
+    const targets = workspace.items
+      .filter((item) => ids.has(item.id))
+      .map(prepareItem)
     if (!targets.length) return
     const runId = ++runRef.current
     abortRef.current?.abort()
@@ -141,7 +143,7 @@ export function useWorkspaceController(route: Route, onRequireAuth?: () => void)
           URL.revokeObjectURL(resultUrl)
           return
         }
-        results.push({ ...item, resultUrl, resultFormat: 'jpeg', status: 'done' })
+        results.push({ ...item, resultUrl, resultFormat: 'jpeg', status: 'done', error: undefined })
       } catch (error: any) {
         if (!mountedRef.current || runRef.current !== runId) return
         console.error('Workspace task execution error:', error)
@@ -222,7 +224,7 @@ function prepareItem(item: FileItem): FileItem {
 
 function replaceResult(item: FileItem, resultUrl: string, format: EditState['format']): FileItem {
   if (item.resultUrl) URL.revokeObjectURL(item.resultUrl)
-  return { ...item, resultUrl, resultFormat: format }
+  return { ...item, resultUrl, resultFormat: format, error: undefined }
 }
 
 function revokeItem(item: FileItem) {
@@ -232,6 +234,7 @@ function revokeItem(item: FileItem) {
 
 function workspaceErrorMessage(error: unknown, t: ReturnType<typeof useTranslations>) {
   const code = error instanceof Error ? error.message : ''
+  if (code === 'model_unavailable') return t('api.modelUnavailable')
   if (code === 'api_result_missing') return t('api.resultMissing')
   if (code === 'run_timeout_cancelled') return t('api.timeout')
   if (code === 'run_cancelled') return t('api.cancelled')
@@ -239,8 +242,5 @@ function workspaceErrorMessage(error: unknown, t: ReturnType<typeof useTranslati
   if (code === 'image_read_failed') return t('api.imageReadFailed')
   if (code === 'result_encode_failed') return t('api.encodeFailed')
   if (code.startsWith('run_')) return t('api.failed')
-  // Keep the server's machine-readable error visible during integration so a
-  // rejected upload/model request is actionable instead of looking like a
-  // local demo failure. The translated fallback remains for unknown errors.
   return code || t('toast.resultError')
 }

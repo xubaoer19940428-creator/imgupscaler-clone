@@ -164,7 +164,26 @@ function parseBody(data: unknown): QueryParams {
     : (data as QueryParams);
 }
 
-/** 递归序列化一个签名参数，嵌套值使用 PHP 风格的方括号。 */
+const DOMAIN_SECRETS: Record<string, string> = {
+  "photopop.app": "b1b46852c5b4c6146e55f4bed71220e8",
+  "photosharp.app": "6c0d2f10528636610d5358452b4c6b90",
+  "photoupscale.app": "ef1ff8e83ed3c813c06ace519aecdd0b",
+};
+
+/** 浏览器端签名密钥，优先从环境变量读取，否则根据当前 accept-domain 选择密钥。 */
+export function getAppSecretKey() {
+  const envKey = (
+    process.env.NEXT_PUBLIC_ARTGURU_APP_SECRET_KEY ||
+    process.env.NEXT_PUBLIC_IMGUPSCALER_APP_SECRET_KEY ||
+    ""
+  ).trim();
+  if (envKey) return envKey;
+
+  const domain = getAcceptDomain();
+  return DOMAIN_SECRETS[domain] || "b1b46852c5b4c6146e55f4bed71220e8";
+}
+
+/** 递归序列化一个签名参数，嵌套值使用 PHP 风格的方括号（100% 兼容 PHP http_build_query + undressly-app）。 */
 function serializeParam(
   key: string,
   value: QueryValue,
@@ -172,16 +191,29 @@ function serializeParam(
 ) {
   if (value === undefined || value === null) return;
 
-  if (Array.isArray(value)) {
-    value.forEach((item, index) => {
-      serializeParam(`${key}[${index}]`, item, parts);
-    });
+  if (typeof value === "boolean") {
+    // PHP http_build_query 会将布尔值序列化为 1 或 0
+    parts.push(`${encode3986(key)}=${value ? "1" : "0"}`);
     return;
   }
 
-  if (typeof value === "object") {
-    Object.keys(value).forEach((nestedKey) => {
-      serializeParam(`${key}[${nestedKey}]`, value[nestedKey], parts);
+  if (typeof value === "object" && !Array.isArray(value)) {
+    // 与 undressly-app 保持一致：后端只对根节点做 ksort，深层节点沿用 insertion order
+    for (const nestedKey in value) {
+      if (Object.prototype.hasOwnProperty.call(value, nestedKey)) {
+        serializeParam(
+          `${key}[${nestedKey}]`,
+          (value as Record<string, QueryValue>)[nestedKey],
+          parts,
+        );
+      }
+    }
+    return;
+  }
+
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => {
+      serializeParam(`${key}[${index}]`, item, parts);
     });
     return;
   }
@@ -218,12 +250,13 @@ export function createSignature(
   timestamp: number,
   nonce: string,
 ) {
-  if (!APP_SECRET_KEY) {
+  const secret = getAppSecretKey();
+  if (!secret) {
     throw new ApiError("api_secret_not_configured", 503);
   }
 
   const { pathname, params: embeddedParams } = parseEmbeddedQuery(path);
-  // 与 undressly-app 的旧客户端保持一致：有 body 时以 body 作为签名参数，
+  // 与 undressly-app 客户端保持一致：有 body 时以 body 作为签名参数，
   // 没有 body 时才使用 query 参数。URL 中已有的 query 始终保留。
   const bodyParams = body ? parseBody(body) : queryParams;
   const params = {
@@ -239,7 +272,7 @@ export function createSignature(
       `%${character.charCodeAt(0).toString(16).toUpperCase()}`,
   );
 
-  return md5(`${encodedPath}${canonicalParams}${APP_SECRET_KEY}`);
+  return md5(`${encodedPath}${canonicalParams}${secret}`);
 }
 
 /** 构造带 ts、nn、sn 的签名 URL，供 SSE 等非 Axios 请求使用。 */
@@ -346,7 +379,8 @@ service.interceptors.request.use((config: SignedRequestConfig) => {
 
   config.url = embedded.pathname;
   config.params = { ...queryParams };
-  if (APP_SECRET_KEY) {
+  const secret = getAppSecretKey();
+  if (secret) {
     const timestamp = Math.floor(Date.now() / 1000);
     const nonce = randomNonce();
     const signature = createSignature(

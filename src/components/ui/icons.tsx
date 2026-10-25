@@ -1,4 +1,4 @@
-type IconName = 'arrow' | 'upload' | 'spark' | 'check' | 'menu' | 'download' | 'lock' | 'chevron' | 'close' | 'flip' | 'rotate' | 'crop' | 'edit' | 'user' | 'credit-card' | 'logout'
+type IconName = 'arrow' | 'upload' | 'spark' | 'check' | 'menu' | 'download' | 'lock' | 'chevron' | 'close' | 'flip' | 'rotate' | 'crop' | 'edit' | 'user' | 'credit-card' | 'logout' | 'history' | 'trash'
 
 export function Icon({ name, className = '' }: { name: IconName; className?: string }) {
   const props = { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true, className }
@@ -17,5 +17,7 @@ export function Icon({ name, className = '' }: { name: IconName; className?: str
   if (name === 'rotate') return <svg {...props}><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 5v5h5"/></svg>
   if (name === 'crop') return <svg {...props}><path d="M6 2v14a2 2 0 0 0 2 2h14M2 6h14a2 2 0 0 1 2 2v14"/></svg>
   if (name === 'edit') return <svg {...props}><path d="m4 16-.8 4.8L8 20l11.3-11.3a2.1 2.1 0 0 0-3-3L4 16Z"/><path d="m14 7 3 3"/></svg>
+  if (name === 'history') return <svg {...props}><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+  if (name === 'trash') return <svg {...props}><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
   return <svg {...props}><path d="m9 18 6-6-6-6"/></svg>
 }

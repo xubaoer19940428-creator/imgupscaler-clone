@@ -2,6 +2,7 @@ import type { Route } from '@/src/lib/types'
 import {
   ApiError,
   cancelRun,
+  createFile,
   createImageRun,
   getRun,
   uploadInputFile,
@@ -18,80 +19,103 @@ export type ImageApiRequest = {
   signal?: AbortSignal
 }
 
-type ImageRouteConfig = { operation: AiMediaOperation; model: string | undefined }
+type ImageRouteConfig = {
+  operation: AiMediaOperation
+  model: string
+}
+
 const terminalStatuses = new Set(['completed', 'failed', 'cancelled'])
-const routeConfig: Record<Exclude<Route, 'pricing'>, ImageRouteConfig> = {
+
+const ROUTE_CONFIG: Record<Exclude<Route, 'pricing'>, ImageRouteConfig> = {
   home: {
-    operation: operationFromEnv(process.env.NEXT_PUBLIC_IMGUPSCALER_UPSCALE_OPERATION, 'upscales'),
-    model: process.env.NEXT_PUBLIC_IMGUPSCALER_UPSCALE_MODEL || 'google/upscaler',
+    operation: (process.env.NEXT_PUBLIC_IMGUPSCALER_UPSCALE_OPERATION as AiMediaOperation) || 'upscales',
+    model: process.env.NEXT_PUBLIC_IMGUPSCALER_UPSCALE_MODEL || 'topazlabs/image-upscale',
   },
   enhancer: {
-    operation: operationFromEnv(process.env.NEXT_PUBLIC_IMGUPSCALER_ENHANCER_OPERATION, 'upscales'),
+    operation: (process.env.NEXT_PUBLIC_IMGUPSCALER_ENHANCER_OPERATION as AiMediaOperation) || 'upscales',
     model: process.env.NEXT_PUBLIC_IMGUPSCALER_ENHANCER_MODEL || 'topazlabs/image-upscale',
   },
   reimagine: {
-    operation: operationFromEnv(process.env.NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_OPERATION, 'generations'),
-    model: process.env.NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_MODEL || 'google/nano-banana-pro',
+    operation: (process.env.NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_OPERATION as AiMediaOperation) || 'generations',
+    model: process.env.NEXT_PUBLIC_IMGUPSCALER_REIMAGINE_MODEL || 'google/nano-banana-2',
   },
 }
 
-const MEDIA_OPERATIONS: ReadonlySet<string> = new Set(['generations', 'variations', 'edits', 'upscales', 'transforms'])
-
-function operationFromEnv(value: string | undefined, fallback: AiMediaOperation): AiMediaOperation {
-  return value && MEDIA_OPERATIONS.has(value) ? value as AiMediaOperation : fallback
-}
-
-/** 统一的图片处理编排：上传、登记、创建 Run、轮询和取消。 */
+/** 统一的图片处理编排：上传、登记、创建 Run、轮询和取消。根据功能路由调用对应的 upscales 或 generations 接口。 */
 export async function createImageResult(input: ImageApiRequest) {
-  const config = routeConfig[input.route]
+  const config = ROUTE_CONFIG[input.route]
   const inputUrl = await uploadInputFile(input.file, input.signal)
   const scaleNum = Number(input.scale) || 2
-  const body: AiMediaRequest = input.route === 'reimagine'
+  const defaultPrompt = input.route === 'reimagine'
+    ? 'Creative reimagine image'
+    : input.route === 'enhancer'
+      ? 'Enhance image quality, clarity and details'
+      : 'Upscale image to high resolution'
+  const prompt = input.prompt?.trim() || defaultPrompt
+
+  const isUpscale = config.operation === 'upscales'
+
+  const body: AiMediaRequest = isUpscale
     ? {
-        model: config.model || 'google/nano-banana-pro',
-        stream: false,
-        n: 1,
-        response_format: 'url',
-        output_format: 'jpeg',
+        model: config.model,
+        prompt,
+        scale: scaleNum,
+        image_url: inputUrl,
         input_references: [{ type: 'image_url', image_url: { url: inputUrl } }],
-        resolution: resolutionFor(input.scale),
-        ...(input.prompt?.trim() ? { prompt: input.prompt.trim() } : {}),
-        creativity: input.creativity,
-        similarity: input.similarity,
       }
     : {
-        // The upscaler model schemas only accept image_url and scale. Keep
-        // generation-only fields out of this request so the AI router can
-        // select the configured upscales deployment deterministically.
-        model: config.model || 'google/upscaler',
-        stream: false,
-        image_url: inputUrl,
-        scale: scaleNum,
+        model: config.model,
+        prompt,
+        resolution: resolutionFor(input.scale),
+        aspect_ratio: 'match_input',
+        output_format: 'jpeg',
+        input_references: [{ type: 'image_url', image_url: { url: inputUrl } }],
+        ...(input.route === 'reimagine' ? { creativity: input.creativity, similarity: input.similarity } : {}),
       }
+
   const run = await createImageRun(config.operation, body, idempotencyKey(input.route), input.signal)
-  return pollImageRun(run.run_id, input.signal)
+  const resultUrl = await pollImageRun(run.run_id, input.signal)
+
+  // Ensure generated result is recorded in the user's files
+  createFile({
+    file_name: `upscaled-${input.scale || '2'}x-${Date.now().toString().slice(-6)}.jpg`,
+    file_url: resultUrl,
+    file_type: 'image',
+    purpose: 'ai_output',
+    source_type: 'ai_run',
+  }).catch(() => undefined)
+
+  return resultUrl
 }
 
 export async function pollImageRun(runId: string, signal?: AbortSignal) {
   let run = await getRun(runId, signal)
   const deadline = Date.now() + 120_000
-  try {
-    while (Date.now() < deadline && !terminalStatuses.has(run.status)) {
-      await delay(2_000, signal)
+  let consecutiveErrors = 0
+  while (Date.now() < deadline && !terminalStatuses.has(run.status)) {
+    await delay(2_000, signal)
+    try {
       run = await getRun(runId, signal)
+      consecutiveErrors = 0
+    } catch (error) {
+      if (isAbortError(error)) {
+        await cancelRun(runId).catch(() => undefined)
+        throw new ApiError('run_cancelled', 499)
+      }
+      consecutiveErrors += 1
+      if (consecutiveErrors >= 3) {
+        throw error
+      }
     }
-  } catch (error) {
-    if (isAbortError(error)) {
-      await cancelRun(runId).catch(() => undefined)
-      throw new ApiError('run_cancelled', 499)
-    }
-    throw error
   }
   if (!terminalStatuses.has(run.status)) {
     await cancelRun(runId).catch(() => undefined)
     throw new ApiError('run_timeout_cancelled', 408)
   }
-  if (run.status !== 'completed') throw new ApiError(`run_${run.status}`, 500)
+  if (run.status !== 'completed') {
+    const errorMsg = run.error?.message || `run_${run.status}`
+    throw new ApiError(errorMsg, 500)
+  }
   const resultUrl = run.result?.items?.find((item) => item.type === 'image' || item.url)?.url
   if (!resultUrl) throw new ApiError('api_result_missing', 502)
   return resultUrl
