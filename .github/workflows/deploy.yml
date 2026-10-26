@@ -22,10 +22,12 @@ on:
   #   branches: [main]
 
 env:
-  # GitHub Actions Secret: DEPLOY_PASSWORD（服务器 root 密码）
-  # API 相关的 NEXT_PUBLIC_* 值在 Build project 步骤从 Secrets 注入。
-  DEPLOY_HOST: 104.64.221.138
-  DEPLOY_USER: root
+  # GitHub Actions Secrets (仅需在仓库配置这 3 个):
+  # - DEPLOY_HOST
+  # - DEPLOY_USER
+  # - DEPLOY_PASSWORD
+  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '104.64.221.138' }}
+  DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'root' }}
   DEPLOY_BASE: /var/www/ai-nova/photosharp
   APP_NAME: ai-nova
   APP_PORT: 3000
