@@ -1,0 +1,213 @@
+name: Deploy AI Nova
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 部署版本（默认 0.01；Release 事件使用 Release tag）
+        required: false
+        default: '0.01'
+        type: string
+      rollback_only:
+        description: 仅回滚到服务器上已有的版本
+        required: false
+        default: false
+        type: boolean
+
+  release:
+    types: [published]
+
+  # 如果需要 main 推送自动部署，可以取消下面注释。
+  # push:
+  #   branches: [main]
+
+env:
+  # GitHub Actions Secret: DEPLOY_PASSWORD（服务器 root 密码）
+  # API 相关的 NEXT_PUBLIC_* 值在 Build project 步骤从 Secrets 注入。
+  DEPLOY_HOST: 104.64.221.138
+  DEPLOY_USER: root
+  DEPLOY_BASE: /var/www/ai-nova/photosharp
+  APP_NAME: ai-nova
+  APP_PORT: 3000
+  KEEP_RELEASES: 5
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        if: ${{ !inputs.rollback_only }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.version || github.ref }}
+
+      - name: Get version info
+        id: version
+        shell: bash
+        run: |
+          if [ "${{ inputs.rollback_only }}" = "true" ]; then
+            VERSION="${{ inputs.version }}"
+            if [ -z "$VERSION" ]; then
+              echo "回滚模式需要填写 version"
+              exit 1
+            fi
+          elif [ -n "${{ github.event.release.tag_name }}" ]; then
+            VERSION="${{ github.event.release.tag_name }}"
+          elif [ -n "${{ inputs.version }}" ]; then
+            VERSION="${{ inputs.version }}"
+          else
+            VERSION="$(node -p "require('./package.json').version")"
+          fi
+
+          VERSION="${VERSION#v}"
+          VERSION="${VERSION//[^a-zA-Z0-9._-]/-}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "部署版本: $VERSION"
+
+      - name: Setup pnpm
+        if: ${{ !inputs.rollback_only }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        if: ${{ !inputs.rollback_only }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        if: ${{ !inputs.rollback_only }}
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        if: ${{ !inputs.rollback_only }}
+        run: |
+          rm -rf .next
+          pnpm build
+        env:
+          NEXT_PUBLIC_ARTGURU_API_BASE_URL: https://api.mixu.ai
+          NEXT_PUBLIC_ARTGURU_API_ENABLED: ${{ secrets.NEXT_PUBLIC_ARTGURU_API_ENABLED || 'false' }}
+          NEXT_PUBLIC_ARTGURU_APP_SECRET_KEY: ${{ secrets.NEXT_PUBLIC_ARTGURU_APP_SECRET_KEY }}
+          NEXT_PUBLIC_ARTGURU_UPSCALE_MODEL_SLUG: ${{ secrets.NEXT_PUBLIC_ARTGURU_UPSCALE_MODEL_SLUG }}
+          NEXT_PUBLIC_ARTGURU_UPSCALE_MODE: ${{ secrets.NEXT_PUBLIC_ARTGURU_UPSCALE_MODE }}
+          NEXT_PUBLIC_ARTGURU_IMAGE_MODEL_SLUG: ${{ secrets.NEXT_PUBLIC_ARTGURU_IMAGE_MODEL_SLUG }}
+          NEXT_PUBLIC_ARTGURU_IMAGE_MODE: ${{ secrets.NEXT_PUBLIC_ARTGURU_IMAGE_MODE }}
+
+      - name: Install SSH tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass rsync
+
+      - name: Prepare server directories
+        env:
+          SSHPASS: ${{ secrets.DEPLOY_PASSWORD }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          sshpass -e ssh -o StrictHostKeyChecking=no "$DEPLOY_USER@$DEPLOY_HOST" "bash -se" <<EOF
+          set -eu
+          mkdir -p "$DEPLOY_BASE/releases" "$DEPLOY_BASE/shared"
+          if [ "${{ inputs.rollback_only }}" = "true" ]; then
+            if [ ! -d "$DEPLOY_BASE/releases/$VERSION" ]; then
+              echo "服务器上不存在版本 $VERSION"
+              ls -la "$DEPLOY_BASE/releases"
+              exit 1
+            fi
+          fi
+          EOF
+
+      - name: Sync release to server
+        if: ${{ !inputs.rollback_only }}
+        env:
+          SSHPASS: ${{ secrets.DEPLOY_PASSWORD }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          RELEASE_DIR="$DEPLOY_BASE/releases/$VERSION"
+          set +e
+          sshpass -e rsync -rLDvz --copy-unsafe-links --ignore-errors \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            --exclude 'node_modules' \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '.env*' \
+            --delete \
+            ./ "$DEPLOY_USER@$DEPLOY_HOST:$RELEASE_DIR/"
+          RSYNC_EXIT=$?
+          set -e
+
+          if [ "$RSYNC_EXIT" -ne 0 ] && [ "$RSYNC_EXIT" -ne 23 ] && [ "$RSYNC_EXIT" -ne 24 ]; then
+            echo "rsync failed with exit code $RSYNC_EXIT"
+            exit "$RSYNC_EXIT"
+          fi
+
+      - name: Switch version and restart PM2
+        env:
+          SSHPASS: ${{ secrets.DEPLOY_PASSWORD }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          sshpass -e ssh -o StrictHostKeyChecking=no "$DEPLOY_USER@$DEPLOY_HOST" "bash -se" <<EOF
+          set -eux
+
+          export NVM_DIR="\$HOME/.nvm"
+          [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
+          export PATH="\$HOME/.local/bin:\$HOME/.npm-global/bin:/usr/local/bin:\$PATH"
+
+          if ! command -v pm2 >/dev/null 2>&1; then
+            npm install -g pm2
+          fi
+
+          # 确保 PM2 进程守护和日志轮转配置存在。
+          pm2 install pm2-logrotate || true
+          pm2 set pm2-logrotate:max_size 10M
+          pm2 set pm2-logrotate:retain 30
+          pm2 set pm2-logrotate:compress true
+          pm2 set pm2-logrotate:rotateInterval '0 0 * * *'
+
+          RELEASE_DIR="$DEPLOY_BASE/releases/$VERSION"
+          CURRENT_LINK="$DEPLOY_BASE/current"
+
+          if [ "${{ inputs.rollback_only }}" != "true" ]; then
+            cd "\$RELEASE_DIR"
+            npm install -g pnpm@9
+            pnpm install --prod --frozen-lockfile --ignore-scripts || npm install --omit=dev --ignore-scripts
+          fi
+
+          pm2 delete "$APP_NAME" || true
+          ln -sfn "\$RELEASE_DIR" "\$CURRENT_LINK"
+          cd "\$CURRENT_LINK"
+
+          PORT="$APP_PORT" HOSTNAME=0.0.0.0 pm2 start npm \
+            --name "$APP_NAME" \
+            --update-env \
+            -- start
+
+          sleep 3
+          pm2 status
+          pm2 logs "$APP_NAME" --lines 50 --nostream || true
+          pm2 save
+          EOF
+
+      - name: Cleanup old releases
+        env:
+          SSHPASS: ${{ secrets.DEPLOY_PASSWORD }}
+        run: |
+          sshpass -e ssh -o StrictHostKeyChecking=no "$DEPLOY_USER@$DEPLOY_HOST" "bash -se" <<EOF
+          set -eu
+          cd "$DEPLOY_BASE/releases"
+          KEEP="\$(ls -1dt */ 2>/dev/null | head -n "$KEEP_RELEASES" | sed 's#/$##')"
+          for dir in */; do
+            dir="\${dir%/}"
+            if ! printf '%s\\n' "\$KEEP" | grep -Fxq "\$dir"; then
+              rm -rf -- "\$dir"
+            fi
+          done
+          EOF
+
+      - name: Deployment summary
+        run: |
+          echo "部署完成"
+          echo "版本: ${{ steps.version.outputs.version }}"
+          echo "服务器: $DEPLOY_USER@$DEPLOY_HOST"
+          echo "当前版本: $DEPLOY_BASE/current"
