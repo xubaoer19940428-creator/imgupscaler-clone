@@ -176,6 +176,9 @@ jobs:
                     pnpm install --prod --frozen-lockfile --ignore-scripts || npm install --omit=dev --ignore-scripts
                   fi
 
+                  # 清理旧的应用进程（防止之前的 ai-nova 占住 3000 端口导致冲突）
+                  pm2 delete ai-nova || true
+                  pm2 delete photosharp || true
                   pm2 delete "$APP_NAME" || true
                   ln -sfn "\$RELEASE_DIR" "\$CURRENT_LINK"
                   cd "\$CURRENT_LINK"
