@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -21,6 +21,7 @@ import { useAuthStore } from '@/src/stores/auth-store'
 const LoginDialog = dynamic(() => import('@/src/components/site/login-dialog').then((module) => module.LoginDialog))
 const EditorDialog = dynamic(() => import('@/src/features/workspace/editor-dialog').then((module) => module.EditorDialog))
 const PricingPage = dynamic(() => import('@/src/features/pricing/pricing-page').then((module) => module.PricingPage))
+const PayStatusDialog = dynamic(() => import('@/src/components/site/pay-status-dialog').then((module) => module.PayStatusDialog))
 
 export default function App() {
   const pathname = usePathname()
@@ -31,6 +32,37 @@ export default function App() {
   const setSession = useAuthStore((state) => state.setSession)
   const [loginOpen, setLoginOpen] = useState(false)
   const [toast, setToast] = useState<{ title: string; detail?: string } | null>(null)
+  const [statusTradeSn, setStatusTradeSn] = useState<string | null>(null)
+
+  // Listen for return from third-party payment checkout or trade_sn in URL
+  useEffect(() => {
+    const checkOrder = () => {
+      if (typeof window === 'undefined') return
+      const urlParams = new URLSearchParams(window.location.search)
+      const urlTradeSn = urlParams.get('trade_sn')
+      const storageTradeSn =
+        window.sessionStorage.getItem('trade_sn') ||
+        window.localStorage.getItem('trade_sn')
+
+      const sn = urlTradeSn || storageTradeSn
+      if (sn) {
+        setStatusTradeSn(sn)
+      }
+    }
+
+    checkOrder()
+    window.addEventListener('focus', checkOrder)
+    const handleVis = () => {
+      if (document.visibilityState === 'visible') checkOrder()
+    }
+    window.addEventListener('visibilitychange', handleVis)
+
+    return () => {
+      window.removeEventListener('focus', checkOrder)
+      window.removeEventListener('visibilitychange', handleVis)
+    }
+  }, [])
+
   // The page shell coordinates route-level UI only. Upload state, async processing
   // and object-URL lifecycle remain isolated inside the workspace controller.
   const controller = useWorkspaceController(route, () => setLoginOpen(true))
@@ -81,6 +113,17 @@ export default function App() {
         }
       }} />}
       {toast && <Toast message={toast} />}
+      {statusTradeSn && (
+        <PayStatusDialog
+          isOpen={Boolean(statusTradeSn)}
+          tradeSn={statusTradeSn}
+          onClose={() => setStatusTradeSn(null)}
+          onSuccess={() => {
+            setStatusTradeSn(null)
+            setToast({ title: '支付成功！权益已即时生效' })
+          }}
+        />
+      )}
     </div>
   )
 }

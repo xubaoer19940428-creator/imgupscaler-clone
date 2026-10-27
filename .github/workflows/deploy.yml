@@ -1,4 +1,4 @@
-name: Deploy AI Nova
+name: Deploy PhotoPop
 
 on:
     workflow_dispatch:
@@ -29,7 +29,7 @@ env:
     DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '104.64.221.138' }}
     DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'root' }}
     DEPLOY_BASE: /var/www/ai-nova/photopop
-    APP_NAME: ai-nova
+    APP_NAME: photopop
     APP_PORT: 3000
     KEEP_RELEASES: 5
 
