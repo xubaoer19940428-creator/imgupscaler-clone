@@ -23,6 +23,11 @@ export async function LocalizedRoot({ children, locale }: { children: React.Reac
     name: 'Photosharp',
     url: absoluteUrl(pagePath('/', locale)),
     inLanguage: LANGUAGE_TAGS[locale],
+    publisher: {
+      '@type': 'Organization', '@id': absoluteUrl('/#organization'),
+      name: 'Photosharp', url: absoluteUrl('/'),
+      logo: { '@type': 'ImageObject', url: absoluteUrl('/icon.svg') },
+    },
   }
 
   return <html className={studioFont.variable} lang={LANGUAGE_TAGS[locale]} dir={locale === 'ar' ? 'rtl' : 'ltr'}>

@@ -162,7 +162,7 @@
         "description": "Mache weiche, verrauschte, komprimierte oder niedrig aufgelöste Bilder klarer."
       },
       "reimagine": {
-        "eyebrow": "Kostenloser Reimagine-Upscaler",
+        "eyebrow": "Bilder mit KI kreativ neu gestalten",
         "title": {
           "before": "Bilder mit KI neu gestalten und hochskalieren",
           "emphasis": "mit KI"
@@ -509,7 +509,7 @@
         ],
         [
           "Sind meine hochgeladenen Bilder privat?",
-          "Bilder werden über kurzlebige signierte URLs hochgeladen, vom ausgewählten Modell verarbeitet und als private Ergebnisse gemäß der API-Aufbewahrungsrichtlinie zurückgegeben."
+          "Bilder werden zur KI-Verarbeitung an einen externen Dienst übertragen. Zugriff, Aufbewahrung und Löschung richten sich nach dessen Richtlinien. Lesen Sie vor dem Hochladen persönlicher oder sensibler Bilder die Datenschutzerklärung."
         ],
         [
           "Wie lange werden hochgeladene Bilder gespeichert?",
@@ -517,7 +517,7 @@
         ],
         [
           "Kann ich die hochskalierten Bilder kommerziell nutzen?",
-          "Das Frontend schränkt die Exportnutzung nicht ein. Kommerzielle Lizenzen, Verantwortung für die Modellausgabe und Quellbildrechte sollten in den Produktionsbedingungen festgelegt werden."
+          "Die kommerzielle Nutzung hängt von Ihren Rechten am Ausgangsbild, den geltenden Dienst- und Modellbedingungen und dem örtlichen Recht ab. Lesen Sie die Nutzungsbedingungen. Die Verarbeitung verleiht keine Rechte an fremden Inhalten."
         ],
         [
           "Welche Bilder funktionieren am besten mit KI-Upscaling?",
@@ -530,6 +530,14 @@
         [
           "Muss ich Software installieren?",
           "Nein. Nutzen Sie das Tool direkt in Ihrem Browser; Die Bildverarbeitung erfolgt auf unseren Servern."
+        ],
+        [
+          "Muss ich mich zur Bildverarbeitung anmelden?",
+          "Ja. Sie können vor der Anmeldung ein Bild auswählen, für die KI-Verarbeitung ist jedoch ein Konto erforderlich. Verfügbare Credits, Ausgabegrößen und Grenzen hängen vom Konto und dem gewählten Dienst ab."
+        ],
+        [
+          "Kann KI alle verlorenen Details wiederherstellen?",
+          "Nein. KI schätzt plausible Details und kann Gesichter, Text oder Texturen verändern. Vergleichen Sie das Ergebnis vor der Veröffentlichung mit dem Original. Erzeugte Details sind kein Beleg für den ursprünglichen Bildinhalt."
         ]
       ],
       "enhancer": [
@@ -588,6 +596,14 @@
         [
           "Benötige ich Bearbeitungskenntnisse, um den Enhancer verwenden zu können?",
           "Nein. Laden Sie ein Bild hoch, wählen Sie eine Ausgabe und laden Sie das Ergebnis herunter."
+        ],
+        [
+          "Muss ich mich zur Bildverarbeitung anmelden?",
+          "Ja. Sie können vor der Anmeldung ein Bild auswählen, für die KI-Verarbeitung ist jedoch ein Konto erforderlich. Verfügbare Credits, Ausgabegrößen und Grenzen hängen vom Konto und dem gewählten Dienst ab."
+        ],
+        [
+          "Kann KI alle verlorenen Details wiederherstellen?",
+          "Nein. KI schätzt plausible Details und kann Gesichter, Text oder Texturen verändern. Vergleichen Sie das Ergebnis vor der Veröffentlichung mit dem Original. Erzeugte Details sind kein Beleg für den ursprünglichen Bildinhalt."
         ]
       ],
       "reimagine": [
@@ -633,11 +649,19 @@
         ],
         [
           "Kann ich die Ergebnisse von Reimagine AI kommerziell nutzen?",
-          "Ja, vorbehaltlich des geltenden Rechts und der mit den Originalbildern verbundenen Rechte."
+          "Die kommerzielle Nutzung hängt von Ihren Rechten am Ausgangsbild, den geltenden Dienst- und Modellbedingungen und dem örtlichen Recht ab. Lesen Sie die Nutzungsbedingungen. Die Verarbeitung verleiht keine Rechte an fremden Inhalten."
         ],
         [
           "Sind hochgeladene Bilder privat?",
-          "Die API verwendet kurzlebige signierte URLs und ihre konfigurierte Bereinigungsrichtlinie für hochgeladene Bilder und Ergebnisse."
+          "Bilder werden zur KI-Verarbeitung an einen externen Dienst übertragen. Zugriff, Aufbewahrung und Löschung richten sich nach dessen Richtlinien. Lesen Sie vor dem Hochladen persönlicher oder sensibler Bilder die Datenschutzerklärung."
+        ],
+        [
+          "Muss ich mich zur Bildverarbeitung anmelden?",
+          "Ja. Sie können vor der Anmeldung ein Bild auswählen, für die KI-Verarbeitung ist jedoch ein Konto erforderlich. Verfügbare Credits, Ausgabegrößen und Grenzen hängen vom Konto und dem gewählten Dienst ab."
+        ],
+        [
+          "Kann KI alle verlorenen Details wiederherstellen?",
+          "Nein. KI schätzt plausible Details und kann Gesichter, Text oder Texturen verändern. Vergleichen Sie das Ergebnis vor der Veröffentlichung mit dem Original. Erzeugte Details sind kein Beleg für den ursprünglichen Bildinhalt."
         ]
       ]
     },
@@ -815,7 +839,7 @@
       ],
       [
         "Kann ich Ergebnisse kommerziell nutzen?",
-        "Ja. Kostenlose und kostenpflichtige Ausgaben können für persönliche und kommerzielle Projekte verwendet werden, vorbehaltlich der geltenden Gesetze und Rechte an den Quellbildern."
+        "Die kommerzielle Nutzung hängt von Ihren Rechten am Ausgangsbild, den geltenden Dienst- und Modellbedingungen und dem örtlichen Recht ab. Lesen Sie die Nutzungsbedingungen. Die Verarbeitung verleiht keine Rechte an fremden Inhalten."
       ]
     ],
     "monthlyPrice": "/Monat"

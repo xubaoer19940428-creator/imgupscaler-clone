@@ -162,7 +162,7 @@
         "description": "Yumuşak, gürültülü, sıkıştırılmış veya düşük çözünürlüklü görüntüleri daha net hale getirin."
       },
       "reimagine": {
-        "eyebrow": "Ücretsiz Reimagine Upscaler",
+        "eyebrow": "Yapay zeka ve metinle görselleri yeniden tasarla",
         "title": {
           "before": "Görüntüleri yeniden hayal edin ve büyütün",
           "emphasis": "AI ile"
@@ -509,7 +509,7 @@
         ],
         [
           "Yüklediğim görseller gizli mi?",
-          "Resimler kısa ömürlü imzalı URL'ler aracılığıyla yüklenir, seçilen model tarafından işlenir ve API saklama politikası kapsamında özel sonuçlar olarak döndürülür."
+          "Görüntüler yapay zekâ ile işlenmek üzere uzak bir hizmete yüklenir. Dosyalara erişim, saklama ve silme hizmet politikasına tabidir. Kişisel veya hassas görüntüleri yüklemeden önce Gizlilik Politikasını okuyun."
         ],
         [
           "Yüklenen görseller ne kadar süreyle saklanır?",
@@ -517,7 +517,7 @@
         ],
         [
           "Yükseltilmiş görüntüleri ticari olarak kullanabilir miyim?",
-          "Ön uç, dışa aktarma kullanımını kısıtlamaz. Ticari lisanslama, model çıktı sorumluluğu ve kaynak-görüntü hakları üretim şartlarında tanımlanmalıdır."
+          "Ticari kullanım kaynak görüntü üzerindeki haklarınıza, hizmet ve model koşullarına ve yerel yasalara bağlıdır. Hizmet Koşullarını inceleyin; görüntüyü işlemek üçüncü taraf içeriklerin haklarını vermez."
         ],
         [
           "Yapay zeka yükseltmeyle hangi görüntüler en iyi şekilde çalışır?",
@@ -530,6 +530,14 @@
         [
           "Yazılımı yüklemem gerekiyor mu?",
           "Hayır. Aracı doğrudan tarayıcınızda kullanın; görüntü işleme sunucularımızda gerçekleşir."
+        ],
+        [
+          "Görüntü işlemek için giriş yapmam gerekiyor mu?",
+          "Evet. Giriş yapmadan önce bir görüntü seçebilirsiniz ancak yapay zekâ ile işleme için hesap gerekir. Kullanılabilir krediler, çıktı boyutları ve işlem sınırları hesabınıza ve seçilen hizmete bağlıdır."
+        ],
+        [
+          "Yapay zekâ tüm kayıp ayrıntıları kurtarabilir mi?",
+          "Hayır. Yapay zekâ olası ayrıntıları tahmin eder ve yüzleri, metinleri veya dokuları değiştirebilir. Yayımlamadan önce sonucu aslıyla karşılaştırın; üretilen ayrıntılar özgün içeriğin kanıtı değildir."
         ]
       ],
       "enhancer": [
@@ -588,6 +596,14 @@
         [
           "Geliştiriciyi kullanmak için düzenleme becerilerine ihtiyacım var mı?",
           "Hayır. Bir resim yükleyin, bir çıktı seçin ve sonucu indirin."
+        ],
+        [
+          "Görüntü işlemek için giriş yapmam gerekiyor mu?",
+          "Evet. Giriş yapmadan önce bir görüntü seçebilirsiniz ancak yapay zekâ ile işleme için hesap gerekir. Kullanılabilir krediler, çıktı boyutları ve işlem sınırları hesabınıza ve seçilen hizmete bağlıdır."
+        ],
+        [
+          "Yapay zekâ tüm kayıp ayrıntıları kurtarabilir mi?",
+          "Hayır. Yapay zekâ olası ayrıntıları tahmin eder ve yüzleri, metinleri veya dokuları değiştirebilir. Yayımlamadan önce sonucu aslıyla karşılaştırın; üretilen ayrıntılar özgün içeriğin kanıtı değildir."
         ]
       ],
       "reimagine": [
@@ -633,11 +649,19 @@
         ],
         [
           "Reimagine AI çıktılarını ticari olarak kullanabilir miyim?",
-          "Evet, geçerli yasalara ve orijinal görsellerle ilgili haklara tabidir."
+          "Ticari kullanım kaynak görüntü üzerindeki haklarınıza, hizmet ve model koşullarına ve yerel yasalara bağlıdır. Hizmet Koşullarını inceleyin; görüntüyü işlemek üçüncü taraf içeriklerin haklarını vermez."
         ],
         [
           "Yüklenen görseller gizli mi?",
-          "API, yüklenen resimler ve sonuçlar için kısa ömürlü imzalı URL'leri ve yapılandırılmış temizleme politikasını kullanır."
+          "Görüntüler yapay zekâ ile işlenmek üzere uzak bir hizmete yüklenir. Dosyalara erişim, saklama ve silme hizmet politikasına tabidir. Kişisel veya hassas görüntüleri yüklemeden önce Gizlilik Politikasını okuyun."
+        ],
+        [
+          "Görüntü işlemek için giriş yapmam gerekiyor mu?",
+          "Evet. Giriş yapmadan önce bir görüntü seçebilirsiniz ancak yapay zekâ ile işleme için hesap gerekir. Kullanılabilir krediler, çıktı boyutları ve işlem sınırları hesabınıza ve seçilen hizmete bağlıdır."
+        ],
+        [
+          "Yapay zekâ tüm kayıp ayrıntıları kurtarabilir mi?",
+          "Hayır. Yapay zekâ olası ayrıntıları tahmin eder ve yüzleri, metinleri veya dokuları değiştirebilir. Yayımlamadan önce sonucu aslıyla karşılaştırın; üretilen ayrıntılar özgün içeriğin kanıtı değildir."
         ]
       ]
     },
@@ -815,7 +839,7 @@
       ],
       [
         "Sonuçları ticari olarak kullanabilir miyim?",
-        "Evet. Ücretsiz ve ücretli çıktılar, geçerli yasalara ve kaynak görüntülerin haklarına tabi olarak kişisel ve ticari projeler için kullanılabilir."
+        "Ticari kullanım kaynak görüntü üzerindeki haklarınıza, hizmet ve model koşullarına ve yerel yasalara bağlıdır. Hizmet Koşullarını inceleyin; görüntüyü işlemek üçüncü taraf içeriklerin haklarını vermez."
       ]
     ],
     "monthlyPrice": "/ay"

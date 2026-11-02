@@ -162,7 +162,7 @@
         "description": "Haz más claras las imágenes suaves, ruidosas, comprimidas o de baja resolución."
       },
       "reimagine": {
-        "eyebrow": "Upscaler Reimagine gratis",
+        "eyebrow": "Reimaginar imágenes con IA y texto",
         "title": {
           "before": "Reimagina y amplía",
           "emphasis": "imágenes con IA"
@@ -509,7 +509,7 @@
         ],
         [
           "¿Mis imágenes cargadas son privadas? Las imágenes",
-          "se cargan a través de URL firmadas de corta duración, las procesa el modelo seleccionado y se devuelven como resultados privados según la política de retención de API."
+          "Las imágenes se suben a un servicio remoto para procesarlas con IA. El acceso, la conservación y la eliminación dependen de su política. Lee la Política de privacidad antes de subir imágenes personales o sensibles."
         ],
         [
           "¿Durante cuánto tiempo se almacenan las imágenes cargadas?",
@@ -517,7 +517,7 @@
         ],
         [
           "¿Puedo utilizar las imágenes mejoradas comercialmente?",
-          "La interfaz no restringe el uso de exportación. Las licencias comerciales, la responsabilidad de la producción del modelo y los derechos de la imagen fuente deben definirse en los términos de producción."
+          "El uso comercial depende de tus derechos sobre la imagen original, las condiciones del servicio y del modelo, y la legislación local. Consulta los Términos del servicio; procesar una imagen no concede derechos sobre contenido de terceros."
         ],
         [
           "¿Qué imágenes funcionan mejor con la mejora de IA?",
@@ -530,6 +530,14 @@
         [
           "¿Necesito instalar software?",
           "No. Utilice la herramienta directamente en su navegador; El procesamiento de imágenes se realiza en nuestros servidores."
+        ],
+        [
+          "¿Necesito iniciar sesión para procesar una imagen?",
+          "Sí. Puedes seleccionar una imagen antes de iniciar sesión, pero el procesamiento con IA requiere una cuenta. Los créditos disponibles, tamaños de salida y límites dependen de tu cuenta y del servicio elegido."
+        ],
+        [
+          "¿Puede la IA recuperar todos los detalles perdidos?",
+          "No. La IA puede inferir detalles plausibles y modificar caras, texto o texturas. Compara el resultado con el original antes de publicarlo; los detalles generados no son prueba del contenido original."
         ]
       ],
       "enhancer": [
@@ -588,6 +596,14 @@
         [
           "¿Necesito conocimientos de edición para utilizar el potenciador?",
           "No. Cargue una imagen, elija una salida y descargue el resultado."
+        ],
+        [
+          "¿Necesito iniciar sesión para procesar una imagen?",
+          "Sí. Puedes seleccionar una imagen antes de iniciar sesión, pero el procesamiento con IA requiere una cuenta. Los créditos disponibles, tamaños de salida y límites dependen de tu cuenta y del servicio elegido."
+        ],
+        [
+          "¿Puede la IA recuperar todos los detalles perdidos?",
+          "No. La IA puede inferir detalles plausibles y modificar caras, texto o texturas. Compara el resultado con el original antes de publicarlo; los detalles generados no son prueba del contenido original."
         ]
       ],
       "reimagine": [
@@ -633,11 +649,19 @@
         ],
         [
           "¿Puedo utilizar comercialmente las salidas de Reimagine AI?",
-          "Sí, sujeto a la ley aplicable y los derechos asociados con las imágenes originales."
+          "El uso comercial depende de tus derechos sobre la imagen original, las condiciones del servicio y del modelo, y la legislación local. Consulta los Términos del servicio; procesar una imagen no concede derechos sobre contenido de terceros."
         ],
         [
           "¿Las imágenes cargadas son privadas?",
-          "La API utiliza URL firmadas de corta duración y su política de limpieza configurada para las imágenes y los resultados cargados."
+          "Las imágenes se suben a un servicio remoto para procesarlas con IA. El acceso, la conservación y la eliminación dependen de su política. Lee la Política de privacidad antes de subir imágenes personales o sensibles."
+        ],
+        [
+          "¿Necesito iniciar sesión para procesar una imagen?",
+          "Sí. Puedes seleccionar una imagen antes de iniciar sesión, pero el procesamiento con IA requiere una cuenta. Los créditos disponibles, tamaños de salida y límites dependen de tu cuenta y del servicio elegido."
+        ],
+        [
+          "¿Puede la IA recuperar todos los detalles perdidos?",
+          "No. La IA puede inferir detalles plausibles y modificar caras, texto o texturas. Compara el resultado con el original antes de publicarlo; los detalles generados no son prueba del contenido original."
         ]
       ]
     },
@@ -815,7 +839,7 @@
       ],
       [
         "¿Puedo utilizar los resultados comercialmente?",
-        "Sí. Las producciones gratuitas y de pago se pueden utilizar para proyectos personales y comerciales, sujeto a la ley aplicable y a los derechos de las imágenes originales."
+        "El uso comercial depende de tus derechos sobre la imagen original, las condiciones del servicio y del modelo, y la legislación local. Consulta los Términos del servicio; procesar una imagen no concede derechos sobre contenido de terceros."
       ]
     ],
     "monthlyPrice": "/mes"

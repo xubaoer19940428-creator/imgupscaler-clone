@@ -162,7 +162,7 @@
         "description": "Maak zachte, ruisende, gecomprimeerde of lage-resolutieafbeeldingen duidelijker."
       },
       "reimagine": {
-        "eyebrow": "Gratis Reimagine Upscaler",
+        "eyebrow": "Afbeeldingen opnieuw vormgeven met AI",
         "title": {
           "before": "Beeld opnieuw bedenken en vergroten",
           "emphasis": "met AI"
@@ -509,7 +509,7 @@
         ],
         [
           "Zijn mijn geüploade afbeeldingen privé?",
-          "Afbeeldingen worden geüpload via ondertekende URL's met een korte levensduur, verwerkt door het geselecteerde model en geretourneerd als privéresultaten onder het API-retentiebeleid."
+          "Afbeeldingen worden voor AI-verwerking naar een externe dienst geüpload. Toegang, bewaring en verwijdering volgen het beleid van de dienst. Lees het Privacybeleid voordat je persoonlijke of gevoelige afbeeldingen uploadt."
         ],
         [
           "Hoe lang worden geüploade afbeeldingen bewaard?",
@@ -517,7 +517,7 @@
         ],
         [
           "Kan ik de opgeschaalde afbeeldingen commercieel gebruiken?",
-          "De frontend beperkt het exportgebruik niet. Commerciële licenties, modeluitvoerverantwoordelijkheid en bronbeeldrechten moeten in de productievoorwaarden worden gedefinieerd."
+          "Commercieel gebruik hangt af van je rechten op de bronafbeelding, de toepasselijke dienst- en modelvoorwaarden en lokale wetgeving. Lees de Servicevoorwaarden; verwerking verleent geen rechten op inhoud van derden."
         ],
         [
           "Welke afbeeldingen werken het beste met AI-opschaling?",
@@ -530,6 +530,14 @@
         [
           "Moet ik software installeren?",
           "Nee. Gebruik de tool rechtstreeks in uw browser; beeldverwerking vindt plaats op onze servers."
+        ],
+        [
+          "Moet ik inloggen om een afbeelding te verwerken?",
+          "Ja. Je kunt vóór het inloggen een afbeelding selecteren, maar AI-verwerking vereist een account. Beschikbare credits, uitvoerformaten en limieten hangen af van je account en de gekozen dienst."
+        ],
+        [
+          "Kan AI alle ontbrekende details herstellen?",
+          "Nee. AI schat aannemelijke details en kan gezichten, tekst of texturen veranderen. Vergelijk het resultaat vóór publicatie met het origineel; gegenereerde details zijn geen bewijs van de oorspronkelijke inhoud."
         ]
       ],
       "enhancer": [
@@ -588,6 +596,14 @@
         [
           "Heb ik bewerkingsvaardigheden nodig om de versterker te gebruiken?",
           "Nee. Upload een afbeelding, kies een uitvoer en download het resultaat."
+        ],
+        [
+          "Moet ik inloggen om een afbeelding te verwerken?",
+          "Ja. Je kunt vóór het inloggen een afbeelding selecteren, maar AI-verwerking vereist een account. Beschikbare credits, uitvoerformaten en limieten hangen af van je account en de gekozen dienst."
+        ],
+        [
+          "Kan AI alle ontbrekende details herstellen?",
+          "Nee. AI schat aannemelijke details en kan gezichten, tekst of texturen veranderen. Vergelijk het resultaat vóór publicatie met het origineel; gegenereerde details zijn geen bewijs van de oorspronkelijke inhoud."
         ]
       ],
       "reimagine": [
@@ -633,11 +649,19 @@
         ],
         [
           "Kan ik Reimagine AI-uitvoer commercieel gebruiken?",
-          "Ja, onderhevig aan toepasselijk recht en de rechten verbonden aan de originele afbeeldingen."
+          "Commercieel gebruik hangt af van je rechten op de bronafbeelding, de toepasselijke dienst- en modelvoorwaarden en lokale wetgeving. Lees de Servicevoorwaarden; verwerking verleent geen rechten op inhoud van derden."
         ],
         [
           "Zijn geüploade afbeeldingen privé?",
-          "De API maakt gebruik van kortstondige ondertekende URL's en het geconfigureerde opruimbeleid voor geüploade afbeeldingen en resultaten."
+          "Afbeeldingen worden voor AI-verwerking naar een externe dienst geüpload. Toegang, bewaring en verwijdering volgen het beleid van de dienst. Lees het Privacybeleid voordat je persoonlijke of gevoelige afbeeldingen uploadt."
+        ],
+        [
+          "Moet ik inloggen om een afbeelding te verwerken?",
+          "Ja. Je kunt vóór het inloggen een afbeelding selecteren, maar AI-verwerking vereist een account. Beschikbare credits, uitvoerformaten en limieten hangen af van je account en de gekozen dienst."
+        ],
+        [
+          "Kan AI alle ontbrekende details herstellen?",
+          "Nee. AI schat aannemelijke details en kan gezichten, tekst of texturen veranderen. Vergelijk het resultaat vóór publicatie met het origineel; gegenereerde details zijn geen bewijs van de oorspronkelijke inhoud."
         ]
       ]
     },
@@ -815,7 +839,7 @@
       ],
       [
         "Kan ik de resultaten commercieel gebruiken?",
-        "Ja. Gratis en betaalde output kan worden gebruikt voor persoonlijke en commerciële projecten, met inachtneming van de toepasselijke wetgeving en rechten op de bronafbeeldingen."
+        "Commercieel gebruik hangt af van je rechten op de bronafbeelding, de toepasselijke dienst- en modelvoorwaarden en lokale wetgeving. Lees de Servicevoorwaarden; verwerking verleent geen rechten op inhoud van derden."
       ]
     ],
     "monthlyPrice": "/maand"

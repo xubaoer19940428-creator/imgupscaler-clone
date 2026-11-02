@@ -48,13 +48,23 @@ class Document(HTMLParser):
         self.title = ''
         self.in_title = False
         self.in_json = False
+        self.in_noncontent = False
         self.json_text = ''
         self.schemas = []
         self.images = []
+        self.ids = set()
+        self.links = set()
+        self.text = []
         self.feed(html)
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag in ('script', 'style'):
+            self.in_noncontent = True
+        if attrs.get('id'):
+            self.ids.add(attrs['id'])
+        if tag == 'a' and attrs.get('href'):
+            self.links.add(attrs['href'])
         if tag == 'html':
             self.html_attrs = attrs
         elif tag == 'title':
@@ -76,6 +86,8 @@ class Document(HTMLParser):
             self.images.append(attrs)
 
     def handle_endtag(self, tag):
+        if tag in ('script', 'style'):
+            self.in_noncontent = False
         if tag == 'title':
             self.in_title = False
         elif tag == 'script' and self.in_json:
@@ -83,6 +95,8 @@ class Document(HTMLParser):
             self.in_json = False
 
     def handle_data(self, data):
+        if not self.in_noncontent:
+            self.text.append(data)
         if self.in_title:
             self.title += data
         if self.in_json:
@@ -99,7 +113,8 @@ def check_page(locale, page, suffix):
     path = path_for(locale, suffix)
     html = fetch(path)
     doc = Document(html)
-    copy = json.loads((ROOT / f'messages/{locale}.json').read_text())['metadata'][page]
+    messages = json.loads((ROOT / f'messages/{locale}.json').read_text())
+    copy = messages['metadata'][page]
     canonical = html_url(SITE_ORIGIN + path)
     assert doc.html_attrs.get('lang') == language(locale), f'{path}: wrong SSR language'
     assert doc.html_attrs.get('dir') == ('rtl' if locale == 'ar' else 'ltr'), f'{path}: wrong direction'
@@ -112,6 +127,8 @@ def check_page(locale, page, suffix):
     assert doc.meta.get('og:url') == canonical, f'{path}: wrong Open Graph URL'
     assert doc.meta.get('og:title') == copy['title'], f'{path}: wrong Open Graph title'
     assert doc.meta.get('twitter:card') == 'summary_large_image', f'{path}: missing sharing metadata'
+    assert doc.meta.get('og:locale'), f'{path}: missing social language'
+    assert all(path_for(locale, suffix) in doc.links for suffix in ['', '/enhancer', '/reimagine', '/pricing']), f'{path}: missing tool/pricing internal links'
     if page != 'account':
         assert doc.h1_count == 1, f'{path}: expected one h1, got {doc.h1_count}'
     if INDEXABLE:
@@ -128,6 +145,25 @@ def check_page(locale, page, suffix):
             assert webpage['url'] == SITE_ORIGIN + path and webpage['name'] == copy['title']
             assert webpage['description'] == copy['description'] and webpage['inLanguage'] == language(locale)
             assert webpage['isPartOf']['@id'] == SITE_ORIGIN + path_for(locale, '') + '#website'
+            assert webpage['publisher']['@id'] == SITE_ORIGIN + '/#organization'
+            applications = [node for node in graph if node.get('@type') == 'WebApplication']
+            faqs = [node for node in graph if node.get('@type') == 'FAQPage']
+            if page in ('home', 'enhancer', 'reimagine'):
+                assert len(applications) == 1 and len(faqs) == 1, f'{path}: missing tool or FAQ schema'
+                assert webpage['mainEntity']['@id'] == applications[0]['@id']
+                assert webpage['hasPart']['@id'] == faqs[0]['@id']
+                assert applications[0]['url'] == SITE_ORIGIN + path
+                assert applications[0]['inLanguage'] == language(locale)
+                assert not {'offers', 'aggregateRating', 'review'} & applications[0].keys(), f'{path}: unverified commercial schema'
+                questions = faqs[0]['mainEntity']
+                expected = messages['landing']['faqs'][page]
+                assert [(q['name'], q['acceptedAnswer']['text']) for q in questions] == [tuple(item) for item in expected], f'{path}: FAQ schema differs from content'
+                text = ''.join(doc.text)
+                for question in questions:
+                    assert question['name'] in text and question['acceptedAnswer']['text'] in text, f'{path}: FAQ missing from server HTML'
+                    assert question['@id'].split('#')[-1] in doc.ids, f'{path}: FAQ anchor missing'
+            else:
+                assert not applications and not faqs, f'{path}: unrelated tool schema'
             if suffix:
                 assert len(breadcrumbs) == 1, f'{path}: missing breadcrumb schema'
                 items = breadcrumbs[0]['itemListElement']
@@ -190,3 +226,28 @@ for path in ['/xx', '/en', '/ja/does-not-exist']:
     else:
         raise AssertionError(f'{path}: should return 404')
 print('Unsupported locales and unknown pages correctly return HTTP 404.')
+
+for prefix in ['', '/zh']:
+    for provider in ['google', 'facebook', 'github']:
+        doc = Document(fetch(f'{prefix}/sso/{provider}'))
+        assert 'noindex' in doc.meta.get('robots', ''), 'SSO callback must not be indexed'
+print('Authentication callbacks correctly excluded from indexing.')
+
+for suffix in ['?utm_source=seo-check', '?trade_sn=seo-check']:
+    doc = Document(fetch('/enhancer' + suffix))
+    assert doc.canonicals == [SITE_ORIGIN + '/enhancer'], 'Query URL should canonicalize to the clean page'
+
+if INDEXABLE:
+    for alias in ['photoupscale.app', 'photopop.app']:
+        request = urllib.request.Request(BASE_URL + '/zh/enhancer?utm_source=seo-check', headers={'Host': alias})
+        class NoRedirect(urllib.request.HTTPRedirectHandler):
+            def redirect_request(self, req, fp, code, msg, headers, newurl):
+                return None
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect)
+        try:
+            opener.open(request, timeout=25)
+        except urllib.error.HTTPError as error:
+            assert error.code == 308 and error.headers['Location'] == SITE_ORIGIN + '/zh/enhancer?utm_source=seo-check', 'Wrong alias redirect'
+        else:
+            raise AssertionError('Alias should redirect permanently')
+print('Query canonicalization and configured alias redirects passed.')

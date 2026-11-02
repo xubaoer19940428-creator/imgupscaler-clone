@@ -162,7 +162,7 @@
         "description": "Deixe imagens suaves, com ruído, comprimidas ou de baixa resolução mais claras."
       },
       "reimagine": {
-        "eyebrow": "Upscaler Reimagine grátis",
+        "eyebrow": "Reimaginar imagens com IA e texto",
         "title": {
           "before": "Reimagine e aumente",
           "emphasis": "imagens com IA"
@@ -509,7 +509,7 @@
         ],
         [
           "Minhas imagens enviadas são privadas?",
-          "As imagens são carregadas por meio de URLs assinados de curta duração, processadas pelo modelo selecionado e retornadas como resultados privados de acordo com a política de retenção da API."
+          "As imagens são enviadas a um serviço remoto para processamento com IA. Acesso, retenção e exclusão seguem a política do serviço. Leia a Política de privacidade antes de enviar imagens pessoais ou sensíveis."
         ],
         [
           "Por quanto tempo as imagens enviadas são armazenadas? Os arquivos de origem e resultados do",
@@ -517,7 +517,7 @@
         ],
         [
           "Posso usar comercialmente as imagens ampliadas?",
-          "O frontend não restringe o uso de exportação. O licenciamento comercial, a responsabilidade pela produção do modelo e os direitos da imagem fonte devem ser definidos nos termos de produção."
+          "O uso comercial depende dos seus direitos sobre a imagem original, dos termos do serviço e do modelo e da legislação local. Consulte os Termos de serviço; processar uma imagem não concede direitos sobre conteúdo de terceiros."
         ],
         [
           "Quais imagens funcionam melhor com upscaling de IA?",
@@ -530,6 +530,14 @@
         [
           "Preciso instalar software?",
           "Não. Use a ferramenta diretamente no seu navegador; o processamento de imagens ocorre em nossos servidores."
+        ],
+        [
+          "Preciso entrar na conta para processar uma imagem?",
+          "Sim. Você pode selecionar uma imagem antes de entrar, mas o processamento com IA exige uma conta. Créditos disponíveis, tamanhos de saída e limites dependem da sua conta e do serviço escolhido."
+        ],
+        [
+          "A IA pode recuperar todos os detalhes perdidos?",
+          "Não. A IA infere detalhes plausíveis e pode alterar rostos, textos ou texturas. Compare o resultado com o original antes de publicar; detalhes gerados não são prova do conteúdo original."
         ]
       ],
       "enhancer": [
@@ -588,6 +596,14 @@
         [
           "Preciso de habilidades de edição para usar o intensificador?",
           "Não. Faça upload de uma imagem, escolha uma saída e baixe o resultado."
+        ],
+        [
+          "Preciso entrar na conta para processar uma imagem?",
+          "Sim. Você pode selecionar uma imagem antes de entrar, mas o processamento com IA exige uma conta. Créditos disponíveis, tamanhos de saída e limites dependem da sua conta e do serviço escolhido."
+        ],
+        [
+          "A IA pode recuperar todos os detalhes perdidos?",
+          "Não. A IA infere detalhes plausíveis e pode alterar rostos, textos ou texturas. Compare o resultado com o original antes de publicar; detalhes gerados não são prova do conteúdo original."
         ]
       ],
       "reimagine": [
@@ -633,11 +649,19 @@
         ],
         [
           "Posso usar comercialmente as saídas do Reimagine AI?",
-          "Sim, sujeito à lei aplicável e aos direitos associados às imagens originais."
+          "O uso comercial depende dos seus direitos sobre a imagem original, dos termos do serviço e do modelo e da legislação local. Consulte os Termos de serviço; processar uma imagem não concede direitos sobre conteúdo de terceiros."
         ],
         [
           "As imagens enviadas são privadas?",
-          "A API usa URLs assinados de curta duração e sua política de limpeza configurada para imagens e resultados carregados."
+          "As imagens são enviadas a um serviço remoto para processamento com IA. Acesso, retenção e exclusão seguem a política do serviço. Leia a Política de privacidade antes de enviar imagens pessoais ou sensíveis."
+        ],
+        [
+          "Preciso entrar na conta para processar uma imagem?",
+          "Sim. Você pode selecionar uma imagem antes de entrar, mas o processamento com IA exige uma conta. Créditos disponíveis, tamanhos de saída e limites dependem da sua conta e do serviço escolhido."
+        ],
+        [
+          "A IA pode recuperar todos os detalhes perdidos?",
+          "Não. A IA infere detalhes plausíveis e pode alterar rostos, textos ou texturas. Compare o resultado com o original antes de publicar; detalhes gerados não são prova do conteúdo original."
         ]
       ]
     },
@@ -815,7 +839,7 @@
       ],
       [
         "Posso usar os resultados comercialmente?",
-        "Sim. Os resultados gratuitos e pagos podem ser usados ​​para projetos pessoais e comerciais, sujeitos à legislação aplicável e aos direitos das imagens de origem."
+        "O uso comercial depende dos seus direitos sobre a imagem original, dos termos do serviço e do modelo e da legislação local. Consulte os Termos de serviço; processar uma imagem não concede direitos sobre conteúdo de terceiros."
       ]
     ],
     "monthlyPrice": "/mês"

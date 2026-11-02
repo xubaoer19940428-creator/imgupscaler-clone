@@ -163,7 +163,7 @@
         "description": "Make soft, noisy, compressed, or low-resolution images look clearer. Recover sharpness, texture, and visible detail for portraits, products, AI art, screenshots, and everyday visuals."
       },
       "reimagine": {
-        "eyebrow": "Free Reimagine Upscaler",
+        "eyebrow": "Reimagine Images with AI and Prompts",
         "title": {
           "before": "Reimagine and upscale",
           "emphasis": "images with AI"
@@ -510,7 +510,7 @@
         ],
         [
           "Are my uploaded images private?",
-          "Images are uploaded through short-lived signed URLs, processed by the selected model, and returned as private results under the API retention policy."
+          "Images are uploaded to a remote service for AI processing. File access, retention and deletion depend on the service policy. Read the Privacy Policy before uploading personal or sensitive images."
         ],
         [
           "How long are uploaded images stored?",
@@ -518,7 +518,7 @@
         ],
         [
           "Can I use the upscaled images commercially?",
-          "The frontend does not restrict export use. Commercial licensing, model output responsibility, and source-image rights should be defined in the production terms."
+          "Commercial use depends on your rights to the source image, the applicable service and model terms, and local law. Review the Terms of Service; processing an image does not grant rights to third-party content."
         ],
         [
           "Which images work best with AI upscaling?",
@@ -531,6 +531,14 @@
         [
           "Do I need to install software?",
           "No. Use the tool directly in your browser; image processing takes place on our servers."
+        ],
+        [
+          "Do I need to sign in to process an image?",
+          "Yes. You can select an image before signing in, but AI processing requires an account. Available credits, output sizes and processing limits depend on your account and the selected service."
+        ],
+        [
+          "Can AI recover every missing detail?",
+          "No. AI can infer plausible details and may change faces, text or textures. Compare the result with the original before publishing; do not treat generated details as evidence of what the original contained."
         ]
       ],
       "enhancer": [
@@ -589,6 +597,14 @@
         [
           "Do I need editing skills to use the enhancer?",
           "No. Upload an image, choose an output, and download the result."
+        ],
+        [
+          "Do I need to sign in to process an image?",
+          "Yes. You can select an image before signing in, but AI processing requires an account. Available credits, output sizes and processing limits depend on your account and the selected service."
+        ],
+        [
+          "Can AI recover every missing detail?",
+          "No. AI can infer plausible details and may change faces, text or textures. Compare the result with the original before publishing; do not treat generated details as evidence of what the original contained."
         ]
       ],
       "reimagine": [
@@ -634,11 +650,19 @@
         ],
         [
           "Can I use Reimagine AI outputs commercially?",
-          "Yes, subject to applicable law and the rights associated with the original images."
+          "Commercial use depends on your rights to the source image, the applicable service and model terms, and local law. Review the Terms of Service; processing an image does not grant rights to third-party content."
         ],
         [
           "Are uploaded images private?",
-          "The API uses short-lived signed URLs and its configured cleanup policy for uploaded images and results."
+          "Images are uploaded to a remote service for AI processing. File access, retention and deletion depend on the service policy. Read the Privacy Policy before uploading personal or sensitive images."
+        ],
+        [
+          "Do I need to sign in to process an image?",
+          "Yes. You can select an image before signing in, but AI processing requires an account. Available credits, output sizes and processing limits depend on your account and the selected service."
+        ],
+        [
+          "Can AI recover every missing detail?",
+          "No. AI can infer plausible details and may change faces, text or textures. Compare the result with the original before publishing; do not treat generated details as evidence of what the original contained."
         ]
       ]
     },
@@ -816,7 +840,7 @@
       ],
       [
         "Can I use results commercially?",
-        "Yes. Free and paid outputs can be used for personal and commercial projects, subject to applicable law and rights to the source images."
+        "Commercial use depends on your rights to the source image, the applicable service and model terms, and local law. Review the Terms of Service; processing an image does not grant rights to third-party content."
       ]
     ],
     "monthlyPrice": "/mo"

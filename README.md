@@ -77,6 +77,20 @@ python3 scripts/verify-seo.py http://localhost:3000 http://localhost:3000
 
 SEO 实现依据 [Google 多语言页面指南](https://developers.google.com/search/docs/specialty/international/localized-versions) 和项目内 Next.js 的国际化、Metadata 与 Sitemap 文档。上线后的收录和性能表现需要在实际域名上通过 Search Console 和真实访问数据确认。
 
+### GEO 与上线检查（2026-11-02）
+
+- 13 语言的工具页增加 WebApplication 与 FAQPage，关联 WebPage、WebSite 和统一的 Photosharp Organization 实体。FAQ JSON-LD 直接读取界面同一份翻译数据，问答有稳定锚点，收起的答案仍在服务器 HTML 中。没有添加虚构评价、评分或报价。
+- 增补登录要求与 AI 生成细节的局限；隐私与商用回答以实际服务政策、图片权利和适用条款为准。移除 Reimagine 眉题中的无条件免费承诺。所有页面页脚均提供当前语言的工具及定价链接，保留法律与联系入口。
+- 分享信息包含当前及其他语言地区标记；页面配置应用名、SVG 图标和公开页面的摘要/图片预览许可。`robots.txt` 的通配允许规则同时适用于搜索爬虫及遵守 robots 的 AI 搜索爬虫。无需为每个爬虫重复相同规则。
+- 正式部署必须在构建前配置 `NEXT_PUBLIC_SITE_URL=https://photosharp.app`。公开测试环境可以额外设置 `NEXT_PUBLIC_SITE_INDEXABLE=false`，保持正确 canonical 同时关闭索引和 sitemap。账户和 SSO 回调始终禁止索引。不要用 robots 阻止账户抓取，否则搜索引擎无法读取其 noindex。
+- `scripts/verify-seo.py` 额外检查工具/FAQ 数据与服务器正文的一致性、问答锚点、全部页面内链、认证回调、带参数 URL 的 canonical，以及两个部署别名的 308 跳转。别名测试面向本地生产验证服务器，通过 Host 请求头模拟部署别名。
+
+审计发现的上线阻断：本次本机未配置正式 origin，默认构建关闭索引；2026-11-02 从本机访问正式域名返回 HTTP 502。部署后需先确认正式站点 HTTP 200、robots 开放、91 条 sitemap URL 可访问、别名永久跳转正常，再向 Google Search Console 和 Bing Webmaster Tools 提交站点地图。还需核对后台真实套餐、额度、取消订阅规则及法律主体；本轮不臆造相关权益或修改支付流程。
+
+验证范围为本地生产 HTML 和静态资源，不能代表线上 CDN/WAF 已允许爬虫、Google 已收录、AI 已引用或真实用户 Core Web Vitals 达标。完整 `verify:i18n` 在修改前已因非中英文语种缺少账户历史消息和 `workspace.api.modelUnavailable` 而失败；本轮修改的 18 个叶子消息在 13 种语言中单独通过相同的键、ICU、占位符与英文残留检查。
+
+GEO 依据 [Google AI 搜索指南](https://developers.google.com/search/docs/appearance/ai-features)：保持可索引、可通过内链发现的真实文本与一致的结构化数据。FAQ 标记用于描述问答，不承诺本 SaaS 获得 FAQ 富结果；没有添加无依据的排名保证或将 `llms.txt` 当作收录必需项。
+
 ## AIController API 配置
 
 复制环境变量并填入真实值即可覆盖默认 API 地址：

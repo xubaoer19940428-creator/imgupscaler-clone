@@ -900,3 +900,14 @@ npm run build
 
 
 
+
+### 2026-11-02（全站 SEO / GEO 审计与实现）
+- 用户要求先读代码与 memory，再做全站 SEO/GEO。已核对现有 13 语言 SSR、canonical、hreflang、91 条公开 sitemap URL、104 个业务页面、6 个 SSO 回调和域名别名策略；仓库无 `.codegraph/`，使用 ccc 与明确文件检索，`ccc index` 完成且无错误。
+- `site-metadata.ts` 新增语言地区分享信息、应用名、SVG 图标、公开页面的摘要及大图预览许可。`page-structured-data.tsx` 为三个工具的所有语言版本增加 WebApplication、FAQPage，关联现有 WebPage/WebSite 以及统一 Organization；直接复用当前语言的营销内容与 FAQ，不编造价格、评分或评价。`localized-root.tsx` 提供品牌实体；`faq.tsx` 增加可引用的问题锚点，答案保留服务器渲染。
+- 13 个消息文件各修改 18 个叶子字段：增加登录要求和 AI 推断细节的局限，修正隐私与商用问答（含定价 FAQ），移除 Reimagine 眉题的无条件免费承诺。没有改动模型、上传、支付或登录流程。共享 Footer 增加当前语言的工具和定价内链。
+- `site-config.ts` 支持 `NEXT_PUBLIC_SITE_INDEXABLE=false`：公开 origin 的测试部署也能维持正确 canonical，同时关闭索引与 sitemap；`.env.example` 和 README 记录。未配置正式域名时仍保留原有本地预览 noindex 策略，没有将一次性验证环境写入环境文件。
+- 扩展 `scripts/verify-seo.py` 检查 FAQ 与实际服务器正文一致（排除 script/style，防止把 hydration 数据误认正文）、问答锚点、工具结构化数据关系、公开页面和账户的内链、SSO noindex、参数 URL canonical、部署别名 308 跳转。正式 origin 的生产构建全部 104 页、91 条 sitemap、展示图片与 404 通过；设置正式 origin 且显式关闭索引的预览构建全部 104 页、空 sitemap 和 robots 通过。生产构建含 TypeScript 均通过，最终恢复未配置域名的默认构建。
+- 完整 `pnpm run verify:i18n` 有既存失败：非中英文语言缺少账户历史消息及 `workspace.api.modelUnavailable`。用 HEAD 原文件在临时目录执行相同检查，确认修改前同样失败。对本轮全部改动的消息单独执行同一检查器，13 语言各 18 个字段的键/ICU/占位符/英文残留校验全部通过。没有用英文补齐或放宽原检查器。
+- 使用 requesting-code-review 技能进行独立审查，未发现重要回归；审查指出的正文校验器可能读取脚本内容的问题已修正并重跑检查。
+- 上线阻断/限制：当前没有本地正式 origin 环境配置，默认仍关闭索引；本机请求正式域名返回 HTTP 502。需要在部署环境配置正式 origin、恢复服务 HTTP 200，并向 Google Search Console/Bing Webmaster Tools 提交 sitemap。没有部署、提交收录或声称排名、AI 引用、线上爬虫访问或真实用户 Core Web Vitals 已改善。后台套餐权益、订阅取消规则与法律主体仍需按实际经营规则核对。
+- 用户询问 `@context: https://schema.org` 的含义，已说明这是 JSON-LD 的词汇标准声明，用于机器理解，不改变界面或把图片发送到 schema.org，也不保证排名。

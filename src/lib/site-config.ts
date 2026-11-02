@@ -10,6 +10,7 @@ export const SITE_ALIASES = [
   'photopop.app',
 ] as const
 export const SITE_INDEXABLE = Boolean(process.env.NEXT_PUBLIC_SITE_URL)
+  && process.env.NEXT_PUBLIC_SITE_INDEXABLE !== 'false'
   && !['localhost', '127.0.0.1', '[::1]'].includes(SITE_URL.hostname)
 
 export function absoluteUrl(path: string): string {

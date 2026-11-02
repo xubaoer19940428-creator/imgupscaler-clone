@@ -162,7 +162,7 @@
         "description": "Rendez plus nettes les images floues, bruitées, compressées ou basse résolution."
       },
       "reimagine": {
-        "eyebrow": "Upscaler Reimagine gratuit",
+        "eyebrow": "Réimaginer des images avec l’IA",
         "title": {
           "before": "Réinventez et agrandissez",
           "emphasis": "les images avec l’IA"
@@ -509,7 +509,7 @@
         ],
         [
           "Mes images téléchargées sont-elles privées ? Les images",
-          "sont téléchargées via des URL signées de courte durée, traitées par le modèle sélectionné et renvoyées en tant que résultats privés dans le cadre de la politique de rétention de l'API."
+          "Les images sont envoyées à un service distant pour le traitement par IA. L’accès, la conservation et la suppression suivent sa politique. Consultez la Politique de confidentialité avant d’envoyer des images personnelles ou sensibles."
         ],
         [
           "Combien de temps les images téléchargées sont-elles conservées ? Les fichiers sources et les résultats",
@@ -517,7 +517,7 @@
         ],
         [
           "Puis-je utiliser les images mises à l'échelle à des fins commerciales ?",
-          "Le frontend ne restreint pas l'utilisation de l'exportation. Les licences commerciales, la responsabilité en matière de production du modèle et les droits sur l'image source doivent être définis dans les conditions de production."
+          "L’usage commercial dépend de vos droits sur l’image source, des conditions du service et du modèle, ainsi que du droit local. Consultez les Conditions d’utilisation ; le traitement ne confère aucun droit sur les contenus de tiers."
         ],
         [
           "Quelles images fonctionnent le mieux avec la conversion ascendante de l'IA ?",
@@ -530,6 +530,14 @@
         [
           "Dois-je installer un logiciel ?",
           "Non. Utilisez l’outil directement dans votre navigateur ; le traitement des images a lieu sur nos serveurs."
+        ],
+        [
+          "Faut-il se connecter pour traiter une image ?",
+          "Oui. Vous pouvez sélectionner une image avant de vous connecter, mais le traitement par IA nécessite un compte. Les crédits, tailles de sortie et limites dépendent de votre compte et du service choisi."
+        ],
+        [
+          "L’IA peut-elle retrouver tous les détails perdus ?",
+          "Non. L’IA déduit des détails plausibles et peut modifier les visages, le texte ou les textures. Comparez le résultat à l’original avant publication ; les détails générés ne prouvent pas le contenu de l’image d’origine."
         ]
       ],
       "enhancer": [
@@ -588,6 +596,14 @@
         [
           "Ai-je besoin de compétences en édition pour utiliser l’enhancer ?",
           "Non. Téléchargez une image, choisissez une sortie et téléchargez le résultat."
+        ],
+        [
+          "Faut-il se connecter pour traiter une image ?",
+          "Oui. Vous pouvez sélectionner une image avant de vous connecter, mais le traitement par IA nécessite un compte. Les crédits, tailles de sortie et limites dépendent de votre compte et du service choisi."
+        ],
+        [
+          "L’IA peut-elle retrouver tous les détails perdus ?",
+          "Non. L’IA déduit des détails plausibles et peut modifier les visages, le texte ou les textures. Comparez le résultat à l’original avant publication ; les détails générés ne prouvent pas le contenu de l’image d’origine."
         ]
       ],
       "reimagine": [
@@ -633,11 +649,19 @@
         ],
         [
           "Puis-je utiliser les sorties Reimagine AI à des fins commerciales ?",
-          "Oui, sous réserve de la loi applicable et des droits associés aux images originales."
+          "L’usage commercial dépend de vos droits sur l’image source, des conditions du service et du modèle, ainsi que du droit local. Consultez les Conditions d’utilisation ; le traitement ne confère aucun droit sur les contenus de tiers."
         ],
         [
           "Les images téléchargées sont-elles privées ?",
-          "L'API utilise des URL signées de courte durée et sa politique de nettoyage configurée pour les images et les résultats téléchargés."
+          "Les images sont envoyées à un service distant pour le traitement par IA. L’accès, la conservation et la suppression suivent sa politique. Consultez la Politique de confidentialité avant d’envoyer des images personnelles ou sensibles."
+        ],
+        [
+          "Faut-il se connecter pour traiter une image ?",
+          "Oui. Vous pouvez sélectionner une image avant de vous connecter, mais le traitement par IA nécessite un compte. Les crédits, tailles de sortie et limites dépendent de votre compte et du service choisi."
+        ],
+        [
+          "L’IA peut-elle retrouver tous les détails perdus ?",
+          "Non. L’IA déduit des détails plausibles et peut modifier les visages, le texte ou les textures. Comparez le résultat à l’original avant publication ; les détails générés ne prouvent pas le contenu de l’image d’origine."
         ]
       ]
     },
@@ -815,7 +839,7 @@
       ],
       [
         "Puis-je utiliser les résultats à des fins commerciales ?",
-        "Oui. Les sorties gratuites et payantes peuvent être utilisées pour des projets personnels et commerciaux, sous réserve de la loi applicable et des droits sur les images sources."
+        "L’usage commercial dépend de vos droits sur l’image source, des conditions du service et du modèle, ainsi que du droit local. Consultez les Conditions d’utilisation ; le traitement ne confère aucun droit sur les contenus de tiers."
       ]
     ],
     "monthlyPrice": "/mois"
