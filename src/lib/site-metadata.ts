@@ -44,7 +44,7 @@ export function pageMetadata(locale: Locale, page: MetadataPage): Metadata {
     metadataBase: SITE_URL,
     title,
     description,
-    applicationName: 'Photosharp',
+    applicationName: 'PhotoUpscale',
     icons: { icon: { url: '/icon.svg', type: 'image/svg+xml' } },
     alternates: {
       canonical: url,
@@ -52,7 +52,7 @@ export function pageMetadata(locale: Locale, page: MetadataPage): Metadata {
     },
     robots: { index: SITE_INDEXABLE && publicPage, follow: true, ...(publicPage ? { 'max-image-preview': 'large' as const, 'max-snippet': -1, 'max-video-preview': -1 } : {}) },
     openGraph: {
-      type: 'website', siteName: 'Photosharp', title, description, url,
+      type: 'website', siteName: 'PhotoUpscale', title, description, url,
       locale: openGraphLocale(locale),
       alternateLocale: LOCALES.filter((value) => value !== locale).map(openGraphLocale),
       images: [{ url: image, alt: title }],

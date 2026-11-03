@@ -16,7 +16,7 @@ export function PageStructuredData({ locale, page }: { locale: Locale; page: Met
   const content = landingCopy(locale)
   const application = tool ? {
     '@type': 'WebApplication', '@id': `${url}#application`,
-    name: `${content.heroContent[tool].eyebrow} | Photosharp`,
+    name: `${content.heroContent[tool].eyebrow} | PhotoUpscale`,
     url, description: content.heroContent[tool].description,
     applicationCategory: 'MultimediaApplication', operatingSystem: 'Web browser',
     inLanguage: LANGUAGE_TAGS[locale],
@@ -36,7 +36,7 @@ export function PageStructuredData({ locale, page }: { locale: Locale; page: Met
     '@type': 'BreadcrumbList',
     '@id': `${url}#breadcrumb`,
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Photosharp', item: home },
+      { '@type': 'ListItem', position: 1, name: 'PhotoUpscale', item: home },
       { '@type': 'ListItem', position: 2, name: title.split(' | ')[0], item: url },
     ],
   } : null

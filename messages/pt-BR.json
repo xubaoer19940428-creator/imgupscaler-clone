@@ -455,29 +455,29 @@
       [
         "Eleonore Lefaix",
         "Siecledigital.fr",
-        "Photosharp simplifica o upscaling de imagens e oferece suporte ao processamento em lote, para que os usuários possam lidar com várias imagens ao mesmo tempo."
+        "PhotoUpscale simplifica o upscaling de imagens e oferece suporte ao processamento em lote, para que os usuários possam lidar com várias imagens ao mesmo tempo."
       ],
       [
         "Eva Williams",
         "Corrigir o editor de fotos",
-        "Quando você precisa aprimorar várias imagens e melhorar um grande conjunto de recursos visuais sem repetir etapas manuais, o Photosharp é uma escolha prática."
+        "Quando você precisa aprimorar várias imagens e melhorar um grande conjunto de recursos visuais sem repetir etapas manuais, o PhotoUpscale é uma escolha prática."
       ],
       [
         "Matic Broz",
         "Editor",
-        "O upscaling de imagem não deve ser caro ou complicado. Photosharp oferece uma maneira simples e intuitiva de ampliar imagens online."
+        "O upscaling de imagem não deve ser caro ou complicado. PhotoUpscale oferece uma maneira simples e intuitiva de ampliar imagens online."
       ],
       [
         "Sravan",
         "Usuário do Product Hunt",
-        "Photosharp funciona com muitos tipos de imagens, desde paisagens e fotos de produtos até fotos antigas que precisam de detalhes mais visíveis."
+        "PhotoUpscale funciona com muitos tipos de imagens, desde paisagens e fotos de produtos até fotos antigas que precisam de detalhes mais visíveis."
       ]
     ],
     "faqs": {
       "home": [
         [
-          "O que é Photosharp?",
-          "O Photosharp é uma ferramenta online para ampliar fotos, ilustrações, imagens de produtos e retratos com IA. Escolha uma saída em 2K ou 4K. Os tamanhos disponíveis dependem do modelo e dos limites da conta."
+          "O que é PhotoUpscale?",
+          "O PhotoUpscale é uma ferramenta online para ampliar fotos, ilustrações, imagens de produtos e retratos com IA. Escolha uma saída em 2K ou 4K. Os tamanhos disponíveis dependem do modelo e dos limites da conta."
         ],
         [
           "Como funciona um upscaler de imagem AI?",
@@ -609,7 +609,7 @@
       "reimagine": [
         [
           "O que é Reimaginar IA?",
-          "Reimagine AI é o upscaler criativo guiado por prompt do Photosharp. Ele amplia uma imagem enquanto gera novos detalhes, texturas e variações visuais a partir de seus prompts e configurações."
+          "Reimagine AI é o upscaler criativo guiado por prompt do PhotoUpscale. Ele amplia uma imagem enquanto gera novos detalhes, texturas e variações visuais a partir de seus prompts e configurações."
         ],
         [
           "Qual a diferença entre o Reimagine AI e um upscaler normal?",
@@ -668,7 +668,7 @@
     "video": {
       "title": "Veja como o upscaling de imagem AI melhora a clareza",
       "description": "Amplie fotos, ilustrações, imagens de produtos, retratos e fotos antigas com IA. Escolha a saída em 2K ou 4K, confira os detalhes e baixe o resultado. A resolução disponível depende do modelo e dos limites da conta.",
-      "alt": "Vitrine de vídeo Photosharp",
+      "alt": "Vitrine de vídeo PhotoUpscale",
       "caption": "Assista no YouTube ↗"
     },
     "useCaseIntro": {
@@ -677,16 +677,16 @@
         "before": "Prepare ativos mais claros para",
         "emphasis": "na web, impressão e mídia social."
       },
-      "description": "Desde o rápido upscaling on-line até fluxos de trabalho prontos para lote, o Photosharp foi desenvolvido para criadores, equipes e empresas que precisam de recursos visuais mais claros sem configurações de edição complicadas."
+      "description": "Desde o rápido upscaling on-line até fluxos de trabalho prontos para lote, o PhotoUpscale foi desenvolvido para criadores, equipes e empresas que precisam de recursos visuais mais claros sem configurações de edição complicadas."
     },
     "testimonialIntro": {
-      "title": "O que as pessoas dizem sobre Photosharp",
-      "description": "Criadores, editores, profissionais de marketing e usuários comuns confiam no Photosharp quando precisam de um upscaler on-line prático para obter recursos visuais mais claros e utilizáveis. Perguntas frequentes sobre o upscaler de imagem"
+      "title": "O que as pessoas dizem sobre PhotoUpscale",
+      "description": "Criadores, editores, profissionais de marketing e usuários comuns confiam no PhotoUpscale quando precisam de um upscaler on-line prático para obter recursos visuais mais claros e utilizáveis. Perguntas frequentes sobre o upscaler de imagem"
     },
     "faqIntro": {
       "home": {
         "title": "AI",
-        "description": "Respostas sobre Photosharp, upscaling de imagem online, aprimoramento de imagem, privacidade de arquivo, formatos suportados e casos de uso comuns."
+        "description": "Respostas sobre PhotoUpscale, upscaling de imagem online, aprimoramento de imagem, privacidade de arquivo, formatos suportados e casos de uso comuns."
       },
       "enhancer": {
         "title": "Perguntas frequentes sobre melhoria de imagens",
@@ -744,7 +744,7 @@
     "faqKicker": "Perguntas frequentes sobre preços",
     "faqTitle": "Perguntas sobre créditos, cobrança e",
     "faqEmphasis": "planejar atualizações.",
-    "faqDescription": "Respostas sobre créditos, ciclos de faturamento, mudanças de plano, checkout e escolha do plano Photosharp certo.",
+    "faqDescription": "Respostas sobre créditos, ciclos de faturamento, mudanças de plano, checkout e escolha do plano PhotoUpscale certo.",
     "plans": [
       {
         "id": "free",
@@ -807,7 +807,7 @@
     "faqs": [
       [
         "Qual plano devo escolher?",
-        "Escolha Grátis se estiver testando apenas o Photosharp. Escolha Avançado se você aprimora imagens regularmente e precisa de processamento em lote, mais créditos, Reimagine AI e um espaço de trabalho sem anúncios. Escolha Empresarial quando o trabalho comercial ou de produção exigir créditos ilimitados."
+        "Escolha Grátis se estiver testando apenas o PhotoUpscale. Escolha Avançado se você aprimora imagens regularmente e precisa de processamento em lote, mais créditos, Reimagine AI e um espaço de trabalho sem anúncios. Escolha Empresarial quando o trabalho comercial ou de produção exigir créditos ilimitados."
       ],
       [
         "Para que servem os créditos? Os créditos",
@@ -831,7 +831,7 @@
       ],
       [
         "O que devo fazer se o pagamento falhar?",
-        "Entre em contato com support@photosharp.app com o e-mail da sua conta e o prazo aproximado de pagamento para que a equipe possa ajudar."
+        "Entre em contato com support@photoupscale.app com o e-mail da sua conta e o prazo aproximado de pagamento para que a equipe possa ajudar."
       ],
       [
         "Quando sou cobrado?",
@@ -865,7 +865,7 @@
     "cookies": "Biscoitos",
     "contact": "Contato",
     "switchLanguage": "Trocar idioma",
-    "copyright": "© 2026 Photosharp. Todos os direitos reservados.",
+    "copyright": "© 2026 PhotoUpscale. Todos os direitos reservados.",
     "languageNames": {
       "en": "English",
       "zh": "简体中文",
@@ -931,7 +931,7 @@
     "pages": {
       "privacy-policy": {
         "title": "Política de Privacidade",
-        "intro": "Photosharp é um serviço online de aumento e aprimoramento de imagens de IA operado pela Sparklightforce Limited. Esta página explica as informações que coletamos, como as usamos e suas escolhas.",
+        "intro": "PhotoUpscale é um serviço online de aumento e aprimoramento de imagens de IA operado pela Sparklightforce Limited. Esta página explica as informações que coletamos, como as usamos e suas escolhas.",
         "sections": [
           [
             "1. Informações que coletamos",
@@ -955,21 +955,21 @@
           ],
           [
             "6. Suas escolhas",
-            "Você pode entrar em contato com support@photosharp.app para solicitar acesso, correção ou exclusão de informações da conta. Você pode gerenciar cookies através das configurações do seu navegador, embora os recursos necessários possam parar de funcionar."
+            "Você pode entrar em contato com support@photoupscale.app para solicitar acesso, correção ou exclusão de informações da conta. Você pode gerenciar cookies através das configurações do seu navegador, embora os recursos necessários possam parar de funcionar."
           ],
           [
             "7. Contate-nos",
-            "Dúvidas sobre esta política podem ser enviadas para support@photosharp.app. Sparklightforce Limited: SALA 1503-09, 15/F, CAUSEWAY BAY CENTRE, 15-23 SUGAR STREET, CAUSEWAY BAY, HONG KONG."
+            "Dúvidas sobre esta política podem ser enviadas para support@photoupscale.app. Sparklightforce Limited: SALA 1503-09, 15/F, CAUSEWAY BAY CENTRE, 15-23 SUGAR STREET, CAUSEWAY BAY, HONG KONG."
           ]
         ]
       },
       "terms": {
         "title": "Termos de Serviço",
-        "intro": "Ao usar Photosharp, você concorda com estes termos de serviço. Os recursos disponíveis, subsídios de processamento e benefícios pagos estão descritos nas páginas atuais do produto e da conta.",
+        "intro": "Ao usar PhotoUpscale, você concorda com estes termos de serviço. Os recursos disponíveis, subsídios de processamento e benefícios pagos estão descritos nas páginas atuais do produto e da conta.",
         "sections": [
           [
             "1. Escopo do Serviço",
-            "Photosharp fornece upscaling de imagem on-line, aprimoramento e fluxos de trabalho Reimagine AI. Recursos, modelos, limites e disponibilidade podem mudar conforme o produto evolui."
+            "PhotoUpscale fornece upscaling de imagem on-line, aprimoramento e fluxos de trabalho Reimagine AI. Recursos, modelos, limites e disponibilidade podem mudar conforme o produto evolui."
           ],
           [
             "2. Conteúdo do usuário",
@@ -989,7 +989,7 @@
           ],
           [
             "6. Contato",
-            "Para obter ajuda, envie um e-mail para support@photosharp.app. Cookies"
+            "Para obter ajuda, envie um e-mail para support@photoupscale.app. Cookies"
           ]
         ]
       },
@@ -1015,7 +1015,7 @@
           ],
           [
             "5. Entre em contato com",
-            "Perguntas sobre o uso de cookies podem ser enviadas para support@photosharp.app."
+            "Perguntas sobre o uso de cookies podem ser enviadas para support@photoupscale.app."
           ]
         ]
       }
@@ -1023,39 +1023,39 @@
   },
   "metadata": {
     "home": {
-      "title": "Ampliar imagens online com IA | Photosharp",
+      "title": "Ampliar imagens online com IA | PhotoUpscale",
       "description": "Amplie fotos e ilustrações online com IA. Restaure detalhes finos, aumente a nitidez de imagens de baixa resolução e baixe resultados mais nítidos no tamanho que você precisa."
     },
     "enhancer": {
-      "title": "Melhorar a qualidade de fotos com IA | Photosharp",
+      "title": "Melhorar a qualidade de fotos com IA | PhotoUpscale",
       "description": "Melhore a clareza da foto com um intensificador de imagem de IA online. Reduza o ruído e os artefatos de compressão, torne as texturas mais nítidas e visualize o resultado antes de fazer o download."
     },
     "reimagine": {
-      "title": "Reimaginar imagens com IA e texto | Photosharp",
+      "title": "Reimaginar imagens com IA e texto | PhotoUpscale",
       "description": "Reimagine fotos, ilustrações e interiores com IA. Guie o resultado com um prompt, ajuste a criatividade e a semelhança e visualize sua nova imagem."
     },
     "pricing": {
-      "title": "Planos e preços para ampliar imagens | Photosharp",
+      "title": "Planos e preços para ampliar imagens | PhotoUpscale",
       "description": "Compare planos de aumento de escala de imagem, créditos e opções de processamento em lote. Encontre o plano certo para aprimoramento de fotos, projetos criativos e fluxos de trabalho comerciais."
     },
     "account": {
-      "title": "Sua conta e créditos | Photosharp",
-      "description": "Gerencie seu perfil, segurança da conta, créditos de processamento de imagem disponíveis e configurações de faturamento em sua conta Photosharp."
+      "title": "Sua conta e créditos | PhotoUpscale",
+      "description": "Gerencie seu perfil, segurança da conta, créditos de processamento de imagem disponíveis e configurações de faturamento em sua conta PhotoUpscale."
     },
     "privacy": {
-      "title": "Política de Privacidade | Photosharp",
-      "description": "Leia como Photosharp lida com informações de conta, fotos enviadas, imagens geradas, retenção e suas escolhas de privacidade."
+      "title": "Política de Privacidade | PhotoUpscale",
+      "description": "Leia como PhotoUpscale lida com informações de conta, fotos enviadas, imagens geradas, retenção e suas escolhas de privacidade."
     },
     "terms": {
-      "title": "Termos de Serviço | Photosharp",
-      "description": "Revise os termos de uso do Photosharp, incluindo propriedade da imagem, uso aceitável, limites de processamento, créditos da conta e assinaturas."
+      "title": "Termos de Serviço | PhotoUpscale",
+      "description": "Revise os termos de uso do PhotoUpscale, incluindo propriedade da imagem, uso aceitável, limites de processamento, créditos da conta e assinaturas."
     },
     "cookies": {
-      "title": "Política de Cookies | Photosharp",
-      "description": "Saiba como os cookies suportam login, segurança, preferências e análises no Photosharp e como gerenciá-los em seu navegador."
+      "title": "Política de Cookies | PhotoUpscale",
+      "description": "Saiba como os cookies suportam login, segurança, preferências e análises no PhotoUpscale e como gerenciá-los em seu navegador."
     },
     "root": {
-      "title": "Photosharp",
+      "title": "PhotoUpscale",
       "description": "Amplie, aprimore e reimagine imagens online com IA."
     }
   }

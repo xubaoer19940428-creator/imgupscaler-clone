@@ -932,3 +932,8 @@ npm run build
 - `.env.example`、site-config 注释与 README 更新正式域名；SEO verifier 从别名名单排除当前 canonical 域名，支持新旧 origin 检查。正式请求的 canonical/hreflang/sitemap 使用新域名。
 - 验证：YAML、每个 run 块 bash 语法、实际 SSH heredoc 本地展开后的远端 shell 语法通过；模拟健康检查 HTTP 200/503，确认仅成功时 pm2 save，失败退出并打印诊断。新域名生产构建含 TypeScript通过（114 个条目）；用与部署相同的 Next CLI 命令在本机3002启动，全部104页、91条sitemap、图片、404、认证noindex、canonical和别名308检查通过。独立审查未发现重要问题；ccc index、git diff --check通过。
 - 下一步：提交新workflow并从包含修改的ref部署，确认域名反向代理upstream为127.0.0.1:3002。如仍失败，使用新日志中的Next/PM2错误定位；当前片段不足以确定远端根因。未提交、未触发workflow、未修改远端。
+
+### 2026-11-03（补齐 PhotoUpscale 品牌显示）
+- 用户指出 Logo 旁仍显示 Photosharp，确认域名切换也应同步页面品牌。Header/Footer 文字和无障碍名称、13 语言的产品介绍/FAQ/法律文案/版权/metadata、Open Graph 应用名与站点名、WebSite/Organization/工具及面包屑结构化数据统一改为 PhotoUpscale。
+- 可见客服邮箱统一为 support@photoupscale.app，README 与环境示例品牌注释同步。旧 photosharp.app 域名仅保留在兼容别名、API 域名签名映射、旧 PM2 进程清理及历史记录中，不更改 API 兼容契约。Logo 图形沿用现有图标，仅更正品牌文字。
+- 验证：13 语言 JSON 与 HEAD 对照，确认仅品牌及联系邮箱替换，没有改键、结构或其余内容；组件与消息内无旧品牌显示名残留。新域名生产构建含 TypeScript、114 个条目和 git diff --check 通过。未提交或部署，需部署包含本次修改的 ref 后线上才会更新。

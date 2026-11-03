@@ -1,4 +1,4 @@
-# Photosharp 图片工作室
+# PhotoUpscale 图片工作室
 
 这是一个基于 Next.js App Router + React + TypeScript 的在线图片工作室。界面采用暖白、石灰灰、墨黑与低饱和墨蓝，首屏并排呈现上传工作区和效果对比，搭配图片用例、能力介绍、三步流程与 FAQ。定价、账户、法律页和弹窗共用同一视觉风格；工作区和账户数据通过 Mixu API 使用真实服务。
 
@@ -6,8 +6,8 @@
 
 项目早期版本参考以下内容，当前界面已重新设计：
 
-- 线上中文站：[Photosharp 中文版](https://photoupscale.app/zh)
-- 线上主站：[Photosharp](https://photoupscale.app/)
+- 线上中文站：[PhotoUpscale 中文版](https://photoupscale.app/zh)
+- 线上主站：[PhotoUpscale](https://photoupscale.app/)
 - 本地页面参考稿：`文稿/AI _ ImgUpscaler.html`
 
 本项目不包含参考站的后端服务、AI 模型、账户系统或支付系统。品牌名称暂沿用现有名称，`public/reference/` 中的图片属于当前开发占位素材，正式品牌和自有展示素材仍待替换。
@@ -81,7 +81,7 @@ SEO 实现依据 [Google 多语言页面指南](https://developers.google.com/se
 
 ### GEO 与上线检查（2026-11-02）
 
-- 13 语言的工具页增加 WebApplication 与 FAQPage，关联 WebPage、WebSite 和统一的 Photosharp Organization 实体。FAQ JSON-LD 直接读取界面同一份翻译数据，问答有稳定锚点，收起的答案仍在服务器 HTML 中。没有添加虚构评价、评分或报价。
+- 13 语言的工具页增加 WebApplication 与 FAQPage，关联 WebPage、WebSite 和统一的 PhotoUpscale Organization 实体。FAQ JSON-LD 直接读取界面同一份翻译数据，问答有稳定锚点，收起的答案仍在服务器 HTML 中。没有添加虚构评价、评分或报价。
 - 增补登录要求与 AI 生成细节的局限；隐私与商用回答以实际服务政策、图片权利和适用条款为准。移除 Reimagine 眉题中的无条件免费承诺。所有页面页脚均提供当前语言的工具及定价链接，保留法律与联系入口。
 - 分享信息包含当前及其他语言地区标记；页面配置应用名、SVG 图标和公开页面的摘要/图片预览许可。`robots.txt` 的通配允许规则同时适用于搜索爬虫及遵守 robots 的 AI 搜索爬虫。无需为每个爬虫重复相同规则。
 - 正式部署必须在构建前配置 `NEXT_PUBLIC_SITE_URL=https://photoupscale.app`。公开测试环境可以额外设置 `NEXT_PUBLIC_SITE_INDEXABLE=false`，保持正确 canonical 同时关闭索引和 sitemap。账户和 SSO 回调始终禁止索引。不要用 robots 阻止账户抓取，否则搜索引擎无法读取其 noindex。
