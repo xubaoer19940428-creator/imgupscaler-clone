@@ -21,6 +21,8 @@ npm run dev
 
 默认地址：`http://localhost:3000`
 
+生产部署使用 `.github/workflows/deploy.yml`：Photosharp 的 PM2 名称为 `photosharp`，目录为 `/var/www/ai-nova/photosharp`，监听 `3001`。`photosharp.app` 的反向代理应转发到 `127.0.0.1:3001`。本地开发默认的 3000 端口与生产端口独立。按用户要求，部署会删除旧的 `photopop`、`ai-nova` PM2 进程，再重启 Photosharp，保留旧站点文件；启动后会检查 3001 端口的 HTTP 响应。
+
 生产构建：
 
 ```bash

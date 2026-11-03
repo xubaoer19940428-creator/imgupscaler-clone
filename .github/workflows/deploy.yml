@@ -1,4 +1,4 @@
-name: Deploy PhotoPop
+name: Deploy Photosharp
 
 on:
     workflow_dispatch:
@@ -28,9 +28,9 @@ env:
     # - DEPLOY_PASSWORD
     DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '104.64.221.138' }}
     DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'root' }}
-    DEPLOY_BASE: /var/www/ai-nova/photopop
-    APP_NAME: photopop
-    APP_PORT: 3000
+    DEPLOY_BASE: /var/www/ai-nova/photosharp
+    APP_NAME: photosharp
+    APP_PORT: 3001
     KEEP_RELEASES: 5
 
 jobs:
@@ -90,6 +90,8 @@ jobs:
                   rm -rf .next
                   pnpm build
               env:
+                  NEXT_PUBLIC_SITE_URL: https://photosharp.app
+                  NEXT_PUBLIC_SITE_INDEXABLE: 'true'
                   NEXT_PUBLIC_ARTGURU_API_BASE_URL: https://api.mixu.ai
                   NEXT_PUBLIC_ARTGURU_API_ENABLED: ${{ secrets.NEXT_PUBLIC_ARTGURU_API_ENABLED || 'false' }}
                   NEXT_PUBLIC_ARTGURU_APP_SECRET_KEY: ${{ secrets.NEXT_PUBLIC_ARTGURU_APP_SECRET_KEY }}
@@ -176,9 +178,9 @@ jobs:
                     pnpm install --prod --frozen-lockfile --ignore-scripts || npm install --omit=dev --ignore-scripts
                   fi
 
-                  # 清理旧的应用进程（防止之前的 ai-nova 占住 3000 端口导致冲突）
+                  # 清理旧站点进程，再重启 Photosharp；保留站点文件。
+                  pm2 delete photopop || true
                   pm2 delete ai-nova || true
-                  pm2 delete photosharp || true
                   pm2 delete "$APP_NAME" || true
                   ln -sfn "\$RELEASE_DIR" "\$CURRENT_LINK"
                   cd "\$CURRENT_LINK"
@@ -186,11 +188,23 @@ jobs:
                   PORT="$APP_PORT" HOSTNAME=0.0.0.0 pm2 start npm \
                     --name "$APP_NAME" \
                     --update-env \
-                    -- start
+                    -- start --hostname 0.0.0.0 --port "$APP_PORT"
 
-                  sleep 3
+                  # 启动失败时让 workflow 失败，不保存不可用的部署。
+                  HEALTHY=false
+                  for attempt in {1..15}; do
+                    if curl --fail --silent --show-error --max-time 3 "http://127.0.0.1:$APP_PORT/" >/dev/null; then
+                      HEALTHY=true
+                      break
+                    fi
+                    sleep 2
+                  done
                   pm2 status
                   pm2 logs "$APP_NAME" --lines 50 --nostream || true
+                  if [ "\$HEALTHY" != "true" ]; then
+                    echo "Photosharp failed health check on port $APP_PORT"
+                    exit 1
+                  fi
                   pm2 save
                   EOF
 
@@ -216,3 +230,5 @@ jobs:
                   echo "版本: ${{ steps.version.outputs.version }}"
                   echo "服务器: $DEPLOY_USER@$DEPLOY_HOST"
                   echo "当前版本: $DEPLOY_BASE/current"
+                  echo "应用: $APP_NAME，端口: $APP_PORT"
+                  echo "站点: https://photosharp.app（反向代理应指向 127.0.0.1:$APP_PORT）"

@@ -911,3 +911,15 @@ npm run build
 - 使用 requesting-code-review 技能进行独立审查，未发现重要回归；审查指出的正文校验器可能读取脚本内容的问题已修正并重跑检查。
 - 上线阻断/限制：当前没有本地正式 origin 环境配置，默认仍关闭索引；本机请求正式域名返回 HTTP 502。需要在部署环境配置正式 origin、恢复服务 HTTP 200，并向 Google Search Console/Bing Webmaster Tools 提交 sitemap。没有部署、提交收录或声称排名、AI 引用、线上爬虫访问或真实用户 Core Web Vitals 已改善。后台套餐权益、订阅取消规则与法律主体仍需按实际经营规则核对。
 - 用户询问 `@context: https://schema.org` 的含义，已说明这是 JSON-LD 的词汇标准声明，用于机器理解，不改变界面或把图片发送到 schema.org，也不保证排名。
+
+### 2026-11-03（修正 Photosharp 部署 workflow 为 3001）
+- 用户确认正式域名是 `photosharp.app`，生产服务应使用 3001。核查 `.github/workflows/deploy.yml` 发现仍使用 PhotoPop 名称、`photopop` 目录/PM2 进程和 3000 端口，部署时还删除 `photosharp` 与 `ai-nova` 进程；这与用户指定的部署目标不一致，可能造成 Photosharp 无服务响应，但尚未直接确认远端反向代理配置。
+- workflow 改为 Deploy Photosharp，部署目录 `/var/www/ai-nova/photosharp`、进程 `photosharp`、端口 3001；只删除和重启当前应用，保留 PhotoPop 等其他进程。Next 启动参数显式传入 `--hostname 0.0.0.0 --port 3001`。
+- 构建阶段设置 `NEXT_PUBLIC_SITE_URL=https://photosharp.app` 与开启索引，避免部署后仍是本地预览 noindex。新增端口 HTTP 健康检查，未就绪则 workflow 失败，不保存 PM2 状态。README 记录反向代理应指向 127.0.0.1:3001。
+- 验证：YAML 解析、所有 run 块 `bash -n`、端口/目录/进程隔离/构建 origin 断言与 `git diff --check` 通过；本地 `next start --help` 确认启动参数有效。本轮仅部署配置和文档，无需重建页面。
+- 尝试通过非交互 SSH 只读检查服务器监听状态，连接被服务器关闭，未能核对 Nginx/反向代理。没有修改远端、触发 workflow 或部署。下一步提交并运行新 workflow，确认服务器 photosharp.app 的 upstream 为 127.0.0.1:3001，再检查公网 HTTP 状态。旧 photopop 目录的历史版本不会自动迁移到新的 photosharp releases 目录。
+
+### 2026-11-03（按用户要求清理旧站点进程）
+- 用户明确要求“删除其他站点进程”，覆盖上一条保留旧应用进程的选择。workflow 现于启动 Photosharp 前执行 `pm2 delete photopop`、`pm2 delete ai-nova`，再删除并重启当前 `photosharp` 进程；旧进程不存在时允许继续。
+- 清理仅针对已知的旧应用名称，不使用 `pm2 delete all`，不删除旧站点文件，Photosharp 继续监听 3001。README 同步当前行为。
+- YAML 解析、全部 run 块 shell 语法、清理名单与 3001 端口断言及 diff 空白检查通过。仅修改本地 workflow，尚未触发部署或在服务器执行进程删除；服务器 SSH 连接受限的状态沿用上一条记录。
