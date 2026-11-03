@@ -1,6 +1,6 @@
 # PhotoUpscale 图片工作室
 
-这是一个基于 Next.js App Router + React + TypeScript 的在线图片工作室。界面采用暖白、石灰灰、墨黑与低饱和墨蓝，首屏并排呈现上传工作区和效果对比，搭配图片用例、能力介绍、三步流程与 FAQ。定价、账户、法律页和弹窗共用同一视觉风格；工作区和账户数据通过 Mixu API 使用真实服务。
+这是一个基于 Next.js App Router + React + TypeScript 的在线图片工作室。工具落地页结构参考本地 `photoupscale-redesign/index.html`：文字 Logo、居中首屏、并排上传与效果对比、左右交替的图片用例、图标功能卡、浅色三步流程与分栏 FAQ。定价、账户、法律页和弹窗共用同一视觉风格；工作区和账户数据通过 Mixu API 使用真实服务。
 
 ## 项目来源与素材
 
@@ -8,7 +8,8 @@
 
 - 线上中文站：[PhotoUpscale 中文版](https://photoupscale.app/zh)
 - 线上主站：[PhotoUpscale](https://photoupscale.app/)
-- 本地页面参考稿：`文稿/AI _ ImgUpscaler.html`
+- 当前布局参考稿：`~/Downloads/photoupscale-redesign/index.html`（样式已适配进 `src/styles/12-redesign.css`，运行时不依赖该外部目录）
+- 早期页面参考稿：`文稿/AI _ ImgUpscaler.html`
 
 本项目不包含参考站的后端服务、AI 模型、账户系统或支付系统。品牌名称暂沿用现有名称，`public/reference/` 中的图片属于当前开发占位素材，正式品牌和自有展示素材仍待替换。
 
@@ -39,8 +40,8 @@ npm start
 - 支持英文、简体中文、日语、韩语、西班牙语、法语、德语、巴西葡萄牙语、意大利语、俄语、阿拉伯语、土耳其语和荷兰语。每个语种均提供工具、定价、账户和法律页面。
 - 前后对比滑杆、不同工具的 FAQ、响应式导航、账户/语言菜单、状态 toast。
 - 单项移除、失败重试、完成结果编辑（裁剪、旋转、水平/垂直翻转、WebP/PNG/JPG、质量）、批量 ZIP 下载、清空任务和处理中取消保护。
-- 并排上传与效果对比、三张图片用例、浅灰能力介绍、三步流程和分栏 FAQ；支持桌面、平板、手机与阿拉伯语 RTL 布局。
-- 使用本地 Instrument Sans 可变字体与系统中文字体回退，无需请求远程字体样式。
+- 并排上传与效果对比、三张交替图片用例、图标功能卡、浅色三步流程和分栏 FAQ；支持桌面、平板、手机与阿拉伯语 RTL 布局。
+- 首页、增强器和 Reimagine 统一使用本地 Plus Jakarta Sans 可变字体与系统中文字体回退，无需请求远程字体样式。
 - `/zh/account` 与 `/account` 账户面板接入真实资料、订阅积分、安全设置 API，法律页同时提供中英文路径。
 
 工作区始终使用 Mixu API：上传临时源图并登记文件，创建异步图片 Run、轮询结果并提供下载。Reimagine 的提示词、创造力和相似度会随 canonical body 发送。

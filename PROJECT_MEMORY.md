@@ -942,3 +942,16 @@ npm run build
 - 用户要求去掉清理其他 Next 站点的代码。workflow 已移除 `pm2 delete photosharp/photopop/ai-nova`，仅删除并重启当前 `photoupscale` 进程。
 - 发布保留数量维持 `KEEP_RELEASES: 5`；修正版本清理以优先保护 current 指向的活动版本，再保留最新的其余版本，总计最多 5 个，避免回滚到旧版本后活动目录被删除。清理仅作用于当前应用 releases 目录。README 同步。
 - 验证：YAML、全部 run 块 bash 语法和 diff 空白检查通过；临时目录模拟 8 个版本保留 5 个、旧活动版本回滚保护、少于 5 个全部保留，结果符合预期；rm 使用模拟函数，没有执行实际删除。未提交、未触发 workflow 或修改远端。
+
+### 2026-11-03（按 photoupscale-redesign 调整页面结构）
+- 用户要求页面结构参考 `~/Downloads/photoupscale-redesign/index.html`。已阅读配套 HTML/CSS/JS，对现有 React 组件做结构与样式适配，没有引入参考稿的静态登录/本地预览 JS，也不依赖 Downloads 目录运行。
+- 新增 `src/styles/12-redesign.css` 并在全局入口末尾导入；工具落地页由 `main.landing-redesign` 隔离：居中 Hero、平衡的上传/对比双栏、左右交替用例卡、带图标和编号的功能卡、浅色三步流程与两栏 FAQ，窄屏变为单栏。共享 Header/Footer 使用文字 BrandWordmark（Photo 深色、Upscale 蓝色、U 向上标记），移动导航保持原有交互。保留本地字体，未新增远程字体请求。
+- 主要组件修改：`src/App.tsx`、`src/components/ui/logo.tsx`、`site-header.tsx`、`site-footer.tsx`、`src/features/landing/sections.tsx`、`src/features/workspace/workspace-panel.tsx`。只替换上传空态图标与展示结构，真实队列、认证、处理、下载、取消、编辑与多语言/SEO 数据保持原逻辑。README 与现有 design-system 记录同步。
+- 使用 frontend-design 与 superdesign 指引，以用户提供的现成设计为目标直接适配。独立审查发现 320px 上传状态可能因工作台新增 padding 挤压 185px 队列轨道，已修复为 `.studio-workbench.has-files` padding:0；上传状态保留原队列样式。
+- 验证：新域名生产构建（含 TypeScript、114 个条目）通过；本地生产服务的 104 页面、91 条 sitemap、语言/heading/metadata/结构化数据/图片/认证 noindex/别名跳转/404 检查通过；最后一轮队列 padding 与 CSS 格式调整后重新构建通过。ccc index 与 git diff --check 通过。没有改动翻译文案，既存完整 i18n 检查失败的背景见前文。
+- 视觉验证限制：浏览器连接 host 不可用；尝试原生 Chrome 新标签页访问本地预览，AX 仅返回浏览器外壳且截图全白，未能可靠读取页面，因此没有宣称完成桌面/手机像素或点击回归。独立审查为源码审查。未提交或部署。
+
+### 2026-11-03（参考稿字体与三个工具页面统一）
+- 用户询问参考 HTML 的字体，并要求其他两个页面参考首页布局。确认参考稿通过 Google Fonts 加载 Plus Jakarta Sans；上一轮沿用 Instrument Sans，此轮改为本地托管 Plus Jakarta Sans 可变字体，支持 200–800 字重，继续用 --font-studio，不引入浏览器端远程字体请求。新增字体及官方 SIL OFL 许可证；中文等非拉丁字符使用系统字体回退。
+- 增强器和 Reimagine 继续复用首页的 LandingPage、Hero、用例/功能/流程/FAQ 与 redesign 样式，main 增加 data-tool 标记；细化两个页面的用例比较卡，使其完整填充统一卡片区域。Reimagine 上传后的模型选择和提示词设置在桌面并排，800px 以下纵向，540px 以下模型按钮单列，保留真实控件及处理逻辑。
+- README 与现有 design-system 同步实际字体。构建含 TypeScript 和114条目通过；检查13语言×3工具共39页的 main标记、五个区块顺序、本地字体预加载及字体资源200通过，生成CSS确认使用PlusJakarta且无Google字体外链；104页/91条sitemap的SEO回归通过。git diff --check与ccc index通过。浏览器视觉验证限制沿用上一条，未宣称像素及点击回归通过。未提交或部署，本地预览保留在3100。

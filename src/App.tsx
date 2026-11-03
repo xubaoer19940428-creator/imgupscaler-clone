@@ -129,7 +129,7 @@ export default function App() {
 }
 
 function LandingPage({ route, controller, onUseCase }: { route: Exclude<Route, 'pricing'>; controller: ReturnType<typeof useWorkspaceController>; onUseCase: () => void }) {
-  return <main id="main-content"><Hero route={route} controller={controller} /><UseCasesSection route={route} onUseCase={onUseCase} /><FeatureSection route={route} /><WorkflowSection route={route} /><FaqSection route={route} /></main>
+  return <main id="main-content" className="landing-redesign" data-tool={route}><Hero route={route} controller={controller} /><UseCasesSection route={route} onUseCase={onUseCase} /><FeatureSection route={route} /><WorkflowSection route={route} /><FaqSection route={route} /></main>
 }
 
 function Toast({ message }: { message: { title: string; detail?: string } }) {

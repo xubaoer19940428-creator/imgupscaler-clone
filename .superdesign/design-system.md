@@ -14,3 +14,7 @@ The local warm neutral / ink-blue palette supersedes remote draft v3. Remote dra
 
 ## Corner refinement
 Use moderate rounding: 20px workbench/dialogs (14px mobile workbench), 16px plan/account panels, 12px image and upload surfaces, 10px buttons and inputs. Keep editorial text sections and dividing rules unboxed.
+
+
+## 2026-11-03: local redesign reference
+Current tool landing layout follows the user-provided photoupscale-redesign: centered hero, balanced upload/comparison workbench, alternating use-case cards, icon feature grid, light workflow cards and two-column FAQ. Shared text logo splits Photo / Upscale with an upward accent on U. The implementation is isolated in src/styles/12-redesign.css; uploaded-state workbench has zero outer padding. Use locally hosted Plus Jakarta Sans (200–800) to match the reference, while keeping functional app controllers. The old remote draft is historical.

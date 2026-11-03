@@ -76,3 +76,8 @@ export const BrandLogo: FC<{
     </span>
   )
 }
+
+/** Shared text mark from the approved local redesign. */
+export function BrandWordmark() {
+  return <span className="wordmark" dir="ltr"><span className="word-photo">Photo</span><span className="word-scale"><span className="logo-u">U</span>pscale</span></span>
+}

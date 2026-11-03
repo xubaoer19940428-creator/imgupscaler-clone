@@ -7,9 +7,9 @@ import { absoluteUrl, SITE_INDEXABLE } from '@/src/lib/site-config'
 import { pagePath } from '@/src/lib/locale-routing'
 
 const studioFont = localFont({
-  src: '../../assets/fonts/instrument-sans-variable.ttf',
+  src: '../../assets/fonts/plus-jakarta-sans-variable.ttf',
   variable: '--font-studio',
-  weight: '400 700',
+  weight: '200 800',
   display: 'swap',
   fallback: ['PingFang SC', 'Microsoft YaHei', 'sans-serif'],
 })

@@ -14,7 +14,7 @@ export function FeatureSection({ route }: { route: LandingRoute }) {
 
 function FeatureCards({ route }: { route: LandingRoute }) {
   const cards = getLandingContent(useMessages()).featureCards[route]
-  return <div className="feature-grid">{cards.map((card) => <article className="feature-card" key={card.number}><span className="feature-number">{card.number}</span><h3>{card.title}</h3><p>{card.body}</p></article>)}</div>
+  return <div className="feature-grid">{cards.map((card, index) => <article className="feature-card" key={card.number}><div className="feature-top"><span className="feature-icon"><Icon name={(['spark', 'upload', 'check', 'lock', 'download', 'edit'] as const)[index % 6]} /></span><span className="feature-number">{card.number}</span></div><h3>{card.title}</h3><p>{card.body}</p></article>)}</div>
 }
 
 export function UseCasesSection({ route, onUseCase }: { route: LandingRoute; onUseCase: () => void }) {

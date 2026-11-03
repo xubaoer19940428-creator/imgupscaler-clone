@@ -55,7 +55,7 @@ function WorkspaceHeader({ controller }: { controller: WorkspaceController }) {
 }
 
 function EmptyDropZone({ t, onPick }: { route?: Route; t: ReturnType<typeof useTranslations>; onPick: () => void }) {
-  return <div className="drop-empty"><div className="studio-upload-glyph" aria-hidden="true"><Icon name="crop" /></div><Button className="upload-cta" onClick={(event) => { event.stopPropagation(); onPick() }}><Icon name="upload" />{t('chooseImage')}</Button><strong>{t('dragDrop')}</strong><span>{t('formats')}</span></div>
+  return <div className="drop-empty"><div className="studio-upload-glyph" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="16" rx="4" /><circle cx="8" cy="9" r="1.4" /><path d="m4 17 5-5 4 4 3-3 4 4M16 8h4m-2-2v4" /></svg></div><Button className="upload-cta" onClick={(event) => { event.stopPropagation(); onPick() }}><Icon name="upload" />{t('chooseImage')}</Button><strong>{t('dragDrop')}</strong><span>{t('formats')}</span></div>
 }
 
 function FileGrid({ controller }: { controller: WorkspaceController }) {
