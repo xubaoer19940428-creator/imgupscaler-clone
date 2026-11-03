@@ -238,7 +238,9 @@ for suffix in ['?utm_source=seo-check', '?trade_sn=seo-check']:
     assert doc.canonicals == [SITE_ORIGIN + '/enhancer'], 'Query URL should canonicalize to the clean page'
 
 if INDEXABLE:
-    for alias in ['photoupscale.app', 'photopop.app']:
+    for alias in ['photosharp.app', 'photoupscale.app', 'photopop.app']:
+        if alias == urlparse(SITE_ORIGIN).hostname:
+            continue
         request = urllib.request.Request(BASE_URL + '/zh/enhancer?utm_source=seo-check', headers={'Host': alias})
         class NoRedirect(urllib.request.HTTPRedirectHandler):
             def redirect_request(self, req, fp, code, msg, headers, newurl):

@@ -923,3 +923,12 @@ npm run build
 - 用户明确要求“删除其他站点进程”，覆盖上一条保留旧应用进程的选择。workflow 现于启动 Photosharp 前执行 `pm2 delete photopop`、`pm2 delete ai-nova`，再删除并重启当前 `photosharp` 进程；旧进程不存在时允许继续。
 - 清理仅针对已知的旧应用名称，不使用 `pm2 delete all`，不删除旧站点文件，Photosharp 继续监听 3001。README 同步当前行为。
 - YAML 解析、全部 run 块 shell 语法、清理名单与 3001 端口断言及 diff 空白检查通过。仅修改本地 workflow，尚未触发部署或在服务器执行进程删除；服务器 SSH 连接受限的状态沿用上一条记录。
+
+### 2026-11-03（切换 photoupscale.app / 3002，并加固启动诊断）
+- 用户最新指定主域名 `photoupscale.app`、端口 3002，覆盖此前 Photosharp/3001 的部署目标。workflow 名称改为 Deploy PhotoUpscale，目录 `/var/www/ai-nova/photoupscale`、PM2 进程 `photoupscale`，构建和运行时均显式设置新正式 origin 和索引开关。清理已授权的旧 `photosharp`、`photopop`、`ai-nova` 进程，保留旧站点文件。品牌显示名仍是 Photosharp，本轮没有将域名切换扩大为全站品牌更名。
+- 用户提供的 `Photosharp failed health check on port 3001` 仅能证明服务未在检查期间返回成功响应，不能由此断定根因。改为优先使用 NVM Node 20，检查 Next 所需 Node >=20.9；PM2 直接启动发布目录里的 Next CLI，固定 cwd、Node interpreter、0.0.0.0 与 3002，避免 npm 启动包装与环境歧义。停止旧进程前检查 BUILD_ID、Next CLI 和 curl。
+- 健康检查携带新主域名 Host，要求 HTTP 200，最多尝试 30 次；失败输出 HTTP 状态、Node 版本、PM2 描述/最近 150 行日志及监听端口，继续失败退出，不掩盖错误。未连接服务器或宣称远端失败已修复。
+- 手动 version 默认改为空，默认检出当前 ref，防止原默认 0.01 检出旧代码；Release 继续使用 tag，rollback 仍要求明确版本，新目录不会自动获得旧站点历史 releases。
+- `.env.example`、site-config 注释与 README 更新正式域名；SEO verifier 从别名名单排除当前 canonical 域名，支持新旧 origin 检查。正式请求的 canonical/hreflang/sitemap 使用新域名。
+- 验证：YAML、每个 run 块 bash 语法、实际 SSH heredoc 本地展开后的远端 shell 语法通过；模拟健康检查 HTTP 200/503，确认仅成功时 pm2 save，失败退出并打印诊断。新域名生产构建含 TypeScript通过（114 个条目）；用与部署相同的 Next CLI 命令在本机3002启动，全部104页、91条sitemap、图片、404、认证noindex、canonical和别名308检查通过。独立审查未发现重要问题；ccc index、git diff --check通过。
+- 下一步：提交新workflow并从包含修改的ref部署，确认域名反向代理upstream为127.0.0.1:3002。如仍失败，使用新日志中的Next/PM2错误定位；当前片段不足以确定远端根因。未提交、未触发workflow、未修改远端。

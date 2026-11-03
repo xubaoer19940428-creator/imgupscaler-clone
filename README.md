@@ -6,8 +6,8 @@
 
 项目早期版本参考以下内容，当前界面已重新设计：
 
-- 线上中文站：[Photosharp 中文版](https://photosharp.app/zh)
-- 线上主站：[Photosharp](https://photosharp.app/)
+- 线上中文站：[Photosharp 中文版](https://photoupscale.app/zh)
+- 线上主站：[Photosharp](https://photoupscale.app/)
 - 本地页面参考稿：`文稿/AI _ ImgUpscaler.html`
 
 本项目不包含参考站的后端服务、AI 模型、账户系统或支付系统。品牌名称暂沿用现有名称，`public/reference/` 中的图片属于当前开发占位素材，正式品牌和自有展示素材仍待替换。
@@ -21,7 +21,7 @@ npm run dev
 
 默认地址：`http://localhost:3000`
 
-生产部署使用 `.github/workflows/deploy.yml`：Photosharp 的 PM2 名称为 `photosharp`，目录为 `/var/www/ai-nova/photosharp`，监听 `3001`。`photosharp.app` 的反向代理应转发到 `127.0.0.1:3001`。本地开发默认的 3000 端口与生产端口独立。按用户要求，部署会删除旧的 `photopop`、`ai-nova` PM2 进程，再重启 Photosharp，保留旧站点文件；启动后会检查 3001 端口的 HTTP 响应。
+生产部署使用 `.github/workflows/deploy.yml`：PM2 名称为 `photoupscale`，目录为 `/var/www/ai-nova/photoupscale`，监听 `3002`。`photoupscale.app` 的反向代理应转发到 `127.0.0.1:3002`。本地开发默认端口仍为 3000。部署清理旧的 `photopop`、`photosharp`、`ai-nova` PM2 进程，保留旧站点文件；使用 Node 20 直接启动 Next CLI，以明确的工作目录和端口运行，并检查 HTTP 200。失败时打印应用状态、错误日志和监听端口，便于定位。手动部署的 version 留空时使用当前 ref，避免默认检出旧的 0.01 版本。回滚只支持新目录中已有的发布版本。
 
 生产构建：
 
@@ -51,13 +51,13 @@ npm start
 
 可见文案统一维护在 `messages/*.json`。服务器布局直接设置正确的 `lang` 和 `dir`，阿拉伯语使用从右向左的阅读方向，浏览器只接收当前语种的消息。`app/(en)` 是英文页面的路由分组，不会在网址中显示。
 
-上线前，在构建环境中将 `NEXT_PUBLIC_SITE_URL` 设置为主域名 `https://photosharp.app`，并重新构建：
+上线前，在构建环境中将 `NEXT_PUBLIC_SITE_URL` 设置为主域名 `https://photoupscale.app`，并重新构建：
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://photosharp.app pnpm run build
+NEXT_PUBLIC_SITE_URL=https://photoupscale.app pnpm run build
 ```
 
-正式域名用于自引用 canonical、各语言 hreflang（含 `x-default`）、Open Graph、Twitter 分享信息和 `/sitemap.xml`。公开页面由服务器输出 WebSite、WebPage 结构化数据，非首页公开页面还提供 BreadcrumbList。站点地图包含 91 个公开页面、相互对应的语言版本，以及工具页面展示的图片地址。账户页设为 `noindex`，不进入站点地图。`photoupscale.app` 与 `photopop.app` 是部署别名，由 `proxy.ts` 返回永久跳转到 `photosharp.app`，避免重复页面被索引。未设置正式域名时，本地预览不开放索引，robots 禁止抓取，站点地图为空，避免输出错误的正式网址。
+正式域名用于自引用 canonical、各语言 hreflang（含 `x-default`）、Open Graph、Twitter 分享信息和 `/sitemap.xml`。公开页面由服务器输出 WebSite、WebPage 结构化数据，非首页公开页面还提供 BreadcrumbList。站点地图包含 91 个公开页面、相互对应的语言版本，以及工具页面展示的图片地址。账户页设为 `noindex`，不进入站点地图。`photosharp.app` 与 `photopop.app` 是部署别名，由 `proxy.ts` 返回永久跳转到 `photoupscale.app`，避免重复页面被索引。未设置正式域名时，本地预览不开放索引，robots 禁止抓取，站点地图为空，避免输出错误的正式网址。
 
 营销展示图片使用 Next.js 响应式图片优化，按显示尺寸提供 WebP，并保留图片尺寸和替代文本；用户上传图片继续使用原有预览流程。生产部署需运行 Next.js 服务以提供 `/_next/image` 图片优化。ZIP 库在批量下载时加载，登录弹窗、编辑器与定价组件独立拆包，减少工具首页的初始脚本体积。
 
@@ -84,7 +84,7 @@ SEO 实现依据 [Google 多语言页面指南](https://developers.google.com/se
 - 13 语言的工具页增加 WebApplication 与 FAQPage，关联 WebPage、WebSite 和统一的 Photosharp Organization 实体。FAQ JSON-LD 直接读取界面同一份翻译数据，问答有稳定锚点，收起的答案仍在服务器 HTML 中。没有添加虚构评价、评分或报价。
 - 增补登录要求与 AI 生成细节的局限；隐私与商用回答以实际服务政策、图片权利和适用条款为准。移除 Reimagine 眉题中的无条件免费承诺。所有页面页脚均提供当前语言的工具及定价链接，保留法律与联系入口。
 - 分享信息包含当前及其他语言地区标记；页面配置应用名、SVG 图标和公开页面的摘要/图片预览许可。`robots.txt` 的通配允许规则同时适用于搜索爬虫及遵守 robots 的 AI 搜索爬虫。无需为每个爬虫重复相同规则。
-- 正式部署必须在构建前配置 `NEXT_PUBLIC_SITE_URL=https://photosharp.app`。公开测试环境可以额外设置 `NEXT_PUBLIC_SITE_INDEXABLE=false`，保持正确 canonical 同时关闭索引和 sitemap。账户和 SSO 回调始终禁止索引。不要用 robots 阻止账户抓取，否则搜索引擎无法读取其 noindex。
+- 正式部署必须在构建前配置 `NEXT_PUBLIC_SITE_URL=https://photoupscale.app`。公开测试环境可以额外设置 `NEXT_PUBLIC_SITE_INDEXABLE=false`，保持正确 canonical 同时关闭索引和 sitemap。账户和 SSO 回调始终禁止索引。不要用 robots 阻止账户抓取，否则搜索引擎无法读取其 noindex。
 - `scripts/verify-seo.py` 额外检查工具/FAQ 数据与服务器正文的一致性、问答锚点、全部页面内链、认证回调、带参数 URL 的 canonical，以及两个部署别名的 308 跳转。别名测试面向本地生产验证服务器，通过 Host 请求头模拟部署别名。
 
 审计发现的上线阻断：本次本机未配置正式 origin，默认构建关闭索引；2026-11-02 从本机访问正式域名返回 HTTP 502。部署后需先确认正式站点 HTTP 200、robots 开放、91 条 sitemap URL 可访问、别名永久跳转正常，再向 Google Search Console 和 Bing Webmaster Tools 提交站点地图。还需核对后台真实套餐、额度、取消订阅规则及法律主体；本轮不臆造相关权益或修改支付流程。

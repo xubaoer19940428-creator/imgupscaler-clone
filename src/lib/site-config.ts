@@ -1,4 +1,4 @@
-// `photosharp.app` is the canonical production origin. The other domains are
+// `photoupscale.app` is the canonical production origin. The other domains are
 // accepted as deployment aliases and are permanently redirected to it by
 // `proxy.ts` to avoid duplicate indexable copies of every page.
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'

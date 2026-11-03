@@ -1,12 +1,12 @@
-name: Deploy Photosharp
+name: Deploy PhotoUpscale
 
 on:
     workflow_dispatch:
         inputs:
             version:
-                description: 部署版本（默认 0.01；Release 事件使用 Release tag）
+                description: 部署版本或 Git ref（留空使用当前 ref；Release 使用 tag）
                 required: false
-                default: '0.01'
+                default: ''
                 type: string
             rollback_only:
                 description: 仅回滚到服务器上已有的版本
@@ -28,9 +28,9 @@ env:
     # - DEPLOY_PASSWORD
     DEPLOY_HOST: ${{ secrets.DEPLOY_HOST || '104.64.221.138' }}
     DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'root' }}
-    DEPLOY_BASE: /var/www/ai-nova/photosharp
-    APP_NAME: photosharp
-    APP_PORT: 3001
+    DEPLOY_BASE: /var/www/ai-nova/photoupscale
+    APP_NAME: photoupscale
+    APP_PORT: 3002
     KEEP_RELEASES: 5
 
 jobs:
@@ -90,7 +90,7 @@ jobs:
                   rm -rf .next
                   pnpm build
               env:
-                  NEXT_PUBLIC_SITE_URL: https://photosharp.app
+                  NEXT_PUBLIC_SITE_URL: https://photoupscale.app
                   NEXT_PUBLIC_SITE_INDEXABLE: 'true'
                   NEXT_PUBLIC_ARTGURU_API_BASE_URL: https://api.mixu.ai
                   NEXT_PUBLIC_ARTGURU_API_ENABLED: ${{ secrets.NEXT_PUBLIC_ARTGURU_API_ENABLED || 'false' }}
@@ -157,6 +157,12 @@ jobs:
                   export NVM_DIR="\$HOME/.nvm"
                   [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
                   export PATH="\$HOME/.local/bin:\$HOME/.npm-global/bin:/usr/local/bin:\$PATH"
+                  if command -v nvm >/dev/null 2>&1; then
+                    nvm install 20
+                    nvm use 20
+                  fi
+                  node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major < 20 || (major === 20 && minor < 9)) { console.error("Next.js requires Node >=20.9.0"); process.exit(1) }'
+                  node --version
 
                   if ! command -v pm2 >/dev/null 2>&1; then
                     npm install -g pm2
@@ -178,22 +184,35 @@ jobs:
                     pnpm install --prod --frozen-lockfile --ignore-scripts || npm install --omit=dev --ignore-scripts
                   fi
 
-                  # 清理旧站点进程，再重启 Photosharp；保留站点文件。
+                  # 在停止旧服务前验证发布文件与运行时依赖。
+                  test -s "\$RELEASE_DIR/.next/BUILD_ID"
+                  test -f "\$RELEASE_DIR/node_modules/next/dist/bin/next"
+                  command -v curl
+
+                  # 清理用户要求移除的旧站点进程，保留站点文件。
+                  pm2 delete photosharp || true
                   pm2 delete photopop || true
                   pm2 delete ai-nova || true
                   pm2 delete "$APP_NAME" || true
                   ln -sfn "\$RELEASE_DIR" "\$CURRENT_LINK"
                   cd "\$CURRENT_LINK"
 
-                  PORT="$APP_PORT" HOSTNAME=0.0.0.0 pm2 start npm \
+                  export NODE_ENV=production
+                  export PORT="$APP_PORT"
+                  export NEXT_PUBLIC_SITE_URL=https://photoupscale.app
+                  export NEXT_PUBLIC_SITE_INDEXABLE=true
+                  pm2 start "\$RELEASE_DIR/node_modules/next/dist/bin/next" \
                     --name "$APP_NAME" \
+                    --cwd "\$RELEASE_DIR" \
+                    --interpreter "\$(command -v node)" \
                     --update-env \
                     -- start --hostname 0.0.0.0 --port "$APP_PORT"
 
                   # 启动失败时让 workflow 失败，不保存不可用的部署。
                   HEALTHY=false
-                  for attempt in {1..15}; do
-                    if curl --fail --silent --show-error --max-time 3 "http://127.0.0.1:$APP_PORT/" >/dev/null; then
+                  for attempt in {1..30}; do
+                    STATUS="\$(curl --silent --show-error --max-time 3 -o /dev/null -w '%{http_code}' -H 'Host: photoupscale.app' "http://127.0.0.1:$APP_PORT/" || true)"
+                    if [ "\$STATUS" = "200" ]; then
                       HEALTHY=true
                       break
                     fi
@@ -202,7 +221,11 @@ jobs:
                   pm2 status
                   pm2 logs "$APP_NAME" --lines 50 --nostream || true
                   if [ "\$HEALTHY" != "true" ]; then
-                    echo "Photosharp failed health check on port $APP_PORT"
+                    echo "PhotoUpscale failed health check on port $APP_PORT (HTTP \$STATUS)"
+                    node --version
+                    pm2 describe "$APP_NAME" || true
+                    pm2 logs "$APP_NAME" --lines 150 --nostream || true
+                    ss -ltnp || true
                     exit 1
                   fi
                   pm2 save
@@ -231,4 +254,4 @@ jobs:
                   echo "服务器: $DEPLOY_USER@$DEPLOY_HOST"
                   echo "当前版本: $DEPLOY_BASE/current"
                   echo "应用: $APP_NAME，端口: $APP_PORT"
-                  echo "站点: https://photosharp.app（反向代理应指向 127.0.0.1:$APP_PORT）"
+                  echo "站点: https://photoupscale.app（反向代理应指向 127.0.0.1:$APP_PORT）"
