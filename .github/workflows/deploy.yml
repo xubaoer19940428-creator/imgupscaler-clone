@@ -189,10 +189,7 @@ jobs:
                   test -f "\$RELEASE_DIR/node_modules/next/dist/bin/next"
                   command -v curl
 
-                  # 清理用户要求移除的旧站点进程，保留站点文件。
-                  pm2 delete photosharp || true
-                  pm2 delete photopop || true
-                  pm2 delete ai-nova || true
+                  # 只重启当前应用，不清理其他站点进程。
                   pm2 delete "$APP_NAME" || true
                   ln -sfn "\$RELEASE_DIR" "\$CURRENT_LINK"
                   cd "\$CURRENT_LINK"
@@ -238,10 +235,20 @@ jobs:
                   sshpass -e ssh -o StrictHostKeyChecking=no "$DEPLOY_USER@$DEPLOY_HOST" "bash -se" <<EOF
                   set -eu
                   cd "$DEPLOY_BASE/releases"
-                  KEEP="\$(ls -1dt */ 2>/dev/null | head -n "$KEEP_RELEASES" | sed 's#/$##')"
-                  for dir in */; do
-                    dir="\${dir%/}"
-                    if ! printf '%s\\n' "\$KEEP" | grep -Fxq "\$dir"; then
+                  # 当前运行版本占一个名额，回滚后也不会被清理。
+                  ACTIVE_RELEASE="\$(readlink -f ../current)"
+                  KEPT=0
+                  if [ -d "\$ACTIVE_RELEASE" ]; then
+                    KEPT=1
+                  fi
+                  mapfile -t RELEASE_DIRS < <(ls -1dt -- */)
+                  for dir in "\${RELEASE_DIRS[@]}"; do
+                    if [ "\$(readlink -f "\$dir")" = "\$ACTIVE_RELEASE" ]; then
+                      continue
+                    fi
+                    if [ "\$KEPT" -lt "$KEEP_RELEASES" ]; then
+                      KEPT=\$((KEPT + 1))
+                    else
                       rm -rf -- "\$dir"
                     fi
                   done

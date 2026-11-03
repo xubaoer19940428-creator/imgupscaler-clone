@@ -937,3 +937,8 @@ npm run build
 - 用户指出 Logo 旁仍显示 Photosharp，确认域名切换也应同步页面品牌。Header/Footer 文字和无障碍名称、13 语言的产品介绍/FAQ/法律文案/版权/metadata、Open Graph 应用名与站点名、WebSite/Organization/工具及面包屑结构化数据统一改为 PhotoUpscale。
 - 可见客服邮箱统一为 support@photoupscale.app，README 与环境示例品牌注释同步。旧 photosharp.app 域名仅保留在兼容别名、API 域名签名映射、旧 PM2 进程清理及历史记录中，不更改 API 兼容契约。Logo 图形沿用现有图标，仅更正品牌文字。
 - 验证：13 语言 JSON 与 HEAD 对照，确认仅品牌及联系邮箱替换，没有改键、结构或其余内容；组件与消息内无旧品牌显示名残留。新域名生产构建含 TypeScript、114 个条目和 git diff --check 通过。未提交或部署，需部署包含本次修改的 ref 后线上才会更新。
+
+### 2026-11-03（取消其他站点进程清理，保留 5 个发布版本）
+- 用户要求去掉清理其他 Next 站点的代码。workflow 已移除 `pm2 delete photosharp/photopop/ai-nova`，仅删除并重启当前 `photoupscale` 进程。
+- 发布保留数量维持 `KEEP_RELEASES: 5`；修正版本清理以优先保护 current 指向的活动版本，再保留最新的其余版本，总计最多 5 个，避免回滚到旧版本后活动目录被删除。清理仅作用于当前应用 releases 目录。README 同步。
+- 验证：YAML、全部 run 块 bash 语法和 diff 空白检查通过；临时目录模拟 8 个版本保留 5 个、旧活动版本回滚保护、少于 5 个全部保留，结果符合预期；rm 使用模拟函数，没有执行实际删除。未提交、未触发 workflow 或修改远端。

@@ -21,7 +21,7 @@ npm run dev
 
 默认地址：`http://localhost:3000`
 
-生产部署使用 `.github/workflows/deploy.yml`：PM2 名称为 `photoupscale`，目录为 `/var/www/ai-nova/photoupscale`，监听 `3002`。`photoupscale.app` 的反向代理应转发到 `127.0.0.1:3002`。本地开发默认端口仍为 3000。部署清理旧的 `photopop`、`photosharp`、`ai-nova` PM2 进程，保留旧站点文件；使用 Node 20 直接启动 Next CLI，以明确的工作目录和端口运行，并检查 HTTP 200。失败时打印应用状态、错误日志和监听端口，便于定位。手动部署的 version 留空时使用当前 ref，避免默认检出旧的 0.01 版本。回滚只支持新目录中已有的发布版本。
+生产部署使用 `.github/workflows/deploy.yml`：PM2 名称为 `photoupscale`，目录为 `/var/www/ai-nova/photoupscale`，监听 `3002`。`photoupscale.app` 的反向代理应转发到 `127.0.0.1:3002`。本地开发默认端口仍为 3000。部署只重启当前 `photoupscale` 进程，不清理其他站点进程；当前应用最多保留 5 个发布版本（含当前运行版本），回滚时也保留活动版本；使用 Node 20 直接启动 Next CLI，以明确的工作目录和端口运行，并检查 HTTP 200。失败时打印应用状态、错误日志和监听端口，便于定位。手动部署的 version 留空时使用当前 ref，避免默认检出旧的 0.01 版本。回滚只支持新目录中已有的发布版本。
 
 生产构建：
 
