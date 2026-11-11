@@ -964,3 +964,12 @@ npm run build
 - 验证：正式origin构建含TypeScript通过（125个静态条目，博客动态SSR）；真实签名API的13语言博客根页均200并显示真实空状态；现有104业务页和104条sitemap的SEO回归通过。临时本地fixture服务验证生产模式下全部13语言列表、有效详情、缺失/非法slug404、分类、12+2分页、空分类、实际语言canonical、正文清理、应用/语言/签名头和单次详情请求，全部通过。独立审查提出动态locale路由可能受dynamicParams=false影响的疑点，已用生产构建13语言有效文章实测排除。
 - Chrome实际验证（本地fixture）顶部tutorial筛选从12变7条，点击文章进入详情，手机375px单列且scrollWidth=375，翻页显示13/14两条；视口已恢复。临时fixture和开发测试服务均停止，最终构建恢复真实API，本地正式预览为http://localhost:3111/zh/blog。测试文章没有写入生产后端。
 - 新博客消息13语言和ICU占位符检查通过；完整verify:i18n仍因既存账户history/modelUnavailable消息缺失失败，与此前记录一致。新增依赖过程中带出的Next补丁升级已恢复到原16.4.2及原latest声明，冻结锁文件校验通过。diff检查通过。用户原始API文档保留未修改，未提交或部署。当前真实接口为空，真实文章的端到端展示需后台提供内容后再复核。
+
+### 2026-11-11（修复博客发布后的纯文本500）
+- 用户报告正式 `/blog` 显示 Internal Server Error。实测首页200，英文/中文博客纯文本500。读取最近GitHub部署日志，确认CI Node20.20.2、服务器20.19.2、Next16.4.2、pnpm生产依赖安装成功；SSH连接关闭，未读取到真实PM2错误堆栈。
+- 已在独立临时目录完整复现：物理复制构建产物、仅安装冻结的生产依赖，在Node20运行时博客返回相同的21字节纯文本500。报错为 `.next/node_modules/postcss-<hash>` 缺少 picocolors。原完整开发依赖环境可以返回200，之前验证遗漏了复制构建产物时的符号链接语义。
+- 根本发布问题：Next/Turbopack会在 `.next/node_modules/` 生成指向pnpm依赖树的符号链接；workflow的 `rsync -rLD --copy-unsafe-links` 展开这些链接，且 `--exclude 'node_modules'` 同时排除了嵌套构建依赖。改用保留链接的 `rsync -az`，仅通过 `/node_modules` 排除项目根依赖，让服务器按冻结锁文件安装真实pnpm依赖树。
+- `next.config.mjs` 显式将 sanitize-html 设置为serverExternalPackages，保持原生依赖解析。仅改external配置但继续展开链接仍会缺少htmlparser2，测试已验证必须同时修复同步方式。sanitize-html2.18.1实际声明Node>=22.12.0，因此CI/NVM/PM2解释器统一Node22，package.json增加最低版本；版本差异单独不是已证实的500原因，本地Node20完整依赖可运行。
+- 部署健康检查新增 `/blog`、`/zh/blog` SSR请求，失败立即输出PM2错误日志并让workflow失败，防止静态首页200掩盖博客模块加载错误。
+- 修复后在保留链接的独立精简生产环境验证：13语言博客均200并输出分类HTML，缺失文章404；全部104业务页、104条sitemap、展示图片和别名跳转的SEO回归通过；生产依赖的HTML/Markdown渲染与清理验证通过。Node22生产构建含TypeScript通过；workflow YAML、全部shell块及展开后的SSH脚本语法、Node版本门槛、博客500检查失败分支通过；独立代码审查通过。
+- 修改仅为workflow、next.config.mjs、package.json及本记录。没有提交、推送或重新部署，线上修复需发布包含本次修改的版本。测试临时环境仅用于本地复现，不含真实用户数据。

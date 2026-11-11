@@ -77,7 +77,7 @@ jobs:
               if: ${{ !inputs.rollback_only }}
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 22
                   cache: pnpm
 
             - name: Install dependencies
@@ -130,9 +130,11 @@ jobs:
               run: |
                   RELEASE_DIR="$DEPLOY_BASE/releases/$VERSION"
                   set +e
-                  sshpass -e rsync -rLDvz --copy-unsafe-links --ignore-errors \
+                  # Next's .next/node_modules contains links into pnpm's dependency tree.
+                  # Preserve those links and let the server install root dependencies.
+                  sshpass -e rsync -az --ignore-errors \
                     -e "ssh -o StrictHostKeyChecking=no" \
-                    --exclude 'node_modules' \
+                    --exclude '/node_modules' \
                     --exclude '.git' \
                     --exclude '.github' \
                     --exclude '.env*' \
@@ -158,10 +160,10 @@ jobs:
                   [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
                   export PATH="\$HOME/.local/bin:\$HOME/.npm-global/bin:/usr/local/bin:\$PATH"
                   if command -v nvm >/dev/null 2>&1; then
-                    nvm install 20
-                    nvm use 20
+                    nvm install 22
+                    nvm use 22
                   fi
-                  node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major < 20 || (major === 20 && minor < 9)) { console.error("Next.js requires Node >=20.9.0"); process.exit(1) }'
+                  node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major < 22 || (major === 22 && minor < 12)) { console.error("Blog dependencies require Node >=22.12.0"); process.exit(1) }'
                   node --version
 
                   if ! command -v pm2 >/dev/null 2>&1; then
@@ -225,6 +227,15 @@ jobs:
                     ss -ltnp || true
                     exit 1
                   fi
+                  # 动态博客页也必须完成服务端渲染，避免只检查静态首页漏掉错误。
+                  for route in /blog /zh/blog; do
+                    STATUS="\$(curl --silent --show-error --max-time 20 -o /dev/null -w '%{http_code}' -H 'Host: photoupscale.app' "http://127.0.0.1:$APP_PORT\$route" || true)"
+                    if [ "\$STATUS" != "200" ]; then
+                      echo "PhotoUpscale SSR check failed for \$route (HTTP \$STATUS)"
+                      pm2 logs "$APP_NAME" --err --lines 150 --nostream || true
+                      exit 1
+                    fi
+                  done
                   pm2 save
                   EOF
 
