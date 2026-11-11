@@ -973,3 +973,8 @@ npm run build
 - 部署健康检查新增 `/blog`、`/zh/blog` SSR请求，失败立即输出PM2错误日志并让workflow失败，防止静态首页200掩盖博客模块加载错误。
 - 修复后在保留链接的独立精简生产环境验证：13语言博客均200并输出分类HTML，缺失文章404；全部104业务页、104条sitemap、展示图片和别名跳转的SEO回归通过；生产依赖的HTML/Markdown渲染与清理验证通过。Node22生产构建含TypeScript通过；workflow YAML、全部shell块及展开后的SSH脚本语法、Node版本门槛、博客500检查失败分支通过；独立代码审查通过。
 - 修改仅为workflow、next.config.mjs、package.json及本记录。没有提交、推送或重新部署，线上修复需发布包含本次修改的版本。测试临时环境仅用于本地复现，不含真实用户数据。
+
+### 2026-11-11（修复服务器缺少NVM时跳过Node22安装）
+- 用户提供0.09部署日志，明确显示 `$HOME/.nvm/nvm.sh` 不存在、`command -v nvm` 失败，原条件分支直接跳过安装，最终旧Node触发>=22.12校验失败。
+- workflow改为缺少NVM脚本时从官方固定版本v0.41.0安装，设置PROFILE=/dev/null；随后显式加载nvm.sh --no-use，安装并选择Node22。各NVM命令显式处理失败，避免set -e与NVM内部返回值不兼容；远端shell增加pipefail，安装脚本下载失败时立即失败。
+- 验证官方安装脚本shell语法、workflow YAML、所有run块及SSH heredoc展开后的语法通过；临时目录模拟缺少NVM、已有NVM和下载失败三个分支，确认前两者都会安装/选择22，下载失败退出。git diff --check通过。本轮仅修改workflow和此记录，未提交或部署，需部署包含本次修正的ref。

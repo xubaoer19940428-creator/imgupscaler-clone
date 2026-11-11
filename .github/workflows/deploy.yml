@@ -154,15 +154,19 @@ jobs:
                   VERSION: ${{ steps.version.outputs.version }}
               run: |
                   sshpass -e ssh -o StrictHostKeyChecking=no "$DEPLOY_USER@$DEPLOY_HOST" "bash -se" <<EOF
-                  set -eux
+                  set -euxo pipefail
 
                   export NVM_DIR="\$HOME/.nvm"
-                  [ -s "\$NVM_DIR/nvm.sh" ] && . "\$NVM_DIR/nvm.sh"
                   export PATH="\$HOME/.local/bin:\$HOME/.npm-global/bin:/usr/local/bin:\$PATH"
-                  if command -v nvm >/dev/null 2>&1; then
-                    nvm install 22
-                    nvm use 22
+                  # Non-interactive SSH sessions may have neither NVM nor Node 22.
+                  if [ ! -s "\$NVM_DIR/nvm.sh" ]; then
+                    curl --fail --silent --show-error --location --retry 2 --max-time 60 \
+                      https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh \
+                      | PROFILE=/dev/null bash
                   fi
+                  . "\$NVM_DIR/nvm.sh" --no-use || exit 1
+                  nvm install 22 || exit 1
+                  nvm use 22 || exit 1
                   node -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major < 22 || (major === 22 && minor < 12)) { console.error("Blog dependencies require Node >=22.12.0"); process.exit(1) }'
                   node --version
 
