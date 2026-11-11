@@ -3,7 +3,8 @@
     "upscaler": "图像放大器",
     "enhancer": "图像增强器",
     "reimagine": "重新构想",
-    "pricing": "定价"
+    "pricing": "定价",
+    "blog": "博客"
   },
   "auth": {
     "kicker": "账户登录",
@@ -1083,5 +1084,20 @@
       "title": "PhotoUpscale",
       "description": "在线放大、增强与重新构想图片，让人工智能改善图像细节。"
     }
+  },
+  "blog": {
+    "title": "博客",
+    "description": "探索图片放大、图像增强与创意工作流的指南、教程和产品动态。",
+    "all": "全部文章",
+    "categories": "文章分类",
+    "readArticle": "阅读文章",
+    "back": "返回博客",
+    "empty": "该分类下暂时没有文章。",
+    "error": "文章加载失败，请重试。",
+    "retry": "重试",
+    "previous": "上一页",
+    "next": "下一页",
+    "pagination": "第 {page} 页，共 {pages} 页",
+    "notFound": "未找到这篇文章。"
   }
 }

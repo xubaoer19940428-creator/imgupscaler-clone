@@ -3,7 +3,8 @@
     "upscaler": "画像拡大",
     "enhancer": "画質改善",
     "reimagine": "画像アレンジ",
-    "pricing": "料金プラン"
+    "pricing": "料金プラン",
+    "blog": "ブログ"
   },
   "auth": {
     "kicker": "アカウント / ログイン",
@@ -1058,5 +1059,20 @@
       "title": "PhotoUpscale",
       "description": "AI を使用してオンラインで画像を拡大、強化、再構築します。"
     }
+  },
+  "blog": {
+    "title": "ブログ",
+    "description": "画像の高解像度化、画質改善、クリエイティブな制作に役立つガイドや最新情報。",
+    "all": "すべての記事",
+    "categories": "記事のカテゴリ",
+    "readArticle": "記事を読む",
+    "back": "ブログに戻る",
+    "empty": "このカテゴリにはまだ記事がありません。",
+    "error": "記事を読み込めませんでした。もう一度お試しください。",
+    "retry": "再試行",
+    "previous": "前へ",
+    "next": "次へ",
+    "pagination": "全 {pages} ページ中 {page} ページ",
+    "notFound": "この記事は見つかりませんでした。"
   }
 }

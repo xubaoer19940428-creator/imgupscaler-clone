@@ -8,9 +8,13 @@ import { pageImages } from '@/src/lib/seo-images'
 export default function sitemap(): MetadataRoute.Sitemap {
   if (!SITE_INDEXABLE) return []
   const { account, root, ...publicPages } = SEO_PAGE_PATHS
-  return Object.entries(publicPages).flatMap(([page, path]) => LOCALES.map((locale) => ({
+  const pages = Object.entries(publicPages).flatMap(([page, path]) => LOCALES.map((locale) => ({
     url: absoluteUrl(pagePath(path, locale)),
     alternates: { languages: languageAlternates(path) },
     ...(pageImages(page).length ? { images: pageImages(page).map(absoluteUrl) } : {}),
   })))
+  return [...pages, ...LOCALES.map((locale) => ({
+    url: absoluteUrl(pagePath('/blog', locale)),
+    alternates: { languages: languageAlternates('/blog') },
+  }))]
 }

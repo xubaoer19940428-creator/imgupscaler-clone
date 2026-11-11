@@ -3,7 +3,8 @@
     "upscaler": "이미지 확대",
     "enhancer": "화질 개선",
     "reimagine": "이미지 재구성",
-    "pricing": "요금제"
+    "pricing": "요금제",
+    "blog": "블로그"
   },
   "auth": {
     "kicker": "계정 / 로그인",
@@ -1058,5 +1059,20 @@
       "title": "PhotoUpscale",
       "description": "AI를 사용하여 온라인으로 이미지를 확대하고, 향상하고, 재구성해 보세요."
     }
+  },
+  "blog": {
+    "title": "블로그",
+    "description": "이미지 확대, 화질 개선과 창작 작업을 위한 가이드, 튜토리얼 및 소식.",
+    "all": "전체 글",
+    "categories": "글 분류",
+    "readArticle": "글 읽기",
+    "back": "블로그로 돌아가기",
+    "empty": "이 분류에는 아직 글이 없습니다.",
+    "error": "글을 불러오지 못했습니다. 다시 시도해 주세요.",
+    "retry": "다시 시도",
+    "previous": "이전",
+    "next": "다음",
+    "pagination": "전체 {pages}페이지 중 {page}페이지",
+    "notFound": "글을 찾을 수 없습니다."
   }
 }

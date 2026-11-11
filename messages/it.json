@@ -3,7 +3,8 @@
     "upscaler": "Ingrandisci immagini",
     "enhancer": "Migliora immagini",
     "reimagine": "Reimmagina",
-    "pricing": "Prezzi"
+    "pricing": "Prezzi",
+    "blog": "Articoli"
   },
   "auth": {
     "kicker": "Account / Accesso",
@@ -1058,5 +1059,20 @@
       "title": "PhotoUpscale",
       "description": "Ingrandisci, migliora e reinventa le immagini online con l'intelligenza artificiale."
     }
+  },
+  "blog": {
+    "title": "Articoli",
+    "description": "Guide, tutorial e novità per immagini più nitide e progetti creativi.",
+    "all": "Tutti gli articoli",
+    "categories": "Categorie degli articoli",
+    "readArticle": "Leggi l’articolo",
+    "back": "Torna agli articoli",
+    "empty": "Questa categoria non contiene ancora articoli.",
+    "error": "Impossibile caricare gli articoli. Riprova.",
+    "retry": "Riprova",
+    "previous": "Precedente",
+    "next": "Successiva",
+    "pagination": "Pagina {page} di {pages}",
+    "notFound": "Questo articolo non è stato trovato."
   }
 }

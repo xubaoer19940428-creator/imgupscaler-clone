@@ -3,7 +3,8 @@
     "upscaler": "Upscaler",
     "enhancer": "Enhancer",
     "reimagine": "Reimagine",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "blog": "Blog"
   },
   "auth": {
     "kicker": "Account / Login",
@@ -1083,5 +1084,20 @@
       "title": "PhotoUpscale",
       "description": "Enlarge, enhance, and reimagine images online with AI."
     }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Guides, tutorials, and updates for clearer images and creative workflows.",
+    "all": "All articles",
+    "categories": "Article categories",
+    "readArticle": "Read article",
+    "back": "Back to blog",
+    "empty": "No articles in this category yet.",
+    "error": "Articles could not be loaded. Please try again.",
+    "retry": "Try again",
+    "previous": "Previous",
+    "next": "Next",
+    "pagination": "Page {page} of {pages}",
+    "notFound": "This article could not be found."
   }
 }

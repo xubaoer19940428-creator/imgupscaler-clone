@@ -1,7 +1,7 @@
 {
 	"name": "imgupscaler-clone",
 	"private": true,
-	"version": "0.07",
+	"version": "0.08",
 	"type": "module",
 	"scripts": {
 		"dev": "next dev",
@@ -16,10 +16,12 @@
 		"clsx": "^2.1.1",
 		"js-md5": "^0.9.2",
 		"jszip": "^3.10.2",
+		"marked": "^18.2.0",
 		"next": "latest",
 		"next-intl": "^4.14.5",
 		"react": "latest",
 		"react-dom": "latest",
+		"sanitize-html": "^2.18.1",
 		"tailwind-merge": "^3.7.0",
 		"tailwindcss": "^4.3.3",
 		"typescript": "latest",
@@ -28,6 +30,7 @@
 	"devDependencies": {
 		"@formatjs/icu-messageformat-parser": "^3.5.19",
 		"@types/node": "26.6.1",
-		"@types/react": "19.3.0"
+		"@types/react": "19.3.0",
+		"@types/sanitize-html": "^2.16.2"
 	}
 }

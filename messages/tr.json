@@ -3,7 +3,8 @@
     "upscaler": "Görsel büyütme",
     "enhancer": "Görsel iyileştirme",
     "reimagine": "Yeniden tasarla",
-    "pricing": "Fiyatlar"
+    "pricing": "Fiyatlar",
+    "blog": "Yazılar"
   },
   "auth": {
     "kicker": "Hesap / Giriş",
@@ -1058,5 +1059,20 @@
       "title": "PhotoUpscale",
       "description": "Yapay zeka ile görüntüleri çevrimiçi olarak büyütün, geliştirin ve yeniden hayal edin."
     }
+  },
+  "blog": {
+    "title": "Yazılar",
+    "description": "Daha net görüntüler ve yaratıcı çalışmalar için kılavuzlar, eğitimler ve haberler.",
+    "all": "Tüm yazılar",
+    "categories": "Yazı kategorileri",
+    "readArticle": "Yazıyı oku",
+    "back": "Yazılara dön",
+    "empty": "Bu kategoride henüz yazı yok.",
+    "error": "Yazılar yüklenemedi. Lütfen tekrar deneyin.",
+    "retry": "Tekrar dene",
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "pagination": "{pages} sayfadan {page}. sayfa",
+    "notFound": "Bu yazı bulunamadı."
   }
 }

@@ -196,6 +196,8 @@ ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9', 'x': 'http://www.w3.or
 entries = sitemap.findall('s:url', ns)
 expected_urls = {SITE_ORIGIN + path_for(locale, suffix): expected_alternates(suffix)
                  for locale in LOCALES for page, suffix in PAGES.items() if page != 'account'} if INDEXABLE else {}
+if INDEXABLE:
+    expected_urls.update({SITE_ORIGIN + path_for(locale, '/blog'): expected_alternates('/blog') for locale in LOCALES})
 assert len(entries) == len(expected_urls), 'Wrong sitemap size'
 for entry in entries:
     loc = entry.findtext('s:loc', namespaces=ns)
@@ -203,7 +205,7 @@ for entry in entries:
     links = {link.attrib['hreflang']: link.attrib['href'] for link in entry.findall('x:link', ns)}
     assert links == expected_urls[loc], f'{loc}: wrong sitemap alternates'
     images = {image.findtext('image:loc', namespaces=ns) for image in entry.findall('image:image', ns)}
-    assert images == rendered_images[urlparse(loc).path or '/'], f'{loc}: image sitemap differs from page images'
+    assert images == rendered_images.get(urlparse(loc).path or '/', set()), f'{loc}: image sitemap differs from page images'
     del expected_urls[loc]
 assert not expected_urls, 'Missing sitemap URLs'
 robots = fetch('/robots.txt')

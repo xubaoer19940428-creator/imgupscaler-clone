@@ -3,7 +3,8 @@
     "upscaler": "Bilder vergrößern",
     "enhancer": "Bilder verbessern",
     "reimagine": "Neu gestalten",
-    "pricing": "Preise"
+    "pricing": "Preise",
+    "blog": "Magazin"
   },
   "auth": {
     "kicker": "Konto / Anmeldung",
@@ -1058,5 +1059,20 @@
       "title": "PhotoUpscale",
       "description": "Vergrößern, verbessern und gestalten Sie Bilder online mit KI neu."
     }
+  },
+  "blog": {
+    "title": "Magazin",
+    "description": "Anleitungen, Tutorials und Neuigkeiten für klarere Bilder und kreative Projekte.",
+    "all": "Alle Artikel",
+    "categories": "Artikelkategorien",
+    "readArticle": "Artikel lesen",
+    "back": "Zurück zum Magazin",
+    "empty": "In dieser Kategorie gibt es noch keine Artikel.",
+    "error": "Die Artikel konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+    "retry": "Erneut versuchen",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "pagination": "Seite {page} von {pages}",
+    "notFound": "Dieser Artikel wurde nicht gefunden."
   }
 }

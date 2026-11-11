@@ -3,7 +3,8 @@
     "upscaler": "Vergroten",
     "enhancer": "Verbeteren",
     "reimagine": "Opnieuw vormgeven",
-    "pricing": "Prijzen"
+    "pricing": "Prijzen",
+    "blog": "Artikelen"
   },
   "auth": {
     "kicker": "Account / Inloggen",
@@ -1058,5 +1059,20 @@
       "title": "PhotoUpscale",
       "description": "Vergroot, verbeter en herinterpreteer afbeeldingen online met AI."
     }
+  },
+  "blog": {
+    "title": "Artikelen",
+    "description": "Handleidingen, tutorials en nieuws voor scherpere beelden en creatieve projecten.",
+    "all": "Alle artikelen",
+    "categories": "Artikelcategorieën",
+    "readArticle": "Artikel lezen",
+    "back": "Terug naar artikelen",
+    "empty": "Er zijn nog geen artikelen in deze categorie.",
+    "error": "De artikelen konden niet worden geladen. Probeer het opnieuw.",
+    "retry": "Opnieuw proberen",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "pagination": "Pagina {page} van {pages}",
+    "notFound": "Dit artikel is niet gevonden."
   }
 }

@@ -171,7 +171,7 @@ const DOMAIN_SECRETS: Record<string, string> = {
 };
 
 /** 浏览器端签名密钥，优先从环境变量读取，否则根据当前 accept-domain 选择密钥。 */
-export function getAppSecretKey() {
+export function getAppSecretKey(domain = getAcceptDomain()) {
   const envKey = (
     process.env.NEXT_PUBLIC_ARTGURU_APP_SECRET_KEY ||
     process.env.NEXT_PUBLIC_IMGUPSCALER_APP_SECRET_KEY ||
@@ -179,7 +179,6 @@ export function getAppSecretKey() {
   ).trim();
   if (envKey) return envKey;
 
-  const domain = getAcceptDomain();
   return DOMAIN_SECRETS[domain] || "b1b46852c5b4c6146e55f4bed71220e8";
 }
 
@@ -249,8 +248,9 @@ export function createSignature(
   body: unknown,
   timestamp: number,
   nonce: string,
+  domain?: string,
 ) {
-  const secret = getAppSecretKey();
+  const secret = getAppSecretKey(domain);
   if (!secret) {
     throw new ApiError("api_secret_not_configured", 503);
   }

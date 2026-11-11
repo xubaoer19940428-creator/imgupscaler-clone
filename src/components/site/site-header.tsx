@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { visibleRoutes } from '@/src/lib/constants'
 import type { Route } from '@/src/lib/types'
-import { pagePath, pathToRoute, routeToPath } from '@/src/lib/locale-routing'
+import { pagePath, pathToRoute, routeToPath, stripLegacyLocalePrefix } from '@/src/lib/locale-routing'
 import { localeFromPathname } from '@/src/lib/locale'
 import { Icon } from '@/src/components/ui/icons'
 import { BrandWordmark } from '@/src/components/ui/logo'
@@ -30,7 +30,9 @@ export type HeaderCopy = {
   signIn: string
 }
 
-type NavItem = { route: Route; label: string; href: string }
+type NavigationRoute = Route | 'blog'
+
+type NavItem = { route: NavigationRoute; label: string; href: string }
 
 export function SiteHeader({ onLogin, onNavigate }: { onLogin: () => void; onNavigate?: (route: Route) => void }) {
   const pathname = usePathname()
@@ -47,7 +49,7 @@ export function SiteHeader({ onLogin, onNavigate }: { onLogin: () => void; onNav
     navigation: t('navigation'), accountMenu: t('accountMenu'), closeMenu: t('closeMenu'), openMenu: t('openMenu'),
     planLabel: t('planLabel'), planFree: t('planFree'), planPremium: t('planPremium'), unknownValue: t('unknownValue'), creditsLabel: t('creditsLabel'), account: t('account'), billing: t('billing'), signOut: t('signOut'), signIn: t('signIn'),
   }
-  const route = pathToRoute(pathname)
+  const route: NavigationRoute = stripLegacyLocalePrefix(pathname).startsWith('/blog') ? 'blog' : pathToRoute(pathname)
 
   useEffect(() => { auth.hydrate() }, [auth.hydrate])
   useEffect(() => {
@@ -81,21 +83,24 @@ export function SiteHeader({ onLogin, onNavigate }: { onLogin: () => void; onNav
 
   // Keep navigation and menu state in the shell so route changes remain
   // compatible with both the App workspace and standalone account/legal pages.
-  const navigate = (next: Route) => {
+  const navigate = (next: NavigationRoute) => {
     setMobileOpen(false)
     setAccountOpen(false)
-    if (onNavigate) onNavigate(next)
+    if (next === 'blog') router.push(pagePath('/blog', locale))
+    else if (onNavigate) onNavigate(next)
     else router.push(routeToPath(next, locale))
   }
   const hrefFor = (next: Route) => routeToPath(next, locale)
   const items: NavItem[] = visibleRoutes.map((key) => ({ route: key, label: navT(key === 'home' ? 'upscaler' : key), href: hrefFor(key) }))
+
+  items.push({ route: 'blog', label: navT('blog'), href: pagePath('/blog', locale) })
 
   const accountHref = pagePath('/account', locale)
   const billingHref = pagePath('/account', locale, '?tab=billing')
   return <header ref={headerRef} className="site-header"><div className="header-inner"><a className="brand" href={hrefFor('home')} onClick={(event) => handleNavClick(event, navigate, 'home')} aria-label="PhotoUpscale"><BrandWordmark /></a><HeaderNavigation items={items} activeRoute={route} onNavigate={navigate} ariaLabel={copy.navigation} open={mobileOpen} copy={copy} accountHref={accountHref} authenticated={Boolean(auth.user)} user={auth.user} onClose={() => setMobileOpen(false)} onLogin={onLogin} onSignOut={() => { void api.logout().catch(() => undefined); auth.clearSession(); setMobileOpen(false); setAccountOpen(false) }} /><HeaderActions copy={copy} accountRef={accountRef} accountOpen={accountOpen} accountHref={accountHref} billingHref={billingHref} authenticated={Boolean(auth.user)} user={auth.user} onLogin={onLogin} onSignOut={() => { void api.logout().catch(() => undefined); auth.clearSession(); setAccountOpen(false) }} onToggleAccount={() => { setAccountOpen((open) => !open); setMobileOpen(false) }} mobileOpen={mobileOpen} onToggleMobile={() => { setMobileOpen((open) => !open); setAccountOpen(false) }} /></div></header>
 }
 
-function HeaderNavigation({ items, activeRoute, onNavigate, ariaLabel, open, copy, accountHref, authenticated, user, onClose, onLogin, onSignOut }: { items: NavItem[]; activeRoute: Route; onNavigate: (route: Route) => void; ariaLabel: string; open: boolean; copy: HeaderCopy; accountHref: string; authenticated: boolean; user: ReturnType<typeof useAuthStore.getState>['user']; onClose: () => void; onLogin: () => void; onSignOut: () => void }) {
+function HeaderNavigation({ items, activeRoute, onNavigate, ariaLabel, open, copy, accountHref, authenticated, user, onClose, onLogin, onSignOut }: { items: NavItem[]; activeRoute: NavigationRoute; onNavigate: (route: NavigationRoute) => void; ariaLabel: string; open: boolean; copy: HeaderCopy; accountHref: string; authenticated: boolean; user: ReturnType<typeof useAuthStore.getState>['user']; onClose: () => void; onLogin: () => void; onSignOut: () => void }) {
   const name = user?.nickname || user?.email || copy.signIn
   const email = user?.email || ''
   const plan = user ? (user.is_vip || user.is_paid ? copy.planPremium : copy.planFree) : ''
@@ -123,7 +128,7 @@ function initials(name: string) {
   return name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join('').toUpperCase()
 }
 
-function handleNavClick(event: MouseEvent<HTMLAnchorElement>, navigate: (route: Route) => void, next: Route) {
+function handleNavClick(event: MouseEvent<HTMLAnchorElement>, navigate: (route: NavigationRoute) => void, next: NavigationRoute) {
   if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return
   event.preventDefault()
   navigate(next)

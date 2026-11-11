@@ -955,3 +955,12 @@ npm run build
 - 用户询问参考 HTML 的字体，并要求其他两个页面参考首页布局。确认参考稿通过 Google Fonts 加载 Plus Jakarta Sans；上一轮沿用 Instrument Sans，此轮改为本地托管 Plus Jakarta Sans 可变字体，支持 200–800 字重，继续用 --font-studio，不引入浏览器端远程字体请求。新增字体及官方 SIL OFL 许可证；中文等非拉丁字符使用系统字体回退。
 - 增强器和 Reimagine 继续复用首页的 LandingPage、Hero、用例/功能/流程/FAQ 与 redesign 样式，main 增加 data-tool 标记；细化两个页面的用例比较卡，使其完整填充统一卡片区域。Reimagine 上传后的模型选择和提示词设置在桌面并排，800px 以下纵向，540px 以下模型按钮单列，保留真实控件及处理逻辑。
 - README 与现有 design-system 同步实际字体。构建含 TypeScript 和114条目通过；检查13语言×3工具共39页的 main标记、五个区块顺序、本地字体预加载及字体资源200通过，生成CSS确认使用PlusJakarta且无Google字体外链；104页/91条sitemap的SEO回归通过。git diff --check与ccc index通过。浏览器视觉验证限制沿用上一条，未宣称像素及点击回归通过。未提交或部署，本地预览保留在3100。
+
+### 2026-11-11（接入文章分类、列表与详情）
+- 用户新增 `ArticleController-API.md`，要求顶部分类可切换、下方文章列表、点击进入详情。已按文档接入 `/articles/tags`、`/articles`、`/articles/{slug}`，在英文、中文及其余11语言新增 `/blog` 和 `/blog/[slug]`；共享Header/Footer提供入口并正确标识博客导航。默认每页12条，分类切换清除页码，分类和分页均通过URL链接保留刷新/返回/分享行为。
+- 新增 `src/lib/articles.ts` 服务端请求模块，复用现有网关签名，明确传入当前应用域名、lang和时区，公开文章请求不需要登录。原 `getAppSecretKey/createSignature` 仅增加可选域名参数，保留既有调用。首次无签名探测404后，携带签名实测接口200、分类/列表为空，已向用户纠正接口状态。
+- 新增 `src/features/blog/` 共享列表/详情/页壳/错误及404页面；列表使用后端封面、摘要、作者、时间和标签，详情支持HTML/Markdown，增加 marked/sanitize-html及类型依赖，清理脚本、事件属性和危险URL。详情数据用React cache在metadata和页面间共享，关闭文章预取，避免一次渲染重复增加浏览量。
+- 补齐13语言博客界面消息；文章实际回退语言通过响应locale标记，详情canonical跟随实际语言，不虚构多语言文章关联。增加文章metadata与BlogPosting；分页和分类页保留自身canonical并noindex，13个博客根页进入sitemap（总104条公开URL）。`scripts/verify-seo.py`同步验证新的sitemap集合。
+- 验证：正式origin构建含TypeScript通过（125个静态条目，博客动态SSR）；真实签名API的13语言博客根页均200并显示真实空状态；现有104业务页和104条sitemap的SEO回归通过。临时本地fixture服务验证生产模式下全部13语言列表、有效详情、缺失/非法slug404、分类、12+2分页、空分类、实际语言canonical、正文清理、应用/语言/签名头和单次详情请求，全部通过。独立审查提出动态locale路由可能受dynamicParams=false影响的疑点，已用生产构建13语言有效文章实测排除。
+- Chrome实际验证（本地fixture）顶部tutorial筛选从12变7条，点击文章进入详情，手机375px单列且scrollWidth=375，翻页显示13/14两条；视口已恢复。临时fixture和开发测试服务均停止，最终构建恢复真实API，本地正式预览为http://localhost:3111/zh/blog。测试文章没有写入生产后端。
+- 新博客消息13语言和ICU占位符检查通过；完整verify:i18n仍因既存账户history/modelUnavailable消息缺失失败，与此前记录一致。新增依赖过程中带出的Next补丁升级已恢复到原16.4.2及原latest声明，冻结锁文件校验通过。diff检查通过。用户原始API文档保留未修改，未提交或部署。当前真实接口为空，真实文章的端到端展示需后台提供内容后再复核。
